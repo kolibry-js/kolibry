@@ -22,7 +22,7 @@
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "bin": {
-    "enigmaslides": "./bin/enigmaslides.mjs"
+    "kolibri": "./bin/kolibri.mjs"
   },
   "files": [
     "bin",

@@ -35,12 +35,9 @@
     "*.d.ts",
     "dist"
   ],
-  "engines": {
-    "node": ">=18.0.0"
-  },
   "scripts": {
-    "build": "rimraf dist && tsup src/index.ts src/core.ts src/fs.ts",
-    "dev": "nr build --watch",
+    "build": "rm -rf dist && tsup src/index.ts src/core.ts src/fs.ts",
+    "dev": "nyxr build --watch",
     "prepublishOnly": "npm run build"
   },
   "dependencies": {

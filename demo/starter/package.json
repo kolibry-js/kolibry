@@ -8,8 +8,8 @@
   },
   "devDependencies": {
     "@kolibrijs/cli": "workspace:*",
-    "@kolibrijs/theme-default": "^0.21.2",
-    "@kolibrijs/theme-seriph": "^0.21.3",
+    "@slidev/theme-default": "^0.21.2",
+    "@slidev/theme-seriph": "^0.21.3",
     "@kolibrijs/types": "workspace:*",
     "nodemon": "^3.0.1"
   }

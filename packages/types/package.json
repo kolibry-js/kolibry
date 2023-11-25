@@ -1,5 +1,5 @@
 {
-  "name": "@kolibri/types",
+  "name": "@kolibrijs/types",
   "version": "0.0.0",
   "description": "Shared types declarations for Kolibri",
   "author": "nyxb <contact@nyxb.email>",

@@ -1,0 +1,23 @@
+[build.environment]
+  NODE_VERSION = "18"
+  PLAYWRIGHT_BROWSERS_PATH = "0"
+
+[build]
+  publish = "dist"
+  command = "bun run demo:build"
+
+[[redirects]]
+  from = "/composable-vue/*"
+  to = "/composable-vue/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/starter/*"
+  to = "/starter/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/"
+  to = "https://kolibri.show/"
+  status = 301
+  force = true
