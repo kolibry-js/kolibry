@@ -1,5 +1,5 @@
 /* eslint-disable import/no-duplicates */
-import type { Awaitable } from '@antfu/utils'
+import type { Awaitable } from '@nyxb/utils'
 import type { ILanguageRegistration, IThemeRegistration, Lang, Highlighter as ShikiHighlighter, Theme } from 'shiki'
 import type * as Shiki from 'shiki'
 import type * as monaco from 'monaco-editor'
@@ -9,7 +9,7 @@ import type mermaid from 'mermaid'
 import type { KatexOptions } from 'katex'
 import type { WindiCssOptions } from 'vite-plugin-windicss'
 import type { VitePluginConfig as UnoCssConfig } from 'unocss/vite'
-import type { SlidevPreparserExtension } from './types'
+import type { EnigmaSlidevPreparserExtension } from './types'
 
 export interface AppContext {
   app: App
@@ -73,7 +73,7 @@ export type ShikiSetup = (shiki: typeof Shiki) => Awaitable<ShikiOptions | undef
 export type KatexSetup = () => Awaitable<Partial<KatexOptions> | undefined>
 export type WindiSetup = () => Awaitable<Partial<WindiCssOptions> | undefined>
 export type UnoSetup = () => Awaitable<Partial<UnoCssConfig> | undefined>
-export type PreparserSetup = (filepath: string) => SlidevPreparserExtension
+export type PreparserSetup = (filepath: string) => EnigmaSlidevPreparserExtension
 
 // client side
 export type MonacoSetup = (m: typeof monaco) => Awaitable<MonacoSetupReturn>
