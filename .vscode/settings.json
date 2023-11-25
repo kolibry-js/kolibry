@@ -38,5 +38,9 @@
     "jsonc",
     "yaml"
 ],
-"testing.automaticallyOpenPeekView": "never"
+"testing.automaticallyOpenPeekView": "never",
+"cSpell.words": [
+   "conmitmoji",
+   "enigmaslidev"
+]
 }

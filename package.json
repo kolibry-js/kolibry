@@ -1,7 +1,12 @@
 {
-  "name": "vite-template-react",
+  "name": "enigmaslidev-monorepo",
   "type": "module",
-  "version": "0.0.1",
+  "private": true,
+  "packageManager": "bun@1.0.14",
+  "version": "0.0.0",
+  "workspaces": [
+   "packages/*"
+ ],
   "scripts": {
     "start": "vite --port 3000 --open",
     "dev": "vite --port 3000 --open",
@@ -13,24 +18,21 @@
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
   "devDependencies": {
-    "@nyxb/eslint-config": "^1.0.6",
-    "@testing-library/jest-dom": "^6.1.4",
-    "@testing-library/react": "^14.1.2",
-    "@types/react": "^18.2.37",
-    "@types/react-dom": "^18.2.15",
-    "@vitejs/plugin-react": "^4.1.0",
+   "@enigmaslidev/cli": "workspace:*",
+    "@enigmaslidev/parser": "workspace:*",
+    "@enigmaslidev/types": "workspace:*",
+    "@nyxb/nyxi": "^0.0.31",
+    "@nyxb/utils": "^0.0.3",
     "bumping": "^9.2.1",
+    "bun": "^1.0.14",
     "bun-types": "latest",
+    "conmitmoji": "^0.0.12",
     "get-component": "^0.1.3",
-    "jsdom": "^22.1.0",
     "styled-components": "^6.1.1",
-    "typescript": "^5.2.2",
-    "vite": "^4.5.0",
-    "vitest": "^0.34.6"
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.2",
+    "vite": "^5.0.2",
+    "zx": "^7.2.3"
   }
 }

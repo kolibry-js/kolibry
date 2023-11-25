@@ -1,0 +1,27 @@
+{
+  "name": "create-enigmaslidev-theme",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "Create starter theme template for EnigmaSlidev",
+  "author": "nyxb <contact@nyxb.email>",
+  "license": "MIT",
+  "funding": "https://github.com/sponsors/nyxb",
+  "homepage": "https://enigmasli.dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nyxb/enigmaslidev"
+  },
+  "bugs": "https://github.com/nyxb/enigmaslidev/issues",
+  "main": "index.mjs",
+  "bin": {
+    "create-enigmaslidev-theme": "index.mjs"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "kolorist": "^1.8.0",
+    "minimist": "^1.2.8",
+    "prompts": "^2.4.2"
+  }
+}
