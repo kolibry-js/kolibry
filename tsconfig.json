@@ -34,6 +34,9 @@
      "./packages/**/*.vue",
      "./test/**/*.ts"
    ],
-   "exclude": ["**/dist/**", "node_modules"]
+   "exclude": ["**/dist/**", "node_modules"],
+   "types": [
+      "bun-types" // add Bun global
+    ]
  }
  
