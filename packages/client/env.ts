@@ -1,7 +1,7 @@
 import type { EnigmaSlidevConfig } from '@enigmaslidev/types'
 import type { UnwrapNestedRefs } from 'vue'
 import { computed } from 'vue'
-import { objectMap } from '@antfu/utils'
+import { objectMap } from '@nyxb/utils'
 
 // @ts-expect-error missing types
 import _configs from '/@enigmaslidev/configs'
