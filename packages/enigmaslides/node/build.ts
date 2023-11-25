@@ -7,19 +7,19 @@ import { resolveConfig, build as viteBuild } from 'vite'
 import connect from 'connect'
 import sirv from 'sirv'
 import { blue, yellow } from 'kolorist'
-import type { BuildArgs } from '@slidev/types'
-import { ViteSlidevPlugin } from './plugins/preset'
+import type { BuildArgs } from '@enigmaslidev/types'
+import { ViteEnigmaSlidevPlugin } from './plugins/preset'
 import { getIndexHtml, mergeViteConfigs } from './common'
-import type { ResolvedSlidevOptions } from './options'
+import type { ResolvedEnigmaSlidevOptions } from './options'
 
 export async function build(
-  options: ResolvedSlidevOptions,
+  options: ResolvedEnigmaSlidevOptions,
   viteConfig: InlineConfig = {},
   args: BuildArgs,
 ) {
   const indexPath = resolve(options.userRoot, 'index.html')
   const rawConfig = await resolveConfig({}, 'build', options.entry)
-  const pluginOptions = rawConfig.slidev || {}
+  const pluginOptions = rawConfig.enigmaslidev || {}
 
   let originalIndexHTML: string | undefined
   if (fs.existsSync(indexPath))
@@ -35,7 +35,7 @@ export async function build(
       <InlineConfig>({
         root: options.userRoot,
         plugins: [
-          await ViteSlidevPlugin(options, pluginOptions),
+          await ViteEnigmaSlidevPlugin(options, pluginOptions),
           {
             name: 'resolve-config',
             configResolved(_config) {
