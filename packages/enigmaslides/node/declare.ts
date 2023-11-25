@@ -1,13 +1,13 @@
-import type { SlidevPluginOptions } from './options'
+import type { EnigmaSlidevPluginOptions } from './options'
 
 // extend vite.config.ts
 declare module 'vite' {
   interface UserConfig {
     /**
-     * Custom internal plugin options for Slidev (advanced)
+     * Custom internal plugin options for EnigmaSlidev (advanced)
      *
-     * @see https://github.com/slidevjs/slidev/blob/main/packages/slidev/node/options.ts#L50
+     * @see https://github.com/nyxb/slidev/blob/main/packages/enigmaslidev/node/options.ts#L50
      */
-    slidev?: SlidevPluginOptions
+    enigmaslidev?: EnigmaSlidevPluginOptions
   }
 }
