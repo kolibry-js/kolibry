@@ -1,0 +1,8 @@
+{
+   "exclude": [
+     "codemirror",
+     "monaco-editor",
+     "cypress"
+   ]
+ }
+ 
