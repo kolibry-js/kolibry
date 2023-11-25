@@ -1,6 +1,6 @@
 import fs from 'fs-extra'
 import { satisfies } from 'semver'
-import type { SlidevConfig } from '@slidev/types'
+import type { EnigmaSlidevConfig } from '@enigmaslidev/types'
 import { version } from '../package.json'
 import { packageExists, resolveImportPath } from './utils'
 import { isPath } from './options'
@@ -17,19 +17,19 @@ export async function getPackageJson(root: string): Promise<Record<string, any>>
   }
 }
 
-export async function getAddons(userRoot: string, config: SlidevConfig): Promise<string[]> {
-  const { slidev = {} } = await getPackageJson(userRoot)
+export async function getAddons(userRoot: string, config: EnigmaSlidevConfig): Promise<string[]> {
+  const { enigmaslidev = {} } = await getPackageJson(userRoot)
   const configAddons = Array.isArray(config.addons) ? config.addons : []
-  const addons = configAddons.concat(Array.isArray(slidev?.addons) ? slidev.addons : [])
+  const addons = configAddons.concat(Array.isArray(enigmaslidev?.addons) ? enigmaslidev.addons : [])
   return (await getRecursivePlugins(addons.map(resolvePluginName), 3)).filter(Boolean)
 }
 
 export async function getRecursivePlugins(addons: string[], depth: number): Promise<string[]> {
   const addonsArray = await Promise.all(addons.map(async (addon) => {
-    const { slidev = {}, engines = {} } = await getPackageJson(addon)
+    const { enigmaslidev = {}, engines = {} } = await getPackageJson(addon)
     checkEngine(addon, engines)
 
-    let addons = Array.isArray(slidev?.addons) ? slidev.addons : []
+    let addons = Array.isArray(enigmaslidev?.addons) ? enigmaslidev.addons : []
     if (addons.length > 0 && depth)
       addons = await getRecursivePlugins(addons.map(resolvePluginName), depth - 1)
     addons.push(addon)
@@ -39,9 +39,9 @@ export async function getRecursivePlugins(addons: string[], depth: number): Prom
   return addonsArray.flat()
 }
 
-export async function checkEngine(name: string, engines: { slidev?: string }) {
-  if (engines.slidev && !satisfies(version, engines.slidev, { includePrerelease: true }))
-    throw new Error(`[slidev] addon "${name}" requires Slidev version range "${engines.slidev}" but found "${version}"`)
+export async function checkEngine(name: string, engines: { enigmaslidev?: string }) {
+  if (engines.enigmaslidev && !satisfies(version, engines.enigmaslidev, { includePrerelease: true }))
+    throw new Error(`[enigmaslidev] addon "${name}" requires EnigmaSlidev version range "${engines.enigmaslidev}" but found "${version}"`)
 }
 
 export function resolvePluginName(name: string) {
@@ -49,7 +49,7 @@ export function resolvePluginName(name: string) {
     return ''
   if (isPath(name))
     return name
-  if (packageExists(`slidev-addon-${name}`))
-    return `slidev-addon-${name}`
+  if (packageExists(`enigmaslidev-addon-${name}`))
+    return `enigmaslidev-addon-${name}`
   return name
 }
