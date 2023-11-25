@@ -2,15 +2,15 @@
   "name": "@enigmaslidev/parser",
   "version": "0.0.1",
   "description": "Markdown parser for Slidev",
-  "author": "antfu <anthonyfu117@hotmail.com>",
+  "author": "nyxb <contact@nyxb.email>",
   "license": "MIT",
   "funding": "https://github.com/sponsors/antfu",
   "homepage": "https://sli.dev",
   "repository": {
     "type": "git",
-    "url": "https://github.com/slidevjs/slidev"
+    "url": "https://github.com/nyxb/enigmaslidev"
   },
-  "bugs": "https://github.com/slidevjs/slidev/issues",
+  "bugs": "https://github.com/nyxb/enigmaslidev/issues",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
