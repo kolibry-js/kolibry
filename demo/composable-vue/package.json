@@ -1,0 +1,18 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "nodemon -w '../../packages/kolibri/dist/*.js' --exec 'kolibri --log=info'",
+    "build": "kolibri build",
+    "export": "kolibri export",
+    "export:clicks": "kolibri export --with-clicks"
+  },
+  "devDependencies": {
+    "@iconify-json/mdi": "^1.1.55",
+    "@iconify-json/ri": "^1.1.12",
+    "@kolibrijs/cli": "workspace:*",
+    "@kolibrijs/theme-default": "^0.21.2",
+    "@kolibrijs/theme-seriph": "^0.21.3",
+    "@kolibrijs/types": "workspace:*",
+    "nodemon": "^3.0.1"
+  }
+}
