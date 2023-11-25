@@ -1,0 +1,14 @@
+:root {
+  --enigmaslidev-code-background: rgba(125,125,125,0.03);
+  --enigmaslidev-code-font-family: theme('fontFamily.mono');
+  --enigmaslidev-code-padding: 8px;
+  --enigmaslidev-code-font-size: 12px;
+  --enigmaslidev-code-line-height: 18px;
+  --enigmaslidev-code-radius: 4px;
+  --enigmaslidev-code-margin: 4px 0;
+
+  --enigmaslidev-transition-duration: 0.5s;
+
+  --enigmaslidev-slide-container-background: black;
+  --enigmaslidev-controls-foreground: white;
+}

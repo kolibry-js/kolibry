@@ -1,0 +1,57 @@
+html,
+body,
+#app,
+#page-root {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+  overflow: hidden;
+  @apply font-sans;
+}
+
+html {
+  background: transparent;
+}
+
+.enigmaslidev-icon-btn {
+  @apply inline-block cursor-pointer select-none !outline-none;
+  @apply opacity-75 transition duration-200 ease-in-out align-middle rounded p-1;
+  @apply hover:(opacity-100 bg-gray-400 bg-opacity-10);
+  @apply md:p-2;
+}
+
+.enigmaslidev-icon-btn.shallow {
+  @apply opacity-30
+}
+
+.enigmaslidev-icon-btn.active {
+  @apply opacity-100
+}
+
+.enigmaslidev-icon-btn.disabled {
+  @apply opacity-25 pointer-events-none;
+}
+
+.enigmaslidev-vclick-target {
+  @apply transition-opacity duration-100;
+}
+
+.enigmaslidev-vclick-hidden {
+  @apply !opacity-0 !pointer-events-none;
+}
+
+.enigmaslidev-vclick-fade {
+  @apply opacity-50;
+}
+
+.enigmaslidev-icon {
+  display: inline-block;
+  vertical-align: sub;
+  line-height: 1em;
+}
+
+.enigmaslidev-page {
+  @apply absolute top-0 left-0 right-0 w-full relative;
+}
