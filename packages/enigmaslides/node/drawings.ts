@@ -1,9 +1,9 @@
 import { basename, dirname, join, resolve } from 'node:path'
 import fs from 'fs-extra'
 import fg from 'fast-glob'
-import type { ResolvedSlidevOptions } from './options'
+import type { ResolvedEnigmaSlidevOptions } from './options'
 
-function resolveDrawingsDir(options: ResolvedSlidevOptions): string | undefined {
+function resolveDrawingsDir(options: ResolvedEnigmaSlidevOptions): string | undefined {
   return options.data.config.drawings.persist
     ? resolve(
       dirname(options.entry),
@@ -12,7 +12,7 @@ function resolveDrawingsDir(options: ResolvedSlidevOptions): string | undefined 
     : undefined
 }
 
-export async function loadDrawings(options: ResolvedSlidevOptions) {
+export async function loadDrawings(options: ResolvedEnigmaSlidevOptions) {
   const dir = resolveDrawingsDir(options)
   if (!dir || !fs.existsSync(dir))
     return {}
@@ -37,7 +37,7 @@ export async function loadDrawings(options: ResolvedSlidevOptions) {
   return obj
 }
 
-export async function writeDrawings(options: ResolvedSlidevOptions, drawing: Record<string, string>) {
+export async function writeDrawings(options: ResolvedEnigmaSlidevOptions, drawing: Record<string, string>) {
   const dir = resolveDrawingsDir(options)
   if (!dir)
     return
