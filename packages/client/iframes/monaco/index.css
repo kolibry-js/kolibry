@@ -1,0 +1,28 @@
+html,
+body,
+#container {
+  padding: 0;
+  margin: 0;
+  background: var(--enigmaslidev-code-background);
+  width: 100%;
+  height: 100%;
+}
+
+#container {
+  padding: var(--enigmaslidevslidev-code-padding);
+  margin: var(--enigmaslidevslidev-code-margin);
+  border-radius: var(--enigmaslidevslidev-code-radius);
+}
+
+.monaco-editor .monaco-hover {
+  border-radius: var(--enigmaslidevslidev-code-radius);
+  overflow: hidden;
+  border: none;
+  outline: none;
+}
+
+.monaco-editor .lines-content,
+.monaco-editor .view-line,
+.monaco-editor .view-lines {
+  user-select: none;
+}
