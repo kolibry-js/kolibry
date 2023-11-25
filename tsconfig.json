@@ -7,11 +7,11 @@
      "module": "ESNext",
      "moduleResolution": "node",
      "paths": {
-       "@enigmaslidev/client/*": ["./packages/client/*"],
-       "@enigmaslidev/types": ["./packages/types/src/index.ts"],
-       "@enigmaslidev/parser/fs": ["./packages/parser/src/fs.ts"],
-       "@enigmaslidev/parser/core": ["./packages/parser/src/core.ts"],
-       "@enigmaslidev/parser": ["./packages/parser/src/index.ts"]
+       "@kolibrijs/client/*": ["./packages/client/*"],
+       "@kolibrijs/types": ["./packages/types/src/index.ts"],
+       "@kolibrijs/parser/fs": ["./packages/parser/src/fs.ts"],
+       "@kolibrijs/parser/core": ["./packages/parser/src/core.ts"],
+       "@kolibrijs/parser": ["./packages/parser/src/index.ts"]
      },
      "resolveJsonModule": true,
      "types": [
@@ -35,8 +35,9 @@
      "./test/**/*.ts"
    ],
    "exclude": ["**/dist/**", "node_modules"],
+   "allowJs": true,
    "types": [
-      "bun-types" // add Bun global
+      "bun-types"
     ]
  }
  

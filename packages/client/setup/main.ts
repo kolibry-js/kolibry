@@ -1,6 +1,6 @@
 /* __imports__ */
 
-import type { AppContext } from '@enigmaslidev/types'
+import type { AppContext } from '@kolibrijs/types'
 import { MotionPlugin } from '@vueuse/motion'
 import StarportPlugin from 'vue-starport'
 

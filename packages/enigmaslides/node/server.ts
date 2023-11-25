@@ -3,16 +3,16 @@ import process from 'node:process'
 import type { InlineConfig } from 'vite'
 import { createServer as createViteServer, resolveConfig } from 'vite'
 import { mergeViteConfigs } from './common'
-import type { ResolvedEnigmaSlidevOptions, EnigmaSlidevServerOptions } from './options'
-import { ViteEnigmaSlidevPlugin } from './plugins/preset'
+import type { ResolvedKolibriOptions, KolibriServerOptions } from './options'
+import { ViteKolibriPlugin } from './plugins/preset'
 
 export async function createServer(
-  options: ResolvedEnigmaSlidevOptions,
+  options: ResolvedKolibriOptions,
   viteConfig: InlineConfig = {},
-  serverOptions: EnigmaSlidevServerOptions = {},
+  serverOptions: KolibriServerOptions = {},
 ) {
   const rawConfig = await resolveConfig({}, 'serve', options.entry)
-  const pluginOptions = rawConfig.enigmaslidev || {}
+  const pluginOptions = rawConfig.kolibri || {}
 
   // default open editor to code, #312
   process.env.EDITOR = process.env.EDITOR || 'code'
@@ -28,7 +28,7 @@ export async function createServer(
           ],
         },
         plugins: [
-          await ViteEnigmaSlidevPlugin(options, pluginOptions, serverOptions),
+          await ViteKolibriPlugin(options, pluginOptions, serverOptions),
         ],
       }),
       'serve',

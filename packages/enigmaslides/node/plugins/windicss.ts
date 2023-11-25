@@ -4,13 +4,13 @@ import { fileURLToPath } from 'node:url'
 import { slash, uniq } from '@nyxb/utils'
 import type { WindiCssOptions } from 'vite-plugin-windicss'
 import jiti from 'jiti'
-import type { ResolvedEnigmaSlidevOptions, EnigmaSlidevPluginOptions } from '..'
+import type { ResolvedKolibriOptions, KolibriPluginOptions } from '..'
 import { resolveImportPath } from '../utils'
 import { loadSetups } from './setupNode'
 
 export async function createWindiCSSPlugin(
-  { themeRoots, addonRoots, clientRoot, userRoot, roots, data }: ResolvedEnigmaSlidevOptions,
-  { windicss: windiOptions }: EnigmaSlidevPluginOptions,
+  { themeRoots, addonRoots, clientRoot, userRoot, roots, data }: ResolvedKolibriOptions,
+  { windicss: windiOptions }: KolibriPluginOptions,
 ) {
   const { default: WindiCSS } = await import('vite-plugin-windicss')
   const { defaultConfigureFiles } = await import('@windicss/config')

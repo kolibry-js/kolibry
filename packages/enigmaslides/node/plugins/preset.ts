@@ -9,7 +9,7 @@ import IconsResolver from 'unplugin-icons/resolver'
 import Components from 'unplugin-vue-components/vite'
 import ServerRef from 'vite-plugin-vue-server-ref'
 import { notNullish } from '@nyxb/utils'
-import type { ResolvedEnigmaSlidevOptions, EnigmaSlidevPluginOptions, EnigmaSlidevServerOptions } from '../options'
+import type { ResolvedKolibriOptions, KolibriPluginOptions, KolibriServerOptions } from '../options'
 import { loadDrawings, writeDrawings } from '../drawings'
 import { createConfigPlugin } from './extendConfig'
 import { createSlidesLoader } from './loaders'
@@ -49,10 +49,10 @@ const customElements = new Set([
   'semantics',
 ])
 
-export async function ViteEnigmaSlidevPlugin(
-  options: ResolvedEnigmaSlidevOptions,
-  pluginOptions: EnigmaSlidevPluginOptions,
-  serverOptions: EnigmaSlidevServerOptions = {},
+export async function ViteKolibriPlugin(
+  options: ResolvedKolibriOptions,
+  pluginOptions: KolibriPluginOptions,
+  serverOptions: KolibriServerOptions = {},
 ): Promise<Plugin[]> {
   const {
     vue: vueOptions = {},
@@ -128,7 +128,7 @@ export async function ViteEnigmaSlidevPlugin(
     }),
 
     Icons({
-      defaultClass: 'enigmaslidev-icon',
+      defaultClass: 'kolibri-icon',
       autoInstall: true,
       ...iconsOptions,
     }),

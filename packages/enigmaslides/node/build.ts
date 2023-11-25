@@ -7,19 +7,19 @@ import { resolveConfig, build as viteBuild } from 'vite'
 import connect from 'connect'
 import sirv from 'sirv'
 import { blue, yellow } from 'kolorist'
-import type { BuildArgs } from '@enigmaslidev/types'
-import { ViteEnigmaSlidevPlugin } from './plugins/preset'
+import type { BuildArgs } from '@kolibrijs/types'
+import { ViteKolibriPlugin } from './plugins/preset'
 import { getIndexHtml, mergeViteConfigs } from './common'
-import type { ResolvedEnigmaSlidevOptions } from './options'
+import type { ResolvedKolibriOptions } from './options'
 
 export async function build(
-  options: ResolvedEnigmaSlidevOptions,
+  options: ResolvedKolibriOptions,
   viteConfig: InlineConfig = {},
   args: BuildArgs,
 ) {
   const indexPath = resolve(options.userRoot, 'index.html')
   const rawConfig = await resolveConfig({}, 'build', options.entry)
-  const pluginOptions = rawConfig.enigmaslidev || {}
+  const pluginOptions = rawConfig.kolibri || {}
 
   let originalIndexHTML: string | undefined
   if (fs.existsSync(indexPath))
@@ -35,7 +35,7 @@ export async function build(
       <InlineConfig>({
         root: options.userRoot,
         plugins: [
-          await ViteEnigmaSlidevPlugin(options, pluginOptions),
+          await ViteKolibriPlugin(options, pluginOptions),
           {
             name: 'resolve-config',
             configResolved(_config) {
@@ -123,7 +123,7 @@ export async function build(
     await exportSlides({
       port,
       base: config.base,
-      ...getExportOptions(args, options, outDir, 'slidev-exported.pdf'),
+      ...getExportOptions(args, options, outDir, 'kolibri-exported.pdf'),
     })
     server.close()
   }

@@ -7,12 +7,12 @@ import type { UserConfig } from '@unocss/core'
 import { mergeConfigs } from 'unocss'
 import jiti from 'jiti'
 import UnoCSS from 'unocss/vite'
-import type { ResolvedEnigmaSlidevOptions, EnigmaSlidevPluginOptions } from '..'
+import type { ResolvedKolibriOptions, KolibriPluginOptions } from '..'
 import { loadSetups } from './setupNode'
 
 export async function createUnocssPlugin(
-  { themeRoots, addonRoots, clientRoot, roots, userRoot, data }: ResolvedEnigmaSlidevOptions,
-  { unocss: unoOptions = {} }: EnigmaSlidevPluginOptions,
+  { themeRoots, addonRoots, clientRoot, roots, userRoot, data }: ResolvedKolibriOptions,
+  { unocss: unoOptions = {} }: KolibriPluginOptions,
 ) {
   const configFiles = uniq([
     resolve(userRoot, 'uno.config.ts'),

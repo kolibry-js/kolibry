@@ -1,6 +1,6 @@
 /* __imports__ */
 import { and, not, or } from '@vueuse/math'
-import type { NavOperations, ShortcutOptions } from '@enigmaslidev/types'
+import type { NavOperations, ShortcutOptions } from '@kolibrijs/types'
 import { downloadPDF, go, goFirst, goLast, next, nextSlide, prev, prevSlide } from '../logic/nav'
 import { toggleDark } from '../logic/dark'
 import { magicKeys, showGotoDialog, showOverview, toggleOverview } from '../state'
@@ -67,7 +67,7 @@ export default function setupShortcuts() {
     const message = [
       '========== WARNING ==========',
       'defineShortcutsSetup did not return any of the base shortcuts.',
-      'See https://sli.dev/custom/config-shortcuts.html for migration.',
+      'See https://kolibri.show/custom/config-shortcuts.html for migration.',
       'If it is intentional, return at least one shortcut with one of the base names (e.g. name:"goto").',
     ].join('\n\n')
     // eslint-disable-next-line no-alert

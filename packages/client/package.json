@@ -1,16 +1,16 @@
 {
-  "name": "@enigmaslidev/client",
-  "version": "0.0.1",
+  "name": "@kolibrijs/client",
+  "version": "0.0.0",
   "description": "Developer-focused slide presentations",
   "author": "nyxb <contact@nyxb.email>",
   "license": "MIT",
   "funding": "https://github.com/sponsors/nyxb",
-  "homepage": "https://enigmasli.dev",
+  "homepage": "https://kolibri.show",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nyxb/enigmaslides"
+    "url": "https://github.com/kolibrijs/kolibri"
   },
-  "bugs": "https://github.com/nyxb/enigmaslides/issues",
+  "bugs": "https://github.com/kolibrijs/kolibri/issues",
   "exports": {
     "./package.json": "./package.json",
     "./*": "./*"
@@ -20,8 +20,8 @@
   },
   "dependencies": {
     "@nyxb/utils": "^0.0.3",
-    "@enigmaslidev/parser": "workspace:*",
-    "@enigmaslidev/types": "workspace:*",
+    "@kolibrijs/parser": "workspace:*",
+    "@kolibrijs/types": "workspace:*",
     "@unhead/vue": "^1.8.4",
     "@unocss/reset": "^0.57.4",
     "@vueuse/core": "^10.6.1",

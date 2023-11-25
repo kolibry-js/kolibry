@@ -4,15 +4,15 @@ import App from './App.vue'
 import setupMain from './setup/main'
 import { router } from './routes'
 import createDirectives from './modules/directives'
-import createEnigmaSlidevContext from './modules/context'
+import createKolibriContext from './modules/context'
 
-import '/@enigmaslidev/styles'
+import '/@kolibrijs/styles'
 
 const app = createApp(App)
 app.use(router)
 app.use(createHead())
 app.use(createDirectives())
-app.use(createEnigmaSlidevContext())
+app.use(createKolibriContext())
 
 setupMain({ app, router })
 

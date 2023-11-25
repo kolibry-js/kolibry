@@ -11,10 +11,10 @@ import mif from 'markdown-it-footnote'
 import { taskLists } from '@hedgedoc/markdown-it-plugins'
 import type { KatexOptions } from 'katex'
 import type MarkdownIt from 'markdown-it'
-import type { ShikiOptions } from '@enigmaslidev/types'
+import type { ShikiOptions } from '@kolibrijs/types'
 import { encode } from 'plantuml-encoder'
 import Mdc from 'markdown-it-mdc'
-import type { ResolvedEnigmaSlidevOptions, EnigmaSlidevPluginOptions } from '../options'
+import type { ResolvedKolibriOptions, KolibriPluginOptions } from '../options'
 import Katex from './markdown-it-katex'
 import { loadSetups } from './setupNode'
 import Prism from './markdown-it-prism'
@@ -28,8 +28,8 @@ const DEFAULT_SHIKI_OPTIONS: ShikiOptions = {
 }
 
 export async function createMarkdownPlugin(
-  { data: { config }, roots, mode, entry }: ResolvedEnigmaSlidevOptions,
-  { markdown: mdOptions }: EnigmaSlidevPluginOptions,
+  { data: { config }, roots, mode, entry }: ResolvedKolibriOptions,
+  { markdown: mdOptions }: KolibriPluginOptions,
 ): Promise<Plugin> {
   const setups: ((md: MarkdownIt) => void)[] = []
   const entryPath = slash(entry)

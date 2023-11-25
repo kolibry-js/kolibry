@@ -21,16 +21,16 @@ async function getPackageData(pkg: string) {
 
 export function createMonacoTypesLoader(): Plugin {
   return {
-    name: 'enigmaslidev:monaco-types-loader',
+    name: 'kolibri:monaco-types-loader',
 
     resolveId(id) {
-      if (id.startsWith('/@enigmaslidev-monaco-types/'))
+      if (id.startsWith('/@kolibrijs-monaco-types/'))
         return id
       return null
     },
 
     async load(id) {
-      const match = id.match(/^\/\@enigmaslidev-monaco-types\/(.*)$/)
+      const match = id.match(/^\/\@kolibrijs-monaco-types\/(.*)$/)
       if (match) {
         const pkg = match[1]
         const packageData = await getPackageData(pkg) || await getPackageData(`@types/${pkg}`)
@@ -42,7 +42,7 @@ export function createMonacoTypesLoader(): Plugin {
         return [
           'import * as monaco from \'monaco-editor\'',
           `import Type from "${slash(join(pkgDir, typePath))}?raw"`,
-          ...Object.keys(pkgJson.dependencies || {}).map(i => `import "/@enigmaslidev-monaco-types/${i}"`),
+          ...Object.keys(pkgJson.dependencies || {}).map(i => `import "/@kolibri-monaco-types/${i}"`),
           `monaco.languages.typescript.typescriptDefaults.addExtraLib(\`declare module "${pkg}" { \$\{Type\} }\`)`,
         ].join('\n')
       }

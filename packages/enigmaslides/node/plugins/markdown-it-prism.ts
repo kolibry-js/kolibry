@@ -146,7 +146,7 @@ function highlight(markdownit: MarkdownIt, options: Options, text: string, lang:
     .map(line => `<span class="line">${line}</span>`)
     .join('\n')
   const classAttribute = langToUse
-    ? ` class="enigmaslidev-code ${markdownit.options.langPrefix}${markdownit.utils.escapeHtml(langToUse)}"`
+    ? ` class="kolibri-code ${markdownit.options.langPrefix}${markdownit.utils.escapeHtml(langToUse)}"`
     : ''
   return escapeVueInCode(`<pre${classAttribute}><code>${code}</code></pre>`)
 }

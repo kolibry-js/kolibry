@@ -1,12 +1,12 @@
 import type { ComputedRef } from 'vue'
 import { computed } from 'vue'
 import type { RouteLocationNormalizedLoaded, RouteRecordRaw } from 'vue-router'
-import type { TocItem } from '@enigmaslidev/types'
-import type { EnigmaSlidevContextNav } from '../modules/context'
+import type { TocItem } from '@kolibrijs/types'
+import type { KolibriContextNav } from '../modules/context'
 import { addToTree, downloadPDF, filterTree, getPath, getTreeWithActiveStatuses, go, next, nextSlide, openInEditor, prev, prevSlide } from '../logic/nav'
 import { rawRoutes } from '../routes'
 
-export function useNav(route: ComputedRef<RouteRecordRaw | RouteLocationNormalizedLoaded>): EnigmaSlidevContextNav {
+export function useNav(route: ComputedRef<RouteRecordRaw | RouteLocationNormalizedLoaded>): KolibriContextNav {
   const path = computed(() => route.value.path)
   const total = computed(() => rawRoutes.length)
 

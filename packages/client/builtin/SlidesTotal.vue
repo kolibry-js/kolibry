@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { inject } from 'vue'
-import { injectionEnigmaSlidevContext } from '../constants'
+import { injectionKolibriContext } from '../constants'
 
-const $enigmaslidev = inject(injectionEnigmaSlidevContext)
+const $kolibri = inject(injectionKolibriContext)
 </script>
 
 <template>
-  <span>{{ $enigmaslidev.nav.total }}</span>
+  <span>{{ $kolibri.nav.total }}</span>
 </template>

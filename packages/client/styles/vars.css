@@ -1,14 +1,14 @@
 :root {
-  --enigmaslidev-code-background: rgba(125,125,125,0.03);
-  --enigmaslidev-code-font-family: theme('fontFamily.mono');
-  --enigmaslidev-code-padding: 8px;
-  --enigmaslidev-code-font-size: 12px;
-  --enigmaslidev-code-line-height: 18px;
-  --enigmaslidev-code-radius: 4px;
-  --enigmaslidev-code-margin: 4px 0;
+  --kolibri-code-background: rgba(125,125,125,0.03);
+  --kolibri-code-font-family: theme('fontFamily.mono');
+  --kolibri-code-padding: 8px;
+  --kolibri-code-font-size: 12px;
+  --kolibri-code-line-height: 18px;
+  --kolibri-code-radius: 4px;
+  --kolibri-code-margin: 4px 0;
 
-  --enigmaslidev-transition-duration: 0.5s;
+  --kolibri-transition-duration: 0.5s;
 
-  --enigmaslidev-slide-container-background: black;
-  --enigmaslidev-controls-foreground: white;
+  --kolibri-slide-container-background: black;
+  --kolibri-controls-foreground: white;
 }

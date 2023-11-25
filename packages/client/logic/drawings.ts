@@ -16,14 +16,14 @@ export const brushColors = [
   '#000000',
 ]
 
-export const drawingEnabled = useLocalStorage('enigmaslidev-drawing-enabled', false)
-export const drawingPinned = useLocalStorage('enigmaslidev-drawing-pinned', false)
+export const drawingEnabled = useLocalStorage('kolibri-drawing-enabled', false)
+export const drawingPinned = useLocalStorage('kolibri-drawing-pinned', false)
 export const canUndo = ref(false)
 export const canRedo = ref(false)
 export const canClear = ref(false)
 export const isDrawing = ref(false)
 
-export const brush = toReactive(useLocalStorage<Brush>('enigmaslidev-drawing-brush', {
+export const brush = toReactive(useLocalStorage<Brush>('kolibri-drawing-brush', {
   color: brushColors[0],
   size: 4,
   mode: 'stylus',

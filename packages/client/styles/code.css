@@ -10,26 +10,26 @@ html:not(.dark) .shiki-dark {
   display: none;
 }
 
-.enigmaslidev-code-wrapper {
-  margin: var(--enigmaslidev-code-margin) !important;
-  scroll-padding: var(--enigmaslidev-code-padding);
+.kolibri-code-wrapper {
+  margin: var(--kolibri-code-margin) !important;
+  scroll-padding: var(--kolibri-code-padding);
   &:-webkit-scrollbar {
     width: 0px;
   }
 }
 
-.enigmaslidev-code {
-  font-family: var(--enigmaslidev-code-font-family) !important;
-  padding: var(--enigmaslidev-code-padding) !important;
-  font-size: var(--enigmaslidev-code-font-size) !important;
-  line-height: var(--enigmaslidev-code-line-height) !important;
-  border-radius: var(--enigmaslidev-code-radius) !important;
+.kolibri-code {
+  font-family: var(--kolibri-code-font-family) !important;
+  padding: var(--kolibri-code-padding) !important;
+  font-size: var(--kolibri-code-font-size) !important;
+  line-height: var(--kolibri-code-line-height) !important;
+  border-radius: var(--kolibri-code-radius) !important;
   overflow: auto;
 }
 
-.enigmaslidev-code .line.highlighted {
+.kolibri-code .line.highlighted {
 }
-.enigmaslidev-code .line.dishonored {
+.kolibri-code .line.dishonored {
   opacity: 0.3;
 }
 
@@ -41,12 +41,12 @@ html:not(.dark) .shiki-dark {
   @apply h-full;
 }
 
-.enigmaslidev-code-line-numbers .enigmaslidev-code code {
+.kolibri-code-line-numbers .kolibri-code code {
   counter-reset: step;
   counter-increment: step calc(var(--start, 1) - 1);
 }
 
-.enigmaslidev-code-line-numbers .enigmaslidev-code code .line::before {
+.kolibri-code-line-numbers .kolibri-code code .line::before {
   content: counter(step);
   counter-increment: step;
   @apply w-4 mr-6 inline-block text-right text-gray-400 dark:text-gray-600;

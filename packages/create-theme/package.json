@@ -1,20 +1,20 @@
 {
-  "name": "create-enigmaslidev-theme",
+  "name": "create-kolibri-theme",
   "type": "module",
   "version": "0.0.1",
-  "description": "Create starter theme template for EnigmaSlidev",
+  "description": "Create starter theme template for Kolibri",
   "author": "nyxb <contact@nyxb.email>",
   "license": "MIT",
   "funding": "https://github.com/sponsors/nyxb",
-  "homepage": "https://enigmasli.dev",
+  "homepage": "https://kolibri.show",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nyxb/enigmaslidev"
+    "url": "https://github.com/kolibrijs/kolibri"
   },
-  "bugs": "https://github.com/nyxb/enigmaslidev/issues",
+  "bugs": "https://github.com/kolibrijs/kolibri/issues",
   "main": "index.mjs",
   "bin": {
-    "create-enigmaslidev-theme": "index.mjs"
+    "create-kolibri-theme": "index.mjs"
   },
   "engines": {
     "node": ">=18.0.0"

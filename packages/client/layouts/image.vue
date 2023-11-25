@@ -16,7 +16,7 @@ const style = computed(() => handleBackground(props.image, false, props.backgrou
 </script>
 
 <template>
-  <div class="enigmaslidev-layout w-full h-full" :style="style">
+  <div class="kolibri-layout w-full h-full" :style="style">
     <slot />
   </div>
 </template>

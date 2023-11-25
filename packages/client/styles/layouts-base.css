@@ -1,4 +1,4 @@
-.enigmaslidev-layout {
+.kolibri-layout {
   @apply px-14 py-10 text-[1.1rem] h-full;
 
   pre, code {
@@ -54,7 +54,7 @@
   }
 
   blockquote {
-    @apply text-sm px-2 py-1 bg-$prism-background text-$prism-foreground border-$enigmaslidev-theme-primary border-l rounded;
+    @apply text-sm px-2 py-1 bg-$prism-background text-$prism-foreground border-$kolibri-theme-primary border-l rounded;
   }
 
   blockquote > * {
@@ -74,7 +74,7 @@
   }
 
   a {
-    @apply border-current border-b border-dashed hover:text-$enigmaslidev-theme-primary hover:border-solid;
+    @apply border-current border-b border-dashed hover:text-$kolibri-theme-primary hover:border-solid;
   }
 
   td, th {
@@ -91,9 +91,9 @@
   }
 }
 
-.enigmaslidev-layout,
+.kolibri-layout,
 [dir=ltr],
-.enigmaslidev-layout [dir=ltr] {
+.kolibri-layout [dir=ltr] {
   h1 {
     @apply -ml-[0.05em] mr-0;
   }
@@ -108,7 +108,7 @@
 }
 
 [dir=rtl],
-.enigmaslidev-layout [dir=rtl] {
+.kolibri-layout [dir=rtl] {
   h1 {
     @apply -mr-[0.05em] ml-0; 
   }

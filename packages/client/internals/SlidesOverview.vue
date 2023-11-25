@@ -119,8 +119,8 @@ watchEffect(() => {
           class="relative"
         >
           <div
-            class="inline-block border rounded border-opacity-50 overflow-hidden bg-main hover:border-$enigmaslidev-theme-primary transition"
-            :class="(focus(idx + 1) || currentOverviewPage === idx + 1) ? 'border-$enigmaslidev-theme-primary' : 'border-gray-400'"
+            class="inline-block border rounded border-opacity-50 overflow-hidden bg-main hover:border-$kolibri-theme-primary transition"
+            :class="(focus(idx + 1) || currentOverviewPage === idx + 1) ? 'border-$kolibri-theme-primary' : 'border-gray-400'"
             :style="themeVars"
             @click="go(+route.path)"
           >
@@ -157,7 +157,7 @@ watchEffect(() => {
       </div>
     </div>
   </Transition>
-  <button v-if="value" class="fixed text-2xl top-4 right-4 enigmaslidev-icon-btn text-gray-400" @click="close">
+  <button v-if="value" class="fixed text-2xl top-4 right-4 kolibri-icon-btn text-gray-400" @click="close">
     <HiddenText text="Close" />
     <carbon:close />
   </button>

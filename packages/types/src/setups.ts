@@ -9,7 +9,7 @@ import type mermaid from 'mermaid'
 import type { KatexOptions } from 'katex'
 import type { WindiCssOptions } from 'vite-plugin-windicss'
 import type { VitePluginConfig as UnoCssConfig } from 'unocss/vite'
-import type { EnigmaSlidevPreparserExtension } from './types'
+import type { KolibriPreparserExtension } from './types'
 
 export interface AppContext {
   app: App
@@ -73,7 +73,7 @@ export type ShikiSetup = (shiki: typeof Shiki) => Awaitable<ShikiOptions | undef
 export type KatexSetup = () => Awaitable<Partial<KatexOptions> | undefined>
 export type WindiSetup = () => Awaitable<Partial<WindiCssOptions> | undefined>
 export type UnoSetup = () => Awaitable<Partial<UnoCssConfig> | undefined>
-export type PreparserSetup = (filepath: string) => EnigmaSlidevPreparserExtension
+export type PreparserSetup = (filepath: string) => KolibriPreparserExtension
 
 // client side
 export type MonacoSetup = (m: typeof monaco) => Awaitable<MonacoSetupReturn>

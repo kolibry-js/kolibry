@@ -12,10 +12,10 @@ declare module '*.md' {
   export default component
 }
 
-declare module '/@enigmaslidev/configs' {
-  import { EnigmaSlidevConfig } from '@enigmaslidev/types'
+declare module '/@kolibrijs/configs' {
+  import { KolibriConfig } from '@kolibrijs/types'
 
-  export default EnigmaSlidevConfig
+  export default KolibriConfig
 }
 
 declare module 'mermaid/dist/mermaid.esm.mjs' {

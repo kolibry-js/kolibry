@@ -3,23 +3,23 @@ import type { RouteRecordRaw } from 'vue-router'
 import { computed, provide, reactive, shallowRef } from 'vue'
 import { useVModel } from '@vueuse/core'
 import { useNavClicks } from '../composables/useNavClicks'
-import { injectionEnigmaSlidevContext } from '../constants'
+import { injectionKolibriContext } from '../constants'
 import { isClicksDisabled } from '../logic/nav'
 import { configs, slideHeight, slideWidth } from '../env'
 import { getSlideClass } from '../utils'
-import type { EnigmaSlidevContextNav } from '../modules/context'
+import type { KolibriContextNav } from '../modules/context'
 import SlideWrapper from './SlideWrapper'
 
 // @ts-expect-error virtual module
-import GlobalTop from '/@enigmaslidev/global-components/top'
+import GlobalTop from '/@kolibrijs/global-components/top'
 
 // @ts-expect-error virtual module
-import GlobalBottom from '/@enigmaslidev/global-components/bottom'
+import GlobalBottom from '/@kolibrijs/global-components/bottom'
 
 const props = defineProps<{
   clicks: number
   clicksElements?: HTMLElement[]
-  nav: EnigmaSlidevContextNav
+  nav: KolibriContextNav
   route: RouteRecordRaw
 }>()
 
@@ -33,14 +33,14 @@ const style = computed(() => ({
 }))
 
 const DrawingPreview = shallowRef<any>()
-if (__ENIGMASLIDEV_FEATURE_DRAWINGS__ || __ENIGMASLIDEV_FEATURE_DRAWINGS_PERSIST__)
+if (__KOLIBRI_FEATURE_DRAWINGS__ || __KOLIBRI_FEATURE_DRAWINGS_PERSIST__)
   import('./DrawingPreview.vue').then(v => (DrawingPreview.value = v.default))
 
 const clicks = computed(() => props.clicks)
 const navClicks = useNavClicks(clicks, props.nav.currentRoute, props.nav.currentPage)
 const id = computed(() => `${props.route.path.toString().padStart(3, '0')}-${(clicks.value + 1).toString().padStart(2, '0')}`)
 
-provide(injectionEnigmaSlidevContext, reactive({
+provide(injectionKolibriContext, reactive({
   nav: { ...props.nav, ...navClicks },
   configs,
   themeConfigs: computed(() => configs.themeConfig),
@@ -61,8 +61,8 @@ provide(injectionEnigmaSlidevContext, reactive({
     />
     <template
       v-if="
-        (__ENIGMASLIDEV_FEATURE_DRAWINGS__
-          || __ENIGMASLIDEV_FEATURE_DRAWINGS_PERSIST__)
+        (__KOLIBRI_FEATURE_DRAWINGS__
+          || __KOLIBRI_FEATURE_DRAWINGS_PERSIST__)
           && DrawingPreview
       "
     >

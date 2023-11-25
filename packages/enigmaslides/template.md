@@ -6,40 +6,40 @@ theme: seriph
 background: https://source.unsplash.com/collection/94734566/1920x1080
 # apply any windi css classes to the current slide
 class: 'text-center'
-# https://sli.dev/custom/highlighters.html
+# https://kolibri.show/custom/highlighters.html
 highlighter: shiki
 # some information about the slides, markdown enabled
 info: |
-  ## EnigmaSlidev Starter Template
+  ## Kolibri Starter Template
   Presentation slides for developers.
 
-  Learn more at [Sli.dev](https://sli.dev)
+  Learn more at [Kolibri.show](https://kolibri.show)
 ---
 
-# Welcome to EnigmaSlidev
+# Welcome to Kolibri
 
 Presentation slides for developers
 
 <div class="pt-12">
-  <span @click="$enigmaslidev.nav.next" class="px-2 p-1 rounded cursor-pointer" hover="bg-white bg-opacity-10">
+  <span @click="$kolibri.nav.next" class="px-2 p-1 rounded cursor-pointer" hover="bg-white bg-opacity-10">
     Press Space for next page <carbon:arrow-right class="inline"/>
   </span>
 </div>
 
-<a href="https://github.com/nyxb/enigmaslidev" target="_blank" alt="GitHub" title="Open in GitHub"
-  class="abs-br m-6 text-xl enigmaslidev-icon-btn opacity-50 !border-none !hover:text-white">
+<a href="https://github.com/kolibrijs/kolibri" target="_blank" alt="GitHub" title="Open in GitHub"
+  class="abs-br m-6 text-xl kolibri-icon-btn opacity-50 !border-none !hover:text-white">
   <carbon-logo-github />
 </a>
 
 <!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://enigmasli.dev/guide/syntax.html#notes)
+The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://kolibri.show/guide/syntax.html#notes)
 -->
 
 ---
 
-# What is EnigmaSlidev?
+# What is Kolibri?
 
-EnigmaSlidev is a slides maker and presenter designed for developers, consist of the following features
+Kolibri is a slides maker and presenter designed for developers, consist of the following features
 
 - 📝 **Text-based** - focus on the content with Markdown, and then style them later
 - 🎨 **Themable** - theme can be shared and used with npm packages
@@ -52,11 +52,11 @@ EnigmaSlidev is a slides maker and presenter designed for developers, consist of
 <br>
 <br>
 
-Read more about [Why EnigmaSlidev?](https://sli.dev/guide/why)
+Read more about [Why Kolibri?](https://kolibri.show/guide/why)
 
 <!--
 You can have `style` tag in markdown to override the style for the current page.
-Learn more: https://enigmasli.dev/guide/syntax#embedded-styles
+Learn more: https://kolibri.show/guide/syntax#embedded-styles
 -->
 
 <style>
@@ -75,7 +75,7 @@ h1 {
 
 # Navigation
 
-Hover on the bottom-left corner to see the navigation's controls panel, [learn more](https://sli.dev/guide/navigation.html)
+Hover on the bottom-left corner to see the navigation's controls panel, [learn more](https://kolibri.show/guide/navigation.html)
 
 ## Keyboard Shortcuts
 
@@ -86,11 +86,11 @@ Hover on the bottom-left corner to see the navigation's controls panel, [learn m
 | <kbd>up</kbd> | previous slide |
 | <kbd>down</kbd> | next slide |
 
-<!-- https://sli.dev/guide/animations.html#click-animations -->
+<!-- https://kolibri.show/guide/animations.html#click-animations -->
 <img
   v-click
   class="absolute -bottom-9 -left-7 w-80 opacity-50"
-  src="https://sli.dev/assets/arrow-bottom-left.svg"
+  src="https://kolibri.show/assets/arrow-bottom-left.svg"
   alt=""
 />
 <p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">Here!</p>
@@ -104,7 +104,7 @@ image: https://source.unsplash.com/collection/94734566/1920x1080
 
 Use code snippets and get the highlighting directly!
 
-<!-- https://sli.dev/guide/syntax.html#line-highlighting -->
+<!-- https://kolibri.show/guide/syntax.html#line-highlighting -->
 
 ```ts {all|2|1-6|9|all}
 interface User {
@@ -141,7 +141,7 @@ We have provided a few built-in components like `<Tweet/>` and `<Youtube/>` that
 <!-- ./components/Counter.vue -->
 <Counter :count="10" m="t-4" />
 
-Check out [the guides](https://sli.dev/builtin/components.html) for more.
+Check out [the guides](https://kolibri.show/builtin/components.html) for more.
 
 </div>
 <div>
@@ -162,7 +162,7 @@ class: px-20
 
 # Themes
 
-EnigmaSlidev comes with powerful theming support. Themes are able to provide styles, layouts, components, or even configurations for tools. Switching between themes by just **one edit** in your frontmatter:
+Kolibri comes with powerful theming support. Themes are able to provide styles, layouts, components, or even configurations for tools. Switching between themes by just **one edit** in your frontmatter:
 
 <div grid="~ cols-2 gap-2" m="-t-2">
 
@@ -178,14 +178,14 @@ theme: seriph
 ---
 ```
 
-<img border="rounded" src="https://github.com/nyxb/themes/blob/main/screenshots/theme-default/01.png?raw=true" alt="">
+<img border="rounded" src="https://github.com/kolibrijs/themes/blob/main/screenshots/theme-default/01.png?raw=true" alt="">
 
-<img border="rounded" src="https://github.com/nyxb/themes/blob/main/screenshots/theme-seriph/01.png?raw=true" alt="">
+<img border="rounded" src="https://github.com/kolibrijs/themes/blob/main/screenshots/theme-seriph/01.png?raw=true" alt="">
 
 </div>
 
-Read more about [How to use a theme](https://enigmasli.dev/themes/use.html) and
-check out the [Awesome Themes Gallery](https://enigmasli.dev/themes/gallery.html).
+Read more about [How to use a theme](https://kolibri.show/themes/use.html) and
+check out the [Awesome Themes Gallery](https://kolibri.show/themes/gallery.html).
 
 ---
 preload: false
@@ -200,7 +200,7 @@ Animations are powered by [@vueuse/motion](https://motion.vueuse.org/).
   v-motion
   :initial="{ x: -80 }"
   :enter="{ x: 0 }">
-  EnigmaSlidev
+  Kolibri
 </div>
 ```
 
@@ -211,7 +211,7 @@ Animations are powered by [@vueuse/motion](https://motion.vueuse.org/).
       :initial="{ x: 800, y: -100, scale: 1.5, rotate: -50 }"
       :enter="final"
       class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-square.png"
+      src="https://kolibri.show/logo-square.png"
       alt=""
     />
     <img
@@ -219,7 +219,7 @@ Animations are powered by [@vueuse/motion](https://motion.vueuse.org/).
       :initial="{ y: 500, x: -100, scale: 2 }"
       :enter="final"
       class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-circle.png"
+      src="https://kolibri.show/logo-circle.png"
       alt=""
     />
     <img
@@ -227,7 +227,7 @@ Animations are powered by [@vueuse/motion](https://motion.vueuse.org/).
       :initial="{ x: 600, y: 400, scale: 2, rotate: 100 }"
       :enter="final"
       class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-triangle.png"
+      src="https://kolibri.show/logo-triangle.png"
       alt=""
     />
   </div>
@@ -237,7 +237,7 @@ Animations are powered by [@vueuse/motion](https://motion.vueuse.org/).
     v-motion
     :initial="{ x: -80, opacity: 0}"
     :enter="{ x: 0, opacity: 1, transition: { delay: 2000, duration: 1000 } }">
-    Slidev
+    Kolibri
   </div>
 </div>
 
@@ -262,7 +262,7 @@ const final = {
   :initial="{ x:35, y: 40, opacity: 0}"
   :enter="{ y: 0, opacity: 1, transition: { delay: 3500 } }">
 
-[Learn More](https://sli.dev/guide/animations.html#motion)
+[Learn More](https://kolibri.show/guide/animations.html#motion)
 
 </div>
 
@@ -292,7 +292,7 @@ $$
 
 <br>
 
-[Learn more](https://sli.dev/guide/syntax#latex)
+[Learn more](https://kolibri.show/guide/syntax#latex)
 
 ---
 
@@ -317,7 +317,7 @@ C -->|Two| E[Result 2]
 
 </div>
 
-[Learn More](https://sli.dev/guide/syntax.html#diagrams)
+[Learn More](https://kolibri.show/guide/syntax.html#diagrams)
 
 
 ---
@@ -327,4 +327,4 @@ class: text-center
 
 # Learn More
 
-[Documentations](https://enigmasli.dev) / [GitHub Repo](https://github.com/nyxb/enigmaslidev)
+[Documentations](https://kolibri.show) / [GitHub Repo](https://github.com/kolibrijs/kolibri)

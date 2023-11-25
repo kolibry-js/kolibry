@@ -10,6 +10,6 @@ export default defineConfig({
   clean: true,
   shims: false,
   external: [
-    /@enigmaslidev/,
+    /@kolibrijs/,
   ],
 })

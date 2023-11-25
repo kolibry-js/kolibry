@@ -1,6 +1,6 @@
 import { useVModel } from '@vueuse/core'
 import { computed, defineComponent, h, provide, ref, toRef } from 'vue'
-import type { RenderContext } from '@enigmaslidev/types'
+import type { RenderContext } from '@kolibrijs/types'
 import { injectionActive, injectionClicks, injectionClicksDisabled, injectionClicksElements, injectionCurrentPage, injectionOrderMap, injectionRenderContext, injectionRoute } from '../constants'
 
 export default defineComponent({

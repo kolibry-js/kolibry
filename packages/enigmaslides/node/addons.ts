@@ -1,6 +1,6 @@
 import fs from 'fs-extra'
 import { satisfies } from 'semver'
-import type { EnigmaSlidevConfig } from '@enigmaslidev/types'
+import type { KolibriConfig } from '@kolibrijs/types'
 import { version } from '../package.json'
 import { packageExists, resolveImportPath } from './utils'
 import { isPath } from './options'
@@ -17,19 +17,19 @@ export async function getPackageJson(root: string): Promise<Record<string, any>>
   }
 }
 
-export async function getAddons(userRoot: string, config: EnigmaSlidevConfig): Promise<string[]> {
-  const { enigmaslidev = {} } = await getPackageJson(userRoot)
+export async function getAddons(userRoot: string, config: KolibriConfig): Promise<string[]> {
+  const { kolibri = {} } = await getPackageJson(userRoot)
   const configAddons = Array.isArray(config.addons) ? config.addons : []
-  const addons = configAddons.concat(Array.isArray(enigmaslidev?.addons) ? enigmaslidev.addons : [])
+  const addons = configAddons.concat(Array.isArray(kolibri?.addons) ? kolibri.addons : [])
   return (await getRecursivePlugins(addons.map(resolvePluginName), 3)).filter(Boolean)
 }
 
 export async function getRecursivePlugins(addons: string[], depth: number): Promise<string[]> {
   const addonsArray = await Promise.all(addons.map(async (addon) => {
-    const { enigmaslidev = {}, engines = {} } = await getPackageJson(addon)
+    const { kolibri = {}, engines = {} } = await getPackageJson(addon)
     checkEngine(addon, engines)
 
-    let addons = Array.isArray(enigmaslidev?.addons) ? enigmaslidev.addons : []
+    let addons = Array.isArray(kolibri?.addons) ? kolibri.addons : []
     if (addons.length > 0 && depth)
       addons = await getRecursivePlugins(addons.map(resolvePluginName), depth - 1)
     addons.push(addon)
@@ -39,9 +39,9 @@ export async function getRecursivePlugins(addons: string[], depth: number): Prom
   return addonsArray.flat()
 }
 
-export async function checkEngine(name: string, engines: { enigmaslidev?: string }) {
-  if (engines.enigmaslidev && !satisfies(version, engines.enigmaslidev, { includePrerelease: true }))
-    throw new Error(`[enigmaslidev] addon "${name}" requires EnigmaSlidev version range "${engines.enigmaslidev}" but found "${version}"`)
+export async function checkEngine(name: string, engines: { kolibri?: string }) {
+  if (engines.kolibri && !satisfies(version, engines.kolibri, { includePrerelease: true }))
+    throw new Error(`[kolibri] addon "${name}" requires Kolibri version range "${engines.kolibri}" but found "${version}"`)
 }
 
 export function resolvePluginName(name: string) {
@@ -49,7 +49,7 @@ export function resolvePluginName(name: string) {
     return ''
   if (isPath(name))
     return name
-  if (packageExists(`enigmaslidev-addon-${name}`))
-    return `enigmaslidev-addon-${name}`
+  if (packageExists(`kolibri-addon-${name}`))
+    return `kolibri-addon-${name}`
   return name
 }

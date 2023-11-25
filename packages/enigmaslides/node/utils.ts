@@ -6,7 +6,7 @@ import isInstalledGlobally from 'is-installed-globally'
 import resolve from 'resolve'
 import globalDirs from 'global-directory'
 import type Token from 'markdown-it/lib/token'
-import type { ResolvedFontOptions } from '@enigmaslidev/types'
+import type { ResolvedFontOptions } from '@kolibrijs/types'
 
 const require = createRequire(import.meta.url)
 const __dirname = dirname(fileURLToPath(import.meta.url))

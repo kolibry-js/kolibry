@@ -5,16 +5,16 @@ import isInstalledGlobally from 'is-installed-globally'
 import { uniq } from '@nyxb/utils'
 import { getIndexHtml } from '../common'
 import { dependencies } from '../../../client/package.json'
-import type { ResolvedEnigmaSlidevOptions } from '../options'
+import type { ResolvedKolibriOptions } from '../options'
 import { resolveGlobalImportPath, resolveImportPath, toAtFS } from '../utils'
 import { searchForWorkspaceRoot } from '../vite/searchRoot'
 
 const EXCLUDE = [
-  '@enigmaslidev/shared',
-  '@enigmaslidev/types',
-  '@enigmaslidev/client',
-  '@enigmaslidev/client/constants',
-  '@enigmaslidev/client/logic/dark',
+  '@kolibrijs/shared',
+  '@kolibrijs/types',
+  '@kolibrijs/client',
+  '@kolibrijs/client/constants',
+  '@kolibrijs/client/logic/dark',
   '@vueuse/core',
   '@vueuse/shared',
   '@unocss/reset',
@@ -25,15 +25,15 @@ const EXCLUDE = [
   'vue',
 ]
 
-export function createConfigPlugin(options: ResolvedEnigmaSlidevOptions): Plugin {
+export function createConfigPlugin(options: ResolvedKolibriOptions): Plugin {
   return {
-    name: 'enigmaslidev:config',
+    name: 'kolibri:config',
     async config(config) {
       const injection: InlineConfig = {
         define: getDefine(options),
         resolve: {
           alias: {
-            '@enigmaslidev/client/': `${toAtFS(options.clientRoot)}/`,
+            '@kolibrijs/client/': `${toAtFS(options.clientRoot)}/`,
           },
           dedupe: ['vue'],
         },
@@ -72,7 +72,7 @@ export function createConfigPlugin(options: ResolvedEnigmaSlidevOptions): Plugin
               searchForWorkspaceRoot(options.cliRoot),
               ...(
                 isInstalledGlobally
-                  ? [dirname(resolveGlobalImportPath('@enigmaslidev/client/package.json')), dirname(resolveGlobalImportPath('katex/package.json'))]
+                  ? [dirname(resolveGlobalImportPath('@kolibrijs/client/package.json')), dirname(resolveGlobalImportPath('katex/package.json'))]
                   : []
               ),
             ]),
@@ -107,16 +107,16 @@ export function createConfigPlugin(options: ResolvedEnigmaSlidevOptions): Plugin
   }
 }
 
-export function getDefine(options: ResolvedEnigmaSlidevOptions): Record<string, string> {
+export function getDefine(options: ResolvedKolibriOptions): Record<string, string> {
   return {
     __DEV__: options.mode === 'dev' ? 'true' : 'false',
-    __ENIGMASLIDEV_CLIENT_ROOT__: JSON.stringify(toAtFS(options.clientRoot)),
-    __ENIGMASLIDEV_HASH_ROUTE__: JSON.stringify(options.data.config.routerMode === 'hash'),
-    __ENIGMASLIDEV_FEATURE_DRAWINGS__: JSON.stringify(options.data.config.drawings.enabled === true || options.data.config.drawings.enabled === options.mode),
-    __ENIGMASLIDEV_FEATURE_EDITOR__: JSON.stringify(options.mode === 'dev' && options.data.config.editor !== false),
-    __ENIGMASLIDEV_FEATURE_DRAWINGS_PERSIST__: JSON.stringify(!!options.data.config.drawings.persist === true),
-    __ENIGMASLIDEV_FEATURE_RECORD__: JSON.stringify(options.data.config.record === true || options.data.config.record === options.mode),
-    __ENIGMASLIDEV_FEATURE_PRESENTER__: JSON.stringify(options.data.config.presenter === true || options.data.config.presenter === options.mode),
-    __ENIGMASLIDEV_HAS_SERVER__: options.mode !== 'build' ? 'true' : 'false',
+    __KOLIBRI_CLIENT_ROOT__: JSON.stringify(toAtFS(options.clientRoot)),
+    __KOLIBRI_HASH_ROUTE__: JSON.stringify(options.data.config.routerMode === 'hash'),
+    __KOLIBRI_FEATURE_DRAWINGS__: JSON.stringify(options.data.config.drawings.enabled === true || options.data.config.drawings.enabled === options.mode),
+    __KOLIBRI_FEATURE_EDITOR__: JSON.stringify(options.mode === 'dev' && options.data.config.editor !== false),
+    __KOLIBRI_FEATURE_DRAWINGS_PERSIST__: JSON.stringify(!!options.data.config.drawings.persist === true),
+    __KOLIBRI_FEATURE_RECORD__: JSON.stringify(options.data.config.record === true || options.data.config.record === options.mode),
+    __KOLIBRI_FEATURE_PRESENTER__: JSON.stringify(options.data.config.presenter === true || options.data.config.presenter === options.mode),
+    __KOLIBRI_HAS_SERVER__: options.mode !== 'build' ? 'true' : 'false',
   }
 }

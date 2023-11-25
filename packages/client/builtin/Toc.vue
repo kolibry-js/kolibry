@@ -9,8 +9,8 @@ Usage:
 -->
 <script setup lang='ts'>
 import { computed, inject } from 'vue'
-import type { TocItem } from '@enigmaslidev/types'
-import { injectionEnigmaSlidevContext } from '../constants'
+import type { TocItem } from '@kolibrijs/types'
+import { injectionKolibriContext } from '../constants'
 
 const props = withDefaults(
   defineProps<{
@@ -33,7 +33,7 @@ const props = withDefaults(
   },
 )
 
-const $enigmaslidev = inject(injectionEnigmaSlidevContext)
+const $kolibri = inject(injectionKolibriContext)
 
 function filterTreeDepth(tree: TocItem[], level = 1): TocItem[] {
   if (level > Number(props.maxDepth)) {
@@ -74,7 +74,7 @@ function filterOnlySiblings(tree: TocItem[]): TocItem[] {
 }
 
 const toc = computed(() => {
-  const tree = $enigmaslidev?.nav.tree
+  const tree = $kolibri?.nav.tree
   if (!tree)
     return []
   let tocTree = filterTreeDepth(tree)
@@ -87,7 +87,7 @@ const toc = computed(() => {
 </script>
 
 <template>
-  <div class="enigmaslidev-toc" :style="`column-count:${columns}`">
+  <div class="kolibri-toc" :style="`column-count:${columns}`">
     <TocList
       :level="1"
       :start="start"

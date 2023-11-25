@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { parseRangeString } from '@enigmaslidev/parser/core'
+import { parseRangeString } from '@kolibrijs/parser/core'
 import { computed, provide } from 'vue'
 import { configs, slideAspect, slideWidth } from '../env'
 import { injectionSlideScale } from '../constants'

@@ -1,8 +1,8 @@
-# @enigmaslidev/client
+# @kolibrijs/client
 
-[![NPM version](https://img.shields.io/npm/v/@enigmaslidev/client?color=9945FF&label=)](https://www.npmjs.com/package/@enigmaslidev/client)
+[![NPM version](https://img.shields.io/npm/v/@kolibrijs/client?color=9945FF&label=)](https://www.npmjs.com/package/@kolibrijs/client)
 
-Client code for [EnigmaSlidev](https://sli.dev). Shipped with [`@enigmaslidev/cli`](https://www.npmjs.com/package/@enigmaslidev/cli).
+Client code for [Kolibri](https://kolibri.show). Shipped with [`@kolibrijs/cli`](https://www.npmjs.com/package/@kolibrijs/cli).
 
 ## License
 

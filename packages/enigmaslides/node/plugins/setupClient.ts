@@ -2,14 +2,14 @@ import { existsSync } from 'node:fs'
 import { join, resolve } from 'node:path'
 import { slash, uniq } from '@nyxb/utils'
 import type { Plugin } from 'vite'
-import type { ResolvedEnigmaSlidevOptions } from '../options'
+import type { ResolvedKolibriOptions } from '../options'
 import { toAtFS } from '../utils'
 
-export function createClientSetupPlugin({ clientRoot, themeRoots, addonRoots, userRoot }: ResolvedEnigmaSlidevOptions): Plugin {
+export function createClientSetupPlugin({ clientRoot, themeRoots, addonRoots, userRoot }: ResolvedKolibriOptions): Plugin {
   const setupEntry = slash(resolve(clientRoot, 'setup'))
 
   return {
-    name: 'enigmaslidev:setup',
+    name: 'kolibri:setup',
     enforce: 'pre',
     async transform(code, id) {
       if (id.startsWith(setupEntry)) {

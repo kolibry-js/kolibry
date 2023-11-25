@@ -1,6 +1,6 @@
 import { promises as fs } from 'node:fs'
 import { dirname, resolve } from 'node:path'
-import type { PreparserExtensionLoader, SlideInfo, SlideInfoWithPath, EnigmaSlidevMarkdown, EnigmaSlidevPreparserExtension, EnigmaSlidevThemeMeta } from '@enigmaslidev/types'
+import type { PreparserExtensionLoader, SlideInfo, SlideInfoWithPath, KolibriMarkdown, KolibriPreparserExtension, KolibriThemeMeta } from '@kolibrijs/types'
 import { detectFeatures, mergeFeatureFlags, parse, stringify, stringifySlide } from './core'
 
 export * from './core'
@@ -11,12 +11,12 @@ export function injectPreparserExtensionLoader(fn: PreparserExtensionLoader) {
   preparserExtensionLoader = fn
 }
 
-export async function load(filepath: string, themeMeta?: EnigmaSlidevThemeMeta, content?: string) {
+export async function load(filepath: string, themeMeta?: KolibriThemeMeta, content?: string) {
   const dir = dirname(filepath)
   const markdown = content ?? await fs.readFile(filepath, 'utf-8')
 
-  const preparserExtensions: EnigmaSlidevPreparserExtension[] = []
-  const data = await parse(markdown, filepath, themeMeta, [], async (headmatter, exts: EnigmaSlidevPreparserExtension[], filepath: string | undefined) => {
+  const preparserExtensions: KolibriPreparserExtension[] = []
+  const data = await parse(markdown, filepath, themeMeta, [], async (headmatter, exts: KolibriPreparserExtension[], filepath: string | undefined) => {
     preparserExtensions.splice(
       0,
       preparserExtensions.length,
@@ -94,7 +94,7 @@ export async function load(filepath: string, themeMeta?: EnigmaSlidevThemeMeta, 
   return data
 }
 
-export async function save(data: EnigmaSlidevMarkdown, filepath?: string) {
+export async function save(data: KolibriMarkdown, filepath?: string) {
   filepath = filepath || data.filepath!
 
   await fs.writeFile(filepath, stringify(data), 'utf-8')

@@ -12,17 +12,17 @@ import type RemoteAssets from 'vite-plugin-remote-assets'
 import type ServerRef from 'vite-plugin-vue-server-ref'
 import type { ArgumentsType } from '@nyxb/utils'
 import { uniq } from '@nyxb/utils'
-import type { EnigmaSlidevMarkdown } from '@enigmaslidev/types'
+import type { KolibriMarkdown } from '@kolibrijs/types'
 import _debug from 'debug'
 import { parser } from './parser'
 import { packageExists, resolveImportPath } from './utils'
 import { getThemeMeta, promptForThemeInstallation, resolveThemeName } from './themes'
 import { getAddons } from './addons'
 
-const debug = _debug('enigmaslidev:options')
+const debug = _debug('kolibri:options')
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
-export interface EnigmaSlidevEntryOptions {
+export interface KolibriEntryOptions {
   /**
    * Markdown entry
    *
@@ -53,8 +53,8 @@ export interface EnigmaSlidevEntryOptions {
   inspect?: boolean
 }
 
-export interface ResolvedEnigmaSlidevOptions {
-  data: EnigmaSlidevMarkdown
+export interface ResolvedKolibriOptions {
+  data: KolibriMarkdown
   entry: string
   userRoot: string
   cliRoot: string
@@ -68,7 +68,7 @@ export interface ResolvedEnigmaSlidevOptions {
   inspect?: boolean
 }
 
-export interface EnigmaSlidevPluginOptions extends EnigmaSlidevEntryOptions {
+export interface KolibriPluginOptions extends KolibriEntryOptions {
   vue?: ArgumentsType<typeof Vue>[0]
   vuejsx?: ArgumentsType<typeof VueJsx>[0]
   markdown?: ArgumentsType<typeof Markdown>[0]
@@ -80,12 +80,12 @@ export interface EnigmaSlidevPluginOptions extends EnigmaSlidevEntryOptions {
   unocss?: UnoCSSConfig
 }
 
-export interface EnigmaSlidevServerOptions {
-  onDataReload?: (newData: EnigmaSlidevMarkdown, data: EnigmaSlidevMarkdown) => void
+export interface KolibriServerOptions {
+  onDataReload?: (newData: KolibriMarkdown, data: KolibriMarkdown) => void
 }
 
 export function getClientRoot() {
-  return dirname(resolveImportPath('@enigmaslidev/client/package.json', true))
+  return dirname(resolveImportPath('@kolibrijs/client/package.json', true))
 }
 
 export function getCLIRoot() {
@@ -116,17 +116,17 @@ export function getRoot(name: string, entry: string) {
   return dirname(resolveImportPath(`${name}/package.json`, true))
 }
 
-export function getUserRoot(options: EnigmaSlidevEntryOptions) {
+export function getUserRoot(options: KolibriEntryOptions) {
   const { entry: rawEntry = 'slides.md', userRoot = process.cwd() } = options
   const fullEntry = resolve(userRoot, rawEntry)
   return { entry: fullEntry, userRoot: dirname(fullEntry) }
 }
 
 export async function resolveOptions(
-  options: EnigmaSlidevEntryOptions,
-  mode: ResolvedEnigmaSlidevOptions['mode'],
+  options: KolibriEntryOptions,
+  mode: ResolvedKolibriOptions['mode'],
   promptForInstallation = true,
-): Promise<ResolvedEnigmaSlidevOptions> {
+): Promise<ResolvedKolibriOptions> {
   const { remote, inspect } = options
   const {
     entry,

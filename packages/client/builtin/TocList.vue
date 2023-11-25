@@ -9,8 +9,8 @@ Usage:
 <script setup lang="ts">
 import { computed } from 'vue'
 import { toArray } from '@nyxb/utils'
-import type { TocItem } from '@enigmaslidev/types'
-import Titles from '/@enigmaslidev/titles.md'
+import type { TocItem } from '@kolibrijs/types'
+import Titles from '/@kolibrijs/titles.md'
 
 const props = withDefaults(defineProps<{
   level: number
@@ -23,8 +23,8 @@ const props = withDefaults(defineProps<{
 const classes = computed(() => {
   return [
     ...toArray(props.listClass || []),
-    'enigmaslidev-toc-list',
-    `enigmaslidev-toc-list-level-${props.level}`,
+    'kolibri-toc-list',
+    `kolibri-toc-list-level-${props.level}`,
   ]
 })
 
@@ -44,8 +44,8 @@ const styles = computed(() => {
   >
     <li
       v-for="item of list"
-      :key="item.path" class="enigmaslidev-toc-item"
-      :class="[{ 'enigmaslidev-toc-item-active': item.active }, { 'enigmaslidev-toc-item-parent-active': item.activeParent }]"
+      :key="item.path" class="kolibri-toc-item"
+      :class="[{ 'kolibri-toc-item-active': item.active }, { 'kolibri-toc-item-parent-active': item.activeParent }]"
     >
       <Link :to="item.path">
         <Titles :no="item.path" />
@@ -62,10 +62,10 @@ const styles = computed(() => {
 </template>
 
 <style>
-.enigmaslidev-layout .enigmaslidev-toc-item p {
+.kolibri-layout .kolibri-toc-item p {
   margin: 0;
 }
-.enigmaslidev-layout .enigmaslidev-toc-item div, .enigmaslidev-layout .enigmaslidev-toc-item div p {
+.kolibri-layout .kolibri-toc-item div, .kolibri-layout .kolibri-toc-item div p {
   display: initial;
 }
 </style>

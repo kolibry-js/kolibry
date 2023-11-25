@@ -3,7 +3,7 @@ import { computed, ref, watch } from 'vue'
 import Fuse from 'fuse.js'
 import { go, rawRoutes } from '../logic/nav'
 import { activeElement, showGotoDialog } from '../state'
-import Titles from '/@enigmaslidev/titles.md'
+import Titles from '/@kolibrijs/titles.md'
 
 const container = ref<HTMLDivElement>()
 const input = ref<HTMLInputElement>()
@@ -105,7 +105,7 @@ watch(activeElement, () => {
 
 <template>
   <div
-    id="enigmaslidev-goto-dialog"
+    id="kolibri-goto-dialog"
     ref="container"
     class="fixed right-5 transition-all"
     w-90 max-w-90 min-w-90
@@ -118,7 +118,7 @@ watch(activeElement, () => {
       border="~ transparent rounded dark:main"
     >
       <input
-        id="enigmaslidev-goto-input"
+        id="kolibri-goto-input"
         ref="input"
         :value="text"
         type="text"

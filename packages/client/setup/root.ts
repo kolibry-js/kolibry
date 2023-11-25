@@ -17,7 +17,7 @@ export default function setupRoot() {
 
   /* __injections__ */
 
-  const title = configs.titleTemplate.replace('%s', configs.title || 'EnigmaSlidev')
+  const title = configs.titleTemplate.replace('%s', configs.title || 'Kolibri')
   useHead({
     title,
     htmlAttrs: configs.htmlAttrs,

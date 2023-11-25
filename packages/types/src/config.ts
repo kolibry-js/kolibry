@@ -1,25 +1,25 @@
 import type { TransitionGroupProps } from 'vue'
 import type { ExportArgs } from './cli'
-import type { EnigmaSlidevThemeConfig } from './types'
+import type { KolibriThemeConfig } from './types'
 
-export interface EnigmaSlidevConfig {
+export interface KolibriConfig {
   title: string
   /**
    * String template to compose title
    *
-   * @example "%s - EnigmaSlidev" - to suffix " - EnigmaSlidev" to all pages
-   * @default '%s - EnigmaSlidev'
+   * @example "%s - Kolibri" - to suffix " - Kolibri" to all pages
+   * @default '%s - Kolibri'
    */
   titleTemplate: string
   /**
    * Theme to use for the slides
    *
-   * @see https://enigmasli.dev/themes/use.html
+   * @see https://kolibri.show/themes/use.html
    * @default 'default'
    */
   theme: string
   /**
-   * List of EnigmaSlidev addons
+   * List of Kolibri addons
    *
    * @default []
    */
@@ -33,7 +33,7 @@ export interface EnigmaSlidevConfig {
   /**
    * Enable Monaco
    *
-   * @see https://enigmasli.dev/custom/config-monaco.html
+   * @see https://kolibri.show/custom/config-monaco.html
    * @default 'dev'
    */
   monaco: boolean | 'dev' | 'build'
@@ -66,7 +66,7 @@ export interface EnigmaSlidevConfig {
   /**
    * Prefer highlighter
    *
-   * @see https://enigmasli.dev/custom/highlighters.html
+   * @see https://kolibri.show/custom/highlighters.html
    * @default prism
    */
   highlighter: 'prism' | 'shiki'
@@ -117,14 +117,14 @@ export interface EnigmaSlidevConfig {
   selectable: boolean
   /**
    * Configure for themes, will inject intro root styles as
-   * `--enigmaslidev-theme-x` for attribute `x`
+   * `--kolibri-theme-x` for attribute `x`
    *
    * This allows themes to have customization options in frontmatter
    * Refer to themes' document for options avaliable
    *
    * @default {}
    */
-  themeConfig: EnigmaSlidevThemeConfig
+  themeConfig: KolibriThemeConfig
   /**
    * Configure fonts for the slides and app
    *
@@ -134,7 +134,7 @@ export interface EnigmaSlidevConfig {
   /**
    * Configure the icon for app
    *
-   * @default 'https://cdn.jsdelivr.net/gh/nyxb/enigmaslidev/assets/favicon.png'
+   * @default 'https://cdn.jsdelivr.net/gh/kolibrijs/kolibri/assets/favicon.png'
    */
   favicon: string
   /**
@@ -194,7 +194,7 @@ export interface EnigmaSlidevConfig {
    * - slide-up
    * - slide-down
    *
-   * @see https://enigmasli.dev/guide/animations.html#pages-transitions
+   * @see https://kolibri.show/guide/animations.html#pages-transitions
    * @see https://vuejs.org/guide/built-ins/transition.html
    */
   transition?: BuiltinSlideTransition | string | TransitionGroupProps
@@ -267,7 +267,7 @@ export interface FontOptions {
 export interface DrawingsOptions {
   /**
    * Persist the drawings to disk
-   * Passing string to specify the directory (default to `.enigmaslidev/drawings`)
+   * Passing string to specify the directory (default to `.kolibri/drawings`)
    *
    * @default false
    */

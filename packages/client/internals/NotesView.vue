@@ -10,7 +10,7 @@ import { rawRoutes } from '../routes'
 import NoteDisplay from './NoteDisplay.vue'
 import HiddenText from './HiddenText.vue'
 
-const slideTitle = configs.titleTemplate.replace('%s', configs.title || 'EnigmaSlidev')
+const slideTitle = configs.titleTemplate.replace('%s', configs.title || 'Kolibri')
 useHead({
   title: `Notes - ${slideTitle}`,
 })
@@ -18,7 +18,7 @@ useHead({
 const { isFullscreen, toggle: toggleFullscreen } = fullscreen
 
 const scroller = ref<HTMLDivElement>()
-const fontSize = useLocalStorage('enigmaslidev-notes-font-size', 18)
+const fontSize = useLocalStorage('kolibri-notes-font-size', 18)
 const pageNo = computed(() => sharedState.lastUpdate?.type === 'viewer' ? sharedState.viewerPage : sharedState.page)
 const currentRoute = computed(() => rawRoutes.find(i => i.path === `${pageNo.value}`))
 
@@ -55,16 +55,16 @@ function decreaseFontSize() {
     </div>
     <div class="flex-none border-t border-gray-400 border-opacity-20">
       <div class="flex gap-1 items-center px-6 py-3">
-        <button class="enigmaslidev-icon-btn" @click="toggleFullscreen">
+        <button class="kolibri-icon-btn" @click="toggleFullscreen">
           <HiddenText :text="isFullscreen ? 'Close fullscreen' : 'Enter fullscreen'" />
           <carbon:minimize v-if="isFullscreen" />
           <carbon:maximize v-else />
         </button>
-        <button class="enigmaslidev-icon-btn" @click="increaseFontSize">
+        <button class="kolibri-icon-btn" @click="increaseFontSize">
           <HiddenText text="Increase font size" />
           <carbon:zoom-in />
         </button>
-        <button class="enigmaslidev-icon-btn" @click="decreaseFontSize">
+        <button class="kolibri-icon-btn" @click="decreaseFontSize">
           <HiddenText text="Decrease font size" />
           <carbon:zoom-out />
         </button>

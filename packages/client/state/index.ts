@@ -20,17 +20,17 @@ export const activeElement = useActiveElement()
 export const isInputting = computed(() => ['INPUT', 'TEXTAREA'].includes(activeElement.value?.tagName || '') || activeElement.value?.classList.contains('CodeMirror-code'))
 export const isOnFocus = computed(() => ['BUTTON', 'A'].includes(activeElement.value?.tagName || ''))
 
-export const currentCamera = useLocalStorage<string>('enigmaslidev-camera', 'default')
-export const currentMic = useLocalStorage<string>('enigmaslidev-mic', 'default')
-export const slideScale = useLocalStorage<number>('enigmaslidev-scale', 0)
+export const currentCamera = useLocalStorage<string>('kolibri-camera', 'default')
+export const currentMic = useLocalStorage<string>('kolibri-mic', 'default')
+export const slideScale = useLocalStorage<number>('kolibri-scale', 0)
 
-export const showOverview = useLocalStorage('enigmaslidev-show-overview', false)
-export const showPresenterCursor = useLocalStorage('enigmaslidev-presenter-cursor', true)
-export const showEditor = useLocalStorage('enigmaslidev-show-editor', false)
-export const editorWidth = useLocalStorage('enigmaslidev-editor-width', isClient ? window.innerWidth * 0.4 : 100)
+export const showOverview = useLocalStorage('kolibri-show-overview', false)
+export const showPresenterCursor = useLocalStorage('kolibri-presenter-cursor', true)
+export const showEditor = useLocalStorage('kolibri-show-editor', false)
+export const editorWidth = useLocalStorage('kolibri-editor-width', isClient ? window.innerWidth * 0.4 : 100)
 
-export const presenterNotesFontSize = useLocalStorage('enigmaslidev-presenter-font-size', 1)
-export const presenterLayout = useLocalStorage('enigmaslidev-presenter-layout', 1)
+export const presenterNotesFontSize = useLocalStorage('kolibri-presenter-font-size', 1)
+export const presenterLayout = useLocalStorage('kolibri-presenter-layout', 1)
 
 export function togglePresenterLayout() {
   presenterLayout.value = presenterLayout.value + 1

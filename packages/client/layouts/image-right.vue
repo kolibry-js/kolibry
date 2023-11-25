@@ -20,7 +20,7 @@ const style = computed(() => handleBackground(props.image, false, props.backgrou
 
 <template>
   <div class="grid grid-cols-2 w-full h-full auto-rows-fr">
-    <div class="enigmaslidev-layout default" :class="props.class">
+    <div class="kolibri-layout default" :class="props.class">
       <slot />
     </div>
     <div class="w-full w-full" :style="style" />

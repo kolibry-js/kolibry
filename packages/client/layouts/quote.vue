@@ -1,5 +1,5 @@
 <template>
-  <div class="enigmaslidev-layout quote">
+  <div class="kolibri-layout quote">
     <div class="my-auto">
       <slot />
     </div>

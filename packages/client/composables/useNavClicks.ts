@@ -1,14 +1,14 @@
 import type { ComputedRef, WritableComputedRef } from 'vue'
 import { computed, nextTick, ref } from 'vue'
 import type { RouteRecordRaw } from 'vue-router'
-import type { EnigmaSlidevContextNavClicks } from '../modules/context'
+import type { KolibriContextNavClicks } from '../modules/context'
 import { rawRoutes, router } from '../routes'
 
 export function useNavClicks(
   clicks: WritableComputedRef<number>,
   currentRoute: ComputedRef<RouteRecordRaw | undefined>,
   currentPage: ComputedRef<number>,
-): EnigmaSlidevContextNavClicks {
+): KolibriContextNavClicks {
   // force update collected elements when the route is fully resolved
   const routeForceRefresh = ref(0)
   nextTick(() => {

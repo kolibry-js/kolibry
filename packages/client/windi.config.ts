@@ -8,7 +8,7 @@ export default defineConfig({
   extract: {
     include: [
       resolve(process.cwd(), '**/*.{vue,ts,tsx,js,jsx,md}'),
-      // @enigmaslidev/client/**/*.{vue,ts}
+      // @kolibrijs/client/**/*.{vue,ts}
       resolve(__dirname, '**/*.{vue,ts}'),
     ],
     exclude: [
@@ -16,7 +16,7 @@ export default defineConfig({
       'dist',
       resolve(process.cwd(), '.git'),
       resolve(process.cwd(), 'dist'),
-      // @enigmaslidev/client/node_modules
+      // @kolibrijs/client/node_modules
       resolve(__dirname, 'node_modules'),
       resolve(__dirname, 'windi.config.ts'),
     ],

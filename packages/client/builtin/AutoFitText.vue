@@ -66,8 +66,8 @@ watch([container, value, containerSize.width, innerSize.width], async () => {
 </script>
 
 <template>
-  <div ref="container" class="enigmaslidev-auto-fit-text">
-    <div ref="inner" class="enigmaslidev-auto-fit-text-inner">
+  <div ref="container" class="kolibri-auto-fit-text">
+    <div ref="inner" class="kolibri-auto-fit-text-inner">
       <slot>
         {{ value }}
       </slot>
@@ -76,13 +76,13 @@ watch([container, value, containerSize.width, innerSize.width], async () => {
 </template>
 
 <style scoped>
-.enigmaslidev-auto-fit-text {
+.kolibri-auto-fit-text {
   overflow: auto;
   font-size: v-bind(fontSize);
   white-space: v-bind(wrap);
 }
 
-.enigmaslidev-auto-fit-text-inner {
+.kolibri-auto-fit-text-inner {
   display: inline-block;
 }
 </style>

@@ -1,9 +1,9 @@
 import YAML from 'js-yaml'
 import { isObject, isTruthy, objectMap } from '@nyxb/utils'
-import type { FrontmatterStyle, PreparserExtensionFromHeadmatter, SlideInfo, SlideInfoBase, EnigmaSlidevFeatureFlags, EnigmaSlidevMarkdown, EnigmaSlidevPreparserExtension, EnigmaSlidevThemeMeta } from '@enigmaslidev/types'
+import type { FrontmatterStyle, PreparserExtensionFromHeadmatter, SlideInfo, SlideInfoBase, KolibriFeatureFlags, KolibriMarkdown, KolibriPreparserExtension, KolibriThemeMeta } from '@kolibrijs/types'
 import { resolveConfig } from './config'
 
-export function stringify(data: EnigmaSlidevMarkdown) {
+export function stringify(data: KolibriMarkdown) {
   return `${
     data.slides
       .filter(slide => slide.source === undefined || slide.inline !== undefined)
@@ -13,7 +13,7 @@ export function stringify(data: EnigmaSlidevMarkdown) {
   }\n`
 }
 
-export function filterDisabled(data: EnigmaSlidevMarkdown) {
+export function filterDisabled(data: KolibriMarkdown) {
   data.slides = data.slides.filter(i => !i.frontmatter?.disabled)
   return data
 }
@@ -41,7 +41,7 @@ export function prettifySlide(data: SlideInfoBase) {
   return data
 }
 
-export function prettify(data: EnigmaSlidevMarkdown) {
+export function prettify(data: KolibriMarkdown) {
   data.slides.forEach(prettifySlide)
   return data
 }
@@ -79,7 +79,7 @@ function matter(code: string) {
   }
 }
 
-export function detectFeatures(code: string): EnigmaSlidevFeatureFlags {
+export function detectFeatures(code: string): KolibriFeatureFlags {
   return {
     katex: !!code.match(/\$.*?\$/) || !!code.match(/$\$\$/),
     monaco: !!code.match(/{monaco.*}/),
@@ -130,10 +130,10 @@ export function parseSlide(raw: string): SlideInfoBase {
 export async function parse(
   markdown: string,
   filepath?: string,
-  themeMeta?: EnigmaSlidevThemeMeta,
-  extensions?: EnigmaSlidevPreparserExtension[],
+  themeMeta?: KolibriThemeMeta,
+  extensions?: KolibriPreparserExtension[],
   onHeadmatter?: PreparserExtensionFromHeadmatter,
-): Promise<EnigmaSlidevMarkdown> {
+): Promise<KolibriMarkdown> {
   const lines = markdown.split(/\r?\n/g)
   const slides: SlideInfo[] = []
 
@@ -228,7 +228,7 @@ export async function parse(
   }
 }
 
-export function mergeFeatureFlags(a: EnigmaSlidevFeatureFlags, b: EnigmaSlidevFeatureFlags): EnigmaSlidevFeatureFlags {
+export function mergeFeatureFlags(a: KolibriFeatureFlags, b: KolibriFeatureFlags): KolibriFeatureFlags {
   return objectMap(a, (k, v) => [k, v || b[k]])
 }
 

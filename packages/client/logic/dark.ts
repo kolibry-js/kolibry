@@ -3,7 +3,7 @@ import { computed, watch } from 'vue'
 import { configs } from '../env'
 
 const preferredDark = usePreferredDark()
-const store = useLocalStorage('enigmaslidev-color-schema', 'auto')
+const store = useLocalStorage('kolibri-color-schema', 'auto')
 
 export const isColorSchemaConfigured = computed(() => configs.colorSchema !== 'auto')
 export const isDark = computed<boolean>({

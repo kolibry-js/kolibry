@@ -1,5 +1,5 @@
 <template>
-  <div class="enigmaslidev-layout cover">
+  <div class="kolibri-layout cover">
     <slot />
   </div>
 </template>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, inject, onMounted, onUnmounted, ref, watch } from 'vue'
 
-import { injectionClicks, injectionClicksDisabled, injectionClicksElements, injectionRenderContext, injectionRoute, injectionEnigmaSlidevContext } from '../constants'
+import { injectionClicks, injectionClicksDisabled, injectionClicksElements, injectionRenderContext, injectionRoute, injectionKolibriContext } from '../constants'
 
 const props = defineProps<{
   autoPlay?: boolean | 'once' | 'resume' | 'resumeOnce'
@@ -9,7 +9,7 @@ const props = defineProps<{
   autoReset?: 'slide' | 'click'
 }>()
 
-const $enigmaslidev = inject(injectionEnigmaSlidevContext)
+const $kolibri = inject(injectionKolibriContext)
 const route = inject(injectionRoute)
 const currentContext = inject(injectionRenderContext)
 const clicks = inject(injectionClicks)
@@ -23,7 +23,7 @@ const ended = ref(false)
 const matchRoute = computed(() => {
   if (!video.value || currentContext?.value !== 'slide')
     return false
-  return route === $enigmaslidev?.nav.currentRoute
+  return route === $kolibri?.nav.currentRoute
 })
 
 const matchClick = computed(() => {

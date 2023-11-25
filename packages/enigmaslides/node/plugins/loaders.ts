@@ -9,28 +9,28 @@ import { bold, gray, red, yellow } from 'kolorist'
 
 // @ts-expect-error missing types
 import mila from 'markdown-it-link-attributes'
-import type { SlideInfo, SlideInfoExtended, EnigmaSlidevMarkdown } from '@enigmaslidev/types'
-import * as parser from '@enigmaslidev/parser/fs'
+import type { SlideInfo, SlideInfoExtended, KolibriMarkdown } from '@kolibrijs/types'
+import * as parser from '@kolibrijs/parser/fs'
 import equal from 'fast-deep-equal'
 
 import type { LoadResult } from 'rollup'
-import type { ResolvedEnigmaSlidevOptions, EnigmaSlidevPluginOptions, EnigmaSlidevServerOptions } from '../options'
+import type { ResolvedKolibriOptions, KolibriPluginOptions, KolibriServerOptions } from '../options'
 import { resolveImportPath, stringifyMarkdownTokens, toAtFS } from '../utils'
 
-const regexId = /^\/\@enigmaslidev\/slide\/(\d+)\.(md|json)(?:\?import)?$/
+const regexId = /^\/\@kolibrijs\/slide\/(\d+)\.(md|json)(?:\?import)?$/
 const regexIdQuery = /(\d+?)\.(md|json|frontmatter)$/
 
 const vueContextImports = [
   'import { inject as _vueInject, provide as _vueProvide, toRef as _vueToRef } from "vue"',
   `import {
-    injectionEnigmaSlidevContext as _injectionEnigmaSlidevContext, 
+    injectionKolibriContext as _injectionKolibriContext, 
     injectionClicks as _injectionClicks,
     injectionCurrentPage as _injectionCurrentPage,
     injectionRenderContext as _injectionRenderContext,
     injectionFrontmatter as _injectionFrontmatter,
-  } from "@enigmaslidev/client/constants.ts"`.replace(/\n\s+/g, '\n'),
-  'const $enigmaslidev = _vueInject(_injectionEnigmaSlidevContext)',
-  'const $nav = _vueToRef($enigmaslidev, "nav")',
+  } from "@kolibrijs/client/constants.ts"`.replace(/\n\s+/g, '\n'),
+  'const $kolibri = _vueInject(_injectionKolibriContext)',
+  'const $nav = _vueToRef($kolibri, "nav")',
   'const $clicks = _vueInject(_injectionClicks)',
   'const $page = _vueInject(_injectionCurrentPage)',
   'const $renderContext = _vueInject(_injectionRenderContext)',
@@ -84,11 +84,11 @@ function prepareSlideInfo(data: SlideInfo): SlideInfoExtended {
 }
 
 export function createSlidesLoader(
-  { data, entry, clientRoot, themeRoots, addonRoots, userRoot, roots, remote, mode }: ResolvedEnigmaSlidevOptions,
-  pluginOptions: EnigmaSlidevPluginOptions,
-  serverOptions: EnigmaSlidevServerOptions,
+  { data, entry, clientRoot, themeRoots, addonRoots, userRoot, roots, remote, mode }: ResolvedKolibriOptions,
+  pluginOptions: KolibriPluginOptions,
+  serverOptions: KolibriServerOptions,
 ): Plugin[] {
-  const slidePrefix = '/@enigmaslidev/slides/'
+  const slidePrefix = '/@kolibrijs/slides/'
   const hmrPages = new Set<number>()
   let server: ViteDevServer | undefined
 
@@ -97,7 +97,7 @@ export function createSlidesLoader(
 
   return [
     {
-      name: 'enigmaslidev:loader',
+      name: 'kolibri:loader',
       configureServer(_server) {
         server = _server
         updateServerWatcher()
@@ -147,17 +147,17 @@ export function createSlidesLoader(
         const moduleIds = new Set<string>()
 
         if (data.slides.length !== newData.slides.length) {
-          moduleIds.add('/@enigmaslidev/routes')
+          moduleIds.add('/@kolibrijs/routes')
           range(newData.slides.length).map(i => hmrPages.add(i))
         }
 
         if (!equal(data.headmatter.defaults, newData.headmatter.defaults)) {
-          moduleIds.add('/@enigmaslidev/routes')
+          moduleIds.add('/@kolibrijs/routes')
           range(data.slides.length).map(i => hmrPages.add(i))
         }
 
         if (!equal(data.config, newData.config))
-          moduleIds.add('/@enigmaslidev/configs')
+          moduleIds.add('/@kolibrijs/configs')
 
         if (!equal(data.features, newData.features)) {
           setTimeout(() => {
@@ -181,7 +181,7 @@ export function createSlidesLoader(
 
           ctx.server.ws.send({
             type: 'custom',
-            event: 'enigmaslidev-update',
+            event: 'kolibri-update',
             data: {
               id: i,
               data: prepareSlideInfo(newData.slides[i]),
@@ -194,7 +194,7 @@ export function createSlidesLoader(
         Object.assign(data, newData)
 
         if (hmrPages.size > 0)
-          moduleIds.add('/@enigmaslidev/titles.md')
+          moduleIds.add('/@kolibrijs/titles.md')
 
         const vueModules = Array.from(hmrPages)
           .flatMap(i => [
@@ -217,46 +217,46 @@ export function createSlidesLoader(
       },
 
       resolveId(id) {
-        if (id.startsWith(slidePrefix) || id.startsWith('/@enigmaslidev/'))
+        if (id.startsWith(slidePrefix) || id.startsWith('/@kolibrijs/'))
           return id
         return null
       },
 
       load(id): LoadResult | Promise<LoadResult> {
         // routes
-        if (id === '/@enigmaslidev/routes')
+        if (id === '/@kolibrijs/routes')
           return generateRoutes()
 
         // layouts
-        if (id === '/@enigmaslidev/layouts')
+        if (id === '/@kolibrijs/layouts')
           return generateLayouts()
 
         // styles
-        if (id === '/@enigmaslidev/styles')
+        if (id === '/@kolibrijs/styles')
           return generateUserStyles()
 
         // monaco-types
-        if (id === '/@enigmaslidev/monaco-types')
+        if (id === '/@kolibrijs/monaco-types')
           return generateMonacoTypes()
 
         // configs
-        if (id === '/@enigmaslidev/configs')
+        if (id === '/@kolibrijs/configs')
           return generateConfigs()
 
         // global component
-        if (id === '/@enigmaslidev/global-components/top')
+        if (id === '/@kolibrijs/global-components/top')
           return generateGlobalComponents('top')
 
         // global component
-        if (id === '/@enigmaslidev/global-components/bottom')
+        if (id === '/@kolibrijs/global-components/bottom')
           return generateGlobalComponents('bottom')
 
         // custom nav controls
-        if (id === '/@enigmaslidev/custom-nav-controls')
+        if (id === '/@kolibrijs/custom-nav-controls')
           return generateCustomNavControls()
 
         // title
-        if (id === '/@enigmaslidev/titles.md') {
+        if (id === '/@kolibrijs/titles.md') {
           return {
             code: data.slides
               .filter(({ frontmatter }) => !frontmatter?.disabled)
@@ -335,7 +335,7 @@ export function createSlidesLoader(
       },
     },
     {
-      name: 'enigmaslidev:layout-transform:pre',
+      name: 'kolibri:layout-transform:pre',
       enforce: 'pre',
       async transform(code, id) {
         if (!id.startsWith(slidePrefix))
@@ -353,28 +353,28 @@ export function createSlidesLoader(
       },
     },
     {
-      name: 'enigmaslidev:context-transform:pre',
+      name: 'kolibri:context-transform:pre',
       enforce: 'pre',
       async transform(code, id) {
-        if (!id.endsWith('.vue') || id.includes('/@enigmaslidev/client/') || id.includes('/packages/client/'))
+        if (!id.endsWith('.vue') || id.includes('/@kolibrijs/client/') || id.includes('/packages/client/'))
           return
         return transformVue(code)
       },
     },
     {
-      name: 'enigmaslidev:title-transform:pre',
+      name: 'kolibri:title-transform:pre',
       enforce: 'pre',
       transform(code, id) {
-        if (id !== '/@enigmaslidev/titles.md')
+        if (id !== '/@kolibrijs/titles.md')
           return
         return transformTitles(code)
       },
     },
     {
-      name: 'enigmaslidev:slide-transform:post',
+      name: 'kolibri:slide-transform:post',
       enforce: 'post',
       transform(code, id) {
-        if (!id.match(/\/@enigmaslidev\/slides\/\d+\.md($|\?)/))
+        if (!id.match(/\/@kolibri\/slides\/\d+\.md($|\?)/))
           return
         // force reload slide component to ensure v-click resolves correctly
         const replaced = code.replace('if (_rerender_only)', 'if (false)')
@@ -390,7 +390,7 @@ export function createSlidesLoader(
     server.watcher.add(data.entries?.map(slash) || [])
   }
 
-  async function transformMarkdown(code: string, pageNo: number, data: EnigmaSlidevMarkdown) {
+  async function transformMarkdown(code: string, pageNo: number, data: KolibriMarkdown) {
     const layouts = await getLayouts()
     const frontmatter = {
       ...(data.headmatter?.defaults as object || {}),
@@ -413,7 +413,7 @@ export function createSlidesLoader(
       '_vueProvide(_injectionFrontmatter, frontmatter)',
       // update frontmatter in router
       ';(() => {',
-      '  const route = $enigmaslidev.nav.rawRoutes.find(i => i.path === String($page.value))',
+      '  const route = $kolibri.nav.rawRoutes.find(i => i.path === String($page.value))',
       '  if (route?.meta?.slide?.frontmatter) {',
       '    Object.keys(route.meta.slide.frontmatter).forEach(key => {',
       '      if (!(key in $frontmatter)) delete route.meta.slide.frontmatter[key]',
@@ -435,7 +435,7 @@ export function createSlidesLoader(
   }
 
   function transformVue(code: string): string {
-    if (code.includes('injectionEnigmaSlidevContext') || code.includes('injectionClicks') || code.includes('const $enigmaslidev'))
+    if (code.includes('injectionKolibriContext') || code.includes('injectionClicks') || code.includes('const $kolibri'))
       return code // Assume that the context is already imported and used
     const imports = [
       ...vueContextImports,
@@ -456,11 +456,11 @@ export function createSlidesLoader(
         component = component.slice(0, component.indexOf('</script>'))
 
         const scriptIndex = (matchScript.index || 0) + matchScript[0].length
-        const provideImport = '\nimport { injectionEnigmaSlidevContext } from "@enigmaslidev/client/constants.ts"\n'
+        const provideImport = '\nimport { injectionKolibriContext } from "@kolibrijs/client/constants.ts"\n'
         code = `${code.slice(0, scriptIndex)}${provideImport}${code.slice(scriptIndex)}`
 
         let injectIndex = exportIndex + provideImport.length
-        let injectObject = '$enigmaslidev: { from: injectionEnigmaSlidevContext },'
+        let injectObject = '$kolibri: { from: injectionKolibriContext },'
         const matchInject = component.match(/.*inject\s*:\s*([\[{])/)
         if (matchInject) {
           // component has a inject option
@@ -586,7 +586,7 @@ defineProps<{ no: number | string }>()`)
   }
 
   async function generateMonacoTypes() {
-    return `void 0; ${parser.scanMonacoModules(data.raw).map(i => `import('/@enigmaslidev-monaco-types/${i}')`).join('\n')}`
+    return `void 0; ${parser.scanMonacoModules(data.raw).map(i => `import('/@kolibrijs-monaco-types/${i}')`).join('\n')}`
   }
 
   async function generateLayouts() {

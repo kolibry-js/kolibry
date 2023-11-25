@@ -1,10 +1,10 @@
-import '/@enigmaslidevslidev/styles'
+import '/@kolibrijs/styles'
 import './index.css'
 
 import type * as monaco from 'monaco-editor'
 import { formatCode } from '../../setup/prettier'
 import setupMonaco from '../../setup/monaco'
-import '/@enigmaslidevslidev/monaco-types'
+import '/@kolibrijs/monaco-types'
 
 const url = new URL(location.href)
 const props = {
@@ -51,7 +51,7 @@ function ext() {
   }
 }
 
-function post(data: any, type = 'enigmaslidevslidev-monaco') {
+function post(data: any, type = 'kolibri-monaco') {
   if (window.parent === window)
     return
 
@@ -85,9 +85,9 @@ async function start() {
       monaco.Uri.parse(`file:///root/${Date.now()}.${ext()}`),
     )
     const monacoEditor = monaco.editor.createDiffEditor(container, {
-      fontSize: +style.getPropertyValue('--enigmaslidev-code-font-size').replace(/px/g, ''),
-      fontFamily: style.getPropertyValue('--enigmaslidev-code-font-family'),
-      lineHeight: +style.getPropertyValue('--enigmaslidev-code-line-height').replace(/px/g, ''),
+      fontSize: +style.getPropertyValue('--kolibri-code-font-size').replace(/px/g, ''),
+      fontFamily: style.getPropertyValue('--kolibri-code-font-family'),
+      lineHeight: +style.getPropertyValue('--kolibri-code-line-height').replace(/px/g, ''),
       lineDecorationsWidth: 0,
       lineNumbersMinChars: 0,
       scrollBeyondLastLine: false,
@@ -175,9 +175,9 @@ async function start() {
       insertSpaces: true,
       detectIndentation: false,
       folding: false,
-      fontSize: +style.getPropertyValue('--enigmaslidev-code-font-size').replace(/px/g, ''),
-      fontFamily: style.getPropertyValue('--enigmaslidev-code-font-family'),
-      lineHeight: +style.getPropertyValue('--enigmaslidev-code-line-height').replace(/px/g, ''),
+      fontSize: +style.getPropertyValue('--kolibri-code-font-size').replace(/px/g, ''),
+      fontFamily: style.getPropertyValue('--kolibri-code-font-family'),
+      lineHeight: +style.getPropertyValue('--kolibri-code-line-height').replace(/px/g, ''),
       lineDecorationsWidth: 0,
       lineNumbersMinChars: 0,
       scrollBeyondLastLine: false,
@@ -240,7 +240,7 @@ async function start() {
 
   update()
 
-  post({}, 'enigmaslidev-monaco-loaded')
+  post({}, 'kolibri-monaco-loaded')
 }
 
 window.addEventListener('message', (payload) => {
@@ -251,7 +251,7 @@ window.addEventListener('message', (payload) => {
   if (typeof payload.data !== 'string')
     return
   const { type, data, id } = JSON.parse(payload.data)
-  if (type === 'enigmaslidev-monaco' && id === props.id) {
+  if (type === 'kolibri-monaco' && id === props.id) {
     Object.assign(props, data)
     update()
   }

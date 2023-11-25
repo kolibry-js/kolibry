@@ -1,12 +1,12 @@
 import { toArray, uniq } from '@nyxb/utils'
-import type { DrawingsOptions, FontOptions, ResolvedDrawingsOptions, ResolvedExportOptions, ResolvedFontOptions, EnigmaSlidevConfig, EnigmaSlidevThemeMeta } from '@enigmaslidev/types'
+import type { DrawingsOptions, FontOptions, ResolvedDrawingsOptions, ResolvedExportOptions, ResolvedFontOptions, KolibriConfig, KolibriThemeMeta } from '@kolibrijs/types'
 import { parseAspectRatio } from './utils'
 
-export function getDefaultConfig(): EnigmaSlidevConfig {
+export function getDefaultConfig(): KolibriConfig {
   return {
     theme: 'default',
-    title: 'EnigmaSlidev',
-    titleTemplate: '%s - EnigmaSlidev',
+    title: 'Kolibri',
+    titleTemplate: '%s - Kolibri',
     addons: [],
     remoteAssets: false,
     monaco: 'dev',
@@ -23,7 +23,7 @@ export function getDefaultConfig(): EnigmaSlidevConfig {
     selectable: false,
     themeConfig: {},
     fonts: {} as ResolvedFontOptions,
-    favicon: 'https://cdn.jsdelivr.net/gh/nyxb/enigmaslidev/assets/favicon.png',
+    favicon: 'https://cdn.jsdelivr.net/gh/kolibrijs/kolibri/assets/favicon.png',
     drawings: {} as ResolvedDrawingsOptions,
     plantUmlServer: 'https://www.plantuml.com/plantuml',
     codeCopy: true,
@@ -36,13 +36,13 @@ export function getDefaultConfig(): EnigmaSlidevConfig {
   }
 }
 
-export function resolveConfig(headmatter: any, themeMeta: EnigmaSlidevThemeMeta = {}, filepath?: string, verify = false) {
+export function resolveConfig(headmatter: any, themeMeta: KolibriThemeMeta = {}, filepath?: string, verify = false) {
   const themeHightlighter = ['prism', 'shiki'].includes(themeMeta.highlighter || '') ? themeMeta.highlighter as 'prism' | 'shiki' : undefined
   const themeColorSchema = ['light', 'dark'].includes(themeMeta.colorSchema || '') ? themeMeta.colorSchema as 'light' | 'dark' : undefined
 
   const defaultConfig = getDefaultConfig()
 
-  const config: EnigmaSlidevConfig = {
+  const config: KolibriConfig = {
     ...defaultConfig,
     highlighter: themeHightlighter || defaultConfig.highlighter,
     colorSchema: themeColorSchema || defaultConfig.colorSchema,
@@ -76,9 +76,9 @@ export function resolveConfig(headmatter: any, themeMeta: EnigmaSlidevThemeMeta 
 }
 
 export function verifyConfig(
-  config: EnigmaSlidevConfig,
-  themeMeta: EnigmaSlidevThemeMeta = {},
-  warn = (v: string) => console.warn(`[enigmaslidev] ${v}`),
+  config: KolibriConfig,
+  themeMeta: KolibriThemeMeta = {},
+  warn = (v: string) => console.warn(`[kolibri] ${v}`),
 ) {
   const themeHightlighter = ['prism', 'shiki'].includes(themeMeta.highlighter || '') ? themeMeta.highlighter as 'prism' | 'shiki' : undefined
   const themeColorSchema = ['light', 'dark'].includes(themeMeta.colorSchema || '') ? themeMeta.colorSchema as 'light' | 'dark' : undefined
@@ -185,7 +185,7 @@ function resolveDrawings(options: DrawingsOptions = {}, filepath?: string): Reso
   const persistPath = typeof persist === 'string'
     ? persist
     : persist
-      ? `.slidev/drawings${filepath ? `/${filepath.match(/([^\\\/]+?)(\.\w+)?$/)?.[1]}` : ''}`
+      ? `.kolibri/drawings${filepath ? `/${filepath.match(/([^\\\/]+?)(\.\w+)?$/)?.[1]}` : ''}`
       : false
 
   return {

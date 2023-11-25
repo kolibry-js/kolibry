@@ -4,8 +4,8 @@ import { computed, onMounted, ref, watchEffect } from 'vue'
 import { currentCamera } from '../state'
 import { recorder } from '../logic/recording'
 
-const size = useLocalStorage('enigmaslidev-webcam-size', Math.round(Math.min(window.innerHeight, (window.innerWidth) / 8)))
-const position = useLocalStorage('enigmaslidev-webcam-pos', {
+const size = useLocalStorage('kolibri-webcam-size', Math.round(Math.min(window.innerHeight, (window.innerWidth) / 8)))
+const position = useLocalStorage('kolibri-webcam-pos', {
   x: window.innerWidth - size.value - 30,
   y: window.innerHeight - size.value - 30,
 }, { deep: true })

@@ -1,15 +1,15 @@
 import type { Plugin } from 'vite'
 import { objectEntries } from '@nyxb/utils'
-import type { ResolvedEnigmaSlidevOptions } from '../options'
+import type { ResolvedKolibriOptions } from '../options'
 import { getDefine } from './extendConfig'
 
 export function createFixPlugins(
-  options: ResolvedEnigmaSlidevOptions,
+  options: ResolvedKolibriOptions,
 ): Plugin[] {
   const define = objectEntries(getDefine(options))
   return [
     {
-      name: 'enigmaslidev:flags',
+      name: 'kolibri:flags',
       enforce: 'pre',
       transform(code, id) {
         if (id.match(/\.vue($|\?)/)) {

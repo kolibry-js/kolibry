@@ -7,10 +7,10 @@ import { skipTransition } from '../composables/hmr'
 import SlideWrapper from './SlideWrapper'
 
 // @ts-expect-error virtual module
-import GlobalTop from '/@enigmaslidev/global-components/top'
+import GlobalTop from '/@kolibrijs/global-components/top'
 
 // @ts-expect-error virtual module
-import GlobalBottom from '/@enigmaslidev/global-components/bottom'
+import GlobalBottom from '/@kolibrijs/global-components/bottom'
 import PresenterMouse from './PresenterMouse.vue'
 
 defineProps<{
@@ -34,7 +34,7 @@ router.beforeEach(() => {
 })
 
 const DrawingLayer = shallowRef<any>()
-if (__ENIGMASLIDEV_FEATURE_DRAWINGS__ || __ENIGMASLIDEV_FEATURE_DRAWINGS_PERSIST__)
+if (__KOLIBRI_FEATURE_DRAWINGS__ || __KOLIBRI_FEATURE_DRAWINGS_PERSIST__)
   import('./DrawingLayer.vue').then(v => DrawingLayer.value = v.default)
 
 const loadedRoutes = computed(() => rawRoutes.filter(r => r.meta?.__preloaded || r === currentRoute.value))
@@ -75,7 +75,7 @@ function onAfterLeave() {
   <!-- Global Top -->
   <GlobalTop />
 
-  <template v-if="(__ENIGMASLIDEV_FEATURE_DRAWINGS__ || __ENIGMASLIDEV_FEATURE_DRAWINGS_PERSIST__) && DrawingLayer">
+  <template v-if="(__KOLIBRI_FEATURE_DRAWINGS__ || __KOLIBRI_FEATURE_DRAWINGS_PERSIST__) && DrawingLayer">
     <DrawingLayer />
   </template>
   <PresenterMouse v-if="!isPresenter" />

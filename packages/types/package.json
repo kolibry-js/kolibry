@@ -1,16 +1,16 @@
 {
-  "name": "@enigmaslidev/types",
-  "version": "0.0.1",
-  "description": "Shared types declarations for EnigmaSlidev",
+  "name": "@kolibri/types",
+  "version": "0.0.0",
+  "description": "Shared types declarations for Kolibri",
   "author": "nyxb <contact@nyxb.email>",
   "license": "MIT",
   "funding": "https://github.com/sponsors/nyxb",
-  "homepage": "https://enigmasli.dev",
+  "homepage": "https://kolibri.show",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nyxb/enigmaslidev"
+    "url": "https://github.com/kolibrijs/kolibri"
   },
-  "bugs": "https://github.com/nyxb/enigmaslidev/issues",
+  "bugs": "https://github.com/kolibrijs/kolibri/issues",
   "main": "dist/index.mjs",
   "module": "dist/index.mjs",
   "types": "index.d.ts",

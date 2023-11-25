@@ -1,7 +1,7 @@
 import type { ShikiDarkModeThemes } from 'packages/types'
 import type { IShikiTheme, IThemeRegistration, Highlighter as ShikiHighlighter, Theme } from 'shiki'
 import type MarkdownIt from 'markdown-it'
-import type { ResolvedShikiOptions, ShikiOptions } from '@enigmaslidev/types'
+import type { ResolvedShikiOptions, ShikiOptions } from '@kolibrijs/types'
 import { escapeVueInCode } from './markdown'
 
 function getThemeName(theme: IThemeRegistration | string) {
@@ -61,16 +61,16 @@ const MarkdownItShiki: MarkdownIt.PluginWithOptions<ShikiOptions> = (markdownit,
       const trimmed = trimEndNewLine(code)
       const dark = _highlighter
         .codeToHtml(trimmed, { lang: lang || 'text', theme: darkModeThemes.dark })
-        .replace('<pre class="shiki', '<pre class="enigmaslidev-code shiki shiki-dark')
+        .replace('<pre class="shiki', '<pre class="kolibri-code shiki shiki-dark')
       const light = _highlighter
         .codeToHtml(trimmed, { lang: lang || 'text', theme: darkModeThemes.light })
-        .replace('<pre class="shiki', '<pre class="enigmaslidev-code shiki shiki-light')
+        .replace('<pre class="shiki', '<pre class="kolibri-code shiki shiki-light')
       return escapeVueInCode(`<pre class="shiki-container">${dark}${light}</pre>`)
     }
     else {
       return escapeVueInCode(
         _highlighter.codeToHtml(code, { lang: lang || 'text' })
-          .replace('<pre class="shiki"', '<pre class="enigmaslidev-code shiki"'),
+          .replace('<pre class="shiki"', '<pre class="kolibri-code shiki"'),
       )
     }
   }

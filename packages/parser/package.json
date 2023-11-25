@@ -1,16 +1,16 @@
 {
-  "name": "@enigmaslidev/parser",
-  "version": "0.0.1",
-  "description": "Markdown parser for Slidev",
+  "name": "@kolibrijs/parser",
+  "version": "0.0.0",
+  "description": "Markdown parser for Kolibri",
   "author": "nyxb <contact@nyxb.email>",
   "license": "MIT",
   "funding": "https://github.com/sponsors/nyxb",
-  "homepage": "https://sli.dev",
+  "homepage": "https://kolibri.show",
   "repository": {
     "type": "git",
-    "url": "https://github.com/nyxb/enigmaslidev"
+    "url": "https://github.com/kolibrijs/kolibri"
   },
-  "bugs": "https://github.com/nyxb/enigmaslidev/issues",
+  "bugs": "https://github.com/kolibrijs/kolibri/issues",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -44,7 +44,7 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
-    "@enigmaslidev/types": "workspace:*",
+    "@kolibrijs/types": "workspace:*",
     "js-yaml": "^4.1.0"
   }
 }

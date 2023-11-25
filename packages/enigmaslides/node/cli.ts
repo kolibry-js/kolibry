@@ -11,21 +11,21 @@ import yargs from 'yargs'
 import prompts from 'prompts'
 import { blue, bold, cyan, dim, gray, green, underline, yellow } from 'kolorist'
 import type { LogLevel, ViteDevServer } from 'vite'
-import type { EnigmaSlidevConfig, EnigmaSlidevPreparserExtension } from '@enigmaslidev/types'
+import type { KolibriConfig, KolibriPreparserExtension } from '@kolibrijs/types'
 import isInstalledGlobally from 'is-installed-globally'
 import equal from 'fast-deep-equal'
-import { verifyConfig } from '@enigmaslidev/parser'
-import { injectPreparserExtensionLoader } from '@enigmaslidev/parser/fs'
+import { verifyConfig } from '@kolibrijs/parser'
+import { injectPreparserExtensionLoader } from '@kolibrijs/parser/fs'
 import { checkPort } from 'get-port-please'
 import { version } from '../package.json'
 import { createServer } from './server'
-import type { ResolvedEnigmaSlidevOptions } from './options'
+import type { ResolvedKolibriOptions } from './options'
 import { getAddonRoots, getClientRoot, getThemeRoots, getUserRoot, isPath, resolveOptions } from './options'
 import { resolveThemeName } from './themes'
 import { parser } from './parser'
 import { loadSetups } from './plugins/setupNode'
 
-const CONFIG_RESTART_FIELDS: (keyof EnigmaSlidevConfig)[] = [
+const CONFIG_RESTART_FIELDS: (keyof KolibriConfig)[] = [
   'highlighter',
   'monaco',
   'routerMode',
@@ -42,12 +42,12 @@ injectPreparserExtensionLoader(async (headmatter?: Record<string, unknown>, file
     ...getAddonRoots(addons, ''),
     getClientRoot(),
   ])
-  const mergeArrays = (a: EnigmaSlidevPreparserExtension[], b: EnigmaSlidevPreparserExtension[]) => a.concat(b)
+  const mergeArrays = (a: KolibriPreparserExtension[], b: KolibriPreparserExtension[]) => a.concat(b)
   return await loadSetups(roots, 'preparser.ts', { filepath, headmatter }, [], mergeArrays)
 })
 
 const cli = yargs(process.argv.slice(2))
-  .scriptName('enigmaslidev')
+  .scriptName('kolibri')
   .usage('$0 [args]')
   .version(version)
   .strict()
@@ -57,7 +57,7 @@ const cli = yargs(process.argv.slice(2))
 
 cli.command(
   '* [entry]',
-  'Start a local server for EnigmaSlidev',
+  'Start a local server for Kolibri',
   args => commonOptions(args)
     .option('port', {
       alias: 'p',
@@ -77,7 +77,7 @@ cli.command(
     .option('tunnel', {
       default: false,
       type: 'boolean',
-      describe: 'open localtunnel to make EnigmaSlidev available on the internet',
+      describe: 'open localtunnel to make Kolibri available on the internet',
     })
     .option('log', {
       default: 'warn',
@@ -532,7 +532,7 @@ function exportOptions<T>(args: Argv<T>) {
 }
 
 function printInfo(
-  options: ResolvedEnigmaSlidevOptions,
+  options: ResolvedKolibriOptions,
   port?: number,
   remote?: string,
   tunnelUrl?: string,
@@ -541,7 +541,7 @@ function printInfo(
   console.log()
   console.log()
   console.log(`  ${cyan('●') + blue('■') + yellow('▲')}`)
-  console.log(`${bold('  EnigmaSlidev')}  ${blue(`v${version}`)} ${isInstalledGlobally ? yellow('(global)') : ''}`)
+  console.log(`${bold('  Kolibri')}  ${blue(`v${version}`)} ${isInstalledGlobally ? yellow('(global)') : ''}`)
   console.log()
 
   verifyConfig(options.data.config, options.data.themeMeta, v => console.warn(yellow(`  ! ${v}`)))

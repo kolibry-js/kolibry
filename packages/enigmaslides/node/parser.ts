@@ -1,1 +1,1 @@
-export * as parser from '@enigmaslidev/parser/fs'
+export * as parser from '@kolibrijs/parser/fs'

@@ -3,5 +3,5 @@ import { createSyncState } from './syncState'
 
 export type DrawingsState = Record<number, string | undefined>
 
-const { init, onPatch, patch, state } = createSyncState<DrawingsState>(serverDrawingState, {}, __ENIGMASLIDEV_FEATURE_DRAWINGS_PERSIST__)
+const { init, onPatch, patch, state } = createSyncState<DrawingsState>(serverDrawingState, {}, __KOLIBRI_FEATURE_DRAWINGS_PERSIST__)
 export { init as initDrawingState, onPatch, patch, state as drawingState }

@@ -1,5 +1,5 @@
 <template>
-  <div class="enigmaslidev-layout statement">
+  <div class="kolibri-layout statement">
     <div class="my-auto">
       <slot />
     </div>

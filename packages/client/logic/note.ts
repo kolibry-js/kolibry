@@ -2,7 +2,7 @@ import type { MaybeRef } from '@vueuse/core'
 import { useFetch } from '@vueuse/core'
 import type { Ref } from 'vue'
 import { computed, ref, unref } from 'vue'
-import type { SlideInfo, SlideInfoExtended } from '@enigmaslidev/types'
+import type { SlideInfo, SlideInfoExtended } from '@kolibrijs/types'
 
 export interface UseSlideInfo {
   info: Ref<SlideInfoExtended | undefined>
@@ -16,7 +16,7 @@ export function useSlideInfo(id: number | undefined): UseSlideInfo {
       update: async () => {},
     }
   }
-  const url = `/@enigmaslidev/slide/${id}.json`
+  const url = `/@kolibrijs/slide/${id}.json`
   const { data: info, execute } = useFetch(url).json().get()
 
   execute()
@@ -36,7 +36,7 @@ export function useSlideInfo(id: number | undefined): UseSlideInfo {
   }
 
   if (__DEV__) {
-    import.meta.hot?.on('slidev-update', (payload) => {
+    import.meta.hot?.on('kolibri-update', (payload) => {
       if (payload.id === id)
         info.value = payload.data
     })

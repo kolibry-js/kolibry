@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, inject } from 'vue'
-import type { RenderContext } from '@enigmaslidev/types'
+import type { RenderContext } from '@kolibrijs/types'
 
 import { injectionRenderContext } from '../constants'
 

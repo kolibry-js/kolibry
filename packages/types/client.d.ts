@@ -1,5 +1,5 @@
-declare module '/@enigmaslidev/configs' {
-  import { EnigmaSlidevConfig } from './types'
+declare module '/@kolibrijs/configs' {
+  import { KolibriConfig } from './types'
 
-  export default EnigmaSlidevConfig
+  export default KolibriConfig
 }

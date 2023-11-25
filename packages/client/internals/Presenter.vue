@@ -25,7 +25,7 @@ const main = ref<HTMLDivElement>()
 registerShortcuts()
 useSwipeControls(main)
 
-const slideTitle = configs.titleTemplate.replace('%s', configs.title || 'EnigmaSlidev')
+const slideTitle = configs.titleTemplate.replace('%s', configs.title || 'Kolibri')
 useHead({
   title: `Presenter - ${slideTitle}`,
 })
@@ -56,7 +56,7 @@ const nextSlide = computed(() => {
 })
 
 const Editor = shallowRef<any>()
-if (__DEV__ && __ENIGMASLIDEV_FEATURE_EDITOR__)
+if (__DEV__ && __KOLIBRI_FEATURE_EDITOR__)
   import('./Editor.vue').then(v => Editor.value = v.default)
 
 // sync presenter cursor
@@ -87,10 +87,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="bg-main h-full enigmaslidev-presenter">
+  <div class="bg-main h-full kolibri-presenter">
     <div class="grid-container" :class="`layout${presenterLayout}`">
       <div class="grid-section top flex">
-        <img src="../assets/logo-title-horizontal.png" class="ml-2 my-auto h-10 py-1 lg:h-14 lg:py-2" style="height: 3.5rem;" alt="EnigmaSlidev logo">
+        <img src="../assets/logo-title-horizontal.png" class="ml-2 my-auto h-10 py-1 lg:h-14 lg:py-2" style="height: 3.5rem;" alt="Kolibri logo">
         <div class="flex-auto" />
         <div
           class="timer-btn my-auto relative w-22px h-22px cursor-pointer text-lg"
@@ -138,7 +138,7 @@ onMounted(() => {
         </div>
       </div>
       <!-- Notes -->
-      <div v-if="__DEV__ && __ENIGMASLIDEV_FEATURE_EDITOR__ && Editor && showEditor" class="grid-section note of-auto">
+      <div v-if="__DEV__ && __KOLIBRI_FEATURE_EDITOR__ && Editor && showEditor" class="grid-section note of-auto">
         <Editor />
       </div>
       <div v-else class="grid-section note grid grid-rows-[1fr_min-content] overflow-hidden">
@@ -154,17 +154,17 @@ onMounted(() => {
           :style="{ fontSize: `${presenterNotesFontSize}em` }"
         />
         <div class="border-t border-main py-1 px-2 text-sm">
-          <button class="enigmaslidev-icon-btn" @click="increasePresenterFontSize">
+          <button class="kolibri-icon-btn" @click="increasePresenterFontSize">
             <HiddenText text="Increase font size" />
             <carbon:zoom-in />
           </button>
-          <button class="enigmaslidev-icon-btn" @click="decreasePresenterFontSize">
+          <button class="kolibri-icon-btn" @click="decreasePresenterFontSize">
             <HiddenText text="Decrease font size" />
             <carbon:zoom-out />
           </button>
           <button
             v-if="__DEV__"
-            class="enigmaslidev-icon-btn" @click="notesEditing = !notesEditing"
+            class="kolibri-icon-btn" @click="notesEditing = !notesEditing"
           >
             <HiddenText text="Edit Notes" />
             <carbon:edit />
@@ -174,7 +174,7 @@ onMounted(() => {
       <div class="grid-section bottom">
         <NavControls :persist="true" />
       </div>
-      <DrawingControls v-if="__ENIGMASLIDEV_FEATURE_DRAWINGS__" />
+      <DrawingControls v-if="__KOLIBRI_FEATURE_DRAWINGS__" />
     </div>
     <div class="progress-bar">
       <div
@@ -188,8 +188,8 @@ onMounted(() => {
 </template>
 
 <style lang="postcss" scoped>
-.enigmaslidev-presenter {
-  --enigmaslidev-controls-foreground: current;
+.kolibri-presenter {
+  --kolibri-controls-foreground: current;
 }
 
 .timer-btn:hover {

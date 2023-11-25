@@ -6,37 +6,37 @@ import type { configs } from '../env'
 import * as nav from '../logic/nav'
 import { clicks, route } from '../logic/nav'
 import { isDark } from '../logic/dark'
-import { injectionClicks, injectionCurrentPage, injectionEnigmaSlidevContext } from '../constants'
+import { injectionClicks, injectionCurrentPage, injectionKolibriContext } from '../constants'
 import { useContext } from '../composables/useContext'
 
-export type EnigmaSlidevContextNavKey = 'path' | 'total' | 'currentPage' | 'currentPath' | 'currentRoute' | 'currentSlideId' | 'currentLayout' | 'nextRoute' | 'rawTree' | 'treeWithActiveStatuses' | 'tree' | 'downloadPDF' | 'next' | 'nextSlide' | 'openInEditor' | 'prev' | 'prevSlide' | 'rawRoutes' | 'go'
-export type EnigmaSlidevContextNavClicksKey = 'clicks' | 'clicksElements' | 'clicksTotal' | 'hasNext' | 'hasPrev'
+export type KolibriContextNavKey = 'path' | 'total' | 'currentPage' | 'currentPath' | 'currentRoute' | 'currentSlideId' | 'currentLayout' | 'nextRoute' | 'rawTree' | 'treeWithActiveStatuses' | 'tree' | 'downloadPDF' | 'next' | 'nextSlide' | 'openInEditor' | 'prev' | 'prevSlide' | 'rawRoutes' | 'go'
+export type KolibriContextNavClicksKey = 'clicks' | 'clicksElements' | 'clicksTotal' | 'hasNext' | 'hasPrev'
 
-export interface EnigmaSlidevContextNav extends Pick<typeof nav, EnigmaSlidevContextNavKey> {
+export interface KolibriContextNav extends Pick<typeof nav, KolibriContextNavKey> {
   route: ComputedRef<RouteRecordRaw | RouteLocationNormalizedLoaded>
 }
-export type EnigmaSlidevContextNavClicks = Pick<typeof nav, EnigmaSlidevContextNavClicksKey>
+export type KolibriContextNavClicks = Pick<typeof nav, KolibriContextNavClicksKey>
 
-export interface EnigmaSlidevContext {
-  nav: EnigmaSlidevContextNav & EnigmaSlidevContextNavClicks
+export interface KolibriContext {
+  nav: KolibriContextNav & KolibriContextNavClicks
   configs: typeof configs
   themeConfigs: ComputedRef<typeof configs['themeConfig']>
 }
 
-export default function createEnigmaSlidevContext() {
+export default function createKolibriContext() {
   return {
     install(app: App) {
       const context = reactive(useContext(route, clicks))
-      app.provide(injectionEnigmaSlidevContext, context)
+      app.provide(injectionKolibriContext, context)
       app.provide(injectionCurrentPage, computed(() => context.nav.currentPage))
       app.provide(injectionClicks, computed(() => context.nav.clicks))
 
       // allows controls from postMessages
       if (__DEV__) {
         // @ts-expect-error expose global
-        window.__enigmaslidev__ = context
+        window.__kolibri__ = context
         window.addEventListener('message', ({ data }) => {
-          if (data && data.target === 'enigmaslidev') {
+          if (data && data.target === 'kolibri') {
             if (data.type === 'navigate') {
               nav.go(+data.no, +data.clicks || 0)
             }

@@ -3,10 +3,10 @@ import { join } from 'node:path'
 import { uniq } from '@nyxb/utils'
 import { loadConfigFromFile, mergeConfig } from 'vite'
 import type { ConfigEnv, InlineConfig } from 'vite'
-import type { ResolvedEnigmaSlidevOptions } from './options'
+import type { ResolvedKolibriOptions } from './options'
 import { generateGoogleFontsUrl, toAtFS } from './utils'
 
-export async function getIndexHtml({ clientRoot, themeRoots, addonRoots, data, userRoot }: ResolvedEnigmaSlidevOptions): Promise<string> {
+export async function getIndexHtml({ clientRoot, themeRoots, addonRoots, data, userRoot }: ResolvedKolibriOptions): Promise<string> {
   let main = await fs.readFile(join(clientRoot, 'index.html'), 'utf-8')
   let head = ''
   let body = ''
@@ -44,7 +44,7 @@ export async function getIndexHtml({ clientRoot, themeRoots, addonRoots, data, u
   return main
 }
 
-export async function mergeViteConfigs({ addonRoots, themeRoots }: ResolvedEnigmaSlidevOptions, viteConfig: InlineConfig, config: InlineConfig, command: 'serve' | 'build') {
+export async function mergeViteConfigs({ addonRoots, themeRoots }: ResolvedKolibriOptions, viteConfig: InlineConfig, config: InlineConfig, command: 'serve' | 'build') {
   const configEnv: ConfigEnv = {
     mode: 'development',
     command,

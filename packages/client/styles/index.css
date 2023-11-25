@@ -15,43 +15,43 @@ html {
   background: transparent;
 }
 
-.enigmaslidev-icon-btn {
+.kolibri-icon-btn {
   @apply inline-block cursor-pointer select-none !outline-none;
   @apply opacity-75 transition duration-200 ease-in-out align-middle rounded p-1;
   @apply hover:(opacity-100 bg-gray-400 bg-opacity-10);
   @apply md:p-2;
 }
 
-.enigmaslidev-icon-btn.shallow {
+.kolibri-icon-btn.shallow {
   @apply opacity-30
 }
 
-.enigmaslidev-icon-btn.active {
+.kolibri-icon-btn.active {
   @apply opacity-100
 }
 
-.enigmaslidev-icon-btn.disabled {
+.kolibri-icon-btn.disabled {
   @apply opacity-25 pointer-events-none;
 }
 
-.enigmaslidev-vclick-target {
+.kolibri-vclick-target {
   @apply transition-opacity duration-100;
 }
 
-.enigmaslidev-vclick-hidden {
+.kolibri-vclick-hidden {
   @apply !opacity-0 !pointer-events-none;
 }
 
-.enigmaslidev-vclick-fade {
+.kolibri-vclick-fade {
   @apply opacity-50;
 }
 
-.enigmaslidev-icon {
+.kolibri-icon {
   display: inline-block;
   vertical-align: sub;
   line-height: 1em;
 }
 
-.enigmaslidev-page {
+.kolibri-page {
   @apply absolute top-0 left-0 right-0 w-full relative;
 }

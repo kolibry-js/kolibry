@@ -8,12 +8,12 @@ Usage:
 const your_code = 'here'
 ```
 
-Learn more: https://sli.dev/guide/syntax.html#line-highlighting
+Learn more: https://kolibri.show/guide/syntax.html#line-highlighting
 -->
 
 <script setup lang="ts">
 import { range, remove } from '@nyxb/utils'
-import { parseRangeString } from '@enigmaslidev/parser/core'
+import { parseRangeString } from '@kolibrijs/parser/core'
 import { useClipboard } from '@vueuse/core'
 import { computed, getCurrentInstance, inject, onMounted, onUnmounted, ref, watchEffect } from 'vue'
 import { configs } from '../env'
@@ -99,7 +99,7 @@ onMounted(() => {
 const { copied, copy } = useClipboard()
 
 function copyCode() {
-  const code = el.value?.querySelector('.enigmaslidev-code')?.textContent
+  const code = el.value?.querySelector('.kolibri-code')?.textContent
   if (code)
     copy(code)
 }
@@ -107,9 +107,9 @@ function copyCode() {
 
 <template>
   <div
-    ref="el" class="enigmaslidev-code-wrapper relative group"
+    ref="el" class="kolibri-code-wrapper relative group"
     :class="{
-      'enigmaslidev-code-line-numbers': props.lines,
+      'kolibri-code-line-numbers': props.lines,
     }"
     :style="{
       'max-height': props.maxHeight,
@@ -120,7 +120,7 @@ function copyCode() {
     <slot />
     <button
       v-if="configs.codeCopy"
-      class="enigmaslidev-code-copy absolute top-0 right-0 transition opacity-0 group-hover:opacity-20 hover:!opacity-100"
+      class="kolibri-code-copy absolute top-0 right-0 transition opacity-0 group-hover:opacity-20 hover:!opacity-100"
       :title="copied ? 'Copied' : 'Copy'" @click="copyCode()"
     >
       <ph-check-circle v-if="copied" class="p-2 w-8 h-8" />
