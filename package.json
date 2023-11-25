@@ -1,5 +1,5 @@
 {
-  "name": "enigmaslidev-monorepo",
+  "name": "kolibri-monorepo",
   "type": "module",
   "private": true,
   "packageManager": "bun@1.0.14",
@@ -19,9 +19,9 @@
     "typescript": "^5.0.0"
   },
   "devDependencies": {
-   "@enigmaslidev/cli": "workspace:*",
-    "@enigmaslidev/parser": "workspace:*",
-    "@enigmaslidev/types": "workspace:*",
+    "@kolibrijs/cli": "workspace:*",
+    "@kolibrijs/parser": "workspace:*",
+    "@kolibrijs/types": "workspace:*",
     "@nyxb/nyxi": "^0.0.31",
     "@nyxb/utils": "^0.0.3",
     "@types/cli-progress": "^3.11.5",
