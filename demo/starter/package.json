@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "kolibri build",
+    "dev": "nodemon -w '../../packages/kolibri/dist/*.js' --exec \"kolibri ./slides.md --open=false --log=info\"",
+    "export": "kolibri export",
+    "export-notes": "kolibri export-notes"
+  },
+  "devDependencies": {
+    "@kolibrijs/cli": "workspace:*",
+    "@kolibrijs/theme-default": "^0.21.2",
+    "@kolibrijs/theme-seriph": "^0.21.3",
+    "@kolibrijs/types": "workspace:*",
+    "nodemon": "^3.0.1"
+  }
+}
