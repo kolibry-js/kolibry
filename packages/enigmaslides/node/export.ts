@@ -3,12 +3,12 @@ import { Buffer } from 'node:buffer'
 import fs from 'fs-extra'
 import { blue, cyan, dim, green, yellow } from 'kolorist'
 import { Presets, SingleBar } from 'cli-progress'
-import { parseRangeString } from '@slidev/parser/core'
-import type { ExportArgs, SlideInfo, TocItem } from '@slidev/types'
+import { parseRangeString } from '@enigmaslidev/parser/core'
+import type { ExportArgs, SlideInfo, TocItem } from '@enigmaslidev/types'
 import { outlinePdfFactory } from '@lillallol/outline-pdf'
 import * as pdfLib from 'pdf-lib'
 import { PDFDocument } from 'pdf-lib'
-import type { ResolvedSlidevOptions } from './options'
+import type { ResolvedEnigmaSlidevOptions } from './options'
 import { packageExists } from './utils'
 
 export interface ExportOptions {
@@ -67,7 +67,7 @@ export interface ExportNotesOptions {
   timeout?: number
 }
 
-function createSlidevProgress(indeterminate = false) {
+function createEnigmaSlidevProgress(indeterminate = false) {
   function getSpinner(n = 0) {
     return [cyan('●'), green('◆'), blue('■'), yellow('▲')][n % 4]
   }
@@ -110,14 +110,14 @@ export async function exportNotes({
   timeout = 30000,
 }: ExportNotesOptions): Promise<string> {
   if (!packageExists('playwright-chromium'))
-    throw new Error('The exporting for Slidev is powered by Playwright, please install it via `npm i -D playwright-chromium`')
+    throw new Error('The exporting for EnigmaSlidev is powered by Playwright, please install it via `npm i -D playwright-chromium`')
 
   const { chromium } = await import('playwright-chromium')
   const browser = await chromium.launch()
   const context = await browser.newContext()
   const page = await context.newPage()
 
-  const progress = createSlidevProgress(true)
+  const progress = createEnigmaSlidevProgress(true)
 
   progress.start(1)
 
@@ -165,7 +165,7 @@ export async function exportSlides({
   perSlide = false,
 }: ExportOptions) {
   if (!packageExists('playwright-chromium'))
-    throw new Error('The exporting for Slidev is powered by Playwright, please install it via `npm i -D playwright-chromium`')
+    throw new Error('The exporting for EnigmaSlidev is powered by Playwright, please install it via `npm i -D playwright-chromium`')
 
   const pages: number[] = parseRangeString(total, range)
 
@@ -182,7 +182,7 @@ export async function exportSlides({
     deviceScaleFactor: 1,
   })
   const page = await context.newPage()
-  const progress = createSlidevProgress(!perSlide)
+  const progress = createEnigmaSlidevProgress(!perSlide)
 
   async function go(no: number | string, clicks?: string) {
     const path = `${no}?print${withClicks ? '=clicks' : ''}${clicks ? `&clicks=${clicks}` : ''}${range ? `&range=${range}` : ''}`
@@ -420,7 +420,7 @@ export async function exportSlides({
   return output
 }
 
-export function getExportOptions(args: ExportArgs, options: ResolvedSlidevOptions, outDir?: string, outFilename?: string): Omit<ExportOptions, 'port' | 'base'> {
+export function getExportOptions(args: ExportArgs, options: ResolvedEnigmaSlidevOptions, outDir?: string, outFilename?: string): Omit<ExportOptions, 'port' | 'base'> {
   const config = {
     ...options.data.config.export,
     ...args,
