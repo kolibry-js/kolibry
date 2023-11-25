@@ -1,26 +1,39 @@
 {
-  "compilerOptions": {
-    "composite": true,
-    "target": "esnext",
-    "jsx": "react-jsx",
-    "lib": ["ESNext"],
-    "moduleDetection": "force",
-    "module": "esnext",
-    "moduleResolution": "bundler",
-    "types": [
-      "bun-types"
-    ],
-    "allowImportingTsExtensions": true,
-    "allowJs": true,
-    "strict": true,
-    "downlevelIteration": true,
-    "noEmit": true,
-    "allowSyntheticDefaultImports": true,
-    "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true
-  },
-  "include": [
-    "src/**/*",
-    "types/**/*"
-  ]
-}
+   "compilerOptions": {
+     "target": "es2022",
+     "jsx": "preserve",
+     "lib": ["DOM", "ESNext"],
+     "baseUrl": ".",
+     "module": "ESNext",
+     "moduleResolution": "node",
+     "paths": {
+       "@enigmaslidev/client/*": ["./packages/client/*"],
+       "@enigmaslidev/types": ["./packages/types/src/index.ts"],
+       "@enigmaslidev/parser/fs": ["./packages/parser/src/fs.ts"],
+       "@enigmaslidev/parser/core": ["./packages/parser/src/core.ts"],
+       "@enigmaslidev/parser": ["./packages/parser/src/index.ts"]
+     },
+     "resolveJsonModule": true,
+     "types": [
+       "vite/client",
+       "node",
+       "vite-plugin-vue-server-ref/module"
+     ],
+     "strict": true,
+     "strictNullChecks": true,
+     "noUnusedLocals": true,
+     "esModuleInterop": true,
+     "forceConsistentCasingInFileNames": true,
+     "skipLibCheck": true
+   },
+   "include": [
+     "./*.ts",
+     "./docs/.vitepress/**/*.ts",
+     "./docs/.vitepress/**/*.vue",
+     "./packages/**/*.ts",
+     "./packages/**/*.vue",
+     "./test/**/*.ts"
+   ],
+   "exclude": ["**/dist/**", "node_modules"]
+ }
+ 
