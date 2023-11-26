@@ -1,6 +1,19 @@
-node_modules
 .DS_Store
+*.local
 dist
 dist-ssr
-*.local
+node_modules
+# intellij stuff
+.idea/
+*.pdf
+*-export
+slides-export.md
+assets/demo
+packages/kolibri/README.md
+packages/create-app/template/slides.md
+packages/create-app/template/pages
+composable-vue-cn
+components.d.ts
+.kolibri
+.eslintcache
 .env
