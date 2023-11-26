@@ -1,0 +1,1098 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`md parser > frontmatter.md > config 1`] = `
+{
+  "drawings": {
+    "enabled": true,
+    "persist": false,
+    "presenterOnly": false,
+    "syncAll": true,
+  },
+  "fonts": {
+    "italic": false,
+    "local": [],
+    "mono": [
+      "\\"Fira Code\\"",
+      "ui-monospace",
+      "SFMono-Regular",
+      "Menlo",
+      "Monaco",
+      "Consolas",
+      "\\"Liberation Mono\\"",
+      "\\"Courier New\\"",
+      "monospace",
+    ],
+    "provider": "google",
+    "sans": [
+      "\\"Roboto\\"",
+      "\\"Lato\\"",
+      "ui-sans-serif",
+      "system-ui",
+      "-apple-system",
+      "BlinkMacSystemFont",
+      "\\"Segoe UI\\"",
+      "Roboto",
+      "\\"Helvetica Neue\\"",
+      "Arial",
+      "\\"Noto Sans\\"",
+      "sans-serif",
+      "\\"Apple Color Emoji\\"",
+      "\\"Segoe UI Emoji\\"",
+      "\\"Segoe UI Symbol\\"",
+      "\\"Noto Color Emoji\\"",
+    ],
+    "serif": [
+      "\\"Mate SC\\"",
+      "ui-serif",
+      "Georgia",
+      "Cambria",
+      "\\"Times New Roman\\"",
+      "Times",
+      "serif",
+    ],
+    "webfonts": [
+      "Roboto",
+      "Lato",
+      "Mate SC",
+      "Fira Code",
+    ],
+    "weights": [
+      "200",
+      "400",
+      "600",
+    ],
+  },
+  "layout": "cover",
+  "title": "Hi",
+}
+`;
+
+exports[`md parser > frontmatter.md > features 1`] = `
+{
+  "katex": false,
+  "mermaid": false,
+  "monaco": false,
+  "tweet": false,
+}
+`;
+
+exports[`md parser > frontmatter.md > slides 1`] = `
+[
+  {
+    "content": "
+# Hi
+",
+    "end": 8,
+    "frontmatter": {
+      "fonts": {
+        "mono": "Fira Code",
+        "sans": "Roboto, Lato",
+        "serif": "Mate SC",
+      },
+      "layout": "cover",
+      "title": "Hi",
+    },
+    "frontmatterStyle": "frontmatter",
+    "index": 0,
+    "level": 1,
+    "note": undefined,
+    "raw": "---
+layout: cover
+fonts:
+  sans: Roboto, Lato
+  serif: Mate SC
+  mono: Fira Code
+title: Hi
+---
+
+# Hi
+
+",
+    "start": 0,
+    "title": "Hi",
+  },
+  {
+    "content": "
+# Hello
+",
+    "end": 16,
+    "frontmatter": {
+      "layout": "center",
+      "meta": {
+        "duration": 12,
+        "title": "FooBar",
+      },
+    },
+    "frontmatterStyle": "frontmatter",
+    "index": 1,
+    "level": 1,
+    "note": "This is note",
+    "raw": "---
+meta:
+  title: FooBar
+  duration: 12
+layout: center
+---
+
+# Hello
+
+<!--
+This is note
+-->
+",
+    "start": 8,
+    "title": "Hello",
+  },
+  {
+    "content": "
+# Morning
+",
+    "end": 19,
+    "frontmatter": {},
+    "frontmatterStyle": undefined,
+    "index": 2,
+    "level": 1,
+    "note": undefined,
+    "raw": "
+# Morning
+
+",
+    "start": 17,
+    "title": "Morning",
+  },
+  {
+    "content": "
+<!-- This is not note -->
+Hey
+",
+    "end": 26,
+    "frontmatter": {
+      "layout": "text",
+    },
+    "frontmatterStyle": "frontmatter",
+    "index": 3,
+    "level": undefined,
+    "note": "This is note",
+    "raw": "---
+layout: text
+---
+
+<!-- This is not note -->
+Hey
+
+<!--
+This is note
+-->
+",
+    "start": 19,
+    "title": undefined,
+  },
+  {
+    "content": "
+\`\`\`md
+---
+this should be treated as code block
+---
+----
+\`\`\`
+",
+    "end": 35,
+    "frontmatter": {},
+    "frontmatterStyle": undefined,
+    "index": 4,
+    "level": undefined,
+    "note": undefined,
+    "raw": "
+\`\`\`md
+---
+this should be treated as code block
+---
+----
+\`\`\`
+
+",
+    "start": 27,
+    "title": undefined,
+  },
+  {
+    "content": "
+Content 1
+",
+    "end": 44,
+    "frontmatter": {
+      "layout": "from yaml",
+    },
+    "frontmatterStyle": "yaml",
+    "index": 5,
+    "level": undefined,
+    "note": undefined,
+    "raw": "\`\`\`yaml
+layout: from yaml
+\`\`\`
+
+Content 1
+
+",
+    "start": 36,
+    "title": undefined,
+  },
+  {
+    "content": "
+\`\`\`yaml
+# When there is already a frontmatter, the first yaml block should be treated as content
+layout: should not from yaml 1
+\`\`\`
+
+Content 2
+",
+    "end": 55,
+    "frontmatter": {
+      "layout": "cover",
+    },
+    "frontmatterStyle": "frontmatter",
+    "index": 6,
+    "level": 1,
+    "note": undefined,
+    "raw": "---
+layout: cover
+---
+
+\`\`\`yaml
+# When there is already a frontmatter, the first yaml block should be treated as content
+layout: should not from yaml 1
+\`\`\`
+
+Content 2
+
+",
+    "start": 44,
+    "title": "When there is already a frontmatter, the first yaml block should be treated as content",
+  },
+  {
+    "content": "
+# Title
+
+\`\`\`yaml
+# When there is already a frontmatter, the first yaml block should be treated as content
+layout: should not from yaml 2
+\`\`\`
+
+Content 3
+",
+    "end": 66,
+    "frontmatter": {},
+    "frontmatterStyle": undefined,
+    "index": 7,
+    "level": 1,
+    "note": undefined,
+    "raw": "
+# Title
+
+\`\`\`yaml
+# When there is already a frontmatter, the first yaml block should be treated as content
+layout: should not from yaml 2
+\`\`\`
+
+Content 3
+
+",
+    "start": 56,
+    "title": "Title",
+  },
+]
+`;
+
+exports[`md parser > mdc.md > config 1`] = `
+{
+  "drawings": {
+    "enabled": true,
+    "persist": false,
+    "presenterOnly": false,
+    "syncAll": true,
+  },
+  "fonts": {
+    "italic": false,
+    "local": [],
+    "mono": [
+      "ui-monospace",
+      "SFMono-Regular",
+      "Menlo",
+      "Monaco",
+      "Consolas",
+      "\\"Liberation Mono\\"",
+      "\\"Courier New\\"",
+      "monospace",
+    ],
+    "provider": "google",
+    "sans": [
+      "ui-sans-serif",
+      "system-ui",
+      "-apple-system",
+      "BlinkMacSystemFont",
+      "\\"Segoe UI\\"",
+      "Roboto",
+      "\\"Helvetica Neue\\"",
+      "Arial",
+      "\\"Noto Sans\\"",
+      "sans-serif",
+      "\\"Apple Color Emoji\\"",
+      "\\"Segoe UI Emoji\\"",
+      "\\"Segoe UI Symbol\\"",
+      "\\"Noto Color Emoji\\"",
+    ],
+    "serif": [
+      "ui-serif",
+      "Georgia",
+      "Cambria",
+      "\\"Times New Roman\\"",
+      "Times",
+      "serif",
+    ],
+    "webfonts": [],
+    "weights": [
+      "200",
+      "400",
+      "600",
+    ],
+  },
+  "mdc": true,
+  "title": "MDC{style=\\"color:red\\"}",
+}
+`;
+
+exports[`md parser > mdc.md > features 1`] = `
+{
+  "katex": false,
+  "mermaid": false,
+  "monaco": false,
+  "tweet": false,
+}
+`;
+
+exports[`md parser > mdc.md > slides 1`] = `
+[
+  {
+    "content": "
+# MDC{style=\\"color:red\\"}
+
+:arrow{x1=1 y1=1 x2=2 y2=2}
+",
+    "end": 8,
+    "frontmatter": {
+      "mdc": true,
+      "title": "MDC{style=\\"color:red\\"}",
+    },
+    "frontmatterStyle": "frontmatter",
+    "index": 0,
+    "level": 1,
+    "note": undefined,
+    "raw": "---
+mdc: true
+title: MDC{style=\\"color:red\\"}
+---
+
+# MDC{style=\\"color:red\\"}
+
+:arrow{x1=1 y1=1 x2=2 y2=2}
+
+",
+    "start": 0,
+    "title": "MDC{style=\\"color:red\\"}",
+  },
+]
+`;
+
+exports[`md parser > minimal.md > config 1`] = `
+{
+  "drawings": {
+    "enabled": true,
+    "persist": false,
+    "presenterOnly": false,
+    "syncAll": true,
+  },
+  "fonts": {
+    "italic": false,
+    "local": [],
+    "mono": [
+      "ui-monospace",
+      "SFMono-Regular",
+      "Menlo",
+      "Monaco",
+      "Consolas",
+      "\\"Liberation Mono\\"",
+      "\\"Courier New\\"",
+      "monospace",
+    ],
+    "provider": "google",
+    "sans": [
+      "ui-sans-serif",
+      "system-ui",
+      "-apple-system",
+      "BlinkMacSystemFont",
+      "\\"Segoe UI\\"",
+      "Roboto",
+      "\\"Helvetica Neue\\"",
+      "Arial",
+      "\\"Noto Sans\\"",
+      "sans-serif",
+      "\\"Apple Color Emoji\\"",
+      "\\"Segoe UI Emoji\\"",
+      "\\"Segoe UI Symbol\\"",
+      "\\"Noto Color Emoji\\"",
+    ],
+    "serif": [
+      "ui-serif",
+      "Georgia",
+      "Cambria",
+      "\\"Times New Roman\\"",
+      "Times",
+      "serif",
+    ],
+    "webfonts": [],
+    "weights": [
+      "200",
+      "400",
+      "600",
+    ],
+  },
+  "title": "H1",
+}
+`;
+
+exports[`md parser > minimal.md > features 1`] = `
+{
+  "katex": false,
+  "mermaid": false,
+  "monaco": false,
+  "tweet": false,
+}
+`;
+
+exports[`md parser > minimal.md > slides 1`] = `
+[
+  {
+    "content": "
+# H1
+## H2
+### H3
+
+Sample Text
+
+\`\`\`ts
+console.log('Hello World')
+\`\`\`
+",
+    "end": 10,
+    "frontmatter": {
+      "title": "H1",
+    },
+    "frontmatterStyle": undefined,
+    "index": 0,
+    "level": 1,
+    "note": undefined,
+    "raw": "---
+title: H1
+---
+
+# H1
+## H2
+### H3
+
+Sample Text
+
+\`\`\`ts
+console.log('Hello World')
+\`\`\`
+
+",
+    "start": 0,
+    "title": "H1",
+  },
+  {
+    "content": "
+# Hello
+
+- Hello
+- Hi
+- Hey
+- Yo
+",
+    "end": 18,
+    "frontmatter": {},
+    "frontmatterStyle": undefined,
+    "index": 1,
+    "level": 1,
+    "note": undefined,
+    "raw": "
+# Hello
+
+- Hello
+- Hi
+- Hey
+- Yo
+
+",
+    "start": 11,
+    "title": "Hello",
+  },
+  {
+    "content": "
+Nice to meet you
+",
+    "end": 22,
+    "frontmatter": {},
+    "frontmatterStyle": undefined,
+    "index": 2,
+    "level": undefined,
+    "note": undefined,
+    "raw": "
+Nice to meet you
+
+",
+    "start": 19,
+    "title": undefined,
+  },
+]
+`;
+
+exports[`md parser > multi-entries.md > config 1`] = `
+{
+  "drawings": {
+    "enabled": true,
+    "persist": false,
+    "presenterOnly": false,
+    "syncAll": true,
+  },
+  "fonts": {
+    "italic": false,
+    "local": [],
+    "mono": [
+      "ui-monospace",
+      "SFMono-Regular",
+      "Menlo",
+      "Monaco",
+      "Consolas",
+      "\\"Liberation Mono\\"",
+      "\\"Courier New\\"",
+      "monospace",
+    ],
+    "provider": "google",
+    "sans": [
+      "ui-sans-serif",
+      "system-ui",
+      "-apple-system",
+      "BlinkMacSystemFont",
+      "\\"Segoe UI\\"",
+      "Roboto",
+      "\\"Helvetica Neue\\"",
+      "Arial",
+      "\\"Noto Sans\\"",
+      "sans-serif",
+      "\\"Apple Color Emoji\\"",
+      "\\"Segoe UI Emoji\\"",
+      "\\"Segoe UI Symbol\\"",
+      "\\"Noto Color Emoji\\"",
+    ],
+    "serif": [
+      "ui-serif",
+      "Georgia",
+      "Cambria",
+      "\\"Times New Roman\\"",
+      "Times",
+      "serif",
+    ],
+    "webfonts": [],
+    "weights": [
+      "200",
+      "400",
+      "600",
+    ],
+  },
+  "src": "sub/page1.md",
+  "title": undefined,
+}
+`;
+
+exports[`md parser > multi-entries.md > features 1`] = `
+{
+  "katex": true,
+  "mermaid": false,
+  "monaco": false,
+  "tweet": true,
+}
+`;
+
+exports[`md parser > multi-entries.md > slides 1`] = `
+[
+  {
+    "content": "
+# Page 1
+",
+    "end": 2,
+    "frontmatter": {
+      "srcSequence": "sub/page1.md",
+      "title": undefined,
+    },
+    "frontmatterStyle": undefined,
+    "index": 0,
+    "inline": {
+      "content": "",
+      "end": 4,
+      "frontmatter": {
+        "title": undefined,
+      },
+      "frontmatterStyle": "frontmatter",
+      "index": 0,
+      "level": undefined,
+      "note": undefined,
+      "raw": "---
+src: sub/page1.md
+---
+",
+      "start": 0,
+      "title": undefined,
+    },
+    "level": 1,
+    "note": undefined,
+    "raw": "---
+srcSequence: sub/page1.md
+---
+
+# Page 1
+
+",
+    "source": {
+      "content": "# Page 1",
+      "end": 2,
+      "frontmatter": {
+        "title": "Page 1",
+      },
+      "frontmatterStyle": undefined,
+      "index": 0,
+      "level": 1,
+      "note": undefined,
+      "raw": "# Page 1
+",
+      "start": 0,
+      "title": "Page 1",
+    },
+    "start": 0,
+    "title": "Page 1",
+  },
+  {
+    "content": "
+# Page 2
+
+<Tweet />
+",
+    "end": 8,
+    "frontmatter": {
+      "background": "https://kolibri.show/demo-cover.png#2",
+      "layout": "cover",
+      "srcSequence": "/sub/page2.md",
+      "title": "Page 2",
+    },
+    "frontmatterStyle": "frontmatter",
+    "index": 1,
+    "inline": {
+      "content": "",
+      "end": 9,
+      "frontmatter": {
+        "background": "https://kolibri.show/demo-cover.png#2",
+      },
+      "frontmatterStyle": "frontmatter",
+      "index": 1,
+      "level": undefined,
+      "note": undefined,
+      "raw": "---
+src: /sub/page2.md
+background: https://kolibri.show/demo-cover.png#2
+---
+",
+      "start": 4,
+      "title": undefined,
+    },
+    "level": 1,
+    "note": undefined,
+    "raw": "---
+layout: cover
+title: Page 2
+background: https://kolibri.show/demo-cover.png#2
+srcSequence: /sub/page2.md
+---
+
+# Page 2
+
+<Tweet />
+
+",
+    "source": {
+      "content": "# Page 2
+
+<Tweet />",
+      "end": 8,
+      "frontmatter": {
+        "layout": "cover",
+        "title": "Page 2",
+      },
+      "frontmatterStyle": "frontmatter",
+      "index": 0,
+      "level": 1,
+      "note": undefined,
+      "raw": "---
+layout: cover
+---
+
+# Page 2
+
+<Tweet />
+",
+      "start": 0,
+      "title": "Page 2",
+    },
+    "start": 0,
+    "title": "Page 2",
+  },
+  {
+    "content": "
+# Page 3
+",
+    "end": 2,
+    "frontmatter": {
+      "background": "https://kolibri.show/demo-cover.png#34",
+      "srcSequence": "./sub/pages3-4.md",
+      "title": "Page 3",
+    },
+    "frontmatterStyle": undefined,
+    "index": 2,
+    "inline": {
+      "content": "",
+      "end": 14,
+      "frontmatter": {
+        "background": "https://kolibri.show/demo-cover.png#34",
+      },
+      "frontmatterStyle": "frontmatter",
+      "index": 2,
+      "level": undefined,
+      "note": undefined,
+      "raw": "---
+src: ./sub/pages3-4.md
+background: https://kolibri.show/demo-cover.png#34
+---
+",
+      "start": 9,
+      "title": undefined,
+    },
+    "level": 1,
+    "note": undefined,
+    "raw": "---
+title: Page 3
+background: https://kolibri.show/demo-cover.png#34
+srcSequence: ./sub/pages3-4.md
+---
+
+# Page 3
+
+",
+    "source": {
+      "content": "# Page 3",
+      "end": 2,
+      "frontmatter": {
+        "title": "Page 3",
+      },
+      "frontmatterStyle": undefined,
+      "index": 0,
+      "level": 1,
+      "note": undefined,
+      "raw": "# Page 3
+",
+      "start": 0,
+      "title": "Page 3",
+    },
+    "start": 0,
+    "title": "Page 3",
+  },
+  {
+    "content": "
+# Page 4
+
+<Tweet />
+",
+    "end": 10,
+    "frontmatter": {
+      "background": "https://kolibri.show/demo-cover.png#34",
+      "layout": "cover",
+      "srcSequence": "./sub/pages3-4.md",
+    },
+    "frontmatterStyle": "frontmatter",
+    "index": 3,
+    "level": 1,
+    "note": undefined,
+    "raw": "---
+layout: cover
+background: https://kolibri.show/demo-cover.png#34
+srcSequence: ./sub/pages3-4.md
+---
+
+# Page 4
+
+<Tweet />
+
+",
+    "source": {
+      "content": "# Page 4
+
+<Tweet />",
+      "end": 10,
+      "frontmatter": {
+        "layout": "cover",
+      },
+      "frontmatterStyle": "frontmatter",
+      "index": 1,
+      "level": 1,
+      "note": undefined,
+      "raw": "---
+layout: cover
+---
+
+# Page 4
+
+<Tweet />
+",
+      "start": 2,
+      "title": "Page 4",
+    },
+    "start": 2,
+    "title": "Page 4",
+  },
+  {
+    "content": "
+# Page 1
+",
+    "end": 2,
+    "frontmatter": {
+      "background": "https://kolibri.show/demo-cover.png#14",
+      "srcSequence": "sub/nested1-4.md,/sub/page1.md",
+      "title": undefined,
+    },
+    "frontmatterStyle": undefined,
+    "index": 4,
+    "inline": {
+      "content": "",
+      "end": 19,
+      "frontmatter": {
+        "background": "https://kolibri.show/demo-cover.png#14",
+      },
+      "frontmatterStyle": "frontmatter",
+      "index": 3,
+      "level": undefined,
+      "note": undefined,
+      "raw": "---
+src: sub/nested1-4.md
+background: https://kolibri.show/demo-cover.png#14
+---
+",
+      "start": 14,
+      "title": undefined,
+    },
+    "level": 1,
+    "note": undefined,
+    "raw": "---
+background: https://kolibri.show/demo-cover.png#14
+srcSequence: sub/nested1-4.md,/sub/page1.md
+---
+
+# Page 1
+
+",
+    "source": {
+      "content": "# Page 1",
+      "end": 2,
+      "frontmatter": {
+        "title": "Page 1",
+      },
+      "frontmatterStyle": undefined,
+      "index": 0,
+      "level": 1,
+      "note": undefined,
+      "raw": "# Page 1
+",
+      "start": 0,
+      "title": "Page 1",
+    },
+    "start": 0,
+    "title": "Page 1",
+  },
+  {
+    "content": "
+# Page 2
+
+<Tweet />
+",
+    "end": 8,
+    "frontmatter": {
+      "background": "https://kolibri.show/demo-cover.png#14",
+      "layout": "cover",
+      "srcSequence": "sub/nested1-4.md,page2.md",
+      "title": "Page 2",
+    },
+    "frontmatterStyle": "frontmatter",
+    "index": 5,
+    "level": 1,
+    "note": undefined,
+    "raw": "---
+layout: cover
+title: Page 2
+background: https://kolibri.show/demo-cover.png#14
+srcSequence: sub/nested1-4.md,page2.md
+---
+
+# Page 2
+
+<Tweet />
+
+",
+    "source": {
+      "content": "# Page 2
+
+<Tweet />",
+      "end": 8,
+      "frontmatter": {
+        "layout": "cover",
+        "title": "Page 2",
+      },
+      "frontmatterStyle": "frontmatter",
+      "index": 0,
+      "level": 1,
+      "note": undefined,
+      "raw": "---
+layout: cover
+---
+
+# Page 2
+
+<Tweet />
+",
+      "start": 0,
+      "title": "Page 2",
+    },
+    "start": 0,
+    "title": "Page 2",
+  },
+  {
+    "content": "
+# Page 3
+",
+    "end": 2,
+    "frontmatter": {
+      "background": "https://kolibri.show/demo-cover.png#14",
+      "srcSequence": "sub/nested1-4.md,../sub/pages3-4.md",
+      "title": "Page 3",
+    },
+    "frontmatterStyle": undefined,
+    "index": 6,
+    "level": 1,
+    "note": undefined,
+    "raw": "---
+title: Page 3
+background: https://kolibri.show/demo-cover.png#14
+srcSequence: sub/nested1-4.md,../sub/pages3-4.md
+---
+
+# Page 3
+
+",
+    "source": {
+      "content": "# Page 3",
+      "end": 2,
+      "frontmatter": {
+        "title": "Page 3",
+      },
+      "frontmatterStyle": undefined,
+      "index": 0,
+      "level": 1,
+      "note": undefined,
+      "raw": "# Page 3
+",
+      "start": 0,
+      "title": "Page 3",
+    },
+    "start": 0,
+    "title": "Page 3",
+  },
+  {
+    "content": "
+# Page 4
+
+<Tweet />
+",
+    "end": 10,
+    "frontmatter": {
+      "background": "https://kolibri.show/demo-cover.png#14",
+      "layout": "cover",
+      "srcSequence": "sub/nested1-4.md,../sub/pages3-4.md",
+    },
+    "frontmatterStyle": "frontmatter",
+    "index": 7,
+    "level": 1,
+    "note": undefined,
+    "raw": "---
+layout: cover
+background: https://kolibri.show/demo-cover.png#14
+srcSequence: sub/nested1-4.md,../sub/pages3-4.md
+---
+
+# Page 4
+
+<Tweet />
+
+",
+    "source": {
+      "content": "# Page 4
+
+<Tweet />",
+      "end": 10,
+      "frontmatter": {
+        "layout": "cover",
+      },
+      "frontmatterStyle": "frontmatter",
+      "index": 1,
+      "level": 1,
+      "note": undefined,
+      "raw": "---
+layout: cover
+---
+
+# Page 4
+
+<Tweet />
+",
+      "start": 2,
+      "title": "Page 4",
+    },
+    "start": 2,
+    "title": "Page 4",
+  },
+  {
+    "content": "
+# Inline Page
+
+$x+2$
+",
+    "end": 25,
+    "frontmatter": {},
+    "frontmatterStyle": undefined,
+    "index": 8,
+    "level": 1,
+    "note": undefined,
+    "raw": "
+# Inline Page
+
+$x+2$
+
+",
+    "start": 20,
+    "title": "Inline Page",
+  },
+]
+`;
