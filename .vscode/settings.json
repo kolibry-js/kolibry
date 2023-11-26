@@ -1,20 +1,29 @@
 {
-  // Enable the ESlint flat config support
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "files.associations": {
+    "*.css": "postcss"
+  },
+  "unocss.root": [
+    "packages/client"
+  ],
+
+  // Enable the flat config support
   "eslint.experimental.useFlatConfig": true,
 
-  // Disable the default formatter, use eslint instead
+  // Disable the default formatter
   "prettier.enable": false,
   "editor.formatOnSave": false,
 
   // Auto fix
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
-    "source.organizeImports": "never"
+    "source.organizeImports": false
   },
 
   // Silent the stylistic rules in you IDE, but still auto fix them
   "eslint.rules.customizations": [
-    { "rule": "style/*", "severity": "off" },
+    { "rule": "@stylistic/*", "severity": "off" },
+    { "rule": "style*", "severity": "off" },
     { "rule": "*-indent", "severity": "off" },
     { "rule": "*-spacing", "severity": "off" },
     { "rule": "*-spaces", "severity": "off" },
@@ -25,7 +34,6 @@
     { "rule": "*semi", "severity": "off" }
   ],
 
-  // Enable eslint for all supported languages
   "eslint.validate": [
     "javascript",
     "javascriptreact",
@@ -37,34 +45,16 @@
     "json",
     "jsonc",
     "yaml"
-],
-"testing.automaticallyOpenPeekView": "never",
-"cSpell.words": [
-   "conmitmoji",
-   "drauu",
-   "Drauu",
-   "enigmaslidev",
-   "iframes",
-   "jiti",
-   "katex",
-   "kolibri",
-   "kolibrijs",
-   "lillallol",
-   "lumos",
-   "mathbf",
-   "monaco",
-   "mrdrogdrog",
-   "plantuml",
-   "prismjs",
-   "seriph",
-   "shiki",
-   "shikiji",
-   "sirv",
-   "theming",
-   "unocss",
-   "unplugin",
-   "VCLICK",
-   "vitefu",
-   "windicss"
-]
+  ],
+  "cSpell.words": [
+    "drauu",
+    "katex",
+    "kolibri",
+    "kolibrijs",
+    "lumos",
+    "monaco",
+    "Pixabay",
+    "theming",
+    "unhead"
+  ]
 }
