@@ -1,39 +1,38 @@
 {
-   "compilerOptions": {
-     "target": "es2022",
-     "jsx": "preserve",
-     "lib": ["DOM", "ESNext"],
-     "baseUrl": ".",
-     "module": "ESNext",
-     "moduleResolution": "node",
-     "paths": {
-       "@kolibrijs/client/*": ["./packages/client/*"],
-       "@kolibrijs/types": ["./packages/types/src/index.ts"],
-       "@kolibrijs/parser/fs": ["./packages/parser/src/fs.ts"],
-       "@kolibrijs/parser/core": ["./packages/parser/src/core.ts"],
-       "@kolibrijs/parser": ["./packages/parser/src/index.ts"]
-     },
-     "resolveJsonModule": true,
-     "types": [
-       "vite/client",
-       "node",
-       "vite-plugin-vue-server-ref/module"
-     ],
-     "strict": true,
-     "strictNullChecks": true,
-     "noUnusedLocals": true,
-     "esModuleInterop": true,
-     "forceConsistentCasingInFileNames": true,
-     "skipLibCheck": true
-   },
-   "include": [
-     "./*.ts",
-     "./docs/.vitepress/**/*.ts",
-     "./docs/.vitepress/**/*.vue",
-     "./packages/**/*.ts",
-     "./packages/**/*.vue",
-     "./test/**/*.ts"
-   ],
-   "exclude": ["**/dist/**", "node_modules"]
- }
- 
+  "compilerOptions": {
+    "target": "es2022",
+    "jsx": "preserve",
+    "lib": ["DOM", "ESNext"],
+    "baseUrl": ".",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "paths": {
+      "@kolibrijs/client/*": ["./packages/client/*"],
+      "@kolibrijs/types": ["./packages/types/src/index.ts"],
+      "@kolibrijs/parser/fs": ["./packages/parser/src/fs.ts"],
+      "@kolibrijs/parser/core": ["./packages/parser/src/core.ts"],
+      "@kolibrijs/parser": ["./packages/parser/src/index.ts"]
+    },
+    "resolveJsonModule": true,
+    "types": [
+      "vite/client",
+      "node",
+      "vite-plugin-vue-server-ref/module"
+    ],
+    "strict": true,
+    "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "./*.ts",
+    "./docs/.vitepress/**/*.ts",
+    "./docs/.vitepress/**/*.vue",
+    "./packages/**/*.ts",
+    "./packages/**/*.vue",
+    "./test/**/*.ts"
+  ],
+  "exclude": ["**/dist/**", "node_modules"]
+}

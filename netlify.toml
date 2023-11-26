@@ -4,7 +4,7 @@
 
 [build]
   publish = "dist"
-  command = "bun run demo:build"
+  command = "pnpm run demo:build"
 
 [[redirects]]
   from = "/composable-vue/*"
