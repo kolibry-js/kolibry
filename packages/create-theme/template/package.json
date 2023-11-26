@@ -1,0 +1,38 @@
+{
+  "type": "module",
+  "keywords": [
+    "kolibri-theme",
+    "kolibri"
+  ],
+  "engines": {
+    "node": ">=18.0.0",
+    "kolibri": ">=0.19.3"
+  },
+  "scripts": {
+    "build": "kolibri build example.md",
+    "dev": "kolibri example.md --open",
+    "export": "kolibri export example.md",
+    "screenshot": "kolibri export example.md --format png"
+  },
+  "dependencies": {
+    "@kolibrijs/types": "^0.0.1",
+    "codemirror-theme-vars": "^0.1.2",
+    "prism-theme-vars": "^0.2.4",
+    "theme-lumos": "^0.0.3"
+  },
+  "devDependencies": {
+    "@kolibrijs/cli": "^0.0.1"
+  },
+  "//": "Learn more: https://kolibri.show/themes/write-a-theme.html",
+  "kolibri": {
+    "colorSchema": "both",
+    "highlighter": "all",
+    "defaults": {
+      "fonts": {
+        "sans": "Nunito Sans",
+        "mono": "Fira Code"
+      },
+      "hightlighter": "prism"
+    }
+  }
+}

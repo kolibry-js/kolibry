@@ -1,0 +1,15 @@
+{
+  "name": "untitled",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "kolibri build",
+    "dev": "kolibri --open",
+    "export": "kolibri export"
+  },
+  "dependencies": {
+    "@kolibrijs/cli": "^0.0.1",
+    "@slidev/theme-default": "latest",
+    "@slidev/theme-seriph": "latest"
+  }
+}
