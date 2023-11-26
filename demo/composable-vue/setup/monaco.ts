@@ -1,4 +1,4 @@
-import { defineMonacoSetup } from '@kolibri/types'
+import { defineMonacoSetup } from '@kolibrijs/types'
 
 export default defineMonacoSetup((monaco) => {
   monaco.languages.typescript.typescriptDefaults.addExtraLib(

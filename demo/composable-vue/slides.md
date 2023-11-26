@@ -1,6 +1,6 @@
 ---
 layout: cover
-download: 'https://antfu.me/talks/2021-04-29'
+download: 'https://nyxb.nexus/talks/2021-04-29'
 highlighter: shiki
 # monaco: true
 info: |
@@ -8,11 +8,9 @@ info: |
 
   Patterns and tips for writing good composable logic in Vue
 
-  [Anthony Fu](https://antfu.me/) at [VueDay 2021](https://2021.vueday.it/)
+  [Dennis Ollhoff](https://nyxb.nexus/)
 
-  - [Recording](https://www.youtube.com/watch?v=IMJjP6edHd0)
-  - [Transcript](https://antfu.me/posts/composable-vue-vueday-2021)
-  - [Source code](https://github.com/antfu/talks/tree/master/2021-04-29)
+  - [Source code](https://github.com/nyxb/talks/tree/master/2021-04-29)
 ---
 
 # Composable Vue
@@ -20,7 +18,7 @@ info: |
 Patterns and tips for writing good composable logic in Vue
 
 <div class="uppercase text-sm tracking-widest">
-Anthony Fu
+Dennis Ollhoff
 </div>
 
 <div class="abs-bl mx-14 my-12 flex">
@@ -36,24 +34,22 @@ Anthony Fu
 layout: 'intro'
 ---
 
-# Anthony Fu
+# Dennis Ollhoff
 
 <div class="leading-8 opacity-80">
-Vue core team member and Vite team member.<br>
-Creator of VueUse, i18n Ally and Type Challenges.<br>
 A fanatical full-time open sourceror.<br>
 </div>
 
 <div class="my-10 grid grid-cols-[40px_1fr] w-min gap-y-4">
   <ri-github-line class="opacity-50"/>
-  <div><a href="https://github.com/antfu" target="_blank">antfu</a></div>
+  <div><a href="https://github.com/nyxb" target="_blank">nyxb</a></div>
   <ri-twitter-line class="opacity-50"/>
-  <div><a href="https://twitter.com/antfu7" target="_blank">antfu7</a></div>
+  <div><a href="https://twitter.com/nyxb0" target="_blank">nyxb0</a></div>
   <ri-user-3-line class="opacity-50"/>
-  <div><a href="https://antfu.me" target="_blank">antfu.me</a></div>
+  <div><a href="https://nyxb.nxus" target="_blank">nyxb.nexus</a></div>
 </div>
 
-<img src="https://antfu.me/avatar.png" class="rounded-full w-40 abs-tr mt-16 mr-12" alt="A comic art image of Anthony Fu"/>
+<img src="https://nyxb.nexus/avatar.png" class="rounded-full w-40 abs-tr mt-16 mr-12" alt="A comic art image of Dennis Ollhoff"/>
 
 
 ---
@@ -61,9 +57,9 @@ name: Sponsors
 layout: center
 ---
 
-<img class="h-100 -mt-10" src="https://cdn.jsdelivr.net/gh/antfu/static/sponsors.png" alt="A list of the sponsor logos" /><br>
+<img class="h-100 -mt-10" src="https://cdn.jsdelivr.net/gh/nyxb/static/sponsors.png" alt="A list of the sponsor logos" /><br>
 <div class="text-center text-xs opacity-50 -mt-8 hover:opacity-100">
-  <a href="https://github.com/sponsors/antfu" target="_blank">
+  <a href="https://github.com/sponsors/nyxb" target="_blank">
     Sponsor me at GitHub
   </a>
 </div>
@@ -869,7 +865,7 @@ export default {
   setup() {
     provide(injectKeyUser, {
       id: '7', // type error: should be number
-      name: 'Anthony',
+      name: 'Dennis',
     })
   },
 }
@@ -886,7 +882,7 @@ export default {
     // UserInfo | undefined
 
     if (user)
-      console.log(user.name) // Anthony
+      console.log(user.name) // Dennis
   },
 }
 ```
@@ -1167,4 +1163,4 @@ class: 'text-center pb-5 :'
 
 # Thank You!
 
-Slides can be found on [antfu.me](https://antfu.me)
+Slides can be found on [nyxb.nexus](https://nyxb.nexus)
