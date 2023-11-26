@@ -1,6 +1,6 @@
 import YAML from 'js-yaml'
 import { isObject, isTruthy, objectMap } from '@nyxb/utils'
-import type { FrontmatterStyle, PreparserExtensionFromHeadmatter, SlideInfo, SlideInfoBase, KolibriFeatureFlags, KolibriMarkdown, KolibriPreparserExtension, KolibriThemeMeta } from '@kolibrijs/types'
+import type { FrontmatterStyle, KolibriFeatureFlags, KolibriMarkdown, KolibriPreparserExtension, KolibriThemeMeta, PreparserExtensionFromHeadmatter, SlideInfo, SlideInfoBase } from '@kolibrijs/types'
 import { resolveConfig } from './config'
 
 export function stringify(data: KolibriMarkdown) {
