@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "nodemon -w '../../../packages/kolibri/dist/*.js' --exec 'kolibri --log=info'",
+    "build": "kolibri build",
+    "export": "kolibri export"
+  },
+  "devDependencies": {
+    "@kolibrijs/cli": "workspace:*",
+    "@kolibrijs/types": "workspace:*",
+    "@slidev/theme-default": "^0.21.2",
+    "@slidev/theme-seriph": "^0.21.3",
+    "nodemon": "^3.0.1"
+  }
+}
