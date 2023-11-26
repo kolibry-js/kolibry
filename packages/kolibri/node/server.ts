@@ -3,7 +3,7 @@ import process from 'node:process'
 import type { InlineConfig } from 'vite'
 import { createServer as createViteServer, resolveConfig } from 'vite'
 import { mergeViteConfigs } from './common'
-import type { ResolvedKolibriOptions, KolibriServerOptions } from './options'
+import type { KolibriServerOptions, ResolvedKolibriOptions } from './options'
 import { ViteKolibriPlugin } from './plugins/preset'
 
 export async function createServer(

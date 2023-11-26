@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url'
 import { slash, uniq } from '@nyxb/utils'
 import type { WindiCssOptions } from 'vite-plugin-windicss'
 import jiti from 'jiti'
-import type { ResolvedKolibriOptions, KolibriPluginOptions } from '..'
+import type { KolibriPluginOptions, ResolvedKolibriOptions } from '..'
 import { resolveImportPath } from '../utils'
 import { loadSetups } from './setupNode'
 

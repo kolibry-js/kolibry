@@ -1,7 +1,7 @@
 {
   "name": "@kolibrijs/cli",
   "version": "0.0.0",
-  "description": "Developer-focused slide presentations",
+  "description": "Presentation slides for developers",
   "author": "nyxb <contact@nyxb.email>",
   "license": "MIT",
   "funding": "https://github.com/sponsors/nyxb",
@@ -48,15 +48,15 @@
     }
   },
   "dependencies": {
-    "@nyxb/utils": "^0.0.3",
     "@hedgedoc/markdown-it-plugins": "^2.1.4",
     "@iconify-json/carbon": "^1.1.21",
     "@iconify-json/ph": "^1.1.6",
-    "@lillallol/outline-pdf": "^4.0.0",
-    "@mrdrogdrog/optional": "^1.2.1",
     "@kolibrijs/client": "workspace:*",
     "@kolibrijs/parser": "workspace:*",
     "@kolibrijs/types": "workspace:*",
+    "@lillallol/outline-pdf": "^4.0.0",
+    "@mrdrogdrog/optional": "^1.2.1",
+    "@nyxb/utils": "^0.0.3",
     "@unocss/extractor-mdc": "^0.57.4",
     "@unocss/reset": "^0.57.4",
     "@vitejs/plugin-vue": "^4.4.1",

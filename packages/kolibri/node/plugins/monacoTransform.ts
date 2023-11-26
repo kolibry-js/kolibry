@@ -24,13 +24,13 @@ export function createMonacoTypesLoader(): Plugin {
     name: 'kolibri:monaco-types-loader',
 
     resolveId(id) {
-      if (id.startsWith('/@kolibrijs-monaco-types/'))
+      if (id.startsWith('/@kolibri-monaco-types/'))
         return id
       return null
     },
 
     async load(id) {
-      const match = id.match(/^\/\@kolibrijs-monaco-types\/(.*)$/)
+      const match = id.match(/^\/\@kolibri-monaco-types\/(.*)$/)
       if (match) {
         const pkg = match[1]
         const packageData = await getPackageData(pkg) || await getPackageData(`@types/${pkg}`)

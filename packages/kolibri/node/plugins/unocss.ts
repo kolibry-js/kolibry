@@ -7,7 +7,7 @@ import type { UserConfig } from '@unocss/core'
 import { mergeConfigs } from 'unocss'
 import jiti from 'jiti'
 import UnoCSS from 'unocss/vite'
-import type { ResolvedKolibriOptions, KolibriPluginOptions } from '..'
+import type { KolibriPluginOptions, ResolvedKolibriOptions } from '..'
 import { loadSetups } from './setupNode'
 
 export async function createUnocssPlugin(
