@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, inject, onMounted, onUnmounted, ref, watch } from 'vue'
 
-import { injectionClicks, injectionClicksDisabled, injectionClicksElements, injectionRenderContext, injectionRoute, injectionKolibriContext } from '../constants'
+import { injectionClicks, injectionClicksDisabled, injectionClicksElements, injectionKolibriContext, injectionRenderContext, injectionRoute } from '../constants'
 
 const props = defineProps<{
   autoPlay?: boolean | 'once' | 'resume' | 'resumeOnce'

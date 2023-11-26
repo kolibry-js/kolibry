@@ -90,7 +90,7 @@ drauuIt.on('changed', () => {
   }
 })
 
-onPatch((state: any) => {
+onPatch((state) => {
   disableDump = true
   if (state[currentPage.value] != null)
     drauuIt.load(state[currentPage.value] || '')

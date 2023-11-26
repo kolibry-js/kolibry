@@ -1,9 +1,9 @@
 {
   "name": "create-kolibri",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "Create starter template for Kolibri",
-  "author": "nyxb <contact@nyxb.email>",
+  "author": "nyxb <contact@nyxb.email",
   "license": "MIT",
   "funding": "https://github.com/sponsors/nyxb",
   "homepage": "https://kolibri.show",
@@ -15,6 +15,9 @@
   "main": "index.mjs",
   "bin": {
     "create-kolibri": "index.mjs"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   },
   "scripts": {
     "build": "node build.mjs",

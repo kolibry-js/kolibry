@@ -1,7 +1,7 @@
 {
   "name": "@kolibrijs/client",
   "version": "0.0.0",
-  "description": "Developer-focused slide presentations",
+  "description": "Presentation slides for developers",
   "author": "nyxb <contact@nyxb.email>",
   "license": "MIT",
   "funding": "https://github.com/sponsors/nyxb",
@@ -19,9 +19,9 @@
     "node": ">=18.0.0"
   },
   "dependencies": {
-    "@nyxb/utils": "^0.0.3",
     "@kolibrijs/parser": "workspace:*",
     "@kolibrijs/types": "workspace:*",
+    "@nyxb/utils": "^0.0.3",
     "@unhead/vue": "^1.8.4",
     "@unocss/reset": "^0.57.4",
     "@vueuse/core": "^10.6.1",

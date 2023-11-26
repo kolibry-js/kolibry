@@ -1,6 +1,6 @@
 import type { ComputedRef, InjectionKey, Ref, UnwrapNestedRefs } from 'vue'
 import type { RouteRecordRaw } from 'vue-router'
-import type { RenderContext } from '@kolibri/types'
+import type { RenderContext } from '@kolibrijs/types'
 import type { KolibriContext } from './modules/context'
 
 export const injectionClicks: InjectionKey<Ref<number>> = Symbol('v-click-clicks')
