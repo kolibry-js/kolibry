@@ -1,5 +1,5 @@
 import { toArray, uniq } from '@nyxb/utils'
-import type { DrawingsOptions, FontOptions, ResolvedDrawingsOptions, ResolvedExportOptions, ResolvedFontOptions, KolibriConfig, KolibriThemeMeta } from '@kolibrijs/types'
+import type { DrawingsOptions, FontOptions, KolibriConfig, KolibriThemeMeta, ResolvedDrawingsOptions, ResolvedExportOptions, ResolvedFontOptions } from '@kolibrijs/types'
 import { parseAspectRatio } from './utils'
 
 export function getDefaultConfig(): KolibriConfig {

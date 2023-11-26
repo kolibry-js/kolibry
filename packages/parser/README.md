@@ -1,6 +1,6 @@
 # @kolibrijs/parser
 
-[![NPM version](https://img.shields.io/npm/v/@kolibrijs/parser?color=9945FF&label=)](https://www.npmjs.com/package/@kolibrijs/parser)
+[![NPM version](https://img.shields.io/npm/v/@kolibrijs/parser?color=3AB9D4&label=)](https://www.npmjs.com/package/@kolibrijs/parser)
 
 Slides markdown parser for [Kolibri](https://kolibri.show).
 

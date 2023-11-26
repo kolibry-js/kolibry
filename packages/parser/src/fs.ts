@@ -1,6 +1,6 @@
 import { promises as fs } from 'node:fs'
 import { dirname, resolve } from 'node:path'
-import type { PreparserExtensionLoader, SlideInfo, SlideInfoWithPath, KolibriMarkdown, KolibriPreparserExtension, KolibriThemeMeta } from '@kolibrijs/types'
+import type { KolibriMarkdown, KolibriPreparserExtension, KolibriThemeMeta, PreparserExtensionLoader, SlideInfo, SlideInfoWithPath } from '@kolibrijs/types'
 import { detectFeatures, mergeFeatureFlags, parse, stringify, stringifySlide } from './core'
 
 export * from './core'
