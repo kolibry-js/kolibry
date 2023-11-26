@@ -1,6 +1,6 @@
-# @kolibri/types
+# @kolibrijs/types
 
-[![NPM version](https://img.shields.io/npm/v/@kolibrijs/types?color=9945FF&label=)](https://www.npmjs.com/package/@kolibrijs/types)
+[![NPM version](https://img.shields.io/npm/v/@kolibrijs/types?color=3AB9D4&label=)](https://www.npmjs.com/package/@kolibrijs/types)
 
 Shared types for [Kolibri](https://kolibri.show).
 
