@@ -6,7 +6,7 @@
   ],
   "engines": {
     "node": ">=18.0.0",
-    "kolibri": ">=0.19.3"
+    "kolibri": ">=0.0.1"
   },
   "scripts": {
     "build": "kolibri build example.md",
