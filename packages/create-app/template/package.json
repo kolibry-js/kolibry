@@ -8,7 +8,7 @@
     "export": "kolibri export"
   },
   "dependencies": {
-    "@kolibrijs/cli": "^0.0.1",
+    "@kolibrijs/cli": "^0.0.2",
     "@kolibrijs/theme-default": "latest",
     "@kolibrijs/theme-seriph": "latest"
   }

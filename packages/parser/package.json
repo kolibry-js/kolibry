@@ -1,6 +1,6 @@
 {
   "name": "@kolibrijs/parser",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Markdown parser for Kolibri",
   "author": "nyxb <contact@nyxb.email>",
   "license": "MIT",
