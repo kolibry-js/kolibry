@@ -27,7 +27,7 @@ Presentation slides for developers
 </div>
 
 <div class="abs-br m-6 flex gap-2">
-  <button @click="kolibri.nav.openInEditor()" title="Open in Editor" class="text-xl kolibri-icon-btn opacity-50 !border-none !hover:text-white">
+  <button @click="$kolibri.nav.openInEditor()" title="Open in Editor" class="text-xl kolibri-icon-btn opacity-50 !border-none !hover:text-white">
     <carbon:edit />
   </button>
   <a href="https://github.com/kolibrijs/kolibri" target="_blank" alt="GitHub" title="Open in GitHub"
@@ -226,9 +226,9 @@ theme: seriph
 ---
 ```
 
-<img border="rounded" src="https://github.com/Enigma-js/themes/blob/main/screenshots/theme-default/01.png?raw=true" alt="">
+<img border="rounded" src="https://github.com/kolibrijs/themes/blob/main/screenshots/theme-default/01.png?raw=true" alt="">
 
-<img border="rounded" src="https://github.com/Enigma-js/themes/blob/main/screenshots/theme-seriph/01.png?raw=true" alt="">
+<img border="rounded" src="https://github.com/kolibrijs/themes/blob/main/screenshots/theme-seriph/01.png?raw=true" alt="">
 
 </div>
 
