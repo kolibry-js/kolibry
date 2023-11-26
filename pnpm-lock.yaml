@@ -140,15 +140,15 @@ importers:
       '@kolibrijs/cli':
         specifier: workspace:*
         version: link:../../../packages/kolibri
+      '@kolibrijs/theme-default':
+        specifier: ^0.0.0
+        version: 0.0.0
+      '@kolibrijs/theme-seriph':
+        specifier: ^0.0.0
+        version: 0.0.0
       '@kolibrijs/types':
         specifier: workspace:*
         version: link:../../../packages/types
-      '@slidev/theme-default':
-        specifier: ^0.21.2
-        version: 0.21.2
-      '@slidev/theme-seriph':
-        specifier: ^0.21.3
-        version: 0.21.3
       nodemon:
         specifier: ^3.0.1
         version: 3.0.1
@@ -164,15 +164,15 @@ importers:
       '@kolibrijs/cli':
         specifier: workspace:*
         version: link:../../packages/kolibri
+      '@kolibrijs/theme-default':
+        specifier: ^0.0.0
+        version: 0.0.0
+      '@kolibrijs/theme-seriph':
+        specifier: ^0.0.0
+        version: 0.0.0
       '@kolibrijs/types':
         specifier: workspace:*
         version: link:../../packages/types
-      '@slidev/theme-default':
-        specifier: ^0.21.2
-        version: 0.21.2
-      '@slidev/theme-seriph':
-        specifier: ^0.21.3
-        version: 0.21.3
       nodemon:
         specifier: ^3.0.1
         version: 3.0.1
@@ -182,15 +182,15 @@ importers:
       '@kolibrijs/cli':
         specifier: workspace:*
         version: link:../../packages/kolibri
+      '@kolibrijs/theme-default':
+        specifier: ^0.0.0
+        version: 0.0.0
+      '@kolibrijs/theme-seriph':
+        specifier: ^0.0.0
+        version: 0.0.0
       '@kolibrijs/types':
         specifier: workspace:*
         version: link:../../packages/types
-      '@slidev/theme-default':
-        specifier: ^0.21.2
-        version: 0.21.2
-      '@slidev/theme-seriph':
-        specifier: ^0.21.3
-        version: 0.21.3
       nodemon:
         specifier: ^3.0.1
         version: 3.0.1
@@ -1242,6 +1242,31 @@ packages:
       type-detect: 4.0.8
     dev: true
 
+  /@kolibrijs/theme-default@0.0.0:
+    resolution: {integrity: sha512-JJK32NqEiUSDRaOoD3pSAAHMtO4J6xunm4UaoIX5fw+G/Ao3RNKAgJeGLGzETTry81a6YaZ6ZifzI3zV7K8ITA==}
+    engines: {kolibri: '>=0.0.1', node: '>=14.0.0'}
+    dependencies:
+      '@kolibrijs/types': 0.0.1
+      codemirror-theme-vars: 0.1.1
+      prism-theme-vars: 0.2.4
+      theme-lumos: 0.0.3
+    dev: true
+
+  /@kolibrijs/theme-seriph@0.0.0:
+    resolution: {integrity: sha512-cxS1AE70WDwTdB1EpgECbRf2XsAQ3JJrQcDUNpeZZo3i+aw6A3A4Uz1DQ3/1vxMWdkl6Lq7LfJXTe8Tw8YtgqA==}
+    engines: {kolibri: '>=0.0.1', node: '>=14.0.0'}
+    dependencies:
+      '@kolibrijs/types': 0.0.1
+      codemirror-theme-vars: 0.1.1
+      prism-theme-vars: 0.2.4
+      theme-lumos: 0.0.3
+    dev: true
+
+  /@kolibrijs/types@0.0.1:
+    resolution: {integrity: sha512-0IdA8UfM0niSsitezZ8mYOJohlTBB4983RstE4FU5NDKuIM4pYDnVDRRIk7Z7WmKnHs/X1ksD0zsRGJFfgH8zw==}
+    engines: {node: '>=18.0.0'}
+    dev: true
+
   /@leichtgewicht/ip-codec@2.0.4:
     resolution: {integrity: sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==}
     dev: false
@@ -1465,31 +1490,6 @@ packages:
     resolution: {integrity: sha512-TV7t8GKYaJWsn00tFDqBw8+Uqmr8A0fRU1tvTQhyZzGv0sJCGRQL3JGMI3ucuKo3XIZdUP+Lx7/gh2t3lewy7g==}
     engines: {node: '>=14.16'}
     dev: false
-
-  /@slidev/theme-default@0.21.2:
-    resolution: {integrity: sha512-neUucFs2YrRZZd73QwvLTyRG/o1nerDFUR5t8YAmXVLTMzWfY71flQ6aAhjYf+WjsozYsOHcxi/pZtIzZ4VhTQ==}
-    engines: {node: '>=14.0.0', slidev: '>=0.19.2'}
-    dependencies:
-      '@slidev/types': 0.22.7
-      codemirror-theme-vars: 0.1.1
-      prism-theme-vars: 0.2.4
-      theme-vitesse: 0.1.14
-    dev: true
-
-  /@slidev/theme-seriph@0.21.3:
-    resolution: {integrity: sha512-cLya6O4hmcLHUhloCMPPoKMLX27Q+8M8pRS82BSsLXVeXTXrlpc3l3glx5VB738p+NQr7FgqFN6H2CXQRoVv9Q==}
-    engines: {node: '>=14.0.0', slidev: '>=0.19.3'}
-    dependencies:
-      '@slidev/types': 0.22.7
-      codemirror-theme-vars: 0.1.1
-      prism-theme-vars: 0.2.4
-      theme-vitesse: 0.1.14
-    dev: true
-
-  /@slidev/types@0.22.7:
-    resolution: {integrity: sha512-mCVKQbcGTv6d6n9aHpYNp5U04HF+FMbpY083vqpJ6Folc805BB1Am02eubaW0J6nM+dSOu2dDgPY+kIjs75sAQ==}
-    engines: {node: '>=14.0.0'}
-    dev: true
 
   /@stylistic/eslint-plugin-js@1.2.0:
     resolution: {integrity: sha512-1Zi/AlQzOzTlTegupd3vrUYHd02ilvk7x5O9ZRFjYGtUcwHVk+WTEKk/3Nmr8yuvzEiXqUNFJ8bv8b4rLYCPRQ==}
@@ -7840,9 +7840,9 @@ packages:
     resolution: {integrity: sha512-N+8UisAXDGk8PFXP4HAzVR9nbfmVJ3zYLAWiTIoqC5v5isinhr+r5uaO8+7r3BMfuNIufIsA7RdpVgacC2cSpw==}
     dev: true
 
-  /theme-vitesse@0.1.14:
-    resolution: {integrity: sha512-b5s+Zpfaw5+djoCJ9AEbcTbpiTlLsOvGM9oblDmmWRGWNqg9oXtEYO/uwubwx77novHBI6zNuwZRHKNlAIBo4A==}
-    engines: {vscode: ^1.43.0}
+  /theme-lumos@0.0.3:
+    resolution: {integrity: sha512-EZFlJYmx5c9MHiEbeqX6Qa0b+NBKqvNfB8wvQa2hpE/uzQKON5IcwcZjEsnzh9N0ec6du0nJPKFX0VroyUiZMA==}
+    engines: {vscode: ^1.78.2}
     dev: true
 
   /thenify-all@1.6.0:

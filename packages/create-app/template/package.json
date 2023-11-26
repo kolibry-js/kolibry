@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@kolibrijs/cli": "^0.0.1",
-    "@slidev/theme-default": "latest",
-    "@slidev/theme-seriph": "latest"
+    "@kolibrijs/theme-default": "latest",
+    "@kolibrijs/theme-seriph": "latest"
   }
 }

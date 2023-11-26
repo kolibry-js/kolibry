@@ -147,17 +147,17 @@ export function createSlidesLoader(
         const moduleIds = new Set<string>()
 
         if (data.slides.length !== newData.slides.length) {
-          moduleIds.add('/kolibrijs/routes')
+          moduleIds.add('/@kolibrijs/routes')
           range(newData.slides.length).map(i => hmrPages.add(i))
         }
 
         if (!equal(data.headmatter.defaults, newData.headmatter.defaults)) {
-          moduleIds.add('/kolibrijs/routes')
+          moduleIds.add('/@kolibrijs/routes')
           range(data.slides.length).map(i => hmrPages.add(i))
         }
 
         if (!equal(data.config, newData.config))
-          moduleIds.add('/kolibrijs/configs')
+          moduleIds.add('/@kolibrijs/configs')
 
         if (!equal(data.features, newData.features)) {
           setTimeout(() => {
@@ -194,7 +194,7 @@ export function createSlidesLoader(
         Object.assign(data, newData)
 
         if (hmrPages.size > 0)
-          moduleIds.add('/kolibrijs/titles.md')
+          moduleIds.add('/@kolibrijs/titles.md')
 
         const vueModules = Array.from(hmrPages)
           .flatMap(i => [
@@ -217,46 +217,46 @@ export function createSlidesLoader(
       },
 
       resolveId(id) {
-        if (id.startsWith(slidePrefix) || id.startsWith('/kolibrijs/'))
+        if (id.startsWith(slidePrefix) || id.startsWith('/@kolibrijs/'))
           return id
         return null
       },
 
       load(id): LoadResult | Promise<LoadResult> {
         // routes
-        if (id === '/kolibrijs/routes')
+        if (id === '/@kolibrijs/routes')
           return generateRoutes()
 
         // layouts
-        if (id === '/kolibrijs/layouts')
+        if (id === '/@kolibrijs/layouts')
           return generateLayouts()
 
         // styles
-        if (id === '/kolibrijs/styles')
+        if (id === '/@kolibrijs/styles')
           return generateUserStyles()
 
         // monaco-types
-        if (id === '/kolibrijs/monaco-types')
+        if (id === '/@kolibrijs/monaco-types')
           return generateMonacoTypes()
 
         // configs
-        if (id === '/kolibrijs/configs')
+        if (id === '/@kolibrijs/configs')
           return generateConfigs()
 
         // global component
-        if (id === '/kolibrijs/global-components/top')
+        if (id === '/@kolibrijs/global-components/top')
           return generateGlobalComponents('top')
 
         // global component
-        if (id === '/kolibrijs/global-components/bottom')
+        if (id === '/@kolibrijs/global-components/bottom')
           return generateGlobalComponents('bottom')
 
         // custom nav controls
-        if (id === '/kolibrijs/custom-nav-controls')
+        if (id === '/@kolibrijs/custom-nav-controls')
           return generateCustomNavControls()
 
         // title
-        if (id === '/kolibrijs/titles.md') {
+        if (id === '/@kolibrijs/titles.md') {
           return {
             code: data.slides
               .filter(({ frontmatter }) => !frontmatter?.disabled)
@@ -356,7 +356,7 @@ export function createSlidesLoader(
       name: 'kolibri:context-transform:pre',
       enforce: 'pre',
       async transform(code, id) {
-        if (!id.endsWith('.vue') || id.includes('/kolibrijs/client/') || id.includes('/packages/client/'))
+        if (!id.endsWith('.vue') || id.includes('/@kolibrijs/client/') || id.includes('/packages/client/'))
           return
         return transformVue(code)
       },
@@ -365,7 +365,7 @@ export function createSlidesLoader(
       name: 'kolibri:title-transform:pre',
       enforce: 'pre',
       transform(code, id) {
-        if (id !== '/kolibrijs/titles.md')
+        if (id !== '/@kolibrijs/titles.md')
           return
         return transformTitles(code)
       },
@@ -374,7 +374,7 @@ export function createSlidesLoader(
       name: 'kolibri:slide-transform:post',
       enforce: 'post',
       transform(code, id) {
-        if (!id.match(/\/kolibrijs\/slides\/\d+\.md($|\?)/))
+        if (!id.match(/\/@kolibrijs\/slides\/\d+\.md($|\?)/))
           return
         // force reload slide component to ensure v-click resolves correctly
         const replaced = code.replace('if (_rerender_only)', 'if (false)')
@@ -456,7 +456,7 @@ export function createSlidesLoader(
         component = component.slice(0, component.indexOf('</script>'))
 
         const scriptIndex = (matchScript.index || 0) + matchScript[0].length
-        const provideImport = '\nimport { injectionKolibriContext } from "kolibrijs/client/constants.ts"\n'
+        const provideImport = '\nimport { injectionKolibriContext } from "@kolibrijs/client/constants.ts"\n'
         code = `${code.slice(0, scriptIndex)}${provideImport}${code.slice(scriptIndex)}`
 
         let injectIndex = exportIndex + provideImport.length
@@ -586,7 +586,7 @@ defineProps<{ no: number | string }>()`)
   }
 
   async function generateMonacoTypes() {
-    return `void 0; ${parser.scanMonacoModules(data.raw).map(i => `import('/kolibrijs-monaco-types/${i}')`).join('\n')}`
+    return `void 0; ${parser.scanMonacoModules(data.raw).map(i => `import('/@kolibrijs-monaco-types/${i}')`).join('\n')}`
   }
 
   async function generateLayouts() {
