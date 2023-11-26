@@ -1,4 +1,4 @@
-# create-kolibri
+# create-kolibry
 
 [![NPM version](https://img.shields.io/npm/v/kolibrijs?color=9945FF&label=)](https://www.npmjs.com/package/create-kolibri)
 

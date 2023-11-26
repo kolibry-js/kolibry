@@ -1,5 +1,5 @@
 {
-  "name": "create-kolibri",
+  "name": "create-kolibry",
   "type": "module",
   "version": "0.0.1",
   "description": "Create starter template for Kolibri",
@@ -14,7 +14,7 @@
   "bugs": "https://github.com/kolibrijs/kolibri/issues",
   "main": "index.mjs",
   "bin": {
-    "create-kolibri": "index.mjs"
+    "create-kolibry": "index.mjs"
   },
   "engines": {
     "node": ">=18.0.0"
