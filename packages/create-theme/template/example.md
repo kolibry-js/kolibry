@@ -4,7 +4,7 @@ theme: ./
 
 # Kolibry Theme Starter
 
-Presentation slides for developers
+Developer-Focused Presentation Slides
 
 <div class="pt-12">
   <span @click="next" class="px-2 p-1 rounded cursor-pointer hover:bg-white hover:bg-opacity-10">

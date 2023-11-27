@@ -1,12 +1,12 @@
 ---
 theme: seriph
-background: https://source.unsplash.com/collection/94734566/1920x1080
+background: './assets/cover.jpg'
 class: text-center
 highlighter: shiki
 lineNumbers: false
 info: |
   ## Kolibry Starter Template
-  Presentation slides for developers.
+  Developer-Focused Presentation Slides.
 
   Learn more at [Kolibry.dev](https://kolibry.dev)
 drawings:
@@ -18,7 +18,7 @@ mdc: true
 
 # Welcome to Kolibry
 
-Presentation slides for developers
+Developer-Focused Presentation Slides
 
 <div class="pt-12">
   <span @click="$kolibry.nav.next" class="px-2 py-1 rounded cursor-pointer" hover="bg-white bg-opacity-10">
@@ -68,8 +68,8 @@ Learn more: https://kolibry.dev/guide/syntax#embedded-styles
 
 <style>
 h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
+  background-color: #9945FF;
+  background-image: linear-gradient(45deg, #9945FF 10%, #14F195 20%);
   background-size: 100%;
   -webkit-background-clip: text;
   -moz-background-clip: text;
@@ -123,7 +123,7 @@ Hover on the bottom-left corner to see the navigation's controls panel, [learn m
 
 ---
 layout: image-right
-image: https://source.unsplash.com/collection/94734566/1920x1080
+image: './assets/image.jpg'
 ---
 
 # Code
@@ -259,7 +259,7 @@ Animations are powered by [@vueuse/motion](https://motion.vueuse.org/).
       :initial="{ x: 800, y: -100, scale: 1.5, rotate: -50 }"
       :enter="final"
       class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://kolibry.dev/logo-square.png"
+      src="https://sli.dev/logo-head.png"
       alt=""
     />
     <img
@@ -267,7 +267,7 @@ Animations are powered by [@vueuse/motion](https://motion.vueuse.org/).
       :initial="{ y: 500, x: -100, scale: 2 }"
       :enter="final"
       class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://kolibry.dev/logo-circle.png"
+      src="https://sli.dev/logo-wings.png"
       alt=""
     />
     <img
@@ -275,13 +275,13 @@ Animations are powered by [@vueuse/motion](https://motion.vueuse.org/).
       :initial="{ x: 600, y: 400, scale: 2, rotate: 100 }"
       :enter="final"
       class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://kolibry.dev/logo-triangle.png"
+      src="https://sli.dev/logo-tail.png"
       alt=""
     />
   </div>
 
   <div
-    class="text-5xl absolute top-14 left-40 text-[#2B90B6] -z-1"
+    class="text-5xl absolute top-14 left-40 text-[#9945FF] -z-1"
     v-motion
     :initial="{ x: -80, opacity: 0}"
     :enter="{ x: 0, opacity: 1, transition: { delay: 2000, duration: 1000 } }">

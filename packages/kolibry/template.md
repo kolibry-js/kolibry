@@ -11,14 +11,14 @@ highlighter: shiki
 # some information about the slides, markdown enabled
 info: |
   ## Kolibry Starter Template
-  Presentation slides for developers.
+  Developer-Focused Presentation Slides.
 
   Learn more at [Kolibry.dev](https://kolibry.dev)
 ---
 
 # Welcome to Kolibry
 
-Presentation slides for developers
+Developer-Focused Presentation Slides
 
 <div class="pt-12">
   <span @click="$kolibry.nav.next" class="px-2 p-1 rounded cursor-pointer" hover="bg-white bg-opacity-10">
