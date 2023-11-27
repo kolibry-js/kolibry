@@ -70,7 +70,7 @@ npm init kolibry
 Documentations:
 **[English](https://kolibry.dev)** | [German](https://de.kolibry.dev) | [中文文档](https://cn.kolibry.dev) | [Français](https://fr.kolibry.dev) | [Español](https://es.kolibry.dev) | [Русский](https://ru.kolibry.dev) | [Português-BR](https://br.kolibry.dev)
 
-Discord: [chat.kolibry.dev](https://chat.kolibry.dev)
+Discord: [nyxb.chat](https://chat.kolibry.dev)
 
 For a full example, you can check the [demo](https://github.com/kolibry-js/kolibry/blob/main/demo) folder.
 
