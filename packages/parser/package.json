@@ -1,6 +1,6 @@
 {
   "name": "@kolibry/parser",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Markdown parser for Kolibry",
   "author": "nyxb <contact@nyxb.email>",
   "license": "MIT",
