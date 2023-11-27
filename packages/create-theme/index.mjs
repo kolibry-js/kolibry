@@ -9,7 +9,7 @@ import { createRequire } from 'node:module'
 import { fileURLToPath } from 'node:url'
 import minimist from 'minimist'
 import prompts from 'prompts'
-import { blue, bold, cyan, dim, green, yellow } from 'kolorist'
+import { blue, bold, dim, green, yellow } from 'kolorist'
 
 const argv = minimist(process.argv.slice(2))
 const cwd = process.cwd()
