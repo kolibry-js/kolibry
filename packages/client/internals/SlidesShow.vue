@@ -34,7 +34,7 @@ router.beforeEach(() => {
 })
 
 const DrawingLayer = shallowRef<any>()
-if (__KOLIBRI_FEATURE_DRAWINGS__ || __KOLIBRI_FEATURE_DRAWINGS_PERSIST__)
+if (__KOLIBRY_FEATURE_DRAWINGS__ || __KOLIBRY_FEATURE_DRAWINGS_PERSIST__)
   import('./DrawingLayer.vue').then(v => DrawingLayer.value = v.default)
 
 const loadedRoutes = computed(() => rawRoutes.filter(r => r.meta?.__preloaded || r === currentRoute.value))
@@ -75,7 +75,7 @@ function onAfterLeave() {
   <!-- Global Top -->
   <GlobalTop />
 
-  <template v-if="(__KOLIBRI_FEATURE_DRAWINGS__ || __KOLIBRI_FEATURE_DRAWINGS_PERSIST__) && DrawingLayer">
+  <template v-if="(__KOLIBRY_FEATURE_DRAWINGS__ || __KOLIBRY_FEATURE_DRAWINGS_PERSIST__) && DrawingLayer">
     <DrawingLayer />
   </template>
   <PresenterMouse v-if="!isPresenter" />

@@ -56,7 +56,7 @@ const nextSlide = computed(() => {
 })
 
 const Editor = shallowRef<any>()
-if (__DEV__ && __KOLIBRI_FEATURE_EDITOR__)
+if (__DEV__ && __KOLIBRY_FEATURE_EDITOR__)
   import('./Editor.vue').then(v => Editor.value = v.default)
 
 // sync presenter cursor
@@ -138,7 +138,7 @@ onMounted(() => {
         </div>
       </div>
       <!-- Notes -->
-      <div v-if="__DEV__ && __KOLIBRI_FEATURE_EDITOR__ && Editor && showEditor" class="grid-section note of-auto">
+      <div v-if="__DEV__ && __KOLIBRY_FEATURE_EDITOR__ && Editor && showEditor" class="grid-section note of-auto">
         <Editor />
       </div>
       <div v-else class="grid-section note grid grid-rows-[1fr_min-content] overflow-hidden">
@@ -174,7 +174,7 @@ onMounted(() => {
       <div class="grid-section bottom">
         <NavControls :persist="true" />
       </div>
-      <DrawingControls v-if="__KOLIBRI_FEATURE_DRAWINGS__" />
+      <DrawingControls v-if="__KOLIBRY_FEATURE_DRAWINGS__" />
     </div>
     <div class="progress-bar">
       <div

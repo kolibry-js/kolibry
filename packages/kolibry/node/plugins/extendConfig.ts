@@ -110,13 +110,13 @@ export function createConfigPlugin(options: ResolvedKolibryOptions): Plugin {
 export function getDefine(options: ResolvedKolibryOptions): Record<string, string> {
   return {
     __DEV__: options.mode === 'dev' ? 'true' : 'false',
-    __KOLIBRI_CLIENT_ROOT__: JSON.stringify(toAtFS(options.clientRoot)),
-    __KOLIBRI_HASH_ROUTE__: JSON.stringify(options.data.config.routerMode === 'hash'),
-    __KOLIBRI_FEATURE_DRAWINGS__: JSON.stringify(options.data.config.drawings.enabled === true || options.data.config.drawings.enabled === options.mode),
-    __KOLIBRI_FEATURE_EDITOR__: JSON.stringify(options.mode === 'dev' && options.data.config.editor !== false),
-    __KOLIBRI_FEATURE_DRAWINGS_PERSIST__: JSON.stringify(!!options.data.config.drawings.persist === true),
-    __KOLIBRI_FEATURE_RECORD__: JSON.stringify(options.data.config.record === true || options.data.config.record === options.mode),
-    __KOLIBRI_FEATURE_PRESENTER__: JSON.stringify(options.data.config.presenter === true || options.data.config.presenter === options.mode),
-    __KOLIBRI_HAS_SERVER__: options.mode !== 'build' ? 'true' : 'false',
+    __KOLIBRY_CLIENT_ROOT__: JSON.stringify(toAtFS(options.clientRoot)),
+    __KOLIBRY_HASH_ROUTE__: JSON.stringify(options.data.config.routerMode === 'hash'),
+    __KOLIBRY_FEATURE_DRAWINGS__: JSON.stringify(options.data.config.drawings.enabled === true || options.data.config.drawings.enabled === options.mode),
+    __KOLIBRY_FEATURE_EDITOR__: JSON.stringify(options.mode === 'dev' && options.data.config.editor !== false),
+    __KOLIBRY_FEATURE_DRAWINGS_PERSIST__: JSON.stringify(!!options.data.config.drawings.persist === true),
+    __KOLIBRY_FEATURE_RECORD__: JSON.stringify(options.data.config.record === true || options.data.config.record === options.mode),
+    __KOLIBRY_FEATURE_PRESENTER__: JSON.stringify(options.data.config.presenter === true || options.data.config.presenter === options.mode),
+    __KOLIBRY_HAS_SERVER__: options.mode !== 'build' ? 'true' : 'false',
   }
 }

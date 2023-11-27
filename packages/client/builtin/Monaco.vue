@@ -78,7 +78,7 @@ onMounted(() => {
   ].join(' '))
 
   let src = __DEV__
-    ? `${location.origin}${__KOLIBRI_CLIENT_ROOT__}/`
+    ? `${location.origin}${__KOLIBRY_CLIENT_ROOT__}/`
     : import.meta.env.BASE_URL
   src += `iframes/monaco/index.html?id=${id}&lineNumbers=${props.lineNumbers}&lang=${props.lang}`
   if (diff.value)

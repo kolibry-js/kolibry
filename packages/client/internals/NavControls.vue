@@ -37,11 +37,11 @@ const barStyle = computed(() => props.persist
   : 'rounded-md bg-main shadow dark:border dark:border-gray-400 dark:border-opacity-10')
 
 const RecordingControls = shallowRef<any>()
-if (__KOLIBRI_FEATURE_RECORD__)
+if (__KOLIBRY_FEATURE_RECORD__)
   import('./RecordingControls.vue').then(v => RecordingControls.value = v.default)
 
 const DrawingControls = shallowRef<any>()
-if (__KOLIBRI_FEATURE_DRAWINGS__)
+if (__KOLIBRY_FEATURE_DRAWINGS__)
   import('./DrawingControls.vue').then(v => DrawingControls.value = v.default)
 </script>
 
@@ -119,7 +119,7 @@ if (__KOLIBRI_FEATURE_DRAWINGS__)
         </button>
       </template>
 
-      <template v-if="__KOLIBRI_FEATURE_DRAWINGS__ && (!configs.drawings.presenterOnly || isPresenter) && !isEmbedded">
+      <template v-if="__KOLIBRY_FEATURE_DRAWINGS__ && (!configs.drawings.presenterOnly || isPresenter) && !isEmbedded">
         <button class="kolibry-icon-btn relative" title="Drawing" @click="drawingEnabled = !drawingEnabled">
           <HiddenText v-if="drawingEnabled" :text="drawingEnabled ? 'Hide drawing toolbar' : 'Show drawing toolbar'" />
           <carbon:pen />
@@ -136,12 +136,12 @@ if (__KOLIBRI_FEATURE_DRAWINGS__)
         <RouterLink v-if="isPresenter" :to="nonPresenterLink" class="kolibry-icon-btn" title="Play Mode">
           <carbon:presentation-file />
         </RouterLink>
-        <RouterLink v-if="__KOLIBRI_FEATURE_PRESENTER__ && showPresenter" :to="presenterLink" class="kolibry-icon-btn" title="Presenter Mode">
+        <RouterLink v-if="__KOLIBRY_FEATURE_PRESENTER__ && showPresenter" :to="presenterLink" class="kolibry-icon-btn" title="Presenter Mode">
           <carbon:user-speaker />
         </RouterLink>
 
         <button
-          v-if="__DEV__ && __KOLIBRI_FEATURE_EDITOR__"
+          v-if="__DEV__ && __KOLIBRY_FEATURE_EDITOR__"
           class="kolibry-icon-btn <md:hidden"
           @click="showEditor = !showEditor"
         >

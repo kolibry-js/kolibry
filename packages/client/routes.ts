@@ -27,7 +27,7 @@ export const routes: RouteRecordRaw[] = [
   { path: '/:pathMatch(.*)', redirect: { path: '/1' } },
 ]
 
-if (__KOLIBRI_FEATURE_PRESENTER__) {
+if (__KOLIBRY_FEATURE_PRESENTER__) {
   function passwordGuard(to: RouteLocationNormalized) {
     if (!_configs.remote || _configs.remote === to.query.password)
       return true
@@ -42,7 +42,7 @@ if (__KOLIBRI_FEATURE_PRESENTER__) {
     return { path: '' }
   }
   routes.push({ path: '/presenter/print', component: () => import('./internals/PresenterPrint.vue') })
-  if (__KOLIBRI_HAS_SERVER__) {
+  if (__KOLIBRY_HAS_SERVER__) {
     routes.push({
       name: 'entry',
       path: '/entry',
@@ -68,7 +68,7 @@ if (__KOLIBRI_FEATURE_PRESENTER__) {
 }
 
 export const router = createRouter({
-  history: __KOLIBRI_HASH_ROUTE__
+  history: __KOLIBRY_HASH_ROUTE__
     ? createWebHashHistory(import.meta.env.BASE_URL)
     : createWebHistory(import.meta.env.BASE_URL),
   routes,

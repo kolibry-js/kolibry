@@ -33,7 +33,7 @@ const style = computed(() => ({
 }))
 
 const DrawingPreview = shallowRef<any>()
-if (__KOLIBRI_FEATURE_DRAWINGS__ || __KOLIBRI_FEATURE_DRAWINGS_PERSIST__)
+if (__KOLIBRY_FEATURE_DRAWINGS__ || __KOLIBRY_FEATURE_DRAWINGS_PERSIST__)
   import('./DrawingPreview.vue').then(v => (DrawingPreview.value = v.default))
 
 const clicks = computed(() => props.clicks)
@@ -61,8 +61,8 @@ provide(injectionKolibryContext, reactive({
     />
     <template
       v-if="
-        (__KOLIBRI_FEATURE_DRAWINGS__
-          || __KOLIBRI_FEATURE_DRAWINGS_PERSIST__)
+        (__KOLIBRY_FEATURE_DRAWINGS__
+          || __KOLIBRY_FEATURE_DRAWINGS_PERSIST__)
           && DrawingPreview
       "
     >

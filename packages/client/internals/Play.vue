@@ -32,11 +32,11 @@ useSwipeControls(root)
 const persistNav = computed(() => isScreenVertical.value || showEditor.value)
 
 const Editor = shallowRef<any>()
-if (__DEV__ && __KOLIBRI_FEATURE_EDITOR__)
+if (__DEV__ && __KOLIBRY_FEATURE_EDITOR__)
   import('./Editor.vue').then(v => Editor.value = v.default)
 
 const DrawingControls = shallowRef<any>()
-if (__KOLIBRI_FEATURE_DRAWINGS__)
+if (__KOLIBRY_FEATURE_DRAWINGS__)
   import('./DrawingControls.vue').then(v => DrawingControls.value = v.default)
 </script>
 
@@ -63,13 +63,13 @@ if (__KOLIBRI_FEATURE_DRAWINGS__)
         >
           <NavControls class="m-auto" :persist="persistNav" />
         </div>
-        <template v-if="__KOLIBRI_FEATURE_DRAWINGS__ && !configs.drawings.presenterOnly && !isEmbedded && DrawingControls">
+        <template v-if="__KOLIBRY_FEATURE_DRAWINGS__ && !configs.drawings.presenterOnly && !isEmbedded && DrawingControls">
           <DrawingControls class="ml-0" />
         </template>
       </template>
     </SlideContainer>
 
-    <template v-if="__DEV__ && __KOLIBRI_FEATURE_EDITOR__ && Editor && showEditor">
+    <template v-if="__DEV__ && __KOLIBRY_FEATURE_EDITOR__ && Editor && showEditor">
       <Editor :resize="true" />
     </template>
   </div>

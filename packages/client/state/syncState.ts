@@ -7,7 +7,7 @@ export function createSyncState<State extends object>(serverState: State, defaul
   let patchingTimeout: NodeJS.Timeout
   let updatingTimeout: NodeJS.Timeout
 
-  const state = __KOLIBRI_HAS_SERVER__
+  const state = __KOLIBRY_HAS_SERVER__
     ? reactive<State>(serverState) as State
     : reactive<State>(defaultState) as State
 
@@ -37,11 +37,11 @@ export function createSyncState<State extends object>(serverState: State, defaul
 
   function init(channelKey: string) {
     let stateChannel: BroadcastChannel
-    if (!__KOLIBRI_HAS_SERVER__ && !persist) {
+    if (!__KOLIBRY_HAS_SERVER__ && !persist) {
       stateChannel = new BroadcastChannel(channelKey)
       stateChannel.addEventListener('message', (event: MessageEvent<Partial<State>>) => onUpdate(event.data))
     }
-    else if (!__KOLIBRI_HAS_SERVER__ && persist) {
+    else if (!__KOLIBRY_HAS_SERVER__ && persist) {
       window.addEventListener('storage', (event) => {
         if (event && event.key === channelKey && event.newValue)
           onUpdate(JSON.parse(event.newValue) as Partial<State>)
@@ -59,7 +59,7 @@ export function createSyncState<State extends object>(serverState: State, defaul
 
     watch(state, onStateChanged, { deep: true, flush: 'sync' })
 
-    if (!__KOLIBRI_HAS_SERVER__ && persist) {
+    if (!__KOLIBRY_HAS_SERVER__ && persist) {
       const serialzedState = window.localStorage.getItem(channelKey)
       if (serialzedState)
         onUpdate(JSON.parse(serialzedState) as Partial<State>)

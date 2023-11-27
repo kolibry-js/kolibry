@@ -8,7 +8,7 @@ import Goto from './Goto.vue'
 
 const WebCamera = shallowRef<any>()
 const RecordingDialog = shallowRef<any>()
-if (__KOLIBRI_FEATURE_RECORD__) {
+if (__KOLIBRY_FEATURE_RECORD__) {
   import('./WebCamera.vue').then(v => WebCamera.value = v.default)
   import('./RecordingDialog.vue').then(v => RecordingDialog.value = v.default)
 }
