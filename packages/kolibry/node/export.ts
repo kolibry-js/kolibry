@@ -69,7 +69,7 @@ export interface ExportNotesOptions {
 
 function createKolibryProgress(indeterminate = false) {
   function getSpinner(n = 0) {
-    return [cyan('●'), green('◆'), blue('■'), yellow('▲')][n % 4]
+    return ['🪹', '🪺', '🐣', '🐥'][n % 4]
   }
   let current = 0
   let spinner = 0

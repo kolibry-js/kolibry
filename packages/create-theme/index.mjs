@@ -24,7 +24,7 @@ const renameFiles = {
 
 async function init() {
   console.log()
-  console.log(`  ${cyan('●') + blue('■') + yellow('▲')}`)
+  console.log(`  🪽 🪽 🪽`)
   console.log(`${bold('  Kolibry') + dim(' Theme Creator')}  ${blue(`v${version}`)}`)
   console.log()
 
@@ -72,9 +72,9 @@ async function init() {
 
   prepareTemplate(root, path.join(__dirname, 'template'), packageName)
 
-  const pkgManager = (/pnpm/.test(process.env.npm_execpath) || /pnpm/.test(process.env.npm_config_user_agent))
+  const pkgManager = (/pnpm/.test(process.env.npm_execpath ?? '') || /pnpm/.test(process.env.npm_config_user_agent ?? ''))
     ? 'pnpm'
-    : /yarn/.test(process.env.npm_execpath) ? 'yarn' : 'npm'
+    : /yarn/.test(process.env.npm_execpath ?? '') ? 'yarn' : 'npm'
 
   const related = path.relative(cwd, root)
 
@@ -87,7 +87,7 @@ async function init() {
   console.log(blue(`  ${pkgManager === 'yarn' ? 'yarn' : `${pkgManager} install`}`))
   console.log(blue(`  ${pkgManager === 'yarn' ? 'yarn dev' : `${pkgManager} run dev`}`))
   console.log()
-  console.log(`  ${cyan('●')} ${blue('■')} ${yellow('▲')}`)
+  console.log(`  🪽 🪽 🪽`)
   console.log()
 }
 

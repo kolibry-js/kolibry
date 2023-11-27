@@ -25,7 +25,7 @@ const renameFiles = {
 
 async function init() {
   console.log()
-  console.log(`  ${cyan('●') + blue('■') + yellow('▲')}`)
+  console.log(`  🪽 🪽 🪽`)
   console.log(`${bold('  Kolibry') + dim(' Creator')}  ${blue(`v${version}`)}`)
   console.log()
 
@@ -117,7 +117,7 @@ async function init() {
       name: 'agent',
       type: 'select',
       message: 'Choose the agent',
-      choices: ['npm', 'yarn', 'pnpm'].map(i => ({ value: i, title: i })),
+      choices: ['pnpm', 'npm', 'yarn'].map(i => ({ value: i, title: i })),
     })
 
     if (!agent)
@@ -134,7 +134,7 @@ async function init() {
     console.log(blue(`  ${pkgManager === 'yarn' ? 'yarn' : `${pkgManager} install`}`))
     console.log(blue(`  ${pkgManager === 'yarn' ? 'yarn dev' : `${pkgManager} run dev`}`))
     console.log()
-    console.log(`  ${cyan('●')} ${blue('■')} ${yellow('▲')}`)
+    console.log(`  🪽 🪽 🪽`)
     console.log()
   }
 }

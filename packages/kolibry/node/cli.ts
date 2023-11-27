@@ -540,7 +540,7 @@ function printInfo(
 ) {
   console.log()
   console.log()
-  console.log(`  ${cyan('●') + blue('■') + yellow('▲')}`)
+  console.log(`  🪽 🪽 🪽`)
   console.log(`${bold('  Kolibry')}  ${blue(`v${version}`)} ${isInstalledGlobally ? yellow('(global)') : ''}`)
   console.log()
 
