@@ -1,7 +1,7 @@
 <br>
 <p align="center">
 <a href="https://kolibry.dev" target="_blank">
-<img src="https://kolibry.dev/logo-title.png" alt="Kolibry" height="250" width="250"/>
+<img src="https://raw.githubusercontent.com/kolibry-js/kolibry/main/assets/logo-title.png" alt="Kolibry" height="250" width="250"/>
 </a>
 </p>
 
