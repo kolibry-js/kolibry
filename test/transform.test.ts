@@ -3,7 +3,7 @@ import {
   transformPageCSS,
   transformPlantUml,
   transformSlotSugar,
-} from '@kolibrijs/cli/node/plugins/markdown'
+} from '@kolibry/cli/node/plugins/markdown'
 import { describe, expect, it } from 'vitest'
 
 describe('markdown transform', () => {

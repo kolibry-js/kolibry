@@ -1,6 +1,6 @@
 /* __imports__ */
 
-import type { AppContext } from '@kolibrijs/types'
+import type { AppContext } from '@kolibry/types'
 import { MotionPlugin } from '@vueuse/motion'
 import StarportPlugin from 'vue-starport'
 

@@ -1,8 +1,8 @@
-# @kolibrijs/types
+# @kolibry/types
 
-[![NPM version](https://img.shields.io/npm/v/@kolibrijs/types?color=3AB9D4&label=)](https://www.npmjs.com/package/@kolibrijs/types)
+[![NPM version](https://img.shields.io/npm/v/@kolibry/types?color=3AB9D4&label=)](https://www.npmjs.com/package/@kolibry/types)
 
-Shared types for [Kolibri](https://kolibri.show).
+Shared types for [Kolibry](https://kolibry.dev).
 
 ## License
 

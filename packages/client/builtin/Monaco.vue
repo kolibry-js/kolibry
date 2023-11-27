@@ -8,7 +8,7 @@ Usage:
 const your_code = 'here'
 ```
 
-Learn more: https://kolibri.show/guide/syntax.html#monaco-editor
+Learn more: https://kolibry.show/guide/syntax.html#monaco-editor
 -->
 
 <script setup lang="ts">
@@ -38,7 +38,7 @@ const props = withDefaults(defineProps<{
 const id = nanoid()
 const code = ref(decode(props.code).trimEnd())
 const diff = ref(props.diff ? decode(props.diff).trimEnd() : null)
-const lineHeight = +(getComputedStyle(document.body).getPropertyValue('--kolibri-code-line-height') || '18').replace('px', '') || 18
+const lineHeight = +(getComputedStyle(document.body).getPropertyValue('--kolibry-code-line-height') || '18').replace('px', '') || 18
 const editorHeight = ref(0)
 const calculatedHeight = computed(() => code.value.split(/\r?\n/g).length * lineHeight)
 const height = computed(() => {
@@ -48,13 +48,13 @@ const height = computed(() => {
 const iframe = ref<HTMLIFrameElement>()
 
 const cssVars = [
-  '--kolibri-code-font-size',
-  '--kolibri-code-font-family',
-  '--kolibri-code-background',
-  '--kolibri-code-line-height',
-  '--kolibri-code-padding',
-  '--kolibri-code-margin',
-  '--kolibri-code-radius',
+  '--kolibry-code-font-size',
+  '--kolibry-code-font-family',
+  '--kolibry-code-background',
+  '--kolibry-code-line-height',
+  '--kolibry-code-padding',
+  '--kolibry-code-margin',
+  '--kolibry-code-radius',
 ]
 
 function getStyleObject(el: Element) {
@@ -91,7 +91,7 @@ onMounted(() => {
 function post(payload: any) {
   iframe.value?.contentWindow?.postMessage(
     JSON.stringify({
-      type: 'kolibri-monaco',
+      type: 'kolibry-monaco',
       data: payload,
       id,
     }),
@@ -102,7 +102,7 @@ function post(payload: any) {
 useEventListener(window, 'message', ({ data: payload }) => {
   if (payload.id !== id)
     return
-  if (payload.type === 'kolibri-monaco-loaded') {
+  if (payload.type === 'kolibry-monaco-loaded') {
     if (iframe.value) {
       post({
         code: code.value,
@@ -117,7 +117,7 @@ useEventListener(window, 'message', ({ data: payload }) => {
     }
     return
   }
-  if (payload.type !== 'kolibri-monaco')
+  if (payload.type !== 'kolibry-monaco')
     return
   if (payload.data?.height)
     editorHeight.value = payload.data?.height

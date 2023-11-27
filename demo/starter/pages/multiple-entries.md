@@ -24,4 +24,4 @@ src: ./subpage.md
 Page 2 from another file.
 ```
 
-[Learn more](https://kolibri.show/guide/syntax.html#multiple-entries)
+[Learn more](https://kolibry.dev/guide/syntax.html#multiple-entries)

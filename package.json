@@ -23,9 +23,9 @@
     "test": "vitest test"
   },
   "devDependencies": {
-    "@kolibrijs/cli": "workspace:*",
-    "@kolibrijs/parser": "workspace:*",
-    "@kolibrijs/types": "workspace:*",
+    "@kolibry/cli": "workspace:*",
+    "@kolibry/parser": "workspace:*",
+    "@kolibry/types": "workspace:*",
     "@nyxb/eslint-config": "^1.0.6",
     "@nyxb/nyxi": "^0.0.31",
     "@nyxb/utils": "^0.0.3",

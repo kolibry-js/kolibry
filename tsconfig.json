@@ -7,11 +7,11 @@
     "module": "ESNext",
     "moduleResolution": "node",
     "paths": {
-      "@kolibrijs/client/*": ["./packages/client/*"],
-      "@kolibrijs/types": ["./packages/types/src/index.ts"],
-      "@kolibrijs/parser/fs": ["./packages/parser/src/fs.ts"],
-      "@kolibrijs/parser/core": ["./packages/parser/src/core.ts"],
-      "@kolibrijs/parser": ["./packages/parser/src/index.ts"]
+      "@kolibry/client/*": ["./packages/client/*"],
+      "@kolibry/types": ["./packages/types/src/index.ts"],
+      "@kolibry/parser/fs": ["./packages/parser/src/fs.ts"],
+      "@kolibry/parser/core": ["./packages/parser/src/core.ts"],
+      "@kolibry/parser": ["./packages/parser/src/index.ts"]
     },
     "resolveJsonModule": true,
     "types": [

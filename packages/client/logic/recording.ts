@@ -11,7 +11,7 @@ type MimeType = Defined<RecorderOptions['mimeType']>
 
 export const recordingName = ref('')
 export const recordCamera = ref(true)
-export const mimeType = useLocalStorage<MimeType>('kolibri-record-mimetype', 'video/webm')
+export const mimeType = useLocalStorage<MimeType>('kolibry-record-mimetype', 'video/webm')
 
 export const mimeExtMap: Record<string, string> = {
   'video/webm': 'webm',

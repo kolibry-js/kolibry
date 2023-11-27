@@ -1,7 +1,7 @@
 /**
  * <v-clicks/> click animations component
  *
- * Learn more: https://kolibri.show/guide/animations.html#click-animations
+ * Learn more: https://kolibry.dev/guide/animations.html#click-animations
  */
 
 import { toArray } from '@nyxb/utils'

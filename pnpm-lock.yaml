@@ -8,13 +8,13 @@ importers:
 
   .:
     devDependencies:
-      '@kolibrijs/cli':
+      '@kolibry/cli':
         specifier: workspace:*
-        version: link:packages/kolibri
-      '@kolibrijs/parser':
+        version: link:packages/kolibry
+      '@kolibry/parser':
         specifier: workspace:*
         version: link:packages/parser
-      '@kolibrijs/types':
+      '@kolibry/types':
         specifier: workspace:*
         version: link:packages/types
       '@nyxb/eslint-config':
@@ -137,16 +137,16 @@ importers:
 
   cypress/fixtures/basic:
     devDependencies:
-      '@kolibrijs/cli':
+      '@kolibry/cli':
         specifier: workspace:*
-        version: link:../../../packages/kolibri
-      '@kolibrijs/theme-default':
-        specifier: ^0.0.0
-        version: 0.0.0
-      '@kolibrijs/theme-seriph':
-        specifier: ^0.0.0
-        version: 0.0.0
-      '@kolibrijs/types':
+        version: link:../../../packages/kolibry
+      '@kolibry/theme-default':
+        specifier: ^0.0.2
+        version: 0.0.2
+      '@kolibry/theme-seriph':
+        specifier: ^0.0.2
+        version: 0.0.2
+      '@kolibry/types':
         specifier: workspace:*
         version: link:../../../packages/types
       nodemon:
@@ -161,16 +161,16 @@ importers:
       '@iconify-json/ri':
         specifier: ^1.1.12
         version: 1.1.12
-      '@kolibrijs/cli':
+      '@kolibry/cli':
         specifier: workspace:*
-        version: link:../../packages/kolibri
-      '@kolibrijs/theme-default':
-        specifier: ^0.0.0
-        version: 0.0.0
-      '@kolibrijs/theme-seriph':
-        specifier: ^0.0.0
-        version: 0.0.0
-      '@kolibrijs/types':
+        version: link:../../packages/kolibry
+      '@kolibry/theme-default':
+        specifier: ^0.0.2
+        version: 0.0.2
+      '@kolibry/theme-seriph':
+        specifier: ^0.0.2
+        version: 0.0.2
+      '@kolibry/types':
         specifier: workspace:*
         version: link:../../packages/types
       nodemon:
@@ -179,16 +179,16 @@ importers:
 
   demo/starter:
     devDependencies:
-      '@kolibrijs/cli':
+      '@kolibry/cli':
         specifier: workspace:*
-        version: link:../../packages/kolibri
-      '@kolibrijs/theme-default':
-        specifier: ^0.0.0
-        version: 0.0.0
-      '@kolibrijs/theme-seriph':
-        specifier: ^0.0.0
-        version: 0.0.0
-      '@kolibrijs/types':
+        version: link:../../packages/kolibry
+      '@kolibry/theme-default':
+        specifier: ^0.0.1
+        version: 0.0.1
+      '@kolibry/theme-seriph':
+        specifier: ^0.0.1
+        version: 0.0.1
+      '@kolibry/types':
         specifier: workspace:*
         version: link:../../packages/types
       nodemon:
@@ -197,10 +197,10 @@ importers:
 
   packages/client:
     dependencies:
-      '@kolibrijs/parser':
+      '@kolibry/parser':
         specifier: workspace:*
         version: link:../parser
-      '@kolibrijs/types':
+      '@kolibry/types':
         specifier: workspace:*
         version: link:../types
       '@nyxb/utils':
@@ -313,7 +313,7 @@ importers:
         specifier: ^2.4.2
         version: 2.4.2
 
-  packages/kolibri:
+  packages/kolibry:
     dependencies:
       '@hedgedoc/markdown-it-plugins':
         specifier: ^2.1.4
@@ -324,13 +324,13 @@ importers:
       '@iconify-json/ph':
         specifier: ^1.1.6
         version: 1.1.6
-      '@kolibrijs/client':
+      '@kolibry/client':
         specifier: workspace:*
         version: link:../client
-      '@kolibrijs/parser':
+      '@kolibry/parser':
         specifier: workspace:*
         version: link:../parser
-      '@kolibrijs/types':
+      '@kolibry/types':
         specifier: workspace:*
         version: link:../types
       '@lillallol/outline-pdf':
@@ -523,7 +523,7 @@ importers:
 
   packages/parser:
     dependencies:
-      '@kolibrijs/types':
+      '@kolibry/types':
         specifier: workspace:*
         version: link:../types
       js-yaml:
@@ -1242,28 +1242,54 @@ packages:
       type-detect: 4.0.8
     dev: true
 
-  /@kolibrijs/theme-default@0.0.0:
-    resolution: {integrity: sha512-JJK32NqEiUSDRaOoD3pSAAHMtO4J6xunm4UaoIX5fw+G/Ao3RNKAgJeGLGzETTry81a6YaZ6ZifzI3zV7K8ITA==}
-    engines: {kolibri: '>=0.0.1', node: '>=14.0.0'}
+  /@kolibrijs/types@0.0.2:
+    resolution: {integrity: sha512-17Md6J6HXLhSpDmMKq6+TpIdiXVEcsze+yVlcVXkAe8f+xlOqgDQfnYFat0YZMYYbhG5xI+JiQ4mKv646aRmXg==}
+    engines: {node: '>=18.0.0'}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+    dev: true
+
+  /@kolibry/theme-default@0.0.1:
+    resolution: {integrity: sha512-vzWgx3ao6mhfQuq/A33yupBdce4hq4/qrQwXkW3W9Kh7/aUmQR7aJHlinmoPLfQAzsLbiYUw/GCv7nSFLGiw5w==}
+    engines: {kolibry: '>=0.0.1', node: '>=14.0.0'}
     dependencies:
-      '@kolibrijs/types': 0.0.1
+      '@kolibrijs/types': 0.0.2
       codemirror-theme-vars: 0.1.1
       prism-theme-vars: 0.2.4
       theme-lumos: 0.0.3
     dev: true
 
-  /@kolibrijs/theme-seriph@0.0.0:
-    resolution: {integrity: sha512-cxS1AE70WDwTdB1EpgECbRf2XsAQ3JJrQcDUNpeZZo3i+aw6A3A4Uz1DQ3/1vxMWdkl6Lq7LfJXTe8Tw8YtgqA==}
-    engines: {kolibri: '>=0.0.1', node: '>=14.0.0'}
+  /@kolibry/theme-default@0.0.2:
+    resolution: {integrity: sha512-LgyvtrcooAZjIw3ax0M/+5vRcM3NfBKTP/3p7XFiPY1OJIHnRyNzNoyiitkB7cM+bWwO+IkfOuofd6UFlehrtg==}
+    engines: {kolibry: '>=0.0.1', node: '>=14.0.0'}
     dependencies:
-      '@kolibrijs/types': 0.0.1
+      '@kolibry/types': 0.0.2
       codemirror-theme-vars: 0.1.1
       prism-theme-vars: 0.2.4
       theme-lumos: 0.0.3
     dev: true
 
-  /@kolibrijs/types@0.0.1:
-    resolution: {integrity: sha512-0IdA8UfM0niSsitezZ8mYOJohlTBB4983RstE4FU5NDKuIM4pYDnVDRRIk7Z7WmKnHs/X1ksD0zsRGJFfgH8zw==}
+  /@kolibry/theme-seriph@0.0.1:
+    resolution: {integrity: sha512-oi3tXlLjlB5MoI+hRb2eEpOhvhQ1LND9bTd8Cpm3uHrrcYqX2M+YuLCsPRhJsTBCYSRGrk3Z7W3KM7BKPIRC/A==}
+    engines: {kolibry: '>=0.0.1', node: '>=14.0.0'}
+    dependencies:
+      '@kolibrijs/types': 0.0.2
+      codemirror-theme-vars: 0.1.1
+      prism-theme-vars: 0.2.4
+      theme-lumos: 0.0.3
+    dev: true
+
+  /@kolibry/theme-seriph@0.0.2:
+    resolution: {integrity: sha512-SQJb+412La7WuFznv8M3MORSrzFS0HHnG1hfxDiH7Mk4HQdpNA9g0HKsOgq7gIysI7nbolXqLqDXblM3wWKRrw==}
+    engines: {kolibry: '>=0.0.1', node: '>=14.0.0'}
+    dependencies:
+      '@kolibry/types': 0.0.2
+      codemirror-theme-vars: 0.1.1
+      prism-theme-vars: 0.2.4
+      theme-lumos: 0.0.3
+    dev: true
+
+  /@kolibry/types@0.0.2:
+    resolution: {integrity: sha512-35R+GGf0ea6Yz7AirvPgAXYT/gG0W75sfUtNiT0ryg14G1obL8GrvNnWCvRUGFfqscJGQRlwg1nUHUl+QqK1Ow==}
     engines: {node: '>=18.0.0'}
     dev: true
 

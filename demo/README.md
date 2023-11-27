@@ -1,7 +1,7 @@
-The best way of understanding Kolibri is to try it, with the following command:
+The best way of understanding Kolibry is to try it, with the following command:
 
 ```bash
-npm init kolibri
+npm init kolibry
 ```
 
-Learn more: https://kolibri.show
+Learn more: https://kolibry.dev

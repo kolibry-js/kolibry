@@ -25,7 +25,7 @@ const renameFiles = {
 async function init() {
   console.log()
   console.log(`  ${cyan('●') + blue('■') + yellow('▲')}`)
-  console.log(`${bold('  Kolibri') + dim(' Theme Creator')}  ${blue(`v${version}`)}`)
+  console.log(`${bold('  Kolibry') + dim(' Theme Creator')}  ${blue(`v${version}`)}`)
   console.log()
 
   let targetDir = argv._[0]
@@ -37,7 +37,7 @@ async function init() {
       type: 'text',
       name: 'name',
       message: 'Theme name:',
-      initial: 'kolibri-theme-starter',
+      initial: 'kolibry-theme-starter',
     })
     targetDir = name
   }
@@ -68,7 +68,7 @@ async function init() {
     }
   }
 
-  console.log(dim('  Scaffolding Kolibri theme in ') + targetDir + dim(' ...'))
+  console.log(dim('  Scaffolding Kolibry theme in ') + targetDir + dim(' ...'))
 
   prepareTemplate(root, path.join(__dirname, 'template'), packageName)
 
@@ -136,13 +136,13 @@ function copy(src, dest) {
 
 function getValidPackageName(projectName) {
   projectName = path.basename(projectName)
-  if (!projectName.startsWith('kolibri-theme-'))
-    return `kolibri-theme-${projectName}`
+  if (!projectName.startsWith('kolibry-theme-'))
+    return `kolibry-theme-${projectName}`
   return projectName
 }
 
 function getThemeName(pkgName) {
-  return pkgName.replace(/^kolibri-theme-/, '')
+  return pkgName.replace(/^kolibry-theme-/, '')
 }
 
 function copyDir(srcDir, destDir) {

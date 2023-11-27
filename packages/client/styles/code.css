@@ -10,26 +10,26 @@ html:not(.dark) .shiki-dark {
   display: none;
 }
 
-.kolibri-code-wrapper {
-  margin: var(--kolibri-code-margin) !important;
-  scroll-padding: var(--kolibri-code-padding);
+.kolibry-code-wrapper {
+  margin: var(--kolibry-code-margin) !important;
+  scroll-padding: var(--kolibry-code-padding);
   &:-webkit-scrollbar {
     width: 0px;
   }
 }
 
-.kolibri-code {
-  font-family: var(--kolibri-code-font-family) !important;
-  padding: var(--kolibri-code-padding) !important;
-  font-size: var(--kolibri-code-font-size) !important;
-  line-height: var(--kolibri-code-line-height) !important;
-  border-radius: var(--kolibri-code-radius) !important;
+.kolibry-code {
+  font-family: var(--kolibry-code-font-family) !important;
+  padding: var(--kolibry-code-padding) !important;
+  font-size: var(--kolibry-code-font-size) !important;
+  line-height: var(--kolibry-code-line-height) !important;
+  border-radius: var(--kolibry-code-radius) !important;
   overflow: auto;
 }
 
-.kolibri-code .line.highlighted {
+.kolibry-code .line.highlighted {
 }
-.kolibri-code .line.dishonored {
+.kolibry-code .line.dishonored {
   opacity: 0.3;
 }
 
@@ -41,12 +41,12 @@ html:not(.dark) .shiki-dark {
   @apply h-full;
 }
 
-.kolibri-code-line-numbers .kolibri-code code {
+.kolibry-code-line-numbers .kolibry-code code {
   counter-reset: step;
   counter-increment: step calc(var(--start, 1) - 1);
 }
 
-.kolibri-code-line-numbers .kolibri-code code .line::before {
+.kolibry-code-line-numbers .kolibry-code code .line::before {
   content: counter(step);
   counter-increment: step;
   @apply w-4 mr-6 inline-block text-right text-gray-400 dark:text-gray-600;

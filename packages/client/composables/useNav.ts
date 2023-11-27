@@ -1,12 +1,12 @@
 import type { ComputedRef } from 'vue'
 import { computed } from 'vue'
 import type { RouteLocationNormalizedLoaded, RouteRecordRaw } from 'vue-router'
-import type { TocItem } from '@kolibrijs/types'
-import type { KolibriContextNav } from '../modules/context'
+import type { TocItem } from '@kolibry/types'
+import type { KolibryContextNav } from '../modules/context'
 import { addToTree, downloadPDF, filterTree, getPath, getTreeWithActiveStatuses, go, next, nextSlide, openInEditor, prev, prevSlide } from '../logic/nav'
 import { rawRoutes } from '../routes'
 
-export function useNav(route: ComputedRef<RouteRecordRaw | RouteLocationNormalizedLoaded>): KolibriContextNav {
+export function useNav(route: ComputedRef<RouteRecordRaw | RouteLocationNormalizedLoaded>): KolibryContextNav {
   const path = computed(() => route.value.path)
   const total = computed(() => rawRoutes.length)
 

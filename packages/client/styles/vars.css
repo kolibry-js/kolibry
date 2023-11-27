@@ -1,14 +1,14 @@
 :root {
-  --kolibri-code-background: rgba(125,125,125,0.03);
-  --kolibri-code-font-family: theme('fontFamily.mono');
-  --kolibri-code-padding: 8px;
-  --kolibri-code-font-size: 12px;
-  --kolibri-code-line-height: 18px;
-  --kolibri-code-radius: 4px;
-  --kolibri-code-margin: 4px 0;
+  --kolibry-code-background: rgba(125,125,125,0.03);
+  --kolibry-code-font-family: theme('fontFamily.mono');
+  --kolibry-code-padding: 8px;
+  --kolibry-code-font-size: 12px;
+  --kolibry-code-line-height: 18px;
+  --kolibry-code-radius: 4px;
+  --kolibry-code-margin: 4px 0;
 
-  --kolibri-transition-duration: 0.5s;
+  --kolibry-transition-duration: 0.5s;
 
-  --kolibri-slide-container-background: black;
-  --kolibri-controls-foreground: white;
+  --kolibry-slide-container-background: black;
+  --kolibry-controls-foreground: white;
 }

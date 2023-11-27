@@ -8,7 +8,7 @@ context('Basic', () => {
       .wait(100)
       .type('g')
       .wait(100)
-      .get('#kolibri-goto-input')
+      .get('#kolibry-goto-input')
       .type(`${no}`)
       .type('{enter}')
       .url()
@@ -32,15 +32,15 @@ context('Basic', () => {
     cy.contains('Global Footer')
       .should('not.exist')
 
-    cy.get('#page-root > #slide-container > #slide-content > #slideshow > .kolibri-page-2 > p')
+    cy.get('#page-root > #slide-container > #slide-content > #slideshow > .kolibry-page-2 > p')
       .should('have.css', 'border-color', 'rgb(0, 128, 0)')
       .should('not.have.css', 'color', 'rgb(128, 0, 0)')
 
     goPage(5)
 
-    cy.get('#page-root > #slide-container > #slide-content > #slideshow > .kolibri-page-5 .kolibri-code')
-      .should('have.text', '<div>{{$kolibri.nav.currentPage}}</div>')
-      .get('#page-root > #slide-container > #slide-content > #slideshow > .kolibri-page-5 > p')
+    cy.get('#page-root > #slide-container > #slide-content > #slideshow > .kolibry-page-5 .kolibry-code')
+      .should('have.text', '<div>{{$kolibry.nav.currentPage}}</div>')
+      .get('#page-root > #slide-container > #slide-content > #slideshow > .kolibry-page-5 > p')
       .should('have.text', 'Current Page: 5')
   })
 
@@ -99,14 +99,14 @@ context('Basic', () => {
       .url()
       .should('eq', 'http://localhost:3030/9?clicks=1')
 
-    cy.get('.cy-content .kolibri-vclick-target:not(.kolibri-vclick-hidden)')
+    cy.get('.cy-content .kolibry-vclick-target:not(.kolibry-vclick-hidden)')
       .should('have.text', 'CDE')
 
     cy.get('body')
       .type('{RightArrow}')
       .type('{RightArrow}')
 
-    cy.get('.cy-content .kolibri-vclick-target:not(.kolibri-vclick-hidden)')
+    cy.get('.cy-content .kolibry-vclick-target:not(.kolibry-vclick-hidden)')
       .should('have.text', 'ABCDE')
 
     // v-click.hide
@@ -114,7 +114,7 @@ context('Basic', () => {
       .type('{RightArrow}')
       .type('{RightArrow}')
 
-    cy.get('.cy-content .kolibri-vclick-target:not(.kolibri-vclick-hidden)')
+    cy.get('.cy-content .kolibry-vclick-target:not(.kolibry-vclick-hidden)')
       .should('have.text', 'ABC')
 
     cy
@@ -135,19 +135,19 @@ context('Basic', () => {
       .url()
       .should('eq', 'http://localhost:3030/10?clicks=1')
 
-    cy.get('.cy-content-hide .kolibri-vclick-target:not(.kolibri-vclick-hidden)')
+    cy.get('.cy-content-hide .kolibry-vclick-target:not(.kolibry-vclick-hidden)')
       .should('have.text', 'BD')
 
     cy.get('body')
       .type('{RightArrow}')
 
-    cy.get('.cy-content-hide .kolibri-vclick-target:not(.kolibri-vclick-hidden)')
+    cy.get('.cy-content-hide .kolibry-vclick-target:not(.kolibry-vclick-hidden)')
       .should('have.text', 'D')
 
     cy.get('body')
       .type('{RightArrow}')
 
-    cy.get('.cy-content-hide .kolibri-vclick-target:not(.kolibri-vclick-hidden)')
+    cy.get('.cy-content-hide .kolibry-vclick-target:not(.kolibry-vclick-hidden)')
       .should('have.text', 'CD')
 
     cy.get('body')
@@ -199,25 +199,25 @@ context('Basic', () => {
     cy.get('body')
       .type('{RightArrow}{RightArrow}{RightArrow}')
 
-    cy.get('.cy-depth .kolibri-vclick-target:not(.kolibri-vclick-hidden) .kolibri-vclick-target:not(.kolibri-vclick-hidden) .kolibri-vclick-target:not(.kolibri-vclick-hidden)')
+    cy.get('.cy-depth .kolibry-vclick-target:not(.kolibry-vclick-hidden) .kolibry-vclick-target:not(.kolibry-vclick-hidden) .kolibry-vclick-target:not(.kolibry-vclick-hidden)')
       .should('have.text', 'C')
 
     cy.get('body')
       .type('{RightArrow}{RightArrow}{RightArrow}')
 
-    cy.get('.cy-depth .kolibri-vclick-target:not(.kolibri-vclick-hidden) .kolibri-vclick-target:not(.kolibri-vclick-hidden) .kolibri-vclick-target:not(.kolibri-vclick-hidden)')
+    cy.get('.cy-depth .kolibry-vclick-target:not(.kolibry-vclick-hidden) .kolibry-vclick-target:not(.kolibry-vclick-hidden) .kolibry-vclick-target:not(.kolibry-vclick-hidden)')
       .should('have.text', 'CD')
 
     cy.get('body')
       .type('{RightArrow}{RightArrow}{RightArrow}')
 
-    cy.get('.cy-depth .kolibri-vclick-target:not(.kolibri-vclick-hidden) .kolibri-vclick-target:not(.kolibri-vclick-hidden) .kolibri-vclick-target:not(.kolibri-vclick-hidden)')
+    cy.get('.cy-depth .kolibry-vclick-target:not(.kolibry-vclick-hidden) .kolibry-vclick-target:not(.kolibry-vclick-hidden) .kolibry-vclick-target:not(.kolibry-vclick-hidden)')
       .should('have.text', 'CDGH')
 
     cy.get('body')
       .type('{RightArrow}{RightArrow}{RightArrow}')
 
-    cy.get('.cy-depth > ul > .kolibri-vclick-target:not(.kolibri-vclick-hidden)')
+    cy.get('.cy-depth > ul > .kolibry-vclick-target:not(.kolibry-vclick-hidden)')
       .should('have.text', 'A B CDEF GHIJKL')
   })
 
@@ -238,19 +238,19 @@ context('Basic', () => {
       .url()
       .should('eq', 'http://localhost:3030/13')
 
-    cy.get('.cy-wrapdecorate > ul > .kolibri-vclick-target.kolibri-vclick-hidden')
+    cy.get('.cy-wrapdecorate > ul > .kolibry-vclick-target.kolibry-vclick-hidden')
       .should('have.text', 'AEFZ')
 
     cy.get('body')
       .type('{RightArrow}{RightArrow}{RightArrow}')
 
-    cy.get('.cy-wrapdecorate > ul > .kolibri-vclick-target:not(.kolibri-vclick-hidden)')
+    cy.get('.cy-wrapdecorate > ul > .kolibry-vclick-target:not(.kolibry-vclick-hidden)')
       .should('have.text', 'AEF')
 
     cy.get('body')
       .type('{RightArrow}')
 
-    cy.get('.cy-wrapdecorate > ul > .kolibri-vclick-target:not(.kolibri-vclick-hidden)')
+    cy.get('.cy-wrapdecorate > ul > .kolibry-vclick-target:not(.kolibry-vclick-hidden)')
       .should('have.text', 'AEFZ')
   })
 })

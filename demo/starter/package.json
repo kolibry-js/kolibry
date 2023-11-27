@@ -1,16 +1,16 @@
 {
   "private": true,
   "scripts": {
-    "build": "kolibri build",
-    "dev": "nodemon -w '../../packages/kolibri/dist/*.js' --exec \"kolibri ./slides.md --open=false --log=info\"",
-    "export": "kolibri export",
-    "export-notes": "kolibri export-notes"
+    "build": "kolibry build",
+    "dev": "nodemon -w '../../packages/kolibry/dist/*.js' --exec \"kolibry ./slides.md --open=false --log=info\"",
+    "export": "kolibry export",
+    "export-notes": "kolibry export-notes"
   },
   "devDependencies": {
-    "@kolibrijs/cli": "workspace:*",
-    "@kolibrijs/theme-default": "^0.0.0",
-    "@kolibrijs/theme-seriph": "^0.0.0",
-    "@kolibrijs/types": "workspace:*",
+    "@kolibry/cli": "workspace:*",
+    "@kolibry/theme-default": "^0.0.1",
+    "@kolibry/theme-seriph": "^0.0.1",
+    "@kolibry/types": "workspace:*",
     "nodemon": "^3.0.1"
   }
 }

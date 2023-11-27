@@ -18,6 +18,6 @@
 
 [[redirects]]
   from = "/"
-  to = "https://kolibri.show/"
+  to = "https://kolibry.dev/"
   status = 301
   force = true

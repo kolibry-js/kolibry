@@ -5,10 +5,10 @@ import Play from './internals/Play.vue'
 import Print from './internals/Print.vue'
 
 // @ts-expect-error missing types
-import _rawRoutes, { redirects } from '/@kolibrijs/routes'
+import _rawRoutes, { redirects } from '/@kolibry/routes'
 
 // @ts-expect-error missing types
-import _configs from '/@kolibrijs/configs'
+import _configs from '/@kolibry/configs'
 
 export const rawRoutes = _rawRoutes as RouteRecordRaw[]
 

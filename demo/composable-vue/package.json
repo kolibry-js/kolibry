@@ -1,18 +1,18 @@
 {
   "private": true,
   "scripts": {
-    "dev": "nodemon -w '../../packages/kolibri/dist/*.js' --exec 'kolibri --log=info'",
-    "build": "kolibri build",
-    "export": "kolibri export",
-    "export:clicks": "kolibri export --with-clicks"
+    "dev": "nodemon -w '../../packages/kolibry/dist/*.js' --exec 'kolibry --log=info'",
+    "build": "kolibry build",
+    "export": "kolibry export",
+    "export:clicks": "kolibry export --with-clicks"
   },
   "devDependencies": {
     "@iconify-json/mdi": "^1.1.55",
     "@iconify-json/ri": "^1.1.12",
-    "@kolibrijs/cli": "workspace:*",
-    "@kolibrijs/theme-default": "^0.0.0",
-    "@kolibrijs/theme-seriph": "^0.0.0",
-    "@kolibrijs/types": "workspace:*",
+    "@kolibry/cli": "workspace:*",
+    "@kolibry/theme-default": "^0.0.2",
+    "@kolibry/theme-seriph": "^0.0.2",
+    "@kolibry/types": "workspace:*",
     "nodemon": "^3.0.1"
   }
 }

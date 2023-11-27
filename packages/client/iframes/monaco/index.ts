@@ -1,10 +1,10 @@
-import '/@kolibrijs/styles'
+import '/@kolibry/styles'
 import './index.css'
 
 import type * as monaco from 'monaco-editor'
 import { formatCode } from '../../setup/prettier'
 import setupMonaco from '../../setup/monaco'
-import '/@kolibrijs/monaco-types'
+import '/@kolibry/monaco-types'
 
 const url = new URL(location.href)
 const props = {
@@ -51,7 +51,7 @@ function ext() {
   }
 }
 
-function post(data: any, type = 'kolibri-monaco') {
+function post(data: any, type = 'kolibry-monaco') {
   if (window.parent === window)
     return
 
@@ -85,9 +85,9 @@ async function start() {
       monaco.Uri.parse(`file:///root/${Date.now()}.${ext()}`),
     )
     const monacoEditor = monaco.editor.createDiffEditor(container, {
-      fontSize: +style.getPropertyValue('--kolibri-code-font-size').replace(/px/g, ''),
-      fontFamily: style.getPropertyValue('--kolibri-code-font-family'),
-      lineHeight: +style.getPropertyValue('--kolibri-code-line-height').replace(/px/g, ''),
+      fontSize: +style.getPropertyValue('--kolibry-code-font-size').replace(/px/g, ''),
+      fontFamily: style.getPropertyValue('--kolibry-code-font-family'),
+      lineHeight: +style.getPropertyValue('--kolibry-code-line-height').replace(/px/g, ''),
       lineDecorationsWidth: 0,
       lineNumbersMinChars: 0,
       scrollBeyondLastLine: false,
@@ -175,9 +175,9 @@ async function start() {
       insertSpaces: true,
       detectIndentation: false,
       folding: false,
-      fontSize: +style.getPropertyValue('--kolibri-code-font-size').replace(/px/g, ''),
-      fontFamily: style.getPropertyValue('--kolibri-code-font-family'),
-      lineHeight: +style.getPropertyValue('--kolibri-code-line-height').replace(/px/g, ''),
+      fontSize: +style.getPropertyValue('--kolibry-code-font-size').replace(/px/g, ''),
+      fontFamily: style.getPropertyValue('--kolibry-code-font-family'),
+      lineHeight: +style.getPropertyValue('--kolibry-code-line-height').replace(/px/g, ''),
       lineDecorationsWidth: 0,
       lineNumbersMinChars: 0,
       scrollBeyondLastLine: false,
@@ -240,7 +240,7 @@ async function start() {
 
   update()
 
-  post({}, 'kolibri-monaco-loaded')
+  post({}, 'kolibry-monaco-loaded')
 }
 
 window.addEventListener('message', (payload) => {
@@ -251,7 +251,7 @@ window.addEventListener('message', (payload) => {
   if (typeof payload.data !== 'string')
     return
   const { type, data, id } = JSON.parse(payload.data)
-  if (type === 'kolibri-monaco' && id === props.id) {
+  if (type === 'kolibry-monaco' && id === props.id) {
     Object.assign(props, data)
     update()
   }

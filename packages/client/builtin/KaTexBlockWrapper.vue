@@ -16,13 +16,13 @@ $$ {1|3|all}
 \end{array}
 $$
 
-Learn more: https://kolibri.show/guide/syntax.html#latex-line-highlighting
+Learn more: https://kolibry.dev/guide/syntax.html#latex-line-highlighting
 -->
 
 <script setup lang="ts">
 import { range, remove } from '@nyxb/utils'
 import { computed, getCurrentInstance, inject, onMounted, onUnmounted, ref, watchEffect } from 'vue'
-import { parseRangeString } from '@kolibrijs/parser'
+import { parseRangeString } from '@kolibry/parser'
 import { CLASS_VCLICK_TARGET, injectionClicks, injectionClicksDisabled, injectionClicksElements } from '../constants'
 import { makeId } from '../logic/utils'
 
@@ -92,7 +92,7 @@ onMounted(() => {
 
 <template>
   <div
-    ref="el" class="kolibri-katex-wrapper"
+    ref="el" class="kolibry-katex-wrapper"
   >
     <slot />
   </div>

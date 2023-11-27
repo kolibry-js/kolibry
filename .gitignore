@@ -9,11 +9,11 @@ node_modules
 *-export
 slides-export.md
 assets/demo
-packages/kolibri/README.md
+packages/kolibry/README.md
 packages/create-app/template/slides.md
 packages/create-app/template/pages
 composable-vue-cn
 components.d.ts
-.kolibri
+.kolibry
 .eslintcache
 .env

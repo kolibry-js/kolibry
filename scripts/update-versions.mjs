@@ -17,7 +17,7 @@ for (const template of templates) {
     if (!pkg[name])
       continue
     pkg[name] = objectMap(pkg[name], (k, v) => {
-      if (k.startsWith('@kolibrijs/') && !k.startsWith('@kolibrijs/theme'))
+      if (k.startsWith('@kolibry/') && !k.startsWith('@kolibry/theme'))
         return [k, `^${version}`]
       return [k, v]
     })

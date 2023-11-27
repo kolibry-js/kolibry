@@ -30,7 +30,7 @@ This will be ignored
 
 ---
 src: sub/page2.md
-background: https://kolibri.show/demo-cover.png
+background: https://kolibry.dev/demo-cover.png
 ---
 
 ---
@@ -38,10 +38,10 @@ background: https://kolibri.show/demo-cover.png
 # Page 5
 
 ```html
-<div>{{$kolibri.nav.currentPage}}</div>
+<div>{{$kolibry.nav.currentPage}}</div>
 ```
 
-Current Page: {{$kolibri.nav.currentPage}}
+Current Page: {{$kolibry.nav.currentPage}}
 
 ---
 

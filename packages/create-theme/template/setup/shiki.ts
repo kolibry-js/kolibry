@@ -1,4 +1,4 @@
-import { defineShikiSetup } from '@kolibrijs/types'
+import { defineShikiSetup } from '@kolibry/types'
 
 export default defineShikiSetup(async () => {
   return {

@@ -3,7 +3,7 @@ import { onKeyStroke } from '@vueuse/core'
 import { and, not } from '@vueuse/math'
 import type { Ref } from 'vue'
 import { watch } from 'vue'
-import type { ShortcutOptions } from '@kolibrijs/types'
+import type { ShortcutOptions } from '@kolibry/types'
 import { fullscreen, isInputting, isOnFocus, magicKeys, shortcutsEnabled } from '../state'
 import setupShortcuts from '../setup/shortcuts'
 

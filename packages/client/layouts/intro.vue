@@ -1,5 +1,5 @@
 <template>
-  <div class="kolibri-layout intro">
+  <div class="kolibry-layout intro">
     <slot />
   </div>
 </template>

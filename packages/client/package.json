@@ -1,16 +1,16 @@
 {
-  "name": "@kolibrijs/client",
+  "name": "@kolibry/client",
   "version": "0.0.2",
   "description": "Presentation slides for developers",
   "author": "nyxb <contact@nyxb.email>",
   "license": "MIT",
   "funding": "https://github.com/sponsors/nyxb",
-  "homepage": "https://kolibri.show",
+  "homepage": "https://kolibry.dev",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kolibrijs/kolibri"
+    "url": "https://github.com/kolibry-js/kolibry"
   },
-  "bugs": "https://github.com/kolibrijs/kolibri/issues",
+  "bugs": "https://github.com/kolibry-js/kolibry/issues",
   "exports": {
     "./package.json": "./package.json",
     "./*": "./*"
@@ -19,8 +19,8 @@
     "node": ">=18.0.0"
   },
   "dependencies": {
-    "@kolibrijs/parser": "workspace:*",
-    "@kolibrijs/types": "workspace:*",
+    "@kolibry/parser": "workspace:*",
+    "@kolibry/types": "workspace:*",
     "@nyxb/utils": "^0.0.3",
     "@unhead/vue": "^1.8.4",
     "@unocss/reset": "^0.57.4",

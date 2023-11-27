@@ -1,20 +1,20 @@
 {
-  "name": "create-kolibri-theme",
+  "name": "create-kolibry-theme",
   "type": "module",
   "version": "0.0.2",
-  "description": "Create starter theme template for Kolibri",
+  "description": "Create starter theme template for Kolibry",
   "author": "nyxb <contact@nyxb.email>",
   "license": "MIT",
   "funding": "https://github.com/sponsors/nyxb",
-  "homepage": "https://kolibri.show",
+  "homepage": "https://kolibry.show",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kolibrijs/kolibri"
+    "url": "https://github.com/kolibry-js/kolibry"
   },
-  "bugs": "https://github.com/kolibrijs/kolibri/issues",
+  "bugs": "https://github.com/kolibry-js/kolibry/issues",
   "main": "index.mjs",
   "bin": {
-    "create-kolibri-theme": "index.mjs"
+    "create-kolibry-theme": "index.mjs"
   },
   "engines": {
     "node": ">=18.0.0"

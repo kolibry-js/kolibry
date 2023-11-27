@@ -1,12 +1,12 @@
 import { toArray, uniq } from '@nyxb/utils'
-import type { DrawingsOptions, FontOptions, KolibriConfig, KolibriThemeMeta, ResolvedDrawingsOptions, ResolvedExportOptions, ResolvedFontOptions } from '@kolibrijs/types'
+import type { DrawingsOptions, FontOptions, KolibryConfig, KolibryThemeMeta, ResolvedDrawingsOptions, ResolvedExportOptions, ResolvedFontOptions } from '@kolibry/types'
 import { parseAspectRatio } from './utils'
 
-export function getDefaultConfig(): KolibriConfig {
+export function getDefaultConfig(): KolibryConfig {
   return {
     theme: 'default',
-    title: 'Kolibri',
-    titleTemplate: '%s - Kolibri',
+    title: 'Kolibry',
+    titleTemplate: '%s - Kolibry',
     addons: [],
     remoteAssets: false,
     monaco: 'dev',
@@ -23,7 +23,7 @@ export function getDefaultConfig(): KolibriConfig {
     selectable: false,
     themeConfig: {},
     fonts: {} as ResolvedFontOptions,
-    favicon: 'https://cdn.jsdelivr.net/gh/kolibrijs/kolibri/assets/favicon.png',
+    favicon: 'https://cdn.jsdelivr.net/gh/kolibry-js/kolibry/assets/favicon.png',
     drawings: {} as ResolvedDrawingsOptions,
     plantUmlServer: 'https://www.plantuml.com/plantuml',
     codeCopy: true,
@@ -36,13 +36,13 @@ export function getDefaultConfig(): KolibriConfig {
   }
 }
 
-export function resolveConfig(headmatter: any, themeMeta: KolibriThemeMeta = {}, filepath?: string, verify = false) {
+export function resolveConfig(headmatter: any, themeMeta: KolibryThemeMeta = {}, filepath?: string, verify = false) {
   const themeHightlighter = ['prism', 'shiki'].includes(themeMeta.highlighter || '') ? themeMeta.highlighter as 'prism' | 'shiki' : undefined
   const themeColorSchema = ['light', 'dark'].includes(themeMeta.colorSchema || '') ? themeMeta.colorSchema as 'light' | 'dark' : undefined
 
   const defaultConfig = getDefaultConfig()
 
-  const config: KolibriConfig = {
+  const config: KolibryConfig = {
     ...defaultConfig,
     highlighter: themeHightlighter || defaultConfig.highlighter,
     colorSchema: themeColorSchema || defaultConfig.colorSchema,
@@ -76,9 +76,9 @@ export function resolveConfig(headmatter: any, themeMeta: KolibriThemeMeta = {},
 }
 
 export function verifyConfig(
-  config: KolibriConfig,
-  themeMeta: KolibriThemeMeta = {},
-  warn = (v: string) => console.warn(`[kolibri] ${v}`),
+  config: KolibryConfig,
+  themeMeta: KolibryThemeMeta = {},
+  warn = (v: string) => console.warn(`[kolibry] ${v}`),
 ) {
   const themeHightlighter = ['prism', 'shiki'].includes(themeMeta.highlighter || '') ? themeMeta.highlighter as 'prism' | 'shiki' : undefined
   const themeColorSchema = ['light', 'dark'].includes(themeMeta.colorSchema || '') ? themeMeta.colorSchema as 'light' | 'dark' : undefined
@@ -185,7 +185,7 @@ function resolveDrawings(options: DrawingsOptions = {}, filepath?: string): Reso
   const persistPath = typeof persist === 'string'
     ? persist
     : persist
-      ? `.kolibri/drawings${filepath ? `/${filepath.match(/([^\\\/]+?)(\.\w+)?$/)?.[1]}` : ''}`
+      ? `.kolibry/drawings${filepath ? `/${filepath.match(/([^\\\/]+?)(\.\w+)?$/)?.[1]}` : ''}`
       : false
 
   return {

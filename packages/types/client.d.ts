@@ -1,5 +1,5 @@
-declare module '/@kolibrijs/configs' {
-  import { KolibriConfig } from './types'
+declare module '/@kolibry/configs' {
+  import { KolibryConfig } from './types'
 
-  export default KolibriConfig
+  export default KolibryConfig
 }

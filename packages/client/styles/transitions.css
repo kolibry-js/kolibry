@@ -7,7 +7,7 @@
 .slide-up-leave-active,
 .slide-down-enter-active,
 .slide-down-leave-active {
-  transition: all var(--kolibri-transition-duration) ease;
+  transition: all var(--kolibry-transition-duration) ease;
 }
 
 .slide-left-enter-from,
@@ -33,7 +33,7 @@
 /* Fading */
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity var(--kolibri-transition-duration) ease;
+  transition: opacity var(--kolibry-transition-duration) ease;
 }
 
 .fade-enter-from,
@@ -42,12 +42,12 @@
 }
 
 .fade-out-leave-active {
-  transition: opacity calc(var(--kolibri-transition-duration) * 0.6) ease-out;
+  transition: opacity calc(var(--kolibry-transition-duration) * 0.6) ease-out;
 }
 
 .fade-out-enter-active {
-  transition: opacity calc(var(--kolibri-transition-duration) * 0.8) ease-in;
-  transition-delay: calc(var(--kolibri-transition-duration) * 0.6);
+  transition: opacity calc(var(--kolibry-transition-duration) * 0.8) ease-in;
+  transition-delay: calc(var(--kolibry-transition-duration) * 0.6);
 }
 
 .fade-out-enter-from,

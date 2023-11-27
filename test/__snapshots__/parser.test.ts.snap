@@ -687,7 +687,7 @@ srcSequence: sub/page1.md
 ",
     "end": 8,
     "frontmatter": {
-      "background": "https://kolibri.show/demo-cover.png#2",
+      "background": "https://kolibry.dev/demo-cover.png#2",
       "layout": "cover",
       "srcSequence": "/sub/page2.md",
       "title": "Page 2",
@@ -698,7 +698,7 @@ srcSequence: sub/page1.md
       "content": "",
       "end": 9,
       "frontmatter": {
-        "background": "https://kolibri.show/demo-cover.png#2",
+        "background": "https://kolibry.dev/demo-cover.png#2",
       },
       "frontmatterStyle": "frontmatter",
       "index": 1,
@@ -706,7 +706,7 @@ srcSequence: sub/page1.md
       "note": undefined,
       "raw": "---
 src: /sub/page2.md
-background: https://kolibri.show/demo-cover.png#2
+background: https://kolibry.dev/demo-cover.png#2
 ---
 ",
       "start": 4,
@@ -717,7 +717,7 @@ background: https://kolibri.show/demo-cover.png#2
     "raw": "---
 layout: cover
 title: Page 2
-background: https://kolibri.show/demo-cover.png#2
+background: https://kolibry.dev/demo-cover.png#2
 srcSequence: /sub/page2.md
 ---
 
@@ -759,7 +759,7 @@ layout: cover
 ",
     "end": 2,
     "frontmatter": {
-      "background": "https://kolibri.show/demo-cover.png#34",
+      "background": "https://kolibry.dev/demo-cover.png#34",
       "srcSequence": "./sub/pages3-4.md",
       "title": "Page 3",
     },
@@ -769,7 +769,7 @@ layout: cover
       "content": "",
       "end": 14,
       "frontmatter": {
-        "background": "https://kolibri.show/demo-cover.png#34",
+        "background": "https://kolibry.dev/demo-cover.png#34",
       },
       "frontmatterStyle": "frontmatter",
       "index": 2,
@@ -777,7 +777,7 @@ layout: cover
       "note": undefined,
       "raw": "---
 src: ./sub/pages3-4.md
-background: https://kolibri.show/demo-cover.png#34
+background: https://kolibry.dev/demo-cover.png#34
 ---
 ",
       "start": 9,
@@ -787,7 +787,7 @@ background: https://kolibri.show/demo-cover.png#34
     "note": undefined,
     "raw": "---
 title: Page 3
-background: https://kolibri.show/demo-cover.png#34
+background: https://kolibry.dev/demo-cover.png#34
 srcSequence: ./sub/pages3-4.md
 ---
 
@@ -820,7 +820,7 @@ srcSequence: ./sub/pages3-4.md
 ",
     "end": 10,
     "frontmatter": {
-      "background": "https://kolibri.show/demo-cover.png#34",
+      "background": "https://kolibry.dev/demo-cover.png#34",
       "layout": "cover",
       "srcSequence": "./sub/pages3-4.md",
     },
@@ -830,7 +830,7 @@ srcSequence: ./sub/pages3-4.md
     "note": undefined,
     "raw": "---
 layout: cover
-background: https://kolibri.show/demo-cover.png#34
+background: https://kolibry.dev/demo-cover.png#34
 srcSequence: ./sub/pages3-4.md
 ---
 
@@ -871,7 +871,7 @@ layout: cover
 ",
     "end": 2,
     "frontmatter": {
-      "background": "https://kolibri.show/demo-cover.png#14",
+      "background": "https://kolibry.dev/demo-cover.png#14",
       "srcSequence": "sub/nested1-4.md,/sub/page1.md",
       "title": undefined,
     },
@@ -881,7 +881,7 @@ layout: cover
       "content": "",
       "end": 19,
       "frontmatter": {
-        "background": "https://kolibri.show/demo-cover.png#14",
+        "background": "https://kolibry.dev/demo-cover.png#14",
       },
       "frontmatterStyle": "frontmatter",
       "index": 3,
@@ -889,7 +889,7 @@ layout: cover
       "note": undefined,
       "raw": "---
 src: sub/nested1-4.md
-background: https://kolibri.show/demo-cover.png#14
+background: https://kolibry.dev/demo-cover.png#14
 ---
 ",
       "start": 14,
@@ -898,7 +898,7 @@ background: https://kolibri.show/demo-cover.png#14
     "level": 1,
     "note": undefined,
     "raw": "---
-background: https://kolibri.show/demo-cover.png#14
+background: https://kolibry.dev/demo-cover.png#14
 srcSequence: sub/nested1-4.md,/sub/page1.md
 ---
 
@@ -931,7 +931,7 @@ srcSequence: sub/nested1-4.md,/sub/page1.md
 ",
     "end": 8,
     "frontmatter": {
-      "background": "https://kolibri.show/demo-cover.png#14",
+      "background": "https://kolibry.dev/demo-cover.png#14",
       "layout": "cover",
       "srcSequence": "sub/nested1-4.md,page2.md",
       "title": "Page 2",
@@ -943,7 +943,7 @@ srcSequence: sub/nested1-4.md,/sub/page1.md
     "raw": "---
 layout: cover
 title: Page 2
-background: https://kolibri.show/demo-cover.png#14
+background: https://kolibry.dev/demo-cover.png#14
 srcSequence: sub/nested1-4.md,page2.md
 ---
 
@@ -985,7 +985,7 @@ layout: cover
 ",
     "end": 2,
     "frontmatter": {
-      "background": "https://kolibri.show/demo-cover.png#14",
+      "background": "https://kolibry.dev/demo-cover.png#14",
       "srcSequence": "sub/nested1-4.md,../sub/pages3-4.md",
       "title": "Page 3",
     },
@@ -995,7 +995,7 @@ layout: cover
     "note": undefined,
     "raw": "---
 title: Page 3
-background: https://kolibri.show/demo-cover.png#14
+background: https://kolibry.dev/demo-cover.png#14
 srcSequence: sub/nested1-4.md,../sub/pages3-4.md
 ---
 
@@ -1028,7 +1028,7 @@ srcSequence: sub/nested1-4.md,../sub/pages3-4.md
 ",
     "end": 10,
     "frontmatter": {
-      "background": "https://kolibri.show/demo-cover.png#14",
+      "background": "https://kolibry.dev/demo-cover.png#14",
       "layout": "cover",
       "srcSequence": "sub/nested1-4.md,../sub/pages3-4.md",
     },
@@ -1038,7 +1038,7 @@ srcSequence: sub/nested1-4.md,../sub/pages3-4.md
     "note": undefined,
     "raw": "---
 layout: cover
-background: https://kolibri.show/demo-cover.png#14
+background: https://kolibry.dev/demo-cover.png#14
 srcSequence: sub/nested1-4.md,../sub/pages3-4.md
 ---
 

@@ -1,19 +1,19 @@
-# create-kolibri-theme
+# create-kolibry-theme
 
-[![NPM version](https://img.shields.io/npm/v/create-kolibri-theme?color=9945FF&label=)](https://www.npmjs.com/package/create-kolibri-theme)
+[![NPM version](https://img.shields.io/npm/v/create-kolibry-theme?color=9945FF&label=)](https://www.npmjs.com/package/create-kolibry-theme)
 
-[Kolibri](https://kolibri.show) theme template generater.
+[Kolibry](https://kolibry.dev) theme template generater.
 
 ## Usage
 
 ```bash
-npm init kolibri-theme
+npm init kolibry-theme
 ```
 
 or
 
 ```bash
-yarn create kolibri-theme
+yarn create kolibry-theme
 ```
 
 ## License

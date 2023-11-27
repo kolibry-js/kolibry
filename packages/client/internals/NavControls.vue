@@ -11,7 +11,7 @@ import VerticalDivider from './VerticalDivider.vue'
 import HiddenText from './HiddenText.vue'
 
 // @ts-expect-error virtual module
-import CustomNavControls from '/@kolibrijs/custom-nav-controls'
+import CustomNavControls from '/@kolibry/custom-nav-controls'
 
 const props = defineProps({
   persist: {
@@ -33,7 +33,7 @@ function onMouseLeave() {
 }
 
 const barStyle = computed(() => props.persist
-  ? 'text-$kolibri-controls-foreground bg-transparent'
+  ? 'text-$kolibry-controls-foreground bg-transparent'
   : 'rounded-md bg-main shadow dark:border dark:border-gray-400 dark:border-opacity-10')
 
 const RecordingControls = shallowRef<any>()
@@ -52,7 +52,7 @@ if (__KOLIBRI_FEATURE_DRAWINGS__)
       :class="barStyle"
       @mouseleave="onMouseLeave"
     >
-      <button v-if="!isEmbedded" class="kolibri-icon-btn" @click="toggleFullscreen">
+      <button v-if="!isEmbedded" class="kolibry-icon-btn" @click="toggleFullscreen">
         <template v-if="isFullscreen">
           <HiddenText text="Close fullscreen" />
           <carbon:minimize />
@@ -63,24 +63,24 @@ if (__KOLIBRI_FEATURE_DRAWINGS__)
         </template>
       </button>
 
-      <button class="kolibri-icon-btn" :class="{ disabled: !hasPrev }" @click="prev">
+      <button class="kolibry-icon-btn" :class="{ disabled: !hasPrev }" @click="prev">
         <HiddenText text="Go to previous slide" />
         <carbon:arrow-left />
       </button>
 
-      <button class="kolibri-icon-btn" :class="{ disabled: !hasNext }" title="Next" @click="next">
+      <button class="kolibry-icon-btn" :class="{ disabled: !hasNext }" title="Next" @click="next">
         <HiddenText text="Go to next slide" />
         <carbon:arrow-right />
       </button>
 
-      <button v-if="!isEmbedded" class="kolibri-icon-btn" title="Slides overview" @click="toggleOverview()">
+      <button v-if="!isEmbedded" class="kolibry-icon-btn" title="Slides overview" @click="toggleOverview()">
         <HiddenText text="Show slide overview" />
         <carbon:apps />
       </button>
 
       <button
         v-if="!isColorSchemaConfigured"
-        class="kolibri-icon-btn"
+        class="kolibry-icon-btn"
         title="Toggle dark mode"
         @click="toggleDark()"
       >
@@ -104,7 +104,7 @@ if (__KOLIBRI_FEATURE_DRAWINGS__)
 
         <button
           v-if="isPresenter"
-          class="kolibri-icon-btn"
+          class="kolibry-icon-btn"
           title="Show presenter cursor"
           @click="showPresenterCursor = !showPresenterCursor"
         >
@@ -120,7 +120,7 @@ if (__KOLIBRI_FEATURE_DRAWINGS__)
       </template>
 
       <template v-if="__KOLIBRI_FEATURE_DRAWINGS__ && (!configs.drawings.presenterOnly || isPresenter) && !isEmbedded">
-        <button class="kolibri-icon-btn relative" title="Drawing" @click="drawingEnabled = !drawingEnabled">
+        <button class="kolibry-icon-btn relative" title="Drawing" @click="drawingEnabled = !drawingEnabled">
           <HiddenText v-if="drawingEnabled" :text="drawingEnabled ? 'Hide drawing toolbar' : 'Show drawing toolbar'" />
           <carbon:pen />
           <div
@@ -133,29 +133,29 @@ if (__KOLIBRI_FEATURE_DRAWINGS__)
       </template>
 
       <template v-if="!isEmbedded">
-        <RouterLink v-if="isPresenter" :to="nonPresenterLink" class="kolibri-icon-btn" title="Play Mode">
+        <RouterLink v-if="isPresenter" :to="nonPresenterLink" class="kolibry-icon-btn" title="Play Mode">
           <carbon:presentation-file />
         </RouterLink>
-        <RouterLink v-if="__KOLIBRI_FEATURE_PRESENTER__ && showPresenter" :to="presenterLink" class="kolibri-icon-btn" title="Presenter Mode">
+        <RouterLink v-if="__KOLIBRI_FEATURE_PRESENTER__ && showPresenter" :to="presenterLink" class="kolibry-icon-btn" title="Presenter Mode">
           <carbon:user-speaker />
         </RouterLink>
 
         <button
           v-if="__DEV__ && __KOLIBRI_FEATURE_EDITOR__"
-          class="kolibri-icon-btn <md:hidden"
+          class="kolibry-icon-btn <md:hidden"
           @click="showEditor = !showEditor"
         >
           <HiddenText :text="showEditor ? 'Hide editor' : 'Show editor'" />
           <carbon:text-annotation-toggle />
         </button>
 
-        <button v-if="isPresenter" class="kolibri-icon-btn" title="Toggle Presenter Layout" @click="togglePresenterLayout">
+        <button v-if="isPresenter" class="kolibry-icon-btn" title="Toggle Presenter Layout" @click="togglePresenterLayout">
           <carbon:template />
           {{ presenterLayout }}
         </button>
       </template>
       <template v-if="!__DEV__">
-        <button v-if="configs.download" class="kolibri-icon-btn" @click="downloadPDF">
+        <button v-if="configs.download" class="kolibry-icon-btn" @click="downloadPDF">
           <HiddenText text="Download as PDF" />
           <carbon:download />
         </button>
@@ -163,7 +163,7 @@ if (__KOLIBRI_FEATURE_DRAWINGS__)
 
       <button
         v-if="!isPresenter && configs.info && !isEmbedded"
-        class="kolibri-icon-btn"
+        class="kolibry-icon-btn"
         @click="showInfoDialog = !showInfoDialog"
       >
         <HiddenText text="Show info" />
@@ -173,7 +173,7 @@ if (__KOLIBRI_FEATURE_DRAWINGS__)
       <template v-if="!isPresenter && !isEmbedded">
         <MenuButton>
           <template #button>
-            <button class="kolibri-icon-btn">
+            <button class="kolibry-icon-btn">
               <HiddenText text="Adjust settings" />
               <carbon:settings-adjust />
             </button>

@@ -1,19 +1,19 @@
 # create-kolibry
 
-[![NPM version](https://img.shields.io/npm/v/kolibrijs?color=9945FF&label=)](https://www.npmjs.com/package/create-kolibry)
+[![NPM version](https://img.shields.io/npm/v/create-kolibry?color=9945FF&label=)](https://www.npmjs.com/package/create-kolibry)
 
-Starter template generater for [Kolibri](https://kolibri.show).
+Starter template generater for [Kolibry](https://kolibry.dev).
 
 ## Usage
 
 ```bash
-npm init kolibri
+npm init kolibry
 ```
 
 or
 
 ```bash
-yarn create kolibri
+yarn create kolibry
 ```
 
 ## License

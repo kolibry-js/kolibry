@@ -15,7 +15,7 @@ const {
   toggleAvatar,
 } = recorder
 
-const previousAvatar = useLocalStorage('kolibri-webcam-show', false)
+const previousAvatar = useLocalStorage('kolibry-webcam-show', false)
 watch(showAvatar, () => {
   previousAvatar.value = showAvatar.value
 })
@@ -36,7 +36,7 @@ onMounted(() => {
 <template>
   <button
     v-if="currentCamera !== 'none'"
-    class="kolibri-icon-btn <md:hidden"
+    class="kolibry-icon-btn <md:hidden"
     :class="{ 'text-green-500': Boolean(showAvatar && streamCamera) }"
     title="Show camera view"
     @click="toggleAvatar"
@@ -46,7 +46,7 @@ onMounted(() => {
   </button>
 
   <button
-    class="kolibri-icon-btn"
+    class="kolibry-icon-btn"
     :class="{ 'text-red-500': recording }"
     title="Recording"
     @click="toggleRecording"
@@ -57,7 +57,7 @@ onMounted(() => {
   </button>
   <MenuButton :disabled="recording">
     <template #button>
-      <button class="kolibri-icon-btn h-full !text-sm !px-0">
+      <button class="kolibry-icon-btn h-full !text-sm !px-0">
         <HiddenText text="Select recording device" />
         <carbon:chevron-up class="opacity-50" />
       </button>

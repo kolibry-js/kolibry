@@ -2,11 +2,11 @@
 
 [![NPM version](https://img.shields.io/npm/v/{{package-name}}?color=3AB9D4&label=)](https://www.npmjs.com/package/{{package-name}})
 
-A (...) theme for [Kolibri](https://github.com/kolibrijs/kolibri).
+A (...) theme for [Kolibry](https://github.com/kolibry-js/kolibry).
 
 <!--
   Learn more about how to write a theme:
-  https://kolibri.show/themes/write-a-theme.html
+  https://kolibry.dev/themes/write-a-theme.html
 --->
 
 <!--
@@ -21,13 +21,13 @@ A (...) theme for [Kolibri](https://github.com/kolibrijs/kolibri).
 
 ## Install
 
-Add the following frontmatter to your `slides.md`. Start Kolibri then it will prompt you to install the theme automatically.
+Add the following frontmatter to your `slides.md`. Start Kolibry then it will prompt you to install the theme automatically.
 
 <pre><code>---
 theme: <b>{{name}}</b>
 ---</code></pre>
 
-Learn more about [how to use a theme](https://kolibri.show/themes/use).
+Learn more about [how to use a theme](https://kolibry.show/themes/use).
 
 ## Layouts
 

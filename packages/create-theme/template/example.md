@@ -2,7 +2,7 @@
 theme: ./
 ---
 
-# Kolibri Theme Starter
+# Kolibry Theme Starter
 
 Presentation slides for developers
 
@@ -14,9 +14,9 @@ Presentation slides for developers
 
 ---
 
-# What is Kolibri?
+# What is Kolibry?
 
-Kolibri is a slides maker and presenter designed for developers, consist of the following features
+Kolibry is a slides maker and presenter designed for developers, consist of the following features
 
 - 📝 **Text-based** - focus on the content with Markdown, and then style them later
 - 🎨 **Themable** - theme can be shared and used with npm packages
@@ -29,7 +29,7 @@ Kolibri is a slides maker and presenter designed for developers, consist of the 
 <br>
 <br>
 
-Read more about [Why Kolibri?](https://kolibri.show/guide/why)
+Read more about [Why Kolibry?](https://kolibry.dev/guide/why)
 
 
 ---
@@ -78,4 +78,4 @@ class: "text-center"
 
 # Learn More
 
-[Documentations](https://kolibri.show) / [GitHub Repo](https://github.com/kolibrijs/kolibri)
+[Documentations](https://kolibry.dev) / [GitHub Repo](https://github.com/kolibry-js/kolibry)

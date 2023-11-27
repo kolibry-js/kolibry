@@ -1,4 +1,4 @@
-import type { KolibriConfig } from './config'
+import type { KolibryConfig } from './config'
 
 export type FrontmatterStyle = 'frontmatter' | 'yaml'
 
@@ -29,44 +29,44 @@ export interface SlideInfoExtended extends SlideInfo {
 }
 
 /**
- * Metadata for "kolibri" field in themes' package.json
+ * Metadata for "kolibry" field in themes' package.json
  */
-export interface KolibriThemeMeta {
-  defaults?: Partial<KolibriConfig>
+export interface KolibryThemeMeta {
+  defaults?: Partial<KolibryConfig>
   colorSchema?: 'dark' | 'light' | 'both'
   highlighter?: 'prism' | 'shiki' | 'both'
 }
 
-export type KolibriThemeConfig = Record<string, string | number>
+export type KolibryThemeConfig = Record<string, string | number>
 
-export interface KolibriFeatureFlags {
+export interface KolibryFeatureFlags {
   katex: boolean
   monaco: boolean
   tweet: boolean
   mermaid: boolean
 }
 
-export interface KolibriMarkdown {
+export interface KolibryMarkdown {
   slides: SlideInfo[]
   raw: string
-  config: KolibriConfig
-  features: KolibriFeatureFlags
+  config: KolibryConfig
+  features: KolibryFeatureFlags
   headmatter: Record<string, unknown>
 
   filepath?: string
   entries?: string[]
-  themeMeta?: KolibriThemeMeta
+  themeMeta?: KolibryThemeMeta
 }
 
-export interface KolibriPreparserExtension {
+export interface KolibryPreparserExtension {
   name: string
   transformRawLines?(lines: string[]): Promise<void> | void
   transformSlide?(content: string, frontmatter: any): Promise<string | undefined>
 }
 
-export type PreparserExtensionLoader = (headmatter?: Record<string, unknown>, filepath?: string) => Promise<KolibriPreparserExtension[]>
+export type PreparserExtensionLoader = (headmatter?: Record<string, unknown>, filepath?: string) => Promise<KolibryPreparserExtension[]>
 
 // internal type?
-export type PreparserExtensionFromHeadmatter = (headmatter: any, exts: KolibriPreparserExtension[], filepath?: string) => Promise<KolibriPreparserExtension[]>
+export type PreparserExtensionFromHeadmatter = (headmatter: any, exts: KolibryPreparserExtension[], filepath?: string) => Promise<KolibryPreparserExtension[]>
 
 export type RenderContext = 'slide' | 'overview' | 'presenter' | 'previewNext'

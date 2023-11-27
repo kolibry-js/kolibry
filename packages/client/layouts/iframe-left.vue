@@ -18,7 +18,7 @@ const scaleInvertPercent = computed(() => `${(1 / (props.scale || 1)) * 100}%`)
         :style="scale ? { transform: `scale(${scale})`, transformOrigin: 'top left' } : {}"
       />
     </div>
-    <div class="kolibri-layout default" v-bind="$attrs">
+    <div class="kolibry-layout default" v-bind="$attrs">
       <slot />
     </div>
   </div>

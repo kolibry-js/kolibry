@@ -15,43 +15,43 @@ html {
   background: transparent;
 }
 
-.kolibri-icon-btn {
+.kolibry-icon-btn {
   @apply inline-block cursor-pointer select-none !outline-none;
   @apply opacity-75 transition duration-200 ease-in-out align-middle rounded p-1;
   @apply hover:(opacity-100 bg-gray-400 bg-opacity-10);
   @apply md:p-2;
 }
 
-.kolibri-icon-btn.shallow {
+.kolibry-icon-btn.shallow {
   @apply opacity-30
 }
 
-.kolibri-icon-btn.active {
+.kolibry-icon-btn.active {
   @apply opacity-100
 }
 
-.kolibri-icon-btn.disabled {
+.kolibry-icon-btn.disabled {
   @apply opacity-25 pointer-events-none;
 }
 
-.kolibri-vclick-target {
+.kolibry-vclick-target {
   @apply transition-opacity duration-100;
 }
 
-.kolibri-vclick-hidden {
+.kolibry-vclick-hidden {
   @apply !opacity-0 !pointer-events-none;
 }
 
-.kolibri-vclick-fade {
+.kolibry-vclick-fade {
   @apply opacity-50;
 }
 
-.kolibri-icon {
+.kolibry-icon {
   display: inline-block;
   vertical-align: sub;
   line-height: 1em;
 }
 
-.kolibri-page {
+.kolibry-page {
   @apply absolute top-0 left-0 right-0 w-full relative;
 }

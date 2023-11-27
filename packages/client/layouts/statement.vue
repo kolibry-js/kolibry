@@ -1,5 +1,5 @@
 <template>
-  <div class="kolibri-layout statement">
+  <div class="kolibry-layout statement">
     <div class="my-auto">
       <slot />
     </div>

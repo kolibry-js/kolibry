@@ -2,12 +2,12 @@ import { basename, resolve } from 'node:path'
 import fg from 'fast-glob'
 import { describe, expect, it } from 'vitest'
 import { getDefaultConfig, load, parse, prettify, stringify } from '../packages/parser/src/fs'
-import type { KolibriConfig, KolibriPreparserExtension } from '../packages/types/src'
+import type { KolibryConfig, KolibryPreparserExtension } from '../packages/types/src'
 
-function configDiff(v: KolibriConfig) {
+function configDiff(v: KolibryConfig) {
   const defaults = getDefaultConfig()
   const res: Record<string, any> = {}
-  for (const key of Object.keys(v) as (keyof KolibriConfig)[]) {
+  for (const key of Object.keys(v) as (keyof KolibryConfig)[]) {
     if (JSON.stringify(v[key]) !== JSON.stringify(defaults[key]))
       res[key] = v[key]
   }
@@ -108,7 +108,7 @@ f
     src: string,
     transformRawLines: (lines: string[]) => void | Promise<void> = () => {},
     more = {},
-    moreExts: KolibriPreparserExtension[] = [],
+    moreExts: KolibryPreparserExtension[] = [],
   ) {
     return await parse(
       src,

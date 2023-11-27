@@ -3,13 +3,13 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "kolibri build",
-    "dev": "kolibri --open",
-    "export": "kolibri export"
+    "build": "kolibry build",
+    "dev": "kolibry --open",
+    "export": "kolibry export"
   },
   "dependencies": {
-    "@kolibrijs/cli": "^0.0.2",
-    "@kolibrijs/theme-default": "latest",
-    "@kolibrijs/theme-seriph": "latest"
+    "@kolibry/cli": "^0.0.2",
+    "@kolibry/theme-default": "latest",
+    "@kolibry/theme-seriph": "latest"
   }
 }

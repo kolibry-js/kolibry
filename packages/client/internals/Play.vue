@@ -45,7 +45,7 @@ if (__KOLIBRI_FEATURE_DRAWINGS__)
   <div id="page-root" ref="root" class="grid grid-cols-[1fr_max-content]" :style="themeVars">
     <SlideContainer
       class="w-full h-full"
-      :style="{ background: 'var(--kolibri-slide-container-background, black)' }"
+      :style="{ background: 'var(--kolibry-slide-container-background, black)' }"
       :width="isPrintMode ? windowSize.width.value : undefined"
       :scale="slideScale"
       @pointerdown="onClick"

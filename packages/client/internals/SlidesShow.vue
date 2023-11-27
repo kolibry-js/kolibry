@@ -7,10 +7,10 @@ import { skipTransition } from '../composables/hmr'
 import SlideWrapper from './SlideWrapper'
 
 // @ts-expect-error virtual module
-import GlobalTop from '/@kolibrijs/global-components/top'
+import GlobalTop from '/@kolibry/global-components/top'
 
 // @ts-expect-error virtual module
-import GlobalBottom from '/@kolibrijs/global-components/bottom'
+import GlobalBottom from '/@kolibry/global-components/bottom'
 import PresenterMouse from './PresenterMouse.vue'
 
 defineProps<{

@@ -1,25 +1,25 @@
 import type { TransitionGroupProps } from 'vue'
 import type { ExportArgs } from './cli'
-import type { KolibriThemeConfig } from './types'
+import type { KolibryThemeConfig } from './types'
 
-export interface KolibriConfig {
+export interface KolibryConfig {
   title: string
   /**
    * String template to compose title
    *
-   * @example "%s - Kolibri" - to suffix " - Kolibri" to all pages
-   * @default '%s - Kolibri'
+   * @example "%s - Kolibry" - to suffix " - Kolibry" to all pages
+   * @default '%s - Kolibry'
    */
   titleTemplate: string
   /**
    * Theme to use for the slides
    *
-   * @see https://kolibri.show/themes/use.html
+   * @see https://kolibry.dev/themes/use.html
    * @default 'default'
    */
   theme: string
   /**
-   * List of Kolibri addons
+   * List of Kolibry addons
    *
    * @default []
    */
@@ -33,7 +33,7 @@ export interface KolibriConfig {
   /**
    * Enable Monaco
    *
-   * @see https://kolibri.show/custom/config-monaco.html
+   * @see https://kolibry.show/custom/config-monaco.html
    * @default 'dev'
    */
   monaco: boolean | 'dev' | 'build'
@@ -66,7 +66,7 @@ export interface KolibriConfig {
   /**
    * Prefer highlighter
    *
-   * @see https://kolibri.show/custom/highlighters.html
+   * @see https://kolibry.show/custom/highlighters.html
    * @default prism
    */
   highlighter: 'prism' | 'shiki'
@@ -117,14 +117,14 @@ export interface KolibriConfig {
   selectable: boolean
   /**
    * Configure for themes, will inject intro root styles as
-   * `--kolibri-theme-x` for attribute `x`
+   * `--kolibry-theme-x` for attribute `x`
    *
    * This allows themes to have customization options in frontmatter
    * Refer to themes' document for options avaliable
    *
    * @default {}
    */
-  themeConfig: KolibriThemeConfig
+  themeConfig: KolibryThemeConfig
   /**
    * Configure fonts for the slides and app
    *
@@ -134,7 +134,7 @@ export interface KolibriConfig {
   /**
    * Configure the icon for app
    *
-   * @default 'https://cdn.jsdelivr.net/gh/kolibrijs/kolibri/assets/favicon.png'
+   * @default 'https://cdn.jsdelivr.net/gh/kolibry-js/kolibry/assets/favicon.png'
    */
   favicon: string
   /**
@@ -194,7 +194,7 @@ export interface KolibriConfig {
    * - slide-up
    * - slide-down
    *
-   * @see https://kolibri.show/guide/animations.html#pages-transitions
+   * @see https://kolibry.show/guide/animations.html#pages-transitions
    * @see https://vuejs.org/guide/built-ins/transition.html
    */
   transition?: BuiltinSlideTransition | string | TransitionGroupProps
@@ -267,7 +267,7 @@ export interface FontOptions {
 export interface DrawingsOptions {
   /**
    * Persist the drawings to disk
-   * Passing string to specify the directory (default to `.kolibri/drawings`)
+   * Passing string to specify the directory (default to `.kolibry/drawings`)
    *
    * @default false
    */

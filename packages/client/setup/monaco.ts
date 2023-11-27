@@ -1,7 +1,7 @@
 import { getCurrentInstance, onMounted } from 'vue'
 import * as monaco from 'monaco-editor'
 import { createSingletonPromise } from '@nyxb/utils'
-import type { MonacoSetupReturn } from '@kolibrijs/types'
+import type { MonacoSetupReturn } from '@kolibry/types'
 
 /* __imports__ */
 

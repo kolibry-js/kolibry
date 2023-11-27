@@ -4,15 +4,15 @@ import App from './App.vue'
 import setupMain from './setup/main'
 import { router } from './routes'
 import createDirectives from './modules/directives'
-import createKolibriContext from './modules/context'
+import createKolibryContext from './modules/context'
 
-import '/@kolibrijs/styles'
+import '/@kolibry/styles'
 
 const app = createApp(App)
 app.use(router)
 app.use(createHead())
 app.use(createDirectives())
-app.use(createKolibriContext())
+app.use(createKolibryContext())
 
 setupMain({ app, router })
 

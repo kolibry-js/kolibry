@@ -5,48 +5,48 @@ class: text-center
 highlighter: shiki
 lineNumbers: false
 info: |
-  ## Kolibri Starter Template
+  ## Kolibry Starter Template
   Presentation slides for developers.
 
-  Learn more at [Kolibri.show](https://kolibri.show)
+  Learn more at [Kolibry.dev](https://kolibry.dev)
 drawings:
   persist: false
 transition: slide-left
-title: Welcome to Kolibri
+title: Welcome to Kolibry
 mdc: true
 ---
 
-# Welcome to Kolibri
+# Welcome to Kolibry
 
 Presentation slides for developers
 
 <div class="pt-12">
-  <span @click="$kolibri.nav.next" class="px-2 py-1 rounded cursor-pointer" hover="bg-white bg-opacity-10">
+  <span @click="$kolibry.nav.next" class="px-2 py-1 rounded cursor-pointer" hover="bg-white bg-opacity-10">
     Press Space for next page <carbon:arrow-right class="inline"/>
   </span>
 </div>
 
 <div class="abs-br m-6 flex gap-2">
-  <button @click="$kolibri.nav.openInEditor()" title="Open in Editor" class="text-xl kolibri-icon-btn opacity-50 !border-none !hover:text-white">
+  <button @click="$kolibry.nav.openInEditor()" title="Open in Editor" class="text-xl kolibry-icon-btn opacity-50 !border-none !hover:text-white">
     <carbon:edit />
   </button>
-  <a href="https://github.com/kolibrijs/kolibri" target="_blank" alt="GitHub" title="Open in GitHub"
-    class="text-xl kolibri-icon-btn opacity-50 !border-none !hover:text-white">
+  <a href="https://github.com/kolibry-js/kolibry" target="_blank" alt="GitHub" title="Open in GitHub"
+    class="text-xl kolibry-icon-btn opacity-50 !border-none !hover:text-white">
     <carbon-logo-github />
   </a>
 </div>
 
 <!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://kolibri.show/guide/syntax.html#notes)
+The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://kolibry.dev/guide/syntax.html#notes)
 -->
 
 ---
 transition: fade-out
 ---
 
-# What is Kolibri?
+# What is Kolibry?
 
-Kolibri is a slides maker and presenter designed for developers, consist of the following features
+Kolibry is a slides maker and presenter designed for developers, consist of the following features
 
 - 📝 **Text-based** - focus on the content with Markdown, and then style them later
 - 🎨 **Themable** - theme can be shared and used with npm packages
@@ -59,11 +59,11 @@ Kolibri is a slides maker and presenter designed for developers, consist of the 
 <br>
 <br>
 
-Read more about [Why Kolibri?](https://kolibri.show/guide/why)
+Read more about [Why Kolibry?](https://kolibry.dev/guide/why)
 
 <!--
 You can have `style` tag in markdown to override the style for the current page.
-Learn more: https://kolibri.show/guide/syntax#embedded-styles
+Learn more: https://kolibry.dev/guide/syntax#embedded-styles
 -->
 
 <style>
@@ -101,7 +101,7 @@ level: 2
 
 # Navigation
 
-Hover on the bottom-left corner to see the navigation's controls panel, [learn more](https://kolibri.show/guide/navigation.html)
+Hover on the bottom-left corner to see the navigation's controls panel, [learn more](https://kolibry.dev/guide/navigation.html)
 
 ## Keyboard Shortcuts
 
@@ -112,11 +112,11 @@ Hover on the bottom-left corner to see the navigation's controls panel, [learn m
 | <kbd>up</kbd> | previous slide |
 | <kbd>down</kbd> | next slide |
 
-<!-- https://kolibri.show/guide/animations.html#click-animations -->
+<!-- https://kolibry.dev/guide/animations.html#click-animations -->
 <img
   v-click
   class="absolute -bottom-9 -left-7 w-80 opacity-50"
-  src="https://kolibri.show/assets/arrow-bottom-left.svg"
+  src="https://kolibry.dev/assets/arrow-bottom-left.svg"
   alt=""
 />
 <p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">Here!</p>
@@ -147,7 +147,7 @@ function updateUser(id: number, update: User) {
 
 <arrow v-click="[3, 4]" x1="400" y1="420" x2="230" y2="330" color="#564" width="3" arrowSize="1" />
 
-[^1]: [Learn More](https://kolibri.show/guide/syntax.html#line-highlighting)
+[^1]: [Learn More](https://kolibry.dev/guide/syntax.html#line-highlighting)
 
 <style>
 .footnotes-sep {
@@ -179,7 +179,7 @@ We have provided a few built-in components like `<Tweet/>` and `<Youtube/>` that
 <!-- ./components/Counter.vue -->
 <Counter :count="10" m="t-4" />
 
-Check out [the guides](https://kolibri.show/builtin/components.html) for more.
+Check out [the guides](https://kolibry.dev/builtin/components.html) for more.
 
 </div>
 <div>
@@ -210,7 +210,7 @@ class: px-20
 
 # Themes
 
-Kolibri comes with powerful theming support. Themes can provide styles, layouts, components, or even configurations for tools. Switching between themes by just **one edit** in your frontmatter:
+Kolibry comes with powerful theming support. Themes can provide styles, layouts, components, or even configurations for tools. Switching between themes by just **one edit** in your frontmatter:
 
 <div grid="~ cols-2 gap-2" m="-t-2">
 
@@ -226,14 +226,14 @@ theme: seriph
 ---
 ```
 
-<img border="rounded" src="https://github.com/kolibrijs/themes/blob/main/screenshots/theme-default/01.png?raw=true" alt="">
+<img border="rounded" src="https://github.com/kolibry-js/themes/blob/main/screenshots/theme-default/01.png?raw=true" alt="">
 
-<img border="rounded" src="https://github.com/kolibrijs/themes/blob/main/screenshots/theme-seriph/01.png?raw=true" alt="">
+<img border="rounded" src="https://github.com/kolibry-js/themes/blob/main/screenshots/theme-seriph/01.png?raw=true" alt="">
 
 </div>
 
-Read more about [How to use a theme](https://kolibri.show/themes/use.html) and
-check out the [Awesome Themes Gallery](https://kolibri.show/themes/gallery.html).
+Read more about [How to use a theme](https://kolibry.dev/themes/use.html) and
+check out the [Awesome Themes Gallery](https://kolibry.dev/themes/gallery.html).
 
 ---
 preload: false
@@ -248,7 +248,7 @@ Animations are powered by [@vueuse/motion](https://motion.vueuse.org/).
   v-motion
   :initial="{ x: -80 }"
   :enter="{ x: 0 }">
-  Kolibri
+  Kolibry
 </div>
 ```
 
@@ -259,7 +259,7 @@ Animations are powered by [@vueuse/motion](https://motion.vueuse.org/).
       :initial="{ x: 800, y: -100, scale: 1.5, rotate: -50 }"
       :enter="final"
       class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://kolibri.show/logo-square.png"
+      src="https://kolibry.dev/logo-square.png"
       alt=""
     />
     <img
@@ -267,7 +267,7 @@ Animations are powered by [@vueuse/motion](https://motion.vueuse.org/).
       :initial="{ y: 500, x: -100, scale: 2 }"
       :enter="final"
       class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://kolibri.show/logo-circle.png"
+      src="https://kolibry.dev/logo-circle.png"
       alt=""
     />
     <img
@@ -275,7 +275,7 @@ Animations are powered by [@vueuse/motion](https://motion.vueuse.org/).
       :initial="{ x: 600, y: 400, scale: 2, rotate: 100 }"
       :enter="final"
       class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://kolibri.show/logo-triangle.png"
+      src="https://kolibry.dev/logo-triangle.png"
       alt=""
     />
   </div>
@@ -285,7 +285,7 @@ Animations are powered by [@vueuse/motion](https://motion.vueuse.org/).
     v-motion
     :initial="{ x: -80, opacity: 0}"
     :enter="{ x: 0, opacity: 1, transition: { delay: 2000, duration: 1000 } }">
-    Kolibri
+    Kolibry
   </div>
 </div>
 
@@ -310,7 +310,7 @@ const final = {
   :initial="{ x:35, y: 40, opacity: 0}"
   :enter="{ y: 0, opacity: 1, transition: { delay: 3500 } }">
 
-[Learn More](https://kolibri.show/guide/animations.html#motion)
+[Learn More](https://kolibry.dev/guide/animations.html#motion)
 
 </div>
 
@@ -340,7 +340,7 @@ $$
 
 <br>
 
-[Learn more](https://kolibri.show/guide/syntax#latex)
+[Learn more](https://kolibry.dev/guide/syntax#latex)
 
 ---
 
@@ -420,7 +420,7 @@ database "MySql" {
 
 </div>
 
-[Learn More](https://kolibri.show/guide/syntax.html#diagrams)
+[Learn More](https://kolibry.dev/guide/syntax.html#diagrams)
 
 ---
 src: ./pages/multiple-entries.md
@@ -434,4 +434,4 @@ class: text-center
 
 # Learn More
 
-[Documentations](https://kolibri.show) · [GitHub](https://github.com/kolibrijs/kolibri) · [Showcases](https://kolibri.show/showcases.html)
+[Documentations](https://kolibry.dev) · [GitHub](https://github.com/kolibry-js/kolibry) · [Showcases](https://kolibry.dev/showcases.html)

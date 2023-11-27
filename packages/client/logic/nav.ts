@@ -1,7 +1,7 @@
 import type { Ref, TransitionGroupProps } from 'vue'
 import type { RouteRecordRaw } from 'vue-router'
 import { computed, nextTick, ref, watch } from 'vue'
-import type { TocItem } from '@kolibrijs/types'
+import type { TocItem } from '@kolibry/types'
 import { timestamp, usePointerSwipe } from '@vueuse/core'
 import { rawRoutes, router } from '../routes'
 import { configs } from '../env'
@@ -171,7 +171,7 @@ export async function downloadPDF() {
       ? configs.download
       : configs.exportFilename
         ? `${configs.exportFilename}.pdf`
-        : `${import.meta.env.BASE_URL}kolibri-exported.pdf`,
+        : `${import.meta.env.BASE_URL}kolibry-exported.pdf`,
     `${configs.title}.pdf`,
   )
 }

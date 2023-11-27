@@ -25,7 +25,7 @@ const main = ref<HTMLDivElement>()
 registerShortcuts()
 useSwipeControls(main)
 
-const slideTitle = configs.titleTemplate.replace('%s', configs.title || 'Kolibri')
+const slideTitle = configs.titleTemplate.replace('%s', configs.title || 'Kolibry')
 useHead({
   title: `Presenter - ${slideTitle}`,
 })
@@ -87,10 +87,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="bg-main h-full kolibri-presenter">
+  <div class="bg-main h-full kolibry-presenter">
     <div class="grid-container" :class="`layout${presenterLayout}`">
       <div class="grid-section top flex">
-        <img src="../assets/logo-title-horizontal.png" class="ml-2 my-auto h-10 py-1 lg:h-14 lg:py-2" style="height: 3.5rem;" alt="Kolibri logo">
+        <img src="../assets/logo-title-horizontal.png" class="ml-2 my-auto h-10 py-1 lg:h-14 lg:py-2" style="height: 3.5rem;" alt="Kolibry logo">
         <div class="flex-auto" />
         <div
           class="timer-btn my-auto relative w-22px h-22px cursor-pointer text-lg"
@@ -154,17 +154,17 @@ onMounted(() => {
           :style="{ fontSize: `${presenterNotesFontSize}em` }"
         />
         <div class="border-t border-main py-1 px-2 text-sm">
-          <button class="kolibri-icon-btn" @click="increasePresenterFontSize">
+          <button class="kolibry-icon-btn" @click="increasePresenterFontSize">
             <HiddenText text="Increase font size" />
             <carbon:zoom-in />
           </button>
-          <button class="kolibri-icon-btn" @click="decreasePresenterFontSize">
+          <button class="kolibry-icon-btn" @click="decreasePresenterFontSize">
             <HiddenText text="Decrease font size" />
             <carbon:zoom-out />
           </button>
           <button
             v-if="__DEV__"
-            class="kolibri-icon-btn" @click="notesEditing = !notesEditing"
+            class="kolibry-icon-btn" @click="notesEditing = !notesEditing"
           >
             <HiddenText text="Edit Notes" />
             <carbon:edit />
@@ -188,8 +188,8 @@ onMounted(() => {
 </template>
 
 <style lang="postcss" scoped>
-.kolibri-presenter {
-  --kolibri-controls-foreground: current;
+.kolibry-presenter {
+  --kolibry-controls-foreground: current;
 }
 
 .timer-btn:hover {

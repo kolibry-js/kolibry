@@ -1,8 +1,8 @@
 import MarkdownIt from 'markdown-it'
 import { describe, expect, it } from 'vitest'
-import type { ResolvedFontOptions } from '@kolibrijs/types'
+import type { ResolvedFontOptions } from '@kolibry/types'
 import { parseAspectRatio, parseRangeString } from '../packages/parser/src'
-import { generateGoogleFontsUrl, stringifyMarkdownTokens } from '../packages/kolibri/node/utils'
+import { generateGoogleFontsUrl, stringifyMarkdownTokens } from '../packages/kolibry/node/utils'
 
 describe('utils', () => {
   it('page-range', () => {
@@ -35,7 +35,7 @@ describe('utils', () => {
     expect(stringify('<b>Whatever</b>')).toBe('Whatever')
     expect(stringify('Talk about `<details/>`')).toBe('Talk about <details/>')
     expect(stringify('What is Readonly\\<T\\> in TypeScript')).toBe('What is Readonly<T> in TypeScript')
-    expect(stringify('Welcome to<br />*Kolibri*')).toBe('Welcome to Kolibri')
+    expect(stringify('Welcome to<br />*Kolibry*')).toBe('Welcome to Kolibry')
   })
 
   it('google-fonts', () => {

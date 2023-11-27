@@ -12,10 +12,10 @@ declare module '*.md' {
   export default component
 }
 
-declare module '/@kolibrijs/configs' {
-  import { KolibriConfig } from '@kolibrijs/types'
+declare module '/@kolibry/configs' {
+  import { KolibryConfig } from '@kolibry/types'
 
-  export default KolibriConfig
+  export default KolibryConfig
 }
 
 declare module 'mermaid/dist/mermaid.esm.mjs' {

@@ -1,4 +1,4 @@
-# Welcome to [Kolibri](https://github.com/kolibrijs/kolibri)!
+# Welcome to [Kolibry](https://github.com/kolibry-js/kolibry)!
 
 To start the slide show:
 
@@ -8,4 +8,4 @@ To start the slide show:
 
 Edit the [slides.md](./slides.md) to see the changes.
 
-Learn more about Kolibri on [documentations](https://kolibri.show/).
+Learn more about Kolibry on [documentations](https://kolibry.dev/).

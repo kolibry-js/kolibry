@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import Markdown from 'markdown-it'
-import markdownItPrism from '../packages/kolibri/node/plugins/markdown-it-prism'
+import markdownItPrism from '../packages/kolibry/node/plugins/markdown-it-prism'
 
 describe('markdown-it-prism', () => {
   const md = Markdown()

@@ -3,19 +3,19 @@ body,
 #container {
   padding: 0;
   margin: 0;
-  background: var(--kolibri-code-background);
+  background: var(--kolibry-code-background);
   width: 100%;
   height: 100%;
 }
 
 #container {
-  padding: var(--kolibri-code-padding);
-  margin: var(--kolibri-code-margin);
-  border-radius: var(--kolibri-code-radius);
+  padding: var(--kolibry-code-padding);
+  margin: var(--kolibry-code-margin);
+  border-radius: var(--kolibry-code-radius);
 }
 
 .monaco-editor .monaco-hover {
-  border-radius: var(--kolibri-code-radius);
+  border-radius: var(--kolibry-code-radius);
   overflow: hidden;
   border: none;
   outline: none;

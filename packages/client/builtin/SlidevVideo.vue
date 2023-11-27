@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, inject, onMounted, onUnmounted, ref, watch } from 'vue'
 
-import { injectionClicks, injectionClicksDisabled, injectionClicksElements, injectionKolibriContext, injectionRenderContext, injectionRoute } from '../constants'
+import { injectionClicks, injectionClicksDisabled, injectionClicksElements, injectionKolibryContext, injectionRenderContext, injectionRoute } from '../constants'
 
 const props = defineProps<{
   autoPlay?: boolean | 'once' | 'resume' | 'resumeOnce'
@@ -9,7 +9,7 @@ const props = defineProps<{
   autoReset?: 'slide' | 'click'
 }>()
 
-const $kolibri = inject(injectionKolibriContext)
+const $kolibry = inject(injectionKolibryContext)
 const route = inject(injectionRoute)
 const currentContext = inject(injectionRenderContext)
 const clicks = inject(injectionClicks)
@@ -23,7 +23,7 @@ const ended = ref(false)
 const matchRoute = computed(() => {
   if (!video.value || currentContext?.value !== 'slide')
     return false
-  return route === $kolibri?.nav.currentRoute
+  return route === $kolibry?.nav.currentRoute
 })
 
 const matchClick = computed(() => {

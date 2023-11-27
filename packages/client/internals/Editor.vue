@@ -147,11 +147,11 @@ throttledWatch(
   >
     <div class="flex pb-2 text-xl -mt-1">
       <div class="mr-4 rounded flex">
-        <button class="kolibri-icon-btn" :class="tab === 'content' ? 'text-$kolibri-theme-primary' : ''" @click="switchTab('content')">
+        <button class="kolibry-icon-btn" :class="tab === 'content' ? 'text-$kolibry-theme-primary' : ''" @click="switchTab('content')">
           <HiddenText text="Switch to content tab" />
           <carbon:account />
         </button>
-        <button class="kolibri-icon-btn" :class="tab === 'note' ? 'text-$kolibri-theme-primary' : ''" @click="switchTab('note')">
+        <button class="kolibry-icon-btn" :class="tab === 'note' ? 'text-$kolibry-theme-primary' : ''" @click="switchTab('note')">
           <HiddenText text="Switch to notes tab" />
           <carbon:align-box-bottom-right />
         </button>
@@ -160,11 +160,11 @@ throttledWatch(
         {{ tab === 'content' ? 'Slide' : 'Notes' }}
       </span>
       <div class="flex-auto" />
-      <button class="kolibri-icon-btn" @click="openInEditor()">
+      <button class="kolibry-icon-btn" @click="openInEditor()">
         <HiddenText text="Open in editor" />
         <carbon:launch />
       </button>
-      <button class="kolibri-icon-btn" @click="close">
+      <button class="kolibry-icon-btn" @click="close">
         <HiddenText text="Close" />
         <carbon:close />
       </button>

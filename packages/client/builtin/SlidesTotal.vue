@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { inject } from 'vue'
-import { injectionKolibriContext } from '../constants'
+import { injectionKolibryiContext } from '../constants'
 
-const $kolibri = inject(injectionKolibriContext)
+const $kolibry = inject(injectionKolibryiContext)
 </script>
 
 <template>
-  <span>{{ $kolibri.nav.total }}</span>
+  <span>{{ $kolibry.nav.total }}</span>
 </template>

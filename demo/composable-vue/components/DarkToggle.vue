@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { isDark, toggleDark } from '@kolibrijs/client/logic/dark.ts'
+import { isDark, toggleDark } from '@kolibry/client/logic/dark.ts'
 </script>
 
 <template>
   <button
-    class="bg-$kolibri-theme-primary rounded border-b-2 border-green-900 text-sm px-2 pt-1.5 pb-1 inline-block !outline-none hover:bg-opacity-85"
+    class="bg-$kolibry-theme-primary rounded border-b-2 border-green-900 text-sm px-2 pt-1.5 pb-1 inline-block !outline-none hover:bg-opacity-85"
     @click="toggleDark"
   >
     <div class="flex">

@@ -1,6 +1,6 @@
 import { promises as fs } from 'node:fs'
 import { dirname, resolve } from 'node:path'
-import type { KolibriMarkdown, KolibriPreparserExtension, KolibriThemeMeta, PreparserExtensionLoader, SlideInfo, SlideInfoWithPath } from '@kolibrijs/types'
+import type { KolibryMarkdown, KolibryPreparserExtension, KolibryThemeMeta, PreparserExtensionLoader, SlideInfo, SlideInfoWithPath } from '@kolibry/types'
 import { detectFeatures, mergeFeatureFlags, parse, stringify, stringifySlide } from './core'
 
 export * from './core'
@@ -11,12 +11,12 @@ export function injectPreparserExtensionLoader(fn: PreparserExtensionLoader) {
   preparserExtensionLoader = fn
 }
 
-export async function load(filepath: string, themeMeta?: KolibriThemeMeta, content?: string) {
+export async function load(filepath: string, themeMeta?: KolibryThemeMeta, content?: string) {
   const dir = dirname(filepath)
   const markdown = content ?? await fs.readFile(filepath, 'utf-8')
 
-  const preparserExtensions: KolibriPreparserExtension[] = []
-  const data = await parse(markdown, filepath, themeMeta, [], async (headmatter, exts: KolibriPreparserExtension[], filepath: string | undefined) => {
+  const preparserExtensions: KolibryPreparserExtension[] = []
+  const data = await parse(markdown, filepath, themeMeta, [], async (headmatter, exts: KolibryPreparserExtension[], filepath: string | undefined) => {
     preparserExtensions.splice(
       0,
       preparserExtensions.length,
@@ -94,7 +94,7 @@ export async function load(filepath: string, themeMeta?: KolibriThemeMeta, conte
   return data
 }
 
-export async function save(data: KolibriMarkdown, filepath?: string) {
+export async function save(data: KolibryMarkdown, filepath?: string) {
   filepath = filepath || data.filepath!
 
   await fs.writeFile(filepath, stringify(data), 'utf-8')

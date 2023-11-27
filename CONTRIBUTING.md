@@ -4,13 +4,13 @@ Excited to hear that you are interested in contributing to this project! Thanks!
 
 ## Documentations 
 
-Documentations are now moved to [`kolibrijs/docs`](https://github.com/kolibrijs/docs) repo.
+Documentations are now moved to [`kolibry-js/docs`](https://github.com/kolibry-js/docs) repo.
 
 ## Setup (in your browser)
 
 You can contribute through a development environment in your browser by clicking the following button:
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/kolibrijs/kolibri)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/kolibry-js/kolibry)
 
 ## Setup (locally)
 
@@ -42,7 +42,7 @@ pnpm dev
 
 ### Run Demo
 
-To run Kolibri locally, you can run
+To run Kolibry locally, you can run
 
 ```bash
 pnpm demo:dev
@@ -64,11 +64,11 @@ We use monorepo to manage multiple packages
 
 ```
 packages
-  kolibri/          - main package entry, holds the code on Node.js side
+  kolibry/          - main package entry, holds the code on Node.js side
   client/          - main frontend app
-  parser/          - parser for Kolibri's extended Markdown format
-  create-app/      - scripts and template for `npm init kolibri`
-  create-theme/    - scripts and template for `npm init kolibri-theme`
+  parser/          - parser for Kolibry's extended Markdown format
+  create-app/      - scripts and template for `npm init kolibry`
+  create-theme/    - scripts and template for `npm init kolibry-theme`
   theme-*/         - official themes
 ```
 

@@ -28,7 +28,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <div class="kolibri-layout two-cols-header w-full h-full" :class="layoutClass">
+  <div class="kolibry-layout two-cols-header w-full h-full" :class="layoutClass">
     <div class="col-header">
       <slot />
     </div>

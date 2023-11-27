@@ -1,7 +1,7 @@
 /* __imports__ */
 
-import type { MermaidOptions } from '@kolibrijs/types'
-import { defineMermaidSetup } from '@kolibrijs/types'
+import type { MermaidOptions } from '@kolibry/types'
+import { defineMermaidSetup } from '@kolibry/types'
 
 export default defineMermaidSetup(() => {
   // eslint-disable-next-line prefer-const

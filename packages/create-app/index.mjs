@@ -26,7 +26,7 @@ const renameFiles = {
 async function init() {
   console.log()
   console.log(`  ${cyan('●') + blue('■') + yellow('▲')}`)
-  console.log(`${bold('  Kolibri') + dim(' Creator')}  ${blue(`v${version}`)}`)
+  console.log(`${bold('  Kolibry') + dim(' Creator')}  ${blue(`v${version}`)}`)
   console.log()
 
   let targetDir = argv._[0]
@@ -38,7 +38,7 @@ async function init() {
       type: 'text',
       name: 'projectName',
       message: 'Project name:',
-      initial: 'kolibri',
+      initial: 'kolibry',
     })
     targetDir = projectName.trim()
   }
