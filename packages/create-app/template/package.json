@@ -8,7 +8,7 @@
     "export": "kolibry export"
   },
   "dependencies": {
-    "@kolibry/cli": "^0.0.4",
+    "@kolibry/cli": "^0.0.5",
     "@kolibry/theme-default": "latest",
     "@kolibry/theme-seriph": "latest"
   }

@@ -1,7 +1,7 @@
 {
   "name": "create-kolibry-theme",
   "type": "module",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Create starter theme template for Kolibry",
   "author": "nyxb <contact@nyxb.email>",
   "license": "MIT",
