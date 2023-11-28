@@ -29,13 +29,13 @@ export function parseRangeString(total: number, rangeStr?: string) {
 export function parseAspectRatio(str: string | number) {
   if (isNumber(str))
     return str
-  if (!Number.isNaN(+str))
+  if (!isNaN(+str))
     return +str
   const [wStr = '', hStr = ''] = str.split(/[:\/x\|]/)
   const w = Number.parseFloat(wStr.trim())
   const h = Number.parseFloat(hStr.trim())
 
-  if (Number.isNaN(w) || Number.isNaN(h) || h === 0)
+  if (isNaN(w) || isNaN(h) || h === 0)
     throw new Error(`Invalid aspect ratio "${str}"`)
 
   return w / h

@@ -1,5 +1,4 @@
 import { resolve } from 'node:path'
-import process from 'node:process'
 import { isTruthy } from '@nyxb/utils'
 import { DefaultExtractor, defineConfig } from 'vite-plugin-windicss'
 import typography from 'windicss/plugin/typography'
@@ -49,8 +48,6 @@ export default defineConfig({
   ],
   shortcuts: {
     'bg-main': 'bg-white text-[#181818] dark:(bg-[#121212] text-[#ddd])',
-    'bg-active': 'bg-gray-400/10',
-    'border-main': 'border-gray-400/20',
     'abs-tl': 'absolute top-0 left-0',
     'abs-tr': 'absolute top-0 right-0',
     'abs-b': 'absolute bottom-0 left-0 right-0',

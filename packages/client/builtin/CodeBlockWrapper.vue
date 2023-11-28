@@ -8,7 +8,7 @@ Usage:
 const your_code = 'here'
 ```
 
-Learn more: https://kolibry.dev/guide/syntax.html#line-highlighting
+Learn more: https://sli.dev/guide/syntax.html#line-highlighting
 -->
 
 <script setup lang="ts">
@@ -18,19 +18,10 @@ import { useClipboard } from '@vueuse/core'
 import { computed, getCurrentInstance, inject, onMounted, onUnmounted, ref, watchEffect } from 'vue'
 import { configs } from '../env'
 import { CLASS_VCLICK_TARGET, injectionClicks, injectionClicksDisabled, injectionClicksElements } from '../constants'
-import { makeId } from '../logic/utils'
 
 const props = defineProps({
   ranges: {
     default: () => [],
-  },
-  startLine: {
-    type: Number,
-    default: 1,
-  },
-  lines: {
-    type: Boolean,
-    default: configs.lineNumbers,
   },
   at: {
     type: Number,
@@ -45,6 +36,15 @@ const props = defineProps({
 const clicks = inject(injectionClicks)
 const elements = inject(injectionClicksElements)
 const disabled = inject(injectionClicksDisabled)
+
+function makeId(length = 5) {
+  const result = []
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+  const charactersLength = characters.length
+  for (let i = 0; i < length; i++)
+    result.push(characters.charAt(Math.floor(Math.random() * charactersLength)))
+  return result.join('')
+}
 
 const el = ref<HTMLDivElement>()
 const vm = getCurrentInstance()
@@ -71,26 +71,19 @@ onMounted(() => {
       return
     const isDuoTone = el.value.querySelector('.shiki-dark')
     const targets = isDuoTone ? Array.from(el.value.querySelectorAll('.shiki')) : [el.value]
-    const startLine = props.startLine
     for (const target of targets) {
       const lines = Array.from(target.querySelectorAll('.line'))
-      const highlights: number[] = parseRangeString(lines.length + startLine - 1, rangeStr.value)
+      const highlights: number[] = parseRangeString(lines.length, rangeStr.value)
       lines.forEach((line, idx) => {
-        const highlighted = highlights.includes(idx + startLine)
+        const highlighted = highlights.includes(idx + 1)
         line.classList.toggle(CLASS_VCLICK_TARGET, true)
         line.classList.toggle('highlighted', highlighted)
         line.classList.toggle('dishonored', !highlighted)
       })
       if (props.maxHeight) {
-        const highlightedEls = Array.from(target.querySelectorAll('.line.highlighted')) as HTMLElement[]
-        const height = highlightedEls.reduce((acc, el) => el.offsetHeight + acc, 0)
-        if (height > el.value.offsetHeight) {
-          highlightedEls[0].scrollIntoView({ behavior: 'smooth', block: 'start' })
-        }
-        else if (highlightedEls.length > 0) {
-          const middleEl = highlightedEls[Math.round((highlightedEls.length - 1) / 2)]
-          middleEl.scrollIntoView({ behavior: 'smooth', block: 'center' })
-        }
+        const firstHighlightedEl = target.querySelector('.line.highlighted')
+        if (firstHighlightedEl)
+          firstHighlightedEl.scrollIntoView({ behavior: 'smooth', block: 'center' })
       }
     }
   })
@@ -108,13 +101,9 @@ function copyCode() {
 <template>
   <div
     ref="el" class="kolibry-code-wrapper relative group"
-    :class="{
-      'kolibry-code-line-numbers': props.lines,
-    }"
     :style="{
       'max-height': props.maxHeight,
       'overflow-y': props.maxHeight ? 'scroll' : undefined,
-      '--start': props.startLine,
     }"
   >
     <slot />

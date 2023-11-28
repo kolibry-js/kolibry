@@ -1,13 +1,10 @@
 import type { KolibryConfig } from './config'
 
-export type FrontmatterStyle = 'frontmatter' | 'yaml'
-
 export interface SlideInfoBase {
   raw: string
   content: string
   note?: string
   frontmatter: Record<string, any>
-  frontmatterStyle?: FrontmatterStyle
   title?: string
   level?: number
 }
@@ -25,7 +22,7 @@ export interface SlideInfoWithPath extends SlideInfoBase {
 }
 
 export interface SlideInfoExtended extends SlideInfo {
-  noteHTML: string
+  notesHTML: string
 }
 
 /**
@@ -57,16 +54,5 @@ export interface KolibryMarkdown {
   entries?: string[]
   themeMeta?: KolibryThemeMeta
 }
-
-export interface KolibryPreparserExtension {
-  name: string
-  transformRawLines?(lines: string[]): Promise<void> | void
-  transformSlide?(content: string, frontmatter: any): Promise<string | undefined>
-}
-
-export type PreparserExtensionLoader = (headmatter?: Record<string, unknown>, filepath?: string) => Promise<KolibryPreparserExtension[]>
-
-// internal type?
-export type PreparserExtensionFromHeadmatter = (headmatter: any, exts: KolibryPreparserExtension[], filepath?: string) => Promise<KolibryPreparserExtension[]>
 
 export type RenderContext = 'slide' | 'overview' | 'presenter' | 'previewNext'

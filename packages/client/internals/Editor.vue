@@ -5,11 +5,6 @@ import { activeElement, editorWidth, isInputting, showEditor } from '../state'
 import { useCodeMirror } from '../setup/codemirror'
 import { currentSlideId, openInEditor } from '../logic/nav'
 import { useDynamicSlideInfo } from '../logic/note'
-import HiddenText from './HiddenText.vue'
-
-const props = defineProps<{
-  resize: boolean
-}>()
 
 const tab = ref<'content' | 'note'>('content')
 const content = ref('')
@@ -108,19 +103,16 @@ function switchTab(newTab: typeof tab.value) {
   // @ts-expect-error force cast
   document.activeElement?.blur?.()
 }
-
-if (props.resize) {
-  useEventListener('pointermove', (e) => {
-    if (handlerDown.value)
-      updateWidth(window.innerWidth - e.pageX)
-  }, { passive: true })
-  useEventListener('pointerup', () => {
-    handlerDown.value = false
-  })
-  useEventListener('resize', () => {
-    updateWidth(editorWidth.value)
-  })
-}
+useEventListener('pointermove', (e) => {
+  if (handlerDown.value)
+    updateWidth(window.innerWidth - e.pageX)
+}, { passive: true })
+useEventListener('pointerup', () => {
+  handlerDown.value = false
+})
+useEventListener('resize', () => {
+  updateWidth(editorWidth.value)
+})
 
 throttledWatch(
   [content, note],
@@ -134,25 +126,21 @@ throttledWatch(
 
 <template>
   <div
-    v-if="resize"
     class="fixed h-full top-0 bottom-0 w-10px bg-gray-400 select-none opacity-0 hover:opacity-10 z-100"
     :class="{ '!opacity-30': handlerDown }"
     :style="{ right: `${editorWidth - 5}px`, cursor: 'col-resize' }"
     @pointerdown="onHandlerDown"
   />
   <div
-    class="shadow bg-main p-4 grid grid-rows-[max-content_1fr] h-full overflow-hidden"
-    :class="resize ? 'border-l border-gray-400 border-opacity-20' : ''"
-    :style="resize ? { width: `${editorWidth}px` } : {}"
+    class="shadow bg-main p-4 grid grid-rows-[max-content_1fr] h-full overflow-hidden border-l border-gray-400 border-opacity-20"
+    :style="{ width: `${editorWidth}px` }"
   >
     <div class="flex pb-2 text-xl -mt-1">
       <div class="mr-4 rounded flex">
-        <button class="kolibry-icon-btn" :class="tab === 'content' ? 'text-$kolibry-theme-primary' : ''" @click="switchTab('content')">
-          <HiddenText text="Switch to content tab" />
+        <button class="icon-btn" :class="tab === 'content' ? 'text-$kolibry-theme-primary' : ''" @click="switchTab('content')">
           <carbon:account />
         </button>
-        <button class="kolibry-icon-btn" :class="tab === 'note' ? 'text-$kolibry-theme-primary' : ''" @click="switchTab('note')">
-          <HiddenText text="Switch to notes tab" />
+        <button class="icon-btn" :class="tab === 'note' ? 'text-$kolibry-theme-primary' : ''" @click="switchTab('note')">
           <carbon:align-box-bottom-right />
         </button>
       </div>
@@ -160,12 +148,10 @@ throttledWatch(
         {{ tab === 'content' ? 'Slide' : 'Notes' }}
       </span>
       <div class="flex-auto" />
-      <button class="kolibry-icon-btn" @click="openInEditor()">
-        <HiddenText text="Open in editor" />
+      <button class="icon-btn" @click="openInEditor()">
         <carbon:launch />
       </button>
-      <button class="kolibry-icon-btn" @click="close">
-        <HiddenText text="Close" />
+      <button class="icon-btn" @click="close">
         <carbon:close />
       </button>
     </div>

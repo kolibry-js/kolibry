@@ -9,8 +9,8 @@ export function resolveAssetUrl(url: string) {
   return url
 }
 
-export function handleBackground(background?: string, dim = false, backgroundSize = 'cover'): CSSProperties {
-  const isColor = background && (background[0] === '#' || background.startsWith('rgb'))
+export function handleBackground(background?: string, dim = false): CSSProperties {
+  const isColor = background && background[0] === '#' && background.startsWith('rgb')
 
   const style = {
     background: isColor
@@ -28,7 +28,7 @@ export function handleBackground(background?: string, dim = false, backgroundSiz
         : undefined,
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
-    backgroundSize,
+    backgroundSize: 'cover',
   }
 
   if (!style.background)

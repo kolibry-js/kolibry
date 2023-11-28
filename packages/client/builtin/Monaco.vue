@@ -8,42 +8,39 @@ Usage:
 const your_code = 'here'
 ```
 
-Learn more: https://kolibry.show/guide/syntax.html#monaco-editor
+Learn more: https://sli.dev/guide/syntax.html#monaco-editor
 -->
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, ref, watchEffect } from 'vue'
 import { useEventListener } from '@vueuse/core'
 import { decode } from 'js-base64'
 import { nanoid } from 'nanoid'
-import type * as monaco from 'monaco-editor'
 import { isDark } from '../logic/dark'
 
-const props = withDefaults(defineProps<{
-  code: string
-  diff?: string
-  lang?: string
-  readonly?: boolean
-  lineNumbers?: 'on' | 'off' | 'relative' | 'interval'
-  height?: number | string
-  editorOptions?: monaco.editor.IEditorOptions
-}>(), {
-  code: '',
-  lang: 'typescript',
-  readonly: false,
-  lineNumbers: 'off',
-  height: 'auto',
+const props = defineProps({
+  code: {
+    default: '',
+  },
+  lang: {
+    default: 'typescript',
+  },
+  readonly: {
+    default: false,
+  },
+  lineNumbers: {
+    default: 'off',
+  },
+  height: {
+    default: 'auto',
+  },
 })
 
 const id = nanoid()
 const code = ref(decode(props.code).trimEnd())
-const diff = ref(props.diff ? decode(props.diff).trimEnd() : null)
 const lineHeight = +(getComputedStyle(document.body).getPropertyValue('--kolibry-code-line-height') || '18').replace('px', '') || 18
-const editorHeight = ref(0)
-const calculatedHeight = computed(() => code.value.split(/\r?\n/g).length * lineHeight)
-const height = computed(() => {
-  return props.height === 'auto' ? `${Math.max(calculatedHeight.value, editorHeight.value) + 20}px` : props.height
-})
+const height = computed(() => props.height === 'auto' ? `${code.value.split(/\r?\n/g).length * lineHeight + 20}px` : props.height)
+const isReady = ref(false)
 
 const iframe = ref<HTMLIFrameElement>()
 
@@ -77,15 +74,16 @@ onMounted(() => {
     'allow-top-navigation-by-user-activation',
   ].join(' '))
 
-  let src = __DEV__
-    ? `${location.origin}${__KOLIBRY_CLIENT_ROOT__}/`
-    : import.meta.env.BASE_URL
-  src += `iframes/monaco/index.html?id=${id}&lineNumbers=${props.lineNumbers}&lang=${props.lang}`
-  if (diff.value)
-    src += '&diff=1'
-  frame.src = src
+  frame.src = __DEV__
+    ? `${location.origin}${__KOLIBRY_CLIENT_ROOT__}/iframes/monaco/index.html`
+    : `${import.meta.env.BASE_URL}iframes/monaco/index.html`
 
   frame.style.backgroundColor = 'transparent'
+
+  frame.addEventListener('load', () => {
+    postCode()
+    isReady.value = true
+  }, { once: true })
 })
 
 function post(payload: any) {
@@ -93,38 +91,42 @@ function post(payload: any) {
     JSON.stringify({
       type: 'kolibry-monaco',
       data: payload,
-      id,
     }),
     location.origin,
   )
 }
 
+function postCode() {
+  post({
+    code: code.value,
+    lang: props.lang,
+  })
+}
+
+function postStyle() {
+  if (!iframe.value)
+    return
+  post({
+    id,
+    readonly: props.readonly,
+    lineNumbers: props.lineNumbers,
+    dark: isDark.value,
+    style: Object.entries(getStyleObject(iframe.value)).map(([k, v]) => `${k}: ${v};`).join(''),
+  })
+}
+
 useEventListener(window, 'message', ({ data: payload }) => {
-  if (payload.id !== id)
+  if (payload.type !== 'kolibry-monaco' || payload.id !== id)
     return
-  if (payload.type === 'kolibry-monaco-loaded') {
-    if (iframe.value) {
-      post({
-        code: code.value,
-        diff: diff.value,
-        lang: props.lang,
-        readonly: props.readonly,
-        lineNumbers: props.lineNumbers,
-        editorOptions: props.editorOptions,
-        dark: isDark.value,
-        style: Object.entries(getStyleObject(iframe.value)).map(([k, v]) => `${k}: ${v};`).join(''),
-      })
-    }
+  if (!payload?.data?.code || code.value === payload.data.code)
     return
-  }
-  if (payload.type !== 'kolibry-monaco')
+  code.value = payload.data.code
+})
+
+watchEffect(() => {
+  if (!isReady.value)
     return
-  if (payload.data?.height)
-    editorHeight.value = payload.data?.height
-  if (payload?.data?.code && code.value !== payload.data.code)
-    code.value = payload.data.code
-  if (payload?.data?.diff && diff.value !== payload.data.diff)
-    diff.value = payload.data.diff
+  postStyle()
 })
 </script>
 

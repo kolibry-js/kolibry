@@ -9,7 +9,6 @@ import Controls from './Controls.vue'
 import SlideContainer from './SlideContainer.vue'
 import NavControls from './NavControls.vue'
 import SlidesShow from './SlidesShow.vue'
-import PrintStyle from './PrintStyle.vue'
 
 registerShortcuts()
 
@@ -32,7 +31,7 @@ useSwipeControls(root)
 const persistNav = computed(() => isScreenVertical.value || showEditor.value)
 
 const Editor = shallowRef<any>()
-if (__DEV__ && __KOLIBRY_FEATURE_EDITOR__)
+if (__DEV__)
   import('./Editor.vue').then(v => Editor.value = v.default)
 
 const DrawingControls = shallowRef<any>()
@@ -41,7 +40,6 @@ if (__KOLIBRY_FEATURE_DRAWINGS__)
 </script>
 
 <template>
-  <PrintStyle v-if="isPrintMode" />
   <div id="page-root" ref="root" class="grid grid-cols-[1fr_max-content]" :style="themeVars">
     <SlideContainer
       class="w-full h-full"
@@ -51,7 +49,7 @@ if (__KOLIBRY_FEATURE_DRAWINGS__)
       @pointerdown="onClick"
     >
       <template #default>
-        <SlidesShow render-context="slide" />
+        <SlidesShow context="slide" />
       </template>
       <template #controls>
         <div
@@ -69,8 +67,8 @@ if (__KOLIBRY_FEATURE_DRAWINGS__)
       </template>
     </SlideContainer>
 
-    <template v-if="__DEV__ && __KOLIBRY_FEATURE_EDITOR__ && Editor && showEditor">
-      <Editor :resize="true" />
+    <template v-if="__DEV__">
+      <Editor v-if="Editor && showEditor" />
     </template>
   </div>
   <Controls />

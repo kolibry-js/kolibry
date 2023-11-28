@@ -4,7 +4,6 @@ import { computed, provide, reactive, shallowRef } from 'vue'
 import { useVModel } from '@vueuse/core'
 import { useNavClicks } from '../composables/useNavClicks'
 import { injectionKolibryContext } from '../constants'
-import { isClicksDisabled } from '../logic/nav'
 import { configs, slideHeight, slideWidth } from '../env'
 import { getSlideClass } from '../utils'
 import type { KolibryContextNav } from '../modules/context'
@@ -48,14 +47,14 @@ provide(injectionKolibryContext, reactive({
 </script>
 
 <template>
-  <div :id="id" class="print-slide-container" :style="style">
+  <div :id="id" class="slide-container" :style="style">
     <GlobalBottom />
 
     <SlideWrapper
-      :is="route?.component!"
+      :is="route?.component"
       v-model:clicks-elements="clicksElements"
-      :clicks="isClicksDisabled ? undefined : clicks"
-      :clicks-disabled="isClicksDisabled"
+      :clicks="clicks"
+      :clicks-disabled="false"
       :class="getSlideClass(route)"
       :route="route"
     />

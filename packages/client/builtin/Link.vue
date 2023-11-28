@@ -10,6 +10,8 @@ Usage:
 <script setup lang="ts">
 import { isPrintMode } from '../logic/nav'
 
+/* eslint-disable vue/no-v-text-v-html-on-component */
+
 defineProps<{
   to: number | string
   title?: string

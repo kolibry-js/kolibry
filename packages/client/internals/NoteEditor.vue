@@ -1,29 +1,18 @@
 <script setup lang="ts">
-import { ignorableWatch, onClickOutside, useVModel } from '@vueuse/core'
-import { ref, watch, watchEffect } from 'vue'
+import { ignorableWatch, onClickOutside } from '@vueuse/core'
+import { nextTick, ref, watch } from 'vue'
 import { currentSlideId } from '../logic/nav'
 import { useDynamicSlideInfo } from '../logic/note'
-import NoteDisplay from './NoteDisplay.vue'
+import NoteViewer from './NoteViewer.vue'
 
 const props = defineProps({
   class: {
     default: '',
   },
-  editing: {
-    default: false,
-  },
-  style: {
-    default: () => ({}),
-  },
   placeholder: {
     default: 'No notes for this slide',
   },
 })
-
-const emit = defineEmits([
-  'update:editing',
-])
-const editing = useVModel(props, 'editing', emit, { passive: true })
 
 const { info, update } = useDynamicSlideInfo(currentSlideId)
 
@@ -53,11 +42,17 @@ watch(
 )
 
 const input = ref<HTMLTextAreaElement>()
+const editing = ref(false)
 
-watchEffect(() => {
-  if (editing.value)
-    input.value?.focus()
-})
+async function switchNoteEdit(e: MouseEvent) {
+  if ((e?.target as HTMLElement)?.tagName === 'A')
+    return
+
+  editing.value = true
+  input.value?.focus()
+  await nextTick()
+  input.value?.focus()
+}
 
 onClickOutside(input, () => {
   editing.value = false
@@ -65,24 +60,20 @@ onClickOutside(input, () => {
 </script>
 
 <template>
-  <NoteDisplay
-    v-if="!editing"
-    class="my--4 border-transparent border-2"
-    :class="[props.class, note ? '' : 'opacity-50']"
-    :style="props.style"
-    :note="note || placeholder"
-    :note-html="info?.noteHTML"
+  <NoteViewer
+    v-if="!editing && note"
+    :class="props.class"
+    :note="note"
+    :note-html="info?.notesHTML"
+    @click="switchNoteEdit"
   />
   <textarea
     v-else
     ref="input"
     v-model="note"
-    class="prose resize-none overflow-auto outline-none bg-transparent block border-green border-2"
-    style="line-height: 1.75;"
-    :style="props.style"
+    class="prose resize-none overflow-auto outline-none bg-transparent block"
     :class="props.class"
     :placeholder="placeholder"
-    @keydown.esc=" editing = false"
     @focus="editing = true"
   />
 </template>

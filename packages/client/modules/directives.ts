@@ -30,9 +30,6 @@ export default function createDirectives() {
           if (isClicksDisabled.value || dirInject(dir, injectionClicksDisabled)?.value)
             return
 
-          if (dir.value === false || dir.value === 'false')
-            return
-
           const elements = dirInject(dir, injectionClicksElements)
           const clicks = dirInject(dir, injectionClicks)
           const orderMap = dirInject(dir, injectionOrderMap)
@@ -40,14 +37,16 @@ export default function createDirectives() {
           const hide = dir.modifiers.hide !== false && dir.modifiers.hide != null
           const fade = dir.modifiers.fade !== false && dir.modifiers.fade != null
 
+          const prev = elements?.value?.length || 0
+
           const CLASS_HIDE = fade ? CLASS_VCLICK_FADE : CLASS_VCLICK_HIDDEN
 
           if (elements && !elements?.value?.includes(el))
             elements.value.push(el)
 
-          const prev = elements?.value?.length || 0
-
-          resolveDirValue(dir, prev)
+          // Set default dir.value
+          if (dir.value === null)
+            dir.value = elements?.value.length
 
           // If orderMap didn't have dir.value aka the order key, then initialize it.
           // If key exists, then move current element to the first of order array to
@@ -70,9 +69,7 @@ export default function createDirectives() {
               () => {
                 const c = clicks?.value ?? 0
                 const show = dir.value != null
-                  ? Array.isArray(dir.value)
-                    ? c >= dir.value[0] && c < dir.value[1]
-                    : c >= dir.value
+                  ? c >= dir.value
                   : c > prev
 
                 if (!el.classList.contains(CLASS_VCLICK_HIDDEN_EXP))
@@ -119,16 +116,15 @@ export default function createDirectives() {
           if (isClicksDisabled.value || dirInject(dir, injectionClicksDisabled)?.value)
             return
 
-          if (dir.value === false || dir.value === 'false')
-            return
-
           const elements = dirInject(dir, injectionClicksElements)
           const clicks = dirInject(dir, injectionClicks)
           const orderMap = dirInject(dir, injectionOrderMap)
 
-          const prev = elements?.value.length || 0
+          const prev = elements?.value.length
 
-          resolveDirValue(dir, prev)
+          // Set default dir.value
+          if (dir.value === undefined)
+            dir.value = elements?.value.length
 
           // If a v-click order before v-after is lower than v-after, the order map will
           // not contain the key for v-after, so we need to set it first, then move v-after
@@ -144,13 +140,7 @@ export default function createDirectives() {
             watch(
               clicks,
               () => {
-                const c = (clicks.value ?? 0)
-                const show = dir.value != null
-                  ? Array.isArray(dir.value)
-                    ? c >= dir.value[0] && c < dir.value[1]
-                    : c >= dir.value
-                  : c >= prev
-
+                const show = (clicks.value ?? 0) >= (dir.value ?? prev ?? 0)
                 if (!el.classList.contains(CLASS_VCLICK_HIDDEN_EXP))
                   el.classList.toggle(CLASS_VCLICK_HIDDEN, !show)
 
@@ -211,13 +201,4 @@ export default function createDirectives() {
       })
     },
   }
-}
-
-function resolveDirValue(dir: DirectiveBinding<any>, prev: number) {
-  // Set default dir.value
-  if (dir.value == null || dir.value === true || dir.value === 'true')
-    dir.value = prev
-  // Relative value starts with '+' o '-'
-  if (typeof dir.value === 'string' && (dir.value.startsWith('+') || dir.value.startsWith('-')))
-    dir.value = prev + Number(dir.value)
 }

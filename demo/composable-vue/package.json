@@ -9,7 +9,6 @@
   "devDependencies": {
     "@iconify-json/mdi": "^1.1.55",
     "@iconify-json/ri": "^1.1.12",
-    "@kolibry/cli": "workspace:*",
     "@kolibry/theme-default": "^0.0.2",
     "@kolibry/theme-seriph": "^0.0.2",
     "@kolibry/types": "workspace:*",

@@ -1,3 +1,2 @@
 import './client'
-
-export * from './dist/index.d.mts'
+export * from './dist/index.d'

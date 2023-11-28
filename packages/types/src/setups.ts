@@ -1,6 +1,6 @@
 /* eslint-disable import/no-duplicates */
 import type { Awaitable } from '@nyxb/utils'
-import type { ILanguageRegistration, IThemeRegistration, Lang, Highlighter as ShikiHighlighter, Theme } from 'shiki'
+import type { ILanguageRegistration, IThemeRegistration, Highlighter as ShikiHighlighter } from 'shiki'
 import type * as Shiki from 'shiki'
 import type * as monaco from 'monaco-editor'
 import type { App, Ref } from 'vue'
@@ -9,7 +9,6 @@ import type mermaid from 'mermaid'
 import type { KatexOptions } from 'katex'
 import type { WindiCssOptions } from 'vite-plugin-windicss'
 import type { VitePluginConfig as UnoCssConfig } from 'unocss/vite'
-import type { KolibryPreparserExtension } from './types'
 
 export interface AppContext {
   app: App
@@ -17,22 +16,14 @@ export interface AppContext {
 }
 
 export interface ShikiDarkModeThemes {
-  dark: IThemeRegistration | Theme
-  light: IThemeRegistration | Theme
+  dark: IThemeRegistration
+  light: IThemeRegistration
 }
 
 export interface ShikiOptions {
-  theme?: IThemeRegistration | ShikiDarkModeThemes | Theme
-  langs?: (ILanguageRegistration | Lang)[]
+  theme?: IThemeRegistration | ShikiDarkModeThemes
+  langs?: ILanguageRegistration[]
   highlighter?: ShikiHighlighter
-}
-
-export interface ResolvedShikiOptions extends ShikiOptions {
-  themes: (IThemeRegistration | Theme)[]
-  darkModeThemes?: {
-    dark: Theme
-    light: Theme
-  }
 }
 
 export interface MonacoSetupReturn {
@@ -40,7 +31,6 @@ export interface MonacoSetupReturn {
     light?: string
     dark?: string
   }
-  editorOptions?: monaco.editor.IEditorOptions
 }
 
 export type MermaidOptions = (typeof mermaid.initialize) extends (a: infer A) => any ? A : never
@@ -65,7 +55,6 @@ export interface ShortcutOptions {
   key: string | Ref<boolean>
   fn?: () => void
   autoRepeat?: boolean
-  name?: string
 }
 
 // node side
@@ -73,13 +62,12 @@ export type ShikiSetup = (shiki: typeof Shiki) => Awaitable<ShikiOptions | undef
 export type KatexSetup = () => Awaitable<Partial<KatexOptions> | undefined>
 export type WindiSetup = () => Awaitable<Partial<WindiCssOptions> | undefined>
 export type UnoSetup = () => Awaitable<Partial<UnoCssConfig> | undefined>
-export type PreparserSetup = (filepath: string) => KolibryPreparserExtension
 
 // client side
 export type MonacoSetup = (m: typeof monaco) => Awaitable<MonacoSetupReturn>
 export type AppSetup = (context: AppContext) => Awaitable<void>
 export type MermaidSetup = () => Partial<MermaidOptions> | undefined
-export type ShortcutsSetup = (nav: NavOperations, defaultShortcuts: ShortcutOptions[]) => Array<ShortcutOptions>
+export type ShortcutsSetup = (nav: NavOperations) => Array<ShortcutOptions>
 
 export function defineShikiSetup(fn: ShikiSetup) {
   return fn
@@ -110,9 +98,5 @@ export function defineKatexSetup(fn: KatexSetup) {
 }
 
 export function defineShortcutsSetup(fn: ShortcutsSetup) {
-  return fn
-}
-
-export function definePreparserSetup(fn: PreparserSetup) {
   return fn
 }

@@ -3,7 +3,6 @@ import { useElementSize } from '@vueuse/core'
 import { computed, provide, ref, watchEffect } from 'vue'
 import { configs, slideAspect, slideHeight, slideWidth } from '../env'
 import { injectionSlideScale } from '../constants'
-import { isPrintMode } from '../logic/nav'
 
 const props = defineProps({
   width: {
@@ -35,7 +34,7 @@ if (props.width) {
 const screenAspect = computed(() => width.value / height.value)
 
 const scale = computed(() => {
-  if (props.scale && !isPrintMode.value)
+  if (props.scale)
     return props.scale
   if (screenAspect.value < slideAspect)
     return width.value / slideWidth
@@ -50,9 +49,10 @@ const style = computed(() => ({
 
 const className = computed(() => ({
   'select-none': !configs.selectable,
+  'kolibry-code-line-numbers': configs.lineNumbers,
 }))
 
-provide(injectionSlideScale, scale as any)
+provide(injectionSlideScale, scale)
 </script>
 
 <template>
@@ -66,7 +66,7 @@ provide(injectionSlideScale, scale as any)
 
 <style lang="postcss">
 #slide-container {
-  @apply relative overflow-hidden break-after-page;
+  @apply relative overflow-hidden;
 }
 
 #slide-content {

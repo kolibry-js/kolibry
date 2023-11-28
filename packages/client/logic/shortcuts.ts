@@ -1,11 +1,14 @@
 import type { Fn, KeyFilter } from '@vueuse/core'
-import { onKeyStroke } from '@vueuse/core'
-import { and, not } from '@vueuse/math'
+import { and, not, onKeyStroke } from '@vueuse/core'
 import type { Ref } from 'vue'
 import { watch } from 'vue'
 import type { ShortcutOptions } from '@kolibry/types'
-import { fullscreen, isInputting, isOnFocus, magicKeys, shortcutsEnabled } from '../state'
+import { fullscreen, isInputting, isOnFocus, magicKeys, shortcutsEnabled, showGotoDialog, showOverview, toggleOverview } from '../state'
 import setupShortcuts from '../setup/shortcuts'
+import { toggleDark } from './dark'
+import { go, next, nextSlide, prev, prevSlide } from './nav'
+import { drawingEnabled } from './drawings'
+import { currentOverviewPage, downOverviewPage, nextOverviewPage, prevOverviewPage, upOverviewPage } from './overview'
 
 const _shortcut = and(not(isInputting), not(isOnFocus), shortcutsEnabled)
 
@@ -42,10 +45,33 @@ export function strokeShortcut(key: KeyFilter, fn: Fn) {
 }
 
 export function registerShortcuts() {
-  const allShortcuts = setupShortcuts()
+  const customShortcuts = setupShortcuts()
 
+  const { escape, space, shift, left, right, up, down, enter, d, g, o } = magicKeys
   const shortcuts = new Map<string | Ref<boolean>, ShortcutOptions>(
-    allShortcuts.map((options: ShortcutOptions) => [options.key, options]),
+    [
+      { key: and(space, not(shift)), fn: next, autoRepeat: true },
+      { key: and(space, shift), fn: prev, autoRepeat: true },
+      { key: and(right, not(shift), not(showOverview)), fn: next, autoRepeat: true },
+      { key: and(left, not(shift), not(showOverview)), fn: prev, autoRepeat: true },
+      { key: 'pageDown', fn: next, autoRepeat: true },
+      { key: 'pageUp', fn: prev, autoRepeat: true },
+      { key: and(up, not(showOverview)), fn: () => prevSlide(false), autoRepeat: true },
+      { key: and(down, not(showOverview)), fn: nextSlide, autoRepeat: true },
+      { key: and(left, shift), fn: () => prevSlide(false), autoRepeat: true },
+      { key: and(right, shift), fn: nextSlide, autoRepeat: true },
+      { key: and(d, not(drawingEnabled)), fn: toggleDark },
+      { key: and(o, not(drawingEnabled)), fn: toggleOverview },
+      { key: and(escape, not(drawingEnabled)), fn: () => showOverview.value = false },
+      { key: and(g, not(drawingEnabled)), fn: () => showGotoDialog.value = !showGotoDialog.value },
+      { key: and(left, showOverview), fn: prevOverviewPage },
+      { key: and(right, showOverview), fn: nextOverviewPage },
+      { key: and(up, showOverview), fn: upOverviewPage },
+      { key: and(down, showOverview), fn: downOverviewPage },
+      { key: and(enter, showOverview), fn: () => { go(currentOverviewPage.value); showOverview.value = false } },
+      ...customShortcuts,
+    ]
+      .map((options: ShortcutOptions) => [options.key, options]),
   )
 
   shortcuts.forEach((options) => {

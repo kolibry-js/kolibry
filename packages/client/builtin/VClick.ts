@@ -1,7 +1,7 @@
 /**
  * <v-click/> click animations component
  *
- * Learn more: https://kolibry.dev/guide/animations.html#click-animations
+ * Learn more: https://sli.dev/guide/animations.html#click-animations
  */
 
 import { createVNode, defineComponent } from 'vue'
@@ -24,8 +24,7 @@ export default defineComponent({
   },
   render() {
     return createVNode(
-      VClicks,
-      {
+      VClicks, {
         every: 99999,
         at: this.at,
         hide: this.hide,

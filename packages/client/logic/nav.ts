@@ -1,13 +1,22 @@
-import type { Ref, TransitionGroupProps } from 'vue'
+import type { Ref } from 'vue'
 import type { RouteRecordRaw } from 'vue-router'
-import { computed, nextTick, ref, watch } from 'vue'
-import type { TocItem } from '@kolibry/types'
-import { timestamp, usePointerSwipe } from '@vueuse/core'
+import { computed, nextTick, ref } from 'vue'
+import { SwipeDirection, isString, timestamp, usePointerSwipe } from '@vueuse/core'
 import { rawRoutes, router } from '../routes'
 import { configs } from '../env'
-import { skipTransition } from '../composables/hmr'
 import { useRouteQuery } from './route'
 import { isDrawing } from './drawings'
+
+export interface TocItem {
+  active?: boolean
+  activeParent?: boolean
+  children: TocItem[]
+  hasActiveParent?: boolean
+  level: number
+  path: string
+  hideInToc?: boolean
+  title?: string
+}
 
 export { rawRoutes, router }
 
@@ -19,7 +28,6 @@ nextTick(() => {
     routeForceRefresh.value += 1
   })
 })
-export const navDirection = ref(0)
 
 export const route = computed(() => router.currentRoute.value)
 
@@ -27,23 +35,21 @@ export const isPrintMode = computed(() => route.value.query.print !== undefined)
 export const isPrintWithClicks = computed(() => route.value.query.print === 'clicks')
 export const isEmbedded = computed(() => route.value.query.embedded !== undefined)
 export const isPresenter = computed(() => route.value.path.startsWith('/presenter'))
-export const isNotesViewer = computed(() => route.value.path.startsWith('/notes'))
 export const isClicksDisabled = computed(() => isPrintMode.value && !isPrintWithClicks.value)
 export const presenterPassword = computed(() => route.value.query.password)
 export const showPresenter = computed(() => !isPresenter.value && (!configs.remote || presenterPassword.value === configs.remote))
 
 export const queryClicks = useRouteQuery('clicks', '0')
-export const total = computed(() => rawRoutes.length)
+export const total = computed(() => rawRoutes.length - 1)
 export const path = computed(() => route.value.path)
 
 export const currentPage = computed(() => Number.parseInt(path.value.split(/\//g).slice(-1)[0]) || 1)
 export const currentPath = computed(() => getPath(currentPage.value))
 export const currentRoute = computed(() => rawRoutes.find(i => i.path === `${currentPage.value}`))
 export const currentSlideId = computed(() => currentRoute.value?.meta?.slide?.id)
-export const currentLayout = computed(() => currentRoute.value?.meta?.layout || (currentPage.value === 1 ? 'cover' : 'default'))
+export const currentLayout = computed(() => currentRoute.value?.meta?.layout)
 
 export const nextRoute = computed(() => rawRoutes.find(i => i.path === `${Math.min(rawRoutes.length, currentPage.value + 1)}`))
-export const prevRoute = computed(() => rawRoutes.find(i => i.path === `${Math.max(1, currentPage.value - 1)}`))
 
 export const clicksElements = computed<HTMLElement[]>(() => {
   // eslint-disable-next-line no-unused-expressions
@@ -56,7 +62,7 @@ export const clicks = computed<number>({
     if (isClicksDisabled.value)
       return 99999
     let clicks = +(queryClicks.value || 0)
-    if (Number.isNaN(clicks))
+    if (isNaN(clicks))
       clicks = 0
     return clicks
   },
@@ -67,7 +73,7 @@ export const clicks = computed<number>({
 
 export const clicksTotal = computed(() => +(currentRoute.value?.meta?.clicks ?? clicksElements.value.length))
 
-export const hasNext = computed(() => currentPage.value < rawRoutes.length || clicks.value < clicksTotal.value)
+export const hasNext = computed(() => currentPage.value < rawRoutes.length - 1 || clicks.value < clicksTotal.value)
 export const hasPrev = computed(() => currentPage.value > 1 || clicks.value > 0)
 
 export const rawTree = computed(() => rawRoutes
@@ -78,12 +84,6 @@ export const rawTree = computed(() => rawRoutes
   }, []))
 export const treeWithActiveStatuses = computed(() => getTreeWithActiveStatuses(rawTree.value, currentRoute.value))
 export const tree = computed(() => filterTree(treeWithActiveStatuses.value))
-
-export const transition = computed(() => getCurrentTransition(navDirection.value, currentRoute.value, prevRoute.value))
-
-watch(currentRoute, (next, prev) => {
-  navDirection.value = Number(next?.path) - Number(prev?.path)
-})
 
 export function next() {
   if (clicksTotal.value <= clicks.value)
@@ -124,7 +124,6 @@ export function goLast() {
 }
 
 export function go(page: number | string, clicks?: number) {
-  skipTransition.value = false
   return router.push({ path: getPath(page), query: { ...route.value.query, clicks } })
 }
 
@@ -148,14 +147,14 @@ export function useSwipeControls(root: Ref<HTMLElement | undefined>) {
 
       const x = Math.abs(distanceX.value)
       const y = Math.abs(distanceY.value)
-      if (x / window.innerWidth > 0.3 || x > 75) {
-        if (direction.value === 'left')
+      if (x / window.innerWidth > 0.3 || x > 100) {
+        if (direction.value === SwipeDirection.LEFT)
           next()
         else
           prev()
       }
       else if (y / window.innerHeight > 0.4 || y > 200) {
-        if (direction.value === 'down')
+        if (direction.value === SwipeDirection.DOWN)
           prevSlide()
         else
           nextSlide()
@@ -167,7 +166,7 @@ export function useSwipeControls(root: Ref<HTMLElement | undefined>) {
 export async function downloadPDF() {
   const { saveAs } = await import('file-saver')
   saveAs(
-    typeof configs.download === 'string'
+    isString(configs.download)
       ? configs.download
       : configs.exportFilename
         ? `${configs.exportFilename}.pdf`
@@ -197,7 +196,7 @@ export function addToTree(tree: TocItem[], route: RouteRecordRaw, level = 1) {
       children: [],
       level,
       path: route.path,
-      hideInToc: Boolean(route.meta?.slide?.frontmatter?.hideInToc),
+      hideInToc: Boolean(route.meta?.hideInToc),
       title: route.meta?.slide?.title,
     })
   }
@@ -230,51 +229,4 @@ export function filterTree(tree: TocItem[], level = 1): TocItem[] {
       ...item,
       children: filterTree(item.children, level + 1),
     }))
-}
-
-const transitionResolveMap: Record<string, string | undefined> = {
-  'slide-left': 'slide-left | slide-right',
-  'slide-right': 'slide-right | slide-left',
-  'slide-up': 'slide-up | slide-down',
-  'slide-down': 'slide-down | slide-up',
-}
-
-export function resolveTransition(transition?: string | TransitionGroupProps, isBackward = false): TransitionGroupProps | undefined {
-  if (!transition)
-    return undefined
-  if (typeof transition === 'string') {
-    transition = {
-      name: transition,
-    }
-  }
-
-  if (!transition.name)
-    return undefined
-
-  let name = transition.name.includes('|')
-    ? transition.name
-    : (transitionResolveMap[transition.name] || transition.name)
-
-  if (name.includes('|')) {
-    const [forward, backward] = name.split('|').map(i => i.trim())
-    name = isBackward ? backward : forward
-  }
-
-  if (!name)
-    return undefined
-
-  return {
-    ...transition,
-    name,
-  }
-}
-
-export function getCurrentTransition(direction: number, currentRoute?: RouteRecordRaw, prevRoute?: RouteRecordRaw) {
-  let transition = direction > 0
-    ? prevRoute?.meta?.transition
-    : currentRoute?.meta?.transition
-  if (!transition)
-    transition = configs.transition
-
-  return resolveTransition(transition, direction < 0)
 }

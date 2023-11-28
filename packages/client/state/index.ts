@@ -1,4 +1,4 @@
-import { breakpointsTailwind, isClient, useActiveElement, useBreakpoints, useFullscreen, useLocalStorage, useMagicKeys, useToggle, useWindowSize } from '@vueuse/core'
+import { breakpointsTailwind, isClient, useActiveElement, useBreakpoints, useFullscreen, useMagicKeys, useStorage, useToggle, useWindowSize } from '@vueuse/core'
 import { computed, ref } from 'vue'
 import { slideAspect } from '../env'
 
@@ -20,30 +20,13 @@ export const activeElement = useActiveElement()
 export const isInputting = computed(() => ['INPUT', 'TEXTAREA'].includes(activeElement.value?.tagName || '') || activeElement.value?.classList.contains('CodeMirror-code'))
 export const isOnFocus = computed(() => ['BUTTON', 'A'].includes(activeElement.value?.tagName || ''))
 
-export const currentCamera = useLocalStorage<string>('kolibry-camera', 'default')
-export const currentMic = useLocalStorage<string>('kolibry-mic', 'default')
-export const slideScale = useLocalStorage<number>('kolibry-scale', 0)
+export const currentCamera = useStorage<string>('kolibry-camera', 'default')
+export const currentMic = useStorage<string>('kolibry-mic', 'default')
+export const slideScale = useStorage<number>('kolibry-scale', 0)
 
-export const showOverview = useLocalStorage('kolibry-show-overview', false)
-export const showPresenterCursor = useLocalStorage('kolibry-presenter-cursor', true)
-export const showEditor = useLocalStorage('kolibry-show-editor', false)
-export const editorWidth = useLocalStorage('kolibry-editor-width', isClient ? window.innerWidth * 0.4 : 100)
-
-export const presenterNotesFontSize = useLocalStorage('kolibry-presenter-font-size', 1)
-export const presenterLayout = useLocalStorage('kolibry-presenter-layout', 1)
-
-export function togglePresenterLayout() {
-  presenterLayout.value = presenterLayout.value + 1
-  if (presenterLayout.value > 2)
-    presenterLayout.value = 1
-}
-
-export function increasePresenterFontSize() {
-  presenterNotesFontSize.value = Math.min(2, presenterNotesFontSize.value + 0.1)
-}
-
-export function decreasePresenterFontSize() {
-  presenterNotesFontSize.value = Math.max(0.5, presenterNotesFontSize.value - 0.1)
-}
+export const showOverview = useStorage('kolibry-show-overview', false)
+export const showPresenterCursor = useStorage('kolibry-presenter-cursor', true)
+export const showEditor = useStorage('kolibry-show-editor', false)
+export const editorWidth = useStorage('kolibry-editor-width', isClient ? window.innerWidth * 0.4 : 100)
 
 export const toggleOverview = useToggle(showOverview)

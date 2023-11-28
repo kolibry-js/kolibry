@@ -1,5 +1,3 @@
-import type { TransitionGroupProps } from 'vue'
-import type { ExportArgs } from './cli'
 import type { KolibryThemeConfig } from './types'
 
 export interface KolibryConfig {
@@ -14,7 +12,7 @@ export interface KolibryConfig {
   /**
    * Theme to use for the slides
    *
-   * @see https://kolibry.dev/themes/use.html
+   * @see https://sli.dev/themes/use.html
    * @default 'default'
    */
   theme: string
@@ -33,7 +31,7 @@ export interface KolibryConfig {
   /**
    * Enable Monaco
    *
-   * @see https://kolibry.show/custom/config-monaco.html
+   * @see https://sli.dev/custom/config-monaco.html
    * @default 'dev'
    */
   monaco: boolean | 'dev' | 'build'
@@ -44,12 +42,6 @@ export interface KolibryConfig {
    * @default false
    */
   download: boolean | string
-  /**
-   * Options for export
-   *
-   * @default {}
-   */
-  export: ResolvedExportOptions
   /**
    * Show a copy button in code blocks
    *
@@ -66,7 +58,7 @@ export interface KolibryConfig {
   /**
    * Prefer highlighter
    *
-   * @see https://kolibry.show/custom/highlighters.html
+   * @see https://sli.dev/custom/highlighters.html
    * @default prism
    */
   highlighter: 'prism' | 'shiki'
@@ -164,55 +156,13 @@ export interface KolibryConfig {
    */
   remote?: string | boolean
   /**
-   * Engine for Atomic CSS
+   * Engine for atomic CSS
    *
-   * @see https://unocss.dev/
-   * @see https://windicss.org/
-   * @default 'unocss'
+   * UnoCSS support is currently experimental.
+   *
+   * @default 'windicss'
    */
-  css: 'unocss' | 'windicss' | 'none'
-  /**
-   * Enable presenter mode
-   *
-   * @default true
-   */
-  presenter: boolean | 'dev' | 'build'
-  /**
-   * Attributes to apply to the HTML element
-   *
-   * @default {}
-   */
-  htmlAttrs: Record<string, string>
-  /**
-   * Page transition, powered by Vue's <TransitionGroup/>
-   *
-   * Built-in transitions:
-   * - fade
-   * - fade-out
-   * - slide-left
-   * - slide-right
-   * - slide-up
-   * - slide-down
-   *
-   * @see https://kolibry.show/guide/animations.html#pages-transitions
-   * @see https://vuejs.org/guide/built-ins/transition.html
-   */
-  transition?: BuiltinSlideTransition | string | TransitionGroupProps
-  /**
-   * Suppport **experimental** MDC syntax
-   *
-   * @see https://github.com/antfu/markdown-it-mdc
-   * @see https://content.nuxtjs.org/guide/writing/mdc
-   * @experimental
-   * @default false
-   */
-  mdc?: boolean
-  /**
-   * Enable built-in editor
-   *
-   * @default true
-   */
-  editor: boolean
+  css: 'windicss' | 'unocss'
 }
 
 export interface FontOptions {
@@ -244,6 +194,7 @@ export interface FontOptions {
    * @default false
    */
   italic?: boolean
+
   /**
    * @default 'google'
    */
@@ -310,11 +261,3 @@ export interface ResolvedDrawingsOptions {
   presenterOnly: boolean
   syncAll: boolean
 }
-
-export interface ResolvedExportOptions extends Omit<ExportArgs, 'entry' | 'theme'> {
-  withClicks?: boolean
-  executablePath?: string
-  withToc?: boolean
-}
-
-export type BuiltinSlideTransition = 'slide-up' | 'slide-down' | 'slide-left' | 'slide-right' | 'fade' | 'zoom' | 'none'

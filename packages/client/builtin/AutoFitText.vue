@@ -1,5 +1,5 @@
 <!--
-[Experimental]
+[Expiremental]
 
 Think this component as the TextBox you that will see
 in PowerPoint or Keynote. It will automatically resize
@@ -49,7 +49,7 @@ watch([container, value, containerSize.width, innerSize.width], async () => {
   if (!container.value || innerSize.width.value <= 0)
     return
   const ratio = containerSize.width.value / innerSize.width.value
-  if (Number.isNaN(ratio) || ratio <= 0)
+  if (isNaN(ratio) || ratio <= 0)
     return
   let newSize = size.value * (containerSize.width.value / innerSize.width.value)
   if (newSize < props.min) {

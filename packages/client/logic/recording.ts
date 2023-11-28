@@ -1,6 +1,6 @@
 import type { Ref } from 'vue'
 import { nextTick, ref, shallowRef, watch } from 'vue'
-import { useDevicesList, useEventListener, useLocalStorage } from '@vueuse/core'
+import { useDevicesList, useEventListener, useStorage } from '@vueuse/core'
 import { isTruthy } from '@nyxb/utils'
 import type RecorderType from 'recordrtc'
 import type { Options as RecorderOptions } from 'recordrtc'
@@ -11,7 +11,7 @@ type MimeType = Defined<RecorderOptions['mimeType']>
 
 export const recordingName = ref('')
 export const recordCamera = ref(true)
-export const mimeType = useLocalStorage<MimeType>('kolibry-record-mimetype', 'video/webm')
+export const mimeType = useStorage<MimeType>('kolibry-record-mimetype', 'video/webm')
 
 export const mimeExtMap: Record<string, string> = {
   'video/webm': 'webm',
@@ -107,7 +107,7 @@ export function useRecording() {
         return
 
       streamCamera.value = await navigator.mediaDevices.getUserMedia({
-        video: (currentCamera.value === 'none' || recordCamera.value !== true)
+        video: currentCamera.value === 'none' || recordCamera.value !== true
           ? false
           : {
               deviceId: currentCamera.value,

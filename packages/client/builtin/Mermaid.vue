@@ -13,7 +13,7 @@ pie
 -->
 
 <script setup lang="ts">
-import { getCurrentInstance, ref, watch, watchEffect } from 'vue'
+import { computed, getCurrentInstance, ref, watch, watchEffect } from 'vue'
 import { renderMermaid } from '../modules/mermaid'
 import ShadowRoot from '../internals/ShadowRoot.vue'
 import { isDark } from '../logic/dark'
@@ -25,25 +25,15 @@ const props = defineProps<{
 }>()
 
 const vm = getCurrentInstance()
-const el = ref<ShadowRoot>()
-const html = ref('')
-
-watchEffect(async (onCleanup) => {
-  let disposed = false
-  onCleanup(() => {
-    disposed = true
-  })
-  const svg = await renderMermaid(
-    props.code || '',
-    {
-      theme: props.theme || (isDark.value ? 'dark' : undefined),
-      ...vm!.attrs,
-    },
-  )
-  if (!disposed)
-    html.value = svg
-})
-
+const el = ref<HTMLDivElement>()
+const svgObj = computed(() => renderMermaid(
+  props.code || '',
+  {
+    theme: props.theme || (isDark.value ? 'dark' : undefined),
+    ...vm!.attrs,
+  },
+))
+const html = computed(() => svgObj.value)
 const actualHeight = ref<number>()
 
 watch(html, () => {
@@ -53,8 +43,8 @@ watch(html, () => {
 watchEffect(() => {
   const svgEl = el.value?.children?.[0] as SVGElement | undefined
   if (svgEl && svgEl.hasAttribute('viewBox') && actualHeight.value == null) {
-    const v = Number.parseFloat(svgEl.getAttribute('viewBox')?.split(' ')[3] || '')
-    actualHeight.value = Number.isNaN(v) ? undefined : v
+    const v = parseFloat(svgEl.getAttribute('viewBox')?.split(' ')[3] || '')
+    actualHeight.value = isNaN(v) ? undefined : v
   }
 }, { flush: 'post' })
 
@@ -69,5 +59,5 @@ watchEffect(() => {
 </script>
 
 <template>
-  <ShadowRoot class="mermaid" :inner-html="html" @shadow="el = $event" />
+  <ShadowRoot ref="el" class="mermaid" :inner-html="html" @shadow="el = $event" />
 </template>

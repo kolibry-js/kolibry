@@ -28,7 +28,7 @@ function onClick() {
       />
       <div
         class="m-auto rounded-md bg-main shadow"
-        dark:border="~ main"
+        dark:border="~ gray-400 opacity-10"
         :class="props.class"
       >
         <slot />

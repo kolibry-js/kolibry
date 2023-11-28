@@ -1,4 +1,5 @@
-import mermaid from 'mermaid/dist/mermaid.esm.mjs'
+// @ts-expect-error missing types
+import mermaid from 'mermaid/dist/mermaid'
 import { customAlphabet } from 'nanoid'
 import { decode } from 'js-base64'
 import { clearUndefined } from '@nyxb/utils'
@@ -10,7 +11,7 @@ mermaid.initialize({ startOnLoad: false })
 const nanoid = customAlphabet('abcedfghicklmn', 10)
 const cache = new Map<string, string>()
 
-export async function renderMermaid(encoded: string, options: any) {
+export function renderMermaid(encoded: string, options: any) {
   const key = encoded + JSON.stringify(options)
   const _cache = cache.get(key)
   if (_cache)
@@ -23,7 +24,7 @@ export async function renderMermaid(encoded: string, options: any) {
   })
   const code = decode(encoded)
   const id = nanoid()
-  const { svg } = await mermaid.render(id, code)
+  const svg = mermaid.render(id, code)
   cache.set(key, svg)
   return svg
 }

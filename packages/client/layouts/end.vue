@@ -1,6 +1,6 @@
 <template>
   <div class="kolibry-layout end">
-    <slot>END</slot>
+    END
   </div>
 </template>
 

@@ -1,10 +1,8 @@
 import { useVModel } from '@vueuse/core'
-import { computed, defineComponent, h, provide, ref, toRef } from 'vue'
-import type { RenderContext } from '@kolibry/types'
-import { injectionActive, injectionClicks, injectionClicksDisabled, injectionClicksElements, injectionCurrentPage, injectionOrderMap, injectionRenderContext, injectionRoute } from '../constants'
+import { defineComponent, h, provide } from 'vue'
+import { injectionClicks, injectionClicksDisabled, injectionClicksElements, injectionOrderMap, injectionRoute, injectionSlideContext } from '../constants'
 
 export default defineComponent({
-  name: 'SlideWrapper',
   props: {
     clicks: {
       type: [Number, String],
@@ -22,13 +20,9 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
-    renderContext: {
+    context: {
       type: String,
       default: 'main',
-    },
-    active: {
-      type: Boolean,
-      default: false,
     },
     is: {
       type: Object,
@@ -47,25 +41,12 @@ export default defineComponent({
 
     clicksElements.value.length = 0
 
-    const clicksWithDisable = computed({
-      get() {
-        if (clicksDisabled.value)
-          return 9999999
-        return +clicks.value
-      },
-      set(value) {
-        clicks.value = value
-      },
-    })
-
-    provide(injectionRoute, props.route as any)
-    provide(injectionCurrentPage, ref(+props.route?.path))
-    provide(injectionRenderContext, ref(props.renderContext as RenderContext))
-    provide(injectionActive, toRef(props, 'active'))
-    provide(injectionClicks, clicksWithDisable)
+    provide(injectionRoute, props.route)
+    provide(injectionSlideContext, props.context)
+    provide(injectionClicks, clicks)
     provide(injectionClicksDisabled, clicksDisabled)
-    provide(injectionClicksElements, clicksElements as any)
-    provide(injectionOrderMap, clicksOrderMap as any)
+    provide(injectionClicksElements, clicksElements)
+    provide(injectionOrderMap, clicksOrderMap)
   },
   render() {
     if (this.$props.is)

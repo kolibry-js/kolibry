@@ -7,7 +7,6 @@
     "module": "ESNext",
     "moduleResolution": "node",
     "paths": {
-      "@kolibry/client/*": ["./packages/client/*"],
       "@kolibry/types": ["./packages/types/src/index.ts"],
       "@kolibry/parser/fs": ["./packages/parser/src/fs.ts"],
       "@kolibry/parser/core": ["./packages/parser/src/core.ts"],
@@ -16,8 +15,7 @@
     "resolveJsonModule": true,
     "types": [
       "vite/client",
-      "node",
-      "vite-plugin-vue-server-ref/module"
+      "node"
     ],
     "strict": true,
     "strictNullChecks": true,

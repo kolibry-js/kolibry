@@ -9,17 +9,13 @@ const props = defineProps({
   class: {
     type: String,
   },
-  backgroundSize: {
-    type: String,
-    default: 'cover',
-  },
 })
 
-const style = computed(() => handleBackground(props.image, false, props.backgroundSize))
+const style = computed(() => handleBackground(props.image))
 </script>
 
 <template>
-  <div class="grid grid-cols-2 w-full h-full auto-rows-fr">
+  <div class="grid grid-cols-2 w-full h-full">
     <div class="kolibry-layout default" :class="props.class">
       <slot />
     </div>

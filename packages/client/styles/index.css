@@ -15,22 +15,22 @@ html {
   background: transparent;
 }
 
-.kolibry-icon-btn {
+.icon-btn {
   @apply inline-block cursor-pointer select-none !outline-none;
   @apply opacity-75 transition duration-200 ease-in-out align-middle rounded p-1;
   @apply hover:(opacity-100 bg-gray-400 bg-opacity-10);
   @apply md:p-2;
 }
 
-.kolibry-icon-btn.shallow {
+.icon-btn.shallow {
   @apply opacity-30
 }
 
-.kolibry-icon-btn.active {
+.icon-btn.active {
   @apply opacity-100
 }
 
-.kolibry-icon-btn.disabled {
+.icon-btn.disabled {
   @apply opacity-25 pointer-events-none;
 }
 
@@ -50,8 +50,4 @@ html {
   display: inline-block;
   vertical-align: sub;
   line-height: 1em;
-}
-
-.kolibry-page {
-  @apply absolute top-0 left-0 right-0 w-full relative;
 }

@@ -7,7 +7,6 @@
     "export-notes": "kolibry export-notes"
   },
   "devDependencies": {
-    "@kolibry/cli": "workspace:*",
     "@kolibry/theme-default": "^0.0.1",
     "@kolibry/theme-seriph": "^0.0.1",
     "@kolibry/types": "workspace:*",

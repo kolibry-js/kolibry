@@ -31,7 +31,7 @@ onClickOutside(el, () => {
       <div
         v-if="value"
         class="rounded-md bg-main shadow absolute bottom-10 left-0 z-20"
-        dark:border="~ main"
+        dark:border="~ gray-400 opacity-10"
       >
         <slot name="menu" />
       </div>

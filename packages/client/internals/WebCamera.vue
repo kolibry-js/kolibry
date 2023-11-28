@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import { useDraggable, useEventListener, useLocalStorage } from '@vueuse/core'
+import { useDraggable, useEventListener, useStorage } from '@vueuse/core'
 import { computed, onMounted, ref, watchEffect } from 'vue'
 import { currentCamera } from '../state'
 import { recorder } from '../logic/recording'
 
-const size = useLocalStorage('kolibry-webcam-size', Math.round(Math.min(window.innerHeight, (window.innerWidth) / 8)))
-const position = useLocalStorage('kolibry-webcam-pos', {
+const size = useStorage('kolibry-webcam-size', Math.round(Math.min(window.innerHeight, (window.innerWidth) / 8)))
+const position = useStorage('kolibry-webcam-pos', {
   x: window.innerWidth - size.value - 30,
   y: window.innerHeight - size.value - 30,
-}, { deep: true })
+})
 
 const frame = ref<HTMLDivElement | undefined>()
 const handler = ref<HTMLDivElement | undefined>()
@@ -16,13 +16,7 @@ const video = ref<HTMLVideoElement | undefined>()
 
 const { streamCamera, showAvatar } = recorder
 
-const { style: containerStyle } = useDraggable(frame, {
-  initialValue: position,
-  onMove({ x, y }) {
-    position.value.x = x
-    position.value.y = y
-  },
-})
+const { style: containerStyle } = useDraggable(frame, { initialValue: position })
 const { isDragging: handlerDown } = useDraggable(handler, {
   onMove({ x, y }) {
     size.value = Math.max(10, Math.min(x - position.value.x, y - position.value.y) / 0.8536)

@@ -1,30 +1,15 @@
 import { promises as fs } from 'node:fs'
 import { dirname, resolve } from 'node:path'
-import type { KolibryMarkdown, KolibryPreparserExtension, KolibryThemeMeta, PreparserExtensionLoader, SlideInfo, SlideInfoWithPath } from '@kolibry/types'
+import type { KolibryMarkdown, KolibryThemeMeta, SlideInfo, SlideInfoWithPath } from '@kolibry/types'
 import { detectFeatures, mergeFeatureFlags, parse, stringify, stringifySlide } from './core'
 
 export * from './core'
-
-let preparserExtensionLoader: PreparserExtensionLoader | null = null
-
-export function injectPreparserExtensionLoader(fn: PreparserExtensionLoader) {
-  preparserExtensionLoader = fn
-}
 
 export async function load(filepath: string, themeMeta?: KolibryThemeMeta, content?: string) {
   const dir = dirname(filepath)
   const markdown = content ?? await fs.readFile(filepath, 'utf-8')
 
-  const preparserExtensions: KolibryPreparserExtension[] = []
-  const data = await parse(markdown, filepath, themeMeta, [], async (headmatter, exts: KolibryPreparserExtension[], filepath: string | undefined) => {
-    preparserExtensions.splice(
-      0,
-      preparserExtensions.length,
-      ...exts,
-      ...preparserExtensionLoader ? await preparserExtensionLoader(headmatter, filepath) : [],
-    )
-    return preparserExtensions
-  })
+  const data = parse(markdown, filepath, themeMeta)
 
   const entries = new Set([
     filepath,
@@ -39,20 +24,10 @@ export async function load(filepath: string, themeMeta?: KolibryThemeMeta, conte
 
     data.slides.splice(iSlide, 1)
 
-    if (baseSlide.frontmatter.hide)
-      continue
-
     const srcExpression = baseSlide.frontmatter.src
-    let path
-    if (srcExpression.startsWith('/'))
-      path = resolve(dir, srcExpression.substring(1))
-    else if (baseSlide.source?.filepath)
-      path = resolve(dirname(baseSlide.source.filepath), srcExpression)
-    else
-      path = resolve(dir, srcExpression)
-
+    const path = resolve(dir, srcExpression)
     const raw = await fs.readFile(path, 'utf-8')
-    const subSlides = await parse(raw, path, themeMeta, preparserExtensions)
+    const subSlides = parse(raw, path, themeMeta)
 
     for (const [offset, subSlide] of subSlides.slides.entries()) {
       const slide: SlideInfo = { ...baseSlide }

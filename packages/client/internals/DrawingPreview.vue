@@ -7,6 +7,7 @@ defineProps<{ page: number }>()
 <template>
   <svg
     v-if="drawingState[page]"
+    ref="svg"
     class="w-full h-full absolute top-0 pointer-events-none"
     v-html="drawingState[page]"
   />

@@ -1,6 +1,6 @@
 import YAML from 'js-yaml'
 import { isObject, isTruthy, objectMap } from '@nyxb/utils'
-import type { FrontmatterStyle, KolibryFeatureFlags, KolibryMarkdown, KolibryPreparserExtension, KolibryThemeMeta, PreparserExtensionFromHeadmatter, SlideInfo, SlideInfoBase } from '@kolibry/types'
+import type { KolibryFeatureFlags, KolibryMarkdown, KolibryThemeMeta, SlideInfo, SlideInfoBase } from '@kolibry/types'
 import { resolveConfig } from './config'
 
 export function stringify(data: KolibryMarkdown) {
@@ -30,9 +30,7 @@ export function stringifySlide(data: SlideInfoBase, idx = 0) {
 export function prettifySlide(data: SlideInfoBase) {
   data.content = `\n${data.content.trim()}\n`
   data.raw = Object.keys(data.frontmatter || {}).length
-    ? data.frontmatterStyle === 'yaml'
-      ? `\`\`\`yaml\n${YAML.dump(data.frontmatter).trim()}\n\`\`\`\n${data.content}`
-      : `---\n${YAML.dump(data.frontmatter).trim()}\n---\n${data.content}`
+    ? `---\n${YAML.dump(data.frontmatter).trim()}\n---\n${data.content}`
     : data.content
   if (data.note)
     data.raw += `\n<!--\n${data.note.trim()}\n-->\n`
@@ -46,37 +44,15 @@ export function prettify(data: KolibryMarkdown) {
   return data
 }
 
-function safeParseYAML(str: string) {
-  const res = YAML.load(str)
-  return isObject(res) ? res : {}
-}
-
 function matter(code: string) {
-  let type: FrontmatterStyle | undefined
-
-  const data: any = {}
-
-  let content = code
-    .replace(/^---.*\r?\n([\s\S]*?)---/, (_, f) => {
-      type = 'frontmatter'
-      Object.assign(data, safeParseYAML(f))
-      return ''
-    })
-
-  if (type !== 'frontmatter') {
-    content = content
-      .replace(/^\s*```ya?ml([\s\S]*?)```/, (_, d) => {
-        type = 'yaml'
-        Object.assign(data, safeParseYAML(d))
-        return ''
-      })
-  }
-
-  return {
-    type,
-    data,
-    content,
-  }
+  let data: any = {}
+  const content = code.replace(/^---.*\r?\n([\s\S]*?)---/, (_, d) => {
+    data = YAML.load(d)
+    if (!isObject(data))
+      data = {}
+    return ''
+  })
+  return { data, content }
 }
 
 export function detectFeatures(code: string): KolibryFeatureFlags {
@@ -89,10 +65,10 @@ export function detectFeatures(code: string): KolibryFeatureFlags {
 }
 
 export function parseSlide(raw: string): SlideInfoBase {
-  const matterResult = matter(raw)
+  const result = matter(raw)
   let note: string | undefined
-  const frontmatter = matterResult.data || {}
-  let content = matterResult.content.trim()
+  const frontmatter = result.data || {}
+  let content = result.content.trim()
 
   const comments = Array.from(content.matchAll(/<!--([\s\S]*?)-->/g))
   if (comments.length) {
@@ -107,14 +83,13 @@ export function parseSlide(raw: string): SlideInfoBase {
   let level
   if (frontmatter.title || frontmatter.name) {
     title = frontmatter.title || frontmatter.name
+    level = frontmatter.level || 1
   }
   else {
     const match = content.match(/^(#+) (.*)$/m)
     title = match?.[2]?.trim()
     level = match?.[1]?.length
   }
-  if (frontmatter.level)
-    level = frontmatter.level || 1
 
   return {
     raw,
@@ -122,73 +97,37 @@ export function parseSlide(raw: string): SlideInfoBase {
     level,
     content,
     frontmatter,
-    frontmatterStyle: matterResult.type,
     note,
   }
 }
 
-export async function parse(
+export function parse(
   markdown: string,
   filepath?: string,
   themeMeta?: KolibryThemeMeta,
-  extensions?: KolibryPreparserExtension[],
-  onHeadmatter?: PreparserExtensionFromHeadmatter,
-): Promise<KolibryMarkdown> {
+): KolibryMarkdown {
   const lines = markdown.split(/\r?\n/g)
   const slides: SlideInfo[] = []
 
   let start = 0
 
-  async function slice(end: number) {
+  function slice(end: number) {
     if (start === end)
       return
     const raw = lines.slice(start, end).join('\n')
-    const slide = {
+    slides.push({
       ...parseSlide(raw),
       index: slides.length,
       start,
       end,
-    }
-    if (extensions) {
-      for (const e of extensions) {
-        if (e.transformSlide) {
-          const newContent = await e.transformSlide(slide.content, slide.frontmatter)
-          if (newContent !== undefined)
-            slide.content = newContent
-        }
-      }
-    }
-    slides.push(slide)
+    })
     start = end + 1
-  }
-
-  // identify the headmatter, to be able to load preparser extensions
-  // (strict parsing based on the parsing code)
-  {
-    let hm = ''
-    if (lines[0].match(/^---([^-].*)?$/) && !lines[1]?.match(/^\s*$/)) {
-      let hEnd = 1
-      while (hEnd < lines.length && !lines[hEnd].trimEnd().match(/^---$/))
-        hEnd++
-      hm = lines.slice(1, hEnd).join('\n')
-    }
-    if (onHeadmatter) {
-      const o = YAML.load(hm) ?? {}
-      extensions = await onHeadmatter(o, extensions ?? [], filepath)
-    }
-  }
-
-  if (extensions) {
-    for (const e of extensions) {
-      if (e.transformRawLines)
-        await e.transformRawLines(lines)
-    }
   }
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i].trimEnd()
     if (line.match(/^---+/)) {
-      await slice(i)
+      slice(i)
 
       const next = lines[i + 1]
       // found frontmatter, skip next dash
@@ -210,11 +149,11 @@ export async function parse(
   }
 
   if (start <= lines.length - 1)
-    await slice(lines.length)
+    slice(lines.length)
 
   const headmatter = slides[0]?.frontmatter || {}
   headmatter.title = headmatter.title || slides[0]?.title
-  const config = resolveConfig(headmatter, themeMeta, filepath)
+  const config = resolveConfig(headmatter, themeMeta)
   const features = detectFeatures(markdown)
 
   return {

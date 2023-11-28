@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useHead } from '@unhead/vue'
-import { computed, onMounted, reactive, ref, shallowRef, watch } from 'vue'
+import { useHead } from '@vueuse/head'
+import { computed, onMounted, reactive, ref, watch } from 'vue'
 import { useMouse, useWindowFocus } from '@vueuse/core'
 import { clicks, clicksTotal, currentPage, currentRoute, hasNext, nextRoute, total, useSwipeControls } from '../logic/nav'
-import { decreasePresenterFontSize, increasePresenterFontSize, presenterLayout, presenterNotesFontSize, showEditor, showOverview, showPresenterCursor } from '../state'
+import { showOverview, showPresenterCursor } from '../state'
 import { configs, themeVars } from '../env'
 import { sharedState } from '../state/shared'
 import { registerShortcuts } from '../logic/shortcuts'
@@ -30,8 +30,6 @@ useHead({
   title: `Presenter - ${slideTitle}`,
 })
 
-const notesEditing = ref(false)
-
 const { timer, resetTimer } = useTimer()
 
 const nextTabElements = ref([])
@@ -54,10 +52,6 @@ const nextSlide = computed(() => {
     }
   }
 })
-
-const Editor = shallowRef<any>()
-if (__DEV__ && __KOLIBRY_FEATURE_EDITOR__)
-  import('./Editor.vue').then(v => Editor.value = v.default)
 
 // sync presenter cursor
 onMounted(() => {
@@ -88,9 +82,9 @@ onMounted(() => {
 
 <template>
   <div class="bg-main h-full kolibry-presenter">
-    <div class="grid-container" :class="`layout${presenterLayout}`">
+    <div class="grid-container">
       <div class="grid-section top flex">
-        <img src="../assets/logo-title-horizontal.png" class="ml-2 my-auto h-10 py-1 lg:h-14 lg:py-2" style="height: 3.5rem;" alt="Kolibry logo">
+        <img src="../assets/logo-title-horizontal.png" class="ml-2 my-auto h-10 py-1 lg:h-14 lg:py-2">
         <div class="flex-auto" />
         <div
           class="timer-btn my-auto relative w-22px h-22px cursor-pointer text-lg"
@@ -100,7 +94,7 @@ onMounted(() => {
           <carbon:time class="absolute" />
           <carbon:renew class="absolute opacity-0" />
         </div>
-        <div class="text-2xl pl-2 pr-6 my-auto tabular-nums">
+        <div class="text-2xl pl-2 pr-6 my-auto">
           {{ timer }}
         </div>
       </div>
@@ -110,66 +104,36 @@ onMounted(() => {
           class="h-full w-full"
         >
           <template #default>
-            <SlidesShow render-context="presenter" />
+            <SlidesShow context="presenter" />
           </template>
         </SlideContainer>
         <div class="context">
           current
         </div>
       </div>
-      <div class="relative grid-section next flex flex-col p-2 lg:p-4" :style="themeVars">
+      <div class="relative grid-section next flex flex-col p-2 lg:p-4">
         <SlideContainer
           v-if="nextSlide"
           key="next"
           class="h-full w-full"
         >
           <SlideWrapper
-            :is="nextSlide.route?.component as any"
+            :is="nextSlide.route?.component"
             v-model:clicks-elements="nextTabElements"
             :clicks="nextSlide.clicks"
             :clicks-disabled="false"
             :class="getSlideClass(nextSlide.route)"
             :route="nextSlide.route"
-            render-context="previewNext"
+            context="previewNext"
           />
         </SlideContainer>
         <div class="context">
           next
         </div>
       </div>
-      <!-- Notes -->
-      <div v-if="__DEV__ && __KOLIBRY_FEATURE_EDITOR__ && Editor && showEditor" class="grid-section note of-auto">
-        <Editor />
-      </div>
-      <div v-else class="grid-section note grid grid-rows-[1fr_min-content] overflow-hidden">
-        <NoteEditor
-          v-if="__DEV__"
-          class="w-full max-w-full h-full overflow-auto p-2 lg:p-4"
-          :editing="notesEditing"
-          :style="{ fontSize: `${presenterNotesFontSize}em` }"
-        />
-        <NoteStatic
-          v-else
-          class="w-full max-w-full h-full overflow-auto p-2 lg:p-4"
-          :style="{ fontSize: `${presenterNotesFontSize}em` }"
-        />
-        <div class="border-t border-main py-1 px-2 text-sm">
-          <button class="kolibry-icon-btn" @click="increasePresenterFontSize">
-            <HiddenText text="Increase font size" />
-            <carbon:zoom-in />
-          </button>
-          <button class="kolibry-icon-btn" @click="decreasePresenterFontSize">
-            <HiddenText text="Decrease font size" />
-            <carbon:zoom-out />
-          </button>
-          <button
-            v-if="__DEV__"
-            class="kolibry-icon-btn" @click="notesEditing = !notesEditing"
-          >
-            <HiddenText text="Edit Notes" />
-            <carbon:edit />
-          </button>
-        </div>
+      <div class="grid-section note overflow-auto">
+        <NoteEditor v-if="__DEV__" class="w-full h-full overflow-auto p-2 lg:p-4" />
+        <NoteStatic v-else class="w-full h-full overflow-auto p-2 lg:p-4" />
       </div>
       <div class="grid-section bottom">
         <NavControls :persist="true" />
@@ -209,9 +173,6 @@ onMounted(() => {
   @apply h-full w-full bg-gray-400 bg-opacity-15;
   display: grid;
   gap: 1px 1px;
-}
-
-.grid-container.layout1 {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: min-content 2fr 1fr min-content;
   grid-template-areas:
@@ -221,18 +182,8 @@ onMounted(() => {
     "bottom bottom";
 }
 
-.grid-container.layout2 {
-  grid-template-columns: 3fr 2fr;
-  grid-template-rows: min-content 2fr 1fr min-content;
-  grid-template-areas:
-    "top top"
-    "note main"
-    "note next"
-    "bottom bottom";
-}
-
 @media (max-aspect-ratio: 3/5) {
-  .grid-container.layout1 {
+  .grid-container {
     grid-template-columns: 1fr;
     grid-template-rows: min-content 1fr 1fr 1fr min-content;
     grid-template-areas:
@@ -245,7 +196,7 @@ onMounted(() => {
 }
 
 @media (min-aspect-ratio: 1/1) {
-  .grid-container.layout1 {
+  .grid-container {
     grid-template-columns: 1fr 1.1fr 0.9fr;
     grid-template-rows: min-content 1fr 2fr min-content;
     grid-template-areas:

@@ -2,9 +2,7 @@ declare interface Window {
   // extend the window
 }
 
-declare module '*.vue';
-
-// with unplugin-vue-markdown, markdowns can be treat as Vue components
+// with vite-plugin-vue-markdown, markdowns can be treat as Vue components
 declare module '*.md' {
   import type { ComponentOptions } from 'vue'
 
@@ -16,10 +14,4 @@ declare module '/@kolibry/configs' {
   import { KolibryConfig } from '@kolibry/types'
 
   export default KolibryConfig
-}
-
-declare module 'mermaid/dist/mermaid.esm.mjs' {
-  import Mermaid from 'mermaid/dist/mermaid.d.ts'
-
-  export default Mermaid
 }

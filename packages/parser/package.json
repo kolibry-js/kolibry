@@ -1,16 +1,6 @@
 {
   "name": "@kolibry/parser",
-  "version": "0.0.6",
-  "description": "Markdown parser for Kolibry",
-  "author": "nyxb <contact@nyxb.email>",
-  "license": "MIT",
-  "funding": "https://github.com/sponsors/nyxb",
-  "homepage": "https://kolibry.dev",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/kolibry-js/kolibry"
-  },
-  "bugs": "https://github.com/kolibry-js/kolibry/issues",
+  "version": "0.0.6-docs",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -36,11 +26,11 @@
     "dist"
   ],
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=14.0.0"
   },
   "scripts": {
-    "build": "rm -rf dist && tsup src/index.ts src/core.ts src/fs.ts",
-    "dev": "nyxr build --watch",
+    "build": "rimraf dist && tsup src/index.ts src/core.ts src/fs.ts --format cjs,esm --dts --splitting --no-shims",
+    "dev": "nr build --watch",
     "prepublishOnly": "npm run build"
   },
   "dependencies": {

@@ -9,15 +9,13 @@ Usage:
 -->
 <script setup lang='ts'>
 import { computed, inject } from 'vue'
-import type { TocItem } from '@kolibry/types'
+import type { TocItem } from '../logic/nav'
 import { injectionKolibryContext } from '../constants'
 
 const props = withDefaults(
   defineProps<{
     columns?: string | number
     listClass?: string | string[]
-    start?: string | number
-    listStyle?: string | string[]
     maxDepth?: string | number
     minDepth?: string | number
     mode?: 'all' | 'onlyCurrentTree' | 'onlySiblings'
@@ -25,15 +23,13 @@ const props = withDefaults(
   {
     columns: 1,
     listClass: '',
-    start: 1,
-    listStyle: '',
     maxDepth: Number.POSITIVE_INFINITY,
     minDepth: 1,
     mode: 'all',
   },
 )
 
-const $kolibry = inject(injectionKolibryContext)
+const kolibry = inject(injectionKolibryContext)
 
 function filterTreeDepth(tree: TocItem[], level = 1): TocItem[] {
   if (level > Number(props.maxDepth)) {
@@ -53,7 +49,8 @@ function filterTreeDepth(tree: TocItem[], level = 1): TocItem[] {
 function filterOnlyCurrentTree(tree: TocItem[]): TocItem[] {
   return tree
     .filter(
-      (item: TocItem) => item.active || item.activeParent || item.hasActiveParent,
+      (item: TocItem) =>
+        item.active || item.activeParent || item.hasActiveParent,
     )
     .map((item: TocItem) => ({
       ...item,
@@ -74,7 +71,7 @@ function filterOnlySiblings(tree: TocItem[]): TocItem[] {
 }
 
 const toc = computed(() => {
-  const tree = $kolibry?.nav.tree
+  const tree = kolibry?.nav.tree
   if (!tree)
     return []
   let tocTree = filterTreeDepth(tree)
@@ -88,12 +85,6 @@ const toc = computed(() => {
 
 <template>
   <div class="kolibry-toc" :style="`column-count:${columns}`">
-    <TocList
-      :level="1"
-      :start="start"
-      :list-style="listStyle"
-      :list="toc"
-      :list-class="listClass"
-    />
+    <TocList :level="1" :list="toc" :list-class="listClass" />
   </div>
 </template>

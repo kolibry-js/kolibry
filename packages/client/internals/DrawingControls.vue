@@ -5,21 +5,20 @@ import {
   canClear,
   canRedo,
   canUndo,
-  clearDrauuIt,
-  drauuIt,
+  clearDrauu,
+  drauu,
   drawingEnabled,
   drawingMode,
   drawingPinned,
 } from '../logic/drawings'
 import VerticalDivider from './VerticalDivider.vue'
 import Draggable from './Draggable.vue'
-import HiddenText from './HiddenText.vue'
 
 function undo() {
-  drauuIt.undo()
+  drauu.undo()
 }
 function redo() {
-  drauuIt.redo()
+  drauu.redo()
 }
 function setDrawingMode(mode: typeof drawingMode.value) {
   drawingMode.value = mode
@@ -40,31 +39,25 @@ function setBrushColor(color: typeof brush.color) {
     :initial-x="10"
     :initial-y="10"
   >
-    <button class="kolibry-icon-btn" :class="{ shallow: drawingMode !== 'stylus' }" @click="setDrawingMode('stylus')">
-      <HiddenText text="Draw with stylus" />
+    <button class="icon-btn" :class="{ shallow: drawingMode !== 'stylus' }" @click="setDrawingMode('stylus')">
       <carbon:pen />
     </button>
-    <button class="kolibry-icon-btn" :class="{ shallow: drawingMode !== 'line' }" @click="setDrawingMode('line')">
-      <HiddenText text="Draw a line" />
+    <button class="icon-btn" :class="{ shallow: drawingMode !== 'line' }" @click="setDrawingMode('line')">
       <svg width="1em" height="1em" class="-mt-0.5" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
         <path d="M21.71 3.29a1 1 0 0 0-1.42 0l-18 18a1 1 0 0 0 0 1.42a1 1 0 0 0 1.42 0l18-18a1 1 0 0 0 0-1.42z" fill="currentColor" />
       </svg>
     </button>
-    <button class="kolibry-icon-btn" :class="{ shallow: drawingMode !== 'arrow' }" @click="setDrawingMode('arrow')">
-      <HiddenText text="Draw an arrow" />
+    <button class="icon-btn" :class="{ shallow: drawingMode !== 'arrow' }" @click="setDrawingMode('arrow')">
       <carbon:arrow-up-right />
     </button>
-    <button class="kolibry-icon-btn" :class="{ shallow: drawingMode !== 'ellipse' }" @click="setDrawingMode('ellipse')">
-      <HiddenText text="Draw an ellipse" />
+    <button class="icon-btn" :class="{ shallow: drawingMode !== 'ellipse' }" @click="setDrawingMode('ellipse')">
       <carbon:radio-button />
     </button>
-    <button class="kolibry-icon-btn" :class="{ shallow: drawingMode !== 'rectangle' }" @click="setDrawingMode('rectangle')">
-      <HiddenText text="Draw a rectangle" />
+    <button class="icon-btn" :class="{ shallow: drawingMode !== 'rectangle' }" @click="setDrawingMode('rectangle')">
       <carbon:checkbox />
     </button>
     <!-- TODO: not sure why it's not working! -->
-    <!-- <button class="kolibry-icon-btn" :class="{ shallow: drawingMode != 'eraseLine' }" @click="setDrawingMode('eraseLine')">
-      <HiddenText text="Erase" />
+    <!-- <button class="icon-btn" :class="{ shallow: drawingMode != 'eraseLine' }" @click="setDrawingMode('eraseLine')">
       <carbon:erase />
     </button> -->
 
@@ -73,11 +66,10 @@ function setBrushColor(color: typeof brush.color) {
     <button
       v-for="color of brushColors"
       :key="color"
-      class="kolibry-icon-btn"
+      class="icon-btn"
       :class="brush.color === color ? 'active' : 'shallow'"
       @click="setBrushColor(color)"
     >
-      <HiddenText text="Set brush color" />
       <div
         class="w-6 h-6 transition-all transform border border-gray-400/50"
         :class="brush.color !== color ? 'rounded-1/2 scale-85' : 'rounded-md'"
@@ -87,32 +79,27 @@ function setBrushColor(color: typeof brush.color) {
 
     <VerticalDivider />
 
-    <button class="kolibry-icon-btn" :class="{ disabled: !canUndo }" @click="undo()">
-      <HiddenText text="Undo" />
+    <button class="icon-btn" :class="{ disabled: !canUndo }" @click="undo()">
       <carbon:undo />
     </button>
-    <button class="kolibry-icon-btn" :class="{ disabled: !canRedo }" @click="redo()">
-      <HiddenText text="Redo" />
+    <button class="icon-btn" :class="{ disabled: !canRedo }" @click="redo()">
       <carbon:redo />
     </button>
-    <button class="kolibry-icon-btn" :class="{ disabled: !canClear }" @click="clearDrauuIt()">
-      <HiddenText text="Delete" />
+    <button class="icon-btn" :class="{ disabled: !canClear }" @click="clearDrauu()">
       <carbon:delete />
     </button>
 
     <VerticalDivider />
-    <button class="kolibry-icon-btn" :class="{ shallow: !drawingPinned }" @click="drawingPinned = !drawingPinned">
-      <HiddenText :text="drawingPinned ? 'Unpin drawing' : 'Pin drawing'" />
+    <button class="icon-btn" :class="{ shallow: !drawingPinned }" @click="drawingPinned = !drawingPinned">
       <carbon:pin-filled v-show="drawingPinned" class="transform -rotate-45" />
       <carbon:pin v-show="!drawingPinned" />
     </button>
     <button
       v-if="drawingEnabled"
-      class="kolibry-icon-btn"
+      class="icon-btn"
       :class="{ shallow: !drawingEnabled }"
       @click="drawingEnabled = !drawingEnabled"
     >
-      <HiddenText :text="drawingPinned ? 'Drawing pinned' : 'Drawing unpinned'" />
       <carbon:error v-show="drawingPinned" />
       <carbon:close-outline v-show="!drawingPinned" />
     </button>

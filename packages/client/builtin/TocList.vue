@@ -9,13 +9,13 @@ Usage:
 <script setup lang="ts">
 import { computed } from 'vue'
 import { toArray } from '@nyxb/utils'
-import type { TocItem } from '@kolibry/types'
+
+// @ts-expect-error virtual module
 import Titles from '/@kolibry/titles.md'
+import type { TocItem } from '../logic/nav'
 
 const props = withDefaults(defineProps<{
   level: number
-  start?: number
-  listStyle?: string | string[]
   list: TocItem[]
   listClass?: string | string[]
 }>(), { level: 1 })
@@ -27,23 +27,12 @@ const classes = computed(() => {
     `kolibry-toc-list-level-${props.level}`,
   ]
 })
-
-const styles = computed(() => {
-  return [
-    ...toArray(props.listStyle || []),
-  ]
-})
 </script>
 
 <template>
-  <ol
-    v-if="list && list.length > 0"
-    :class="classes"
-    :start="level === 1 ? start : undefined"
-    :style="styles.length >= level ? `list-style:${styles[level - 1]}` : undefined"
-  >
+  <ol v-if="list && list.length > 0" :class="classes">
     <li
-      v-for="item of list"
+      v-for="item in list"
       :key="item.path" class="kolibry-toc-item"
       :class="[{ 'kolibry-toc-item-active': item.active }, { 'kolibry-toc-item-parent-active': item.activeParent }]"
     >
@@ -53,19 +42,9 @@ const styles = computed(() => {
       <TocList
         v-if="item.children.length > 0"
         :level="level + 1"
-        :list-style="listStyle"
         :list="item.children"
         :list-class="listClass"
       />
     </li>
   </ol>
 </template>
-
-<style>
-.kolibry-layout .kolibry-toc-item p {
-  margin: 0;
-}
-.kolibry-layout .kolibry-toc-item div, .kolibry-layout .kolibry-toc-item div p {
-  display: initial;
-}
-</style>

@@ -1,7 +1,7 @@
 import { computed, markRaw, nextTick, reactive, ref, watch } from 'vue'
-import type { Brush, Options as DrauuItOptions, DrawingMode } from 'drauu-it'
-import { createDrauuIt } from 'drauu-it'
-import { toReactive, useLocalStorage } from '@vueuse/core'
+import type { Brush, Options as DrauuOptions, DrawingMode } from 'drauu'
+import { createDrauu } from 'drauu'
+import { toReactive, useStorage } from '@vueuse/core'
 import { drawingState, onPatch, patch } from '../state/drawings'
 import { configs } from '../env'
 import { currentPage, isPresenter } from './nav'
@@ -16,14 +16,14 @@ export const brushColors = [
   '#000000',
 ]
 
-export const drawingEnabled = useLocalStorage('kolibry-drawing-enabled', false)
-export const drawingPinned = useLocalStorage('kolibry-drawing-pinned', false)
+export const drawingEnabled = useStorage('kolibry-drawing-enabled', false)
+export const drawingPinned = useStorage('kolibry-drawing-pinned', false)
 export const canUndo = ref(false)
 export const canRedo = ref(false)
 export const canClear = ref(false)
 export const isDrawing = ref(false)
 
-export const brush = toReactive(useLocalStorage<Brush>('kolibry-drawing-brush', {
+export const brush = toReactive(useStorage<Brush>('kolibry-drawing-brush', {
   color: brushColors[0],
   size: 4,
   mode: 'stylus',
@@ -50,64 +50,63 @@ export const drawingMode = computed({
   },
 })
 
-export const drauuItOptions: DrauuItOptions = reactive({
+export const drauuOptions: DrauuOptions = reactive({
   brush,
-  acceptsInputTypes: computed(() => (drawingEnabled.value && (!configs.drawings.presenterOnly || isPresenter.value)) ? undefined : ['pen' as const]),
+  acceptsInputTypes: computed(() => drawingEnabled.value ? undefined : ['pen' as const]),
   coordinateTransform: false,
 })
-export const drauuIt = markRaw(createDrauuIt(drauuItOptions))
+export const drauu = markRaw(createDrauu(drauuOptions))
 
-export function clearDrauuIt() {
-  drauuIt.clear()
+export function clearDrauu() {
+  drauu.clear()
   if (syncUp.value)
     patch(currentPage.value, '')
 }
 
 export function updateState() {
-  canRedo.value = drauuIt.canRedo()
-  canUndo.value = drauuIt.canUndo()
-  canClear.value = !!drauuIt.el?.children.length
+  canRedo.value = drauu.canRedo()
+  canUndo.value = drauu.canUndo()
+  canClear.value = !!drauu.el?.children.length
 }
 
 export function loadCanvas(page?: number) {
   disableDump = true
   const data = drawingState[page || currentPage.value]
   if (data != null)
-    drauuIt.load(data)
+    drauu.load(data)
   else
-    drauuIt.clear()
-  updateState()
+    drauu.clear()
   disableDump = false
 }
 
-drauuIt.on('changed', () => {
+drauu.on('changed', () => {
   updateState()
   if (!disableDump) {
-    const dump = drauuIt.dump()
+    const dump = drauu.dump()
     const key = currentPage.value
     if ((drawingState[key] || '') !== dump && syncUp.value)
-      patch(key, drauuIt.dump())
+      patch(key, drauu.dump())
   }
 })
 
 onPatch((state) => {
   disableDump = true
   if (state[currentPage.value] != null)
-    drauuIt.load(state[currentPage.value] || '')
+    drauu.load(state[currentPage.value] || '')
   disableDump = false
   updateState()
 })
 
 nextTick(() => {
   watch(currentPage, () => {
-    if (!drauuIt.mounted)
+    if (!drauu.mounted)
       return
     loadCanvas()
   }, { immediate: true })
 })
 
-drauuIt.on('start', () => isDrawing.value = true)
-drauuIt.on('end', () => isDrawing.value = false)
+drauu.on('start', () => isDrawing.value = true)
+drauu.on('end', () => isDrawing.value = false)
 
 window.addEventListener('keydown', (e) => {
   if (!drawingEnabled.value)
@@ -117,9 +116,9 @@ window.addEventListener('keydown', (e) => {
   let handled = true
   if (e.code === 'KeyZ' && (e.ctrlKey || e.metaKey)) {
     if (e.shiftKey)
-      drauuIt.redo()
+      drauu.redo()
     else
-      drauuIt.undo()
+      drauu.undo()
   }
   else if (e.code === 'Escape') {
     drawingEnabled.value = false
@@ -140,7 +139,7 @@ window.addEventListener('keydown', (e) => {
     drawingMode.value = 'ellipse'
   }
   else if (e.code === 'KeyC' && noModifier) {
-    clearDrauuIt()
+    clearDrauu()
   }
   else if (e.code.startsWith('Digit') && noModifier && +e.code[5] <= brushColors.length) {
     brush.color = brushColors[+e.code[5] - 1]

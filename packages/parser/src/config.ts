@@ -1,9 +1,12 @@
 import { toArray, uniq } from '@nyxb/utils'
-import type { DrawingsOptions, FontOptions, KolibryConfig, KolibryThemeMeta, ResolvedDrawingsOptions, ResolvedExportOptions, ResolvedFontOptions } from '@kolibry/types'
+import type { DrawingsOptions, FontOptions, KolibryConfig, KolibryThemeMeta, ResolvedDrawingsOptions, ResolvedFontOptions } from '@kolibry/types'
 import { parseAspectRatio } from './utils'
 
-export function getDefaultConfig(): KolibryConfig {
-  return {
+export function resolveConfig(headmatter: any, themeMeta: KolibryThemeMeta = {}, verify = false) {
+  const themeHightlighter = ['prism', 'shiki'].includes(themeMeta.highlighter || '') ? themeMeta.highlighter as 'prism' | 'shiki' : undefined
+  const themeColorSchema = ['light', 'dark'].includes(themeMeta.colorSchema || '') ? themeMeta.colorSchema as 'light' | 'dark' : undefined
+
+  const defaultConfig: KolibryConfig = {
     theme: 'default',
     title: 'Kolibry',
     titleTemplate: '%s - Kolibry',
@@ -11,11 +14,10 @@ export function getDefaultConfig(): KolibryConfig {
     remoteAssets: false,
     monaco: 'dev',
     download: false,
-    export: {} as ResolvedExportOptions,
     info: false,
-    highlighter: 'prism',
+    highlighter: themeHightlighter || 'prism',
     lineNumbers: false,
-    colorSchema: 'auto',
+    colorSchema: themeColorSchema || 'auto',
     routerMode: 'history',
     aspectRatio: 16 / 9,
     canvasWidth: 980,
@@ -28,24 +30,10 @@ export function getDefaultConfig(): KolibryConfig {
     plantUmlServer: 'https://www.plantuml.com/plantuml',
     codeCopy: true,
     record: 'dev',
-    css: 'unocss',
-    presenter: true,
-    htmlAttrs: {},
-    transition: undefined,
-    editor: true,
+    css: 'windicss',
   }
-}
-
-export function resolveConfig(headmatter: any, themeMeta: KolibryThemeMeta = {}, filepath?: string, verify = false) {
-  const themeHightlighter = ['prism', 'shiki'].includes(themeMeta.highlighter || '') ? themeMeta.highlighter as 'prism' | 'shiki' : undefined
-  const themeColorSchema = ['light', 'dark'].includes(themeMeta.colorSchema || '') ? themeMeta.colorSchema as 'light' | 'dark' : undefined
-
-  const defaultConfig = getDefaultConfig()
-
   const config: KolibryConfig = {
     ...defaultConfig,
-    highlighter: themeHightlighter || defaultConfig.highlighter,
-    colorSchema: themeColorSchema || defaultConfig.colorSchema,
     ...themeMeta.defaults,
     ...headmatter.config,
     ...headmatter,
@@ -54,12 +42,7 @@ export function resolveConfig(headmatter: any, themeMeta: KolibryThemeMeta = {},
       ...headmatter.config?.fonts,
       ...headmatter?.fonts,
     }),
-    drawings: resolveDrawings(headmatter.drawings, filepath),
-    htmlAttrs: {
-      ...themeMeta.defaults?.htmlAttrs,
-      ...headmatter.config?.htmlAttrs,
-      ...headmatter?.htmlAttrs,
-    },
+    drawings: resolveDrawings(headmatter.drawings),
   }
 
   if (config.colorSchema !== 'dark' && config.colorSchema !== 'light')
@@ -90,8 +73,13 @@ export function verifyConfig(
     warn(`Syntax highlighter "${config.highlighter}" does not supported by the theme`)
 
   if (!['windicss', 'unocss', undefined].includes(config.css)) {
-    warn(`Unsupported Atomic CSS engine "${config.css}", fallback to UnoCSS`)
-    config.css = 'unocss'
+    warn(`Unsupported Atomic CSS engine "${config.css}", fallback to Windi CSS`)
+    config.css = 'windicss'
+  }
+
+  if (config.css === 'unocss') {
+    warn('UnoCSS support is experimental, the styling might break without following semver.')
+    warn('We suggest pinning the version of Kolibry when using experimental features.')
   }
 }
 
@@ -174,7 +162,7 @@ export function resolveFonts(fonts: FontOptions = {}): ResolvedFontOptions {
   }
 }
 
-function resolveDrawings(options: DrawingsOptions = {}, filepath?: string): ResolvedDrawingsOptions {
+function resolveDrawings(options: DrawingsOptions = {}): ResolvedDrawingsOptions {
   const {
     enabled = true,
     persist = false,
@@ -185,7 +173,7 @@ function resolveDrawings(options: DrawingsOptions = {}, filepath?: string): Reso
   const persistPath = typeof persist === 'string'
     ? persist
     : persist
-      ? `.kolibry/drawings${filepath ? `/${filepath.match(/([^\\\/]+?)(\.\w+)?$/)?.[1]}` : ''}`
+      ? '.kolibry/drawings'
       : false
 
   return {

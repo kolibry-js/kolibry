@@ -13,18 +13,15 @@ Alice -> Bob : Hello!
 <script setup lang="ts">
 import { computed } from 'vue'
 
-const props = withDefaults(defineProps<{
+const props = defineProps<{
   code: string
   server: string
   scale?: number
-  alt?: string
-}>(), {
-  alt: 'PlantUML diagram',
-})
+}>()
 
 const uri = computed(() => `${props.server}/svg/${props.code}`)
 </script>
 
 <template>
-  <img :src="uri" :style="{ scale }" :alt="alt">
+  <img alt="PlantUML diagram" :src="uri" :style="{ scale }">
 </template>

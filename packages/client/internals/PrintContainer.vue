@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { parseRangeString } from '@kolibry/parser/core'
 import { computed, provide } from 'vue'
 import { configs, slideAspect, slideWidth } from '../env'
 import { injectionSlideScale } from '../constants'
-import { route as currentRoute, rawRoutes } from '../logic/nav'
+import { rawRoutes } from '../logic/nav'
 import PrintSlide from './PrintSlide.vue'
 
 const props = defineProps<{
@@ -21,14 +20,12 @@ const scale = computed(() => {
   return (height.value * slideAspect) / slideWidth
 })
 
-let routes = rawRoutes
-if (currentRoute.value.query.range) {
-  const r = parseRangeString(routes.length, currentRoute.value.query.range as string)
-  routes = r.map(i => routes[i - 1])
-}
+// Remove the "end" slide
+const routes = rawRoutes.slice(0, -1)
 
 const className = computed(() => ({
   'select-none': !configs.selectable,
+  'kolibry-code-line-numbers': configs.lineNumbers,
 }))
 
 provide(injectionSlideScale, scale)
@@ -48,7 +45,10 @@ provide(injectionSlideScale, scale)
   @apply bg-main;
 }
 
-.print-slide-container {
-  @apply relative overflow-hidden break-after-page;
+.slide-container {
+  @apply relative;
+  position: relative;
+  overflow: hidden;
+  page-break-before: always;
 }
 </style>

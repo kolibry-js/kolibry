@@ -1,7 +1,3 @@
-html.dark:root {
-  color-scheme: dark;
-}
-
 html.dark .shiki-light {
   display: none;
 }
@@ -10,9 +6,12 @@ html:not(.dark) .shiki-dark {
   display: none;
 }
 
+::-webkit-scrollbar {
+  width: 0px;
+}
+
 .kolibry-code-wrapper {
   margin: var(--kolibry-code-margin) !important;
-  scroll-padding: var(--kolibry-code-padding);
   &:-webkit-scrollbar {
     width: 0px;
   }
@@ -43,7 +42,7 @@ html:not(.dark) .shiki-dark {
 
 .kolibry-code-line-numbers .kolibry-code code {
   counter-reset: step;
-  counter-increment: step calc(var(--start, 1) - 1);
+  counter-increment: step 0;
 }
 
 .kolibry-code-line-numbers .kolibry-code code .line::before {

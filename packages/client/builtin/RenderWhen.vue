@@ -2,7 +2,7 @@
 import { computed, inject } from 'vue'
 import type { RenderContext } from '@kolibry/types'
 
-import { injectionRenderContext } from '../constants'
+import { injectionSlideContext } from '../constants'
 
 type Context = 'main' | RenderContext
 
@@ -11,14 +11,14 @@ const props = defineProps<{
 }>()
 const { context } = props
 
-const currentContext = inject(injectionRenderContext)
+const currentContext = inject(injectionSlideContext)
 
 const shouldRender = computed(() => Array.isArray(context) ? context.some(contextMatch) : contextMatch(context))
 
 function contextMatch(context: Context) {
-  if (context === currentContext?.value)
+  if (context === currentContext)
     return true
-  if (context === 'main' && (currentContext?.value === 'slide' || currentContext?.value === 'presenter'))
+  if (context === 'main' && (currentContext === 'slide' || currentContext === 'presenter'))
     return true
   return false
 }

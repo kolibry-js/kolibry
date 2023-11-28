@@ -12,7 +12,7 @@ const emit = defineEmits<{
 const el = ref<HTMLDivElement>()
 const shadow = computed(() => el.value ? (el.value.shadowRoot || el.value.attachShadow({ mode: 'open' })) : null)
 watchEffect(() => {
-  if (shadow.value && props.innerHtml) {
+  if (shadow.value) {
     emit('shadow', shadow.value)
     shadow.value.innerHTML = props.innerHtml
   }
