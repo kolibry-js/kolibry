@@ -12,7 +12,7 @@ export interface KolibryConfig {
   /**
    * Theme to use for the slides
    *
-   * @see https://sli.dev/themes/use.html
+   * @see https://kolibry.dev/themes/use.html
    * @default 'default'
    */
   theme: string
@@ -31,7 +31,7 @@ export interface KolibryConfig {
   /**
    * Enable Monaco
    *
-   * @see https://sli.dev/custom/config-monaco.html
+   * @see https://kolibry.dev/custom/config-monaco.html
    * @default 'dev'
    */
   monaco: boolean | 'dev' | 'build'
@@ -58,7 +58,7 @@ export interface KolibryConfig {
   /**
    * Prefer highlighter
    *
-   * @see https://sli.dev/custom/highlighters.html
+   * @see https://kolibry.dev/custom/highlighters.html
    * @default prism
    */
   highlighter: 'prism' | 'shiki'

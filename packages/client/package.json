@@ -1,6 +1,6 @@
 {
   "name": "@kolibry/client",
-  "version": "0.0.6-docs",
+  "version": "0.0.7-docs",
   "engines": {
     "node": ">=14.0.0"
   },

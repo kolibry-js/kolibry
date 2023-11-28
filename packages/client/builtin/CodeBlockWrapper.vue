@@ -8,7 +8,7 @@ Usage:
 const your_code = 'here'
 ```
 
-Learn more: https://sli.dev/guide/syntax.html#line-highlighting
+Learn more: https://kolibry.dev/guide/syntax.html#line-highlighting
 -->
 
 <script setup lang="ts">

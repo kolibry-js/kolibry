@@ -1,6 +1,6 @@
 {
   "name": "@kolibry/parser",
-  "version": "0.0.6-docs",
+  "version": "0.0.7-docs",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",

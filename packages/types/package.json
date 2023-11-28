@@ -1,6 +1,6 @@
 {
   "name": "@kolibry/types",
-  "version": "0.0.6-docs",
+  "version": "0.0.7-docs",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "index.d.ts",

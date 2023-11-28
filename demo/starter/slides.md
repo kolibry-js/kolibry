@@ -259,7 +259,7 @@ Animations are powered by [@vueuse/motion](https://motion.vueuse.org/).
       :initial="{ x: 800, y: -100, scale: 1.5, rotate: -50 }"
       :enter="final"
       class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-head.png"
+      src="https://kolibry.dev/logo-head.png"
       alt=""
     />
     <img
@@ -267,7 +267,7 @@ Animations are powered by [@vueuse/motion](https://motion.vueuse.org/).
       :initial="{ y: 500, x: -100, scale: 2 }"
       :enter="final"
       class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-wings.png"
+      src="https://kolibry.dev/logo-wings.png"
       alt=""
     />
     <img
@@ -275,7 +275,7 @@ Animations are powered by [@vueuse/motion](https://motion.vueuse.org/).
       :initial="{ x: 600, y: 400, scale: 2, rotate: 100 }"
       :enter="final"
       class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-tail.png"
+      src="https://kolibry.dev/logo-tail.png"
       alt=""
     />
   </div>
