@@ -698,7 +698,7 @@ srcSequence: sub/page1.md
       "content": "",
       "end": 9,
       "frontmatter": {
-        "background": "https://kolibry.dev/demo-cover.jpgg#2",
+        "background": "https://kolibry.dev/demo-cover.jpg#2",
       },
       "frontmatterStyle": "frontmatter",
       "index": 1,

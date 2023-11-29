@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { inject } from 'vue'
-import { injectionKolibryiContext } from '../constants'
+import { injectionKolibryContext } from '../constants'
 
-const $kolibry = inject(injectionKolibryiContext)
+const $kolibry = inject(injectionKolibryContext)
 </script>
 
 <template>
