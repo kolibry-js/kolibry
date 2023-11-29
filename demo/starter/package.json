@@ -8,8 +8,8 @@
   },
   "devDependencies": {
     "@kolibry/cli": "workspace:*",
-    "@kolibry/theme-default": "^0.0.3",
-    "@kolibry/theme-seriph": "^0.0.3",
+    "@kolibry/theme-default": "^0.0.5",
+    "@kolibry/theme-seriph": "^0.0.5",
     "@kolibry/types": "workspace:*",
     "nodemon": "^3.0.1"
   }
