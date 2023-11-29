@@ -1,5 +1,5 @@
 ---
-theme: seriph
+theme: default
 background: './assets/cover.jpg'
 class: text-center
 highlighter: shiki
@@ -185,10 +185,10 @@ Check out [the guides](https://kolibry.dev/builtin/components.html) for more.
 <div>
 
 ```html
-<Tweet id="1390115482657726468" />
+<Tweet id="1701522145371738236" />
 ```
 
-<Tweet id="1390115482657726468" scale="0.65" />
+<Tweet id="1701522145371738236" scale="0.58" />
 
 </div>
 </div>
@@ -246,7 +246,7 @@ Animations are powered by [@vueuse/motion](https://motion.vueuse.org/).
 ```html
 <div
   v-motion
-  :initial="{ x: -80 }"
+  :initial="{ x: -80}"
   :enter="{ x: 0 }">
   Kolibry
 </div>
@@ -257,25 +257,25 @@ Animations are powered by [@vueuse/motion](https://motion.vueuse.org/).
     <img
       v-motion
       :initial="{ x: 800, y: -100, scale: 1.5, rotate: -50 }"
-      :enter="final"
+      :enter="finalHead"
       class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-head.png"
+      src="https://kolibry.dev/logo-head.png"
       alt=""
     />
     <img
       v-motion
       :initial="{ y: 500, x: -100, scale: 2 }"
-      :enter="final"
+      :enter="finalWings"
       class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-wings.png"
+      src="https://kolibry.dev/logo-wings.png"
       alt=""
     />
     <img
       v-motion
       :initial="{ x: 600, y: 400, scale: 2, rotate: 100 }"
-      :enter="final"
+      :enter="finalTail"
       class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-tail.png"
+      src="https://kolibry.dev/logo-tail.png"
       alt=""
     />
   </div>
@@ -291,11 +291,35 @@ Animations are powered by [@vueuse/motion](https://motion.vueuse.org/).
 
 <!-- vue script setup scripts can be directly used in markdown, and will only affects current page -->
 <script setup lang="ts">
-const final = {
-  x: 0,
-  y: 0,
+const finalHead = {
+  x: -50,
+  y: -30,
   rotate: 0,
-  scale: 1,
+  scale: 0.6,
+  transition: {
+    type: 'spring',
+    damping: 10,
+    stiffness: 20,
+    mass: 2
+  }
+}
+const finalWings = {
+  x: 35,
+  y: -35,
+  rotate: 0,
+  scale: 0.6,
+  transition: {
+    type: 'spring',
+    damping: 10,
+    stiffness: 20,
+    mass: 2
+  }
+}
+const finalTail = {
+  x: 10,
+  y: 40,
+  rotate: 0,
+  scale: 0.6,
   transition: {
     type: 'spring',
     damping: 10,

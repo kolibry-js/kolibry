@@ -68,7 +68,7 @@ npm init kolibry
 ```
 
 Documentations:
-**[English](https://kolibry.dev)** | [German](https://de.kolibry.dev) | [中文文档](https://cn.kolibry.dev) | [Français](https://fr.kolibry.dev) | [Español](https://es.kolibry.dev) | [Русский](https://ru.kolibry.dev) | [Português-BR](https://br.kolibry.dev)
+**[English](https://kolibry.dev)** | [German](https://de.kolibry.dev)
 
 Discord: [nyxb.chat](https://chat.kolibry.dev)
 

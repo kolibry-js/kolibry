@@ -30,7 +30,7 @@ This will be ignored
 
 ---
 src: sub/page2.md
-background: https://kolibry.dev/demo-cover.png
+background: https://kolibry.dev/demo-cover.jpg
 ---
 
 ---
