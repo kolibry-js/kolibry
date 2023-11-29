@@ -30,7 +30,7 @@
   },
   "scripts": {
     "build": "rimraf dist && tsup src/index.ts src/core.ts src/fs.ts --format cjs,esm --dts --splitting --no-shims",
-    "dev": "nr build --watch",
+    "dev": "nyxr build --watch",
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
