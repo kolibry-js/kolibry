@@ -141,11 +141,11 @@ importers:
         specifier: workspace:*
         version: link:../../../packages/kolibry
       '@kolibry/theme-default':
-        specifier: ^0.0.3
-        version: 0.0.3
+        specifier: ^0.0.5
+        version: 0.0.5
       '@kolibry/theme-seriph':
-        specifier: ^0.0.3
-        version: 0.0.3
+        specifier: ^0.0.5
+        version: 0.0.5
       '@kolibry/types':
         specifier: workspace:*
         version: link:../../../packages/types
@@ -165,11 +165,11 @@ importers:
         specifier: workspace:*
         version: link:../../packages/kolibry
       '@kolibry/theme-default':
-        specifier: ^0.0.3
-        version: 0.0.3
+        specifier: ^0.0.5
+        version: 0.0.5
       '@kolibry/theme-seriph':
-        specifier: ^0.0.3
-        version: 0.0.3
+        specifier: ^0.0.5
+        version: 0.0.5
       '@kolibry/types':
         specifier: workspace:*
         version: link:../../packages/types
@@ -183,11 +183,11 @@ importers:
         specifier: workspace:*
         version: link:../../packages/kolibry
       '@kolibry/theme-default':
-        specifier: ^0.0.3
-        version: 0.0.3
+        specifier: ^0.0.5
+        version: 0.0.5
       '@kolibry/theme-seriph':
-        specifier: ^0.0.3
-        version: 0.0.3
+        specifier: ^0.0.5
+        version: 0.0.5
       '@kolibry/types':
         specifier: workspace:*
         version: link:../../packages/types
@@ -1242,8 +1242,8 @@ packages:
       type-detect: 4.0.8
     dev: true
 
-  /@kolibry/theme-default@0.0.3:
-    resolution: {integrity: sha512-6eWsNDBdcx740SsVulQk0XHAcNkPV/iB4u4cHbiwmpKkjafxwYzZ6G2RfDiom/KH83NuZWoBCgEg072pk875dg==}
+  /@kolibry/theme-default@0.0.5:
+    resolution: {integrity: sha512-qBeeYV0c09aY2yi7pnt61+zOi/qAoSufU+I/pU1CB7PQz+gluZEY4MKwKjgbvXCKv2750ORKjGVzc3yWpkRmqA==}
     engines: {kolibry: '>=0.0.1', node: '>=14.0.0'}
     dependencies:
       '@kolibry/types': 0.0.2
@@ -1252,8 +1252,8 @@ packages:
       theme-lumos: 0.0.3
     dev: true
 
-  /@kolibry/theme-seriph@0.0.3:
-    resolution: {integrity: sha512-+FE0C9eFlCxBtrKywqmycP0F6N7YM2CbrXiYExD+gRIy9+mhRu0mya202e1DGUfb5JEP+HfTzrEdxkmNX38XIA==}
+  /@kolibry/theme-seriph@0.0.5:
+    resolution: {integrity: sha512-KE+tsJc5h/QSTUNBPrfGkxcLd3yhQW12Ohy+qS3Qc0WlP+heGFkvgis98Ea6STH8QmZWQE6tdf2TLu0IcKacXg==}
     engines: {kolibry: '>=0.0.1', node: '>=14.0.0'}
     dependencies:
       '@kolibry/types': 0.0.2
