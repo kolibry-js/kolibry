@@ -84,7 +84,7 @@ For a full example, you can check the [demo](https://github.com/kolibry-js/kolib
 - [VueUse](https://vueuse.org) family - [`@vueuse/core`](https://github.com/vueuse/vueuse), [`@vueuse/motion`](https://github.com/vueuse/motion), etc.
 - [Iconify](https://iconify.design/) - Iconsets collection.
 - [DrauuIt](https://github.com/nyxb/drauu-it) - Drawing and annotations support
-- [KaTeX](https://katex.org/) - LaTeX math rendering.
+- [KaTeX](https://katex.org/) - LaTeX math rendering. 
 - [Mermaid](https://mermaid-js.github.io/mermaid) - Textual Diagrams.
 
 ## Sponsors
