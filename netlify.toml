@@ -4,12 +4,7 @@
 
 [build]
   publish = "dist"
-  command = "pnpm run demo:build"
-
-[[redirects]]
-  from = "/composable-vue/*"
-  to = "/composable-vue/index.html"
-  status = 200
+  command = "pnpm run build"
 
 [[redirects]]
   from = "/starter/*"
