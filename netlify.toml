@@ -7,11 +7,6 @@
   command = "pnpm run demo:build"
 
 [[redirects]]
-  from = "/composable-vue/*"
-  to = "/composable-vue/index.html"
-  status = 200
-
-[[redirects]]
   from = "/starter/*"
   to = "/starter/index.html"
   status = 200
