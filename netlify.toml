@@ -13,6 +13,6 @@
 
 [[redirects]]
   from = "/"
-  to = "https://sli.dev/"
+  to = "https://kolibry.dev/"
   status = 301
   force = true
