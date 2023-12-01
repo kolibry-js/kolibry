@@ -2,10 +2,6 @@
   NODE_VERSION = "18"
   PLAYWRIGHT_BROWSERS_PATH = "0"
 
-[build]
-  publish = "dist"
-  command = "pnpm -w run demo:build"
-
 [[redirects]]
   from = "/starter/*"
   to = "/starter/index.html"
