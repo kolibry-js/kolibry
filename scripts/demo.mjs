@@ -10,7 +10,5 @@ const starterMd = path.resolve(__dirname, '../demo/starter/slides.md')
 if (!fs.existsSync(starterMd))
   await fs.copyFile(path.resolve(__dirname, '../packages/create-app/template/slides.md'), starterMd)
 
-cd(path.resolve(__dirname, '../demo/composable-vue'))
-await $`npx kolibry build -d --base /composable-vue/ --out ../../dist/composable-vue`
 cd(path.resolve(__dirname, '../demo/starter'))
 await $`npx kolibry build -d --base /starter/ --out ../../dist/starter`
